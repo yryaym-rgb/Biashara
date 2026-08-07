@@ -33,7 +33,12 @@ describe('rbac admin gate paths', () => {
     expect(classifyRoute('/wrong-gate')).toBe('marketing');
   });
 
-  it('blocks non-admin from secret gate routes', () => {
+  it('allows unauthenticated access to secret gate routes (layout handles auth)', () => {
+    const result = canAccessRoute('/secret-gate-xyz', null, 'fr');
+    expect(result.allowed).toBe(true);
+  });
+
+  it('allows non-admin users to reach secret gate routes (layout handles auth)', () => {
     const baseProfile = {
       id: '00000000-0000-0000-0000-000000000001',
       role: 'buyer' as const,
@@ -46,8 +51,7 @@ describe('rbac admin gate paths', () => {
       updated_at: new Date().toISOString(),
     };
     const result = canAccessRoute('/secret-gate-xyz', baseProfile, 'fr');
-    expect(result.allowed).toBe(false);
-    expect(result.reason).toBe('forbidden');
+    expect(result.allowed).toBe(true);
   });
 
   it('allows admin access to secret gate routes', () => {

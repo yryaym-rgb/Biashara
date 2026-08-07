@@ -2,10 +2,11 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { AdminShell } from '@/components/admin/admin-shell';
+import { AdminLoginForm } from '@/components/admin/admin-login-form';
 import { PassphraseGateForm } from '@/components/admin/passphrase-gate-form';
 import { getAdminSessionInfo } from '@/actions/admin/auth';
 import { hasAdminGateAccess, isValidAdminGateSegment } from '@/lib/admin/gate';
-import { requireAdminPage } from '@/lib/admin/session';
+import { getProfile } from '@/lib/auth/session';
 import { displayName } from '@/lib/admin/display';
 import {
   adminAuditLogPath,
@@ -33,15 +34,18 @@ export default async function SecretGateAdminLayout({
     notFound();
   }
 
-  await requireAdminPage();
-
   const gateOpen = await hasAdminGateAccess();
   if (!gateOpen) {
     return <PassphraseGateForm />;
   }
 
-  const { profile, email } = await getAdminSessionInfo();
-  const adminName = displayName(profile.company_name, email ?? 'Admin');
+  const profile = await getProfile();
+  if (!profile || profile.role !== 'admin') {
+    return <AdminLoginForm />;
+  }
+
+  const { profile: adminProfile, email } = await getAdminSessionInfo();
+  const adminName = displayName(adminProfile.company_name, email ?? 'Admin');
 
   const navItems = [
     { key: 'dashboard', href: adminPath() },

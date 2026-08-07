@@ -466,6 +466,14 @@
       "submit": "Enter",
       "accessDenied": "Access denied."
     },
+    "login": {
+      "title": "Admin sign-in",
+      "description": "Sign in with your administrator credentials.",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "submit": "Sign in",
+      "invalidCredentials": "Invalid credentials"
+    },
     "common": {
       "unknownActor": "System",
       "unknownUser": "Unnamed user",
