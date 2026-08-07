@@ -17,6 +17,11 @@
     "ogDescription": "Trade cobalt, copper, gold, coltan, lithium, and diamond with confidence on the leading marketplace in the DRC."
   },
   "nav": {
+    "appName": "BIASHARA",
+    "mainNavigation": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
     "home": "Home",
     "marketplace": "Marketplace",
     "prices": "Prices",
@@ -72,6 +77,33 @@
       "resend": "Resend confirmation email",
       "checkSpam": "Also check your spam folder if you cannot find the message."
     }
+  },
+  "footer": {
+    "platform": {
+      "title": "Platform",
+      "marketplace": "Marketplace",
+      "prices": "Prices",
+      "dashboard": "Dashboard"
+    },
+    "solutions": {
+      "title": "Solutions",
+      "traceability": "Traceability",
+      "marketplace": "Secure marketplace",
+      "compliance": "KYC compliance"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "resources": "Resources",
+      "getStarted": "Get Started"
+    },
+    "legal": {
+      "title": "Legal",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy"
+    },
+    "copyright": "© {year} BIASHARA. All rights reserved."
   },
   "marketing": {
     "landing": {

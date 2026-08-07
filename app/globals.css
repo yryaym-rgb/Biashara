@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  /* Color tokens */
   --brand-blue: #1d5fa8;
   --brand-blue-dark: #12335c;
   --brand-gold: #e9a319;
@@ -17,7 +16,17 @@
   --border: #e7ecf2;
   --success: #1e9e5a;
   --danger: #d64545;
-  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --white: #ffffff;
+
+  /* Gradients */
+  --gradient-gold: linear-gradient(180deg, #f6c453, #e9a319);
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(14, 42, 71, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(14, 42, 71, 0.1);
+
+  /* Focus */
+  --focus-ring-color: rgba(29, 95, 168, 0.35);
 }
 
 @layer base {
@@ -28,14 +37,17 @@
   }
 
   html {
-    font-family: var(--font-plus-jakarta);
+    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
     color: var(--body);
     background-color: var(--bg);
   }
 
   body {
     margin: 0;
+    font-size: 16px;
+    font-weight: 400;
     line-height: 1.65;
+    color: var(--body);
     -webkit-font-smoothing: antialiased;
   }
 
@@ -47,6 +59,40 @@
     margin: 0;
   }
 
+  h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  h2 {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .tabular-nums {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
   a {
     color: var(--brand-blue);
     text-decoration: none;
@@ -54,8 +100,11 @@
 
   a:focus-visible,
   button:focus-visible,
-  input:focus-visible {
-    outline: 2px solid rgba(29, 95, 168, 0.35);
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
     outline-offset: 2px;
   }
 
@@ -66,6 +115,90 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-shadow-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .nav-link-active {
+    color: var(--brand-blue);
+    position: relative;
+  }
+
+  .nav-link-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background-color: var(--brand-gold);
+  }
+
+  .tab-active {
+    color: var(--brand-blue);
+    position: relative;
+  }
+
+  .tab-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    background-color: var(--brand-gold);
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--bg-tint) 0%,
+      var(--border) 50%,
+      var(--bg-tint) 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton-shimmer {
+      animation: shimmer 1.5s ease-in-out infinite;
+    }
+
+    .motion-lift {
+      transition:
+        box-shadow 150ms ease,
+        transform 150ms ease;
+    }
+
+    .motion-lift:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-2px);
     }
   }
 }
