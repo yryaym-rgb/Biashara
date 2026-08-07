@@ -59,7 +59,7 @@ export async function reviewKycDocument(input: unknown) {
     .single();
 
   if (fetchError || !doc) {
-    return { error: 'Document not found' };
+    return { error: 'documentNotFound' };
   }
 
   const { data: userProfile } = await supabase

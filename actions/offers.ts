@@ -54,7 +54,7 @@ export async function counterOffer(input: unknown) {
     .single();
 
   if (parentError || !parent) {
-    return { error: 'Parent offer not found' };
+    return { error: 'parentOfferNotFound' };
   }
 
   const { data, error } = await supabase

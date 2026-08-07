@@ -1,104 +1,104 @@
 # BIASHARA
 
-Production B2B platform for mineral trading, traceability, and secure transactions in the Democratic Republic of Congo. Supports cobalt, copper, gold, coltan, lithium, and diamond markets.
+Plateforme B2B de production pour le négoce minier, la traçabilité et les transactions sécurisées en République démocratique du Congo. Prend en charge les marchés du cobalt, du cuivre, de l'or, du coltan, du lithium et du diamant.
 
-## Stack
+## Stack technique
 
-| Layer | Technology | Why |
-|-------|-----------|-----|
-| Framework | Next.js 14 App Router + TypeScript strict | SSR, server actions, Netlify deployment |
-| Database | Supabase Postgres + RLS | Managed Postgres with row-level security |
-| Auth | Supabase Auth | Email/password with built-in transactional email |
-| Validation | Zod | Single source of truth via `z.infer<>` |
-| Server state | TanStack Query | Cached server data, no premature Zustand |
-| i18n | next-intl | FR default (`/dashboard`), EN prefixed (`/en/dashboard`) |
-| Deployment | Netlify + `@netlify/plugin-nextjs` | Managed Next.js hosting |
+| Couche | Technologie | Justification |
+|--------|-------------|---------------|
+| Framework | Next.js 14 App Router + TypeScript strict | SSR, server actions, déploiement Netlify |
+| Base de données | Supabase Postgres + RLS | Postgres managé avec sécurité au niveau des lignes |
+| Authentification | Supabase Auth | E-mail/mot de passe avec e-mails transactionnels intégrés |
+| Validation | Zod | Source unique de vérité via `z.infer<>` |
+| État serveur | TanStack Query | Données serveur mises en cache, pas de Zustand prématuré |
+| i18n | next-intl | FR par défaut (`/dashboard`), EN préfixé (`/en/dashboard`) |
+| Déploiement | Netlify + `@netlify/plugin-nextjs` | Hébergement Next.js managé |
 
 ## Architecture
 
 ```
-[Browser]
+[Navigateur]
     │
     ▼
-[Next.js Middleware]
-    ├── Locale resolution (next-intl, localePrefix: as-needed)
-    ├── Session refresh (@supabase/ssr cookies)
-    └── RBAC gate (lib/rbac.ts → canAccessRoute)
+[Middleware Next.js]
+    ├── Résolution de locale (next-intl, localePrefix: as-needed)
+    ├── Rafraîchissement de session (cookies @supabase/ssr)
+    └── Contrôle RBAC (lib/rbac.ts → canAccessRoute)
     │
     ▼
 [Server Components / Server Actions]
-    ├── Zod validation (lib/validators/*)
-    ├── Authorization (requireRole, requireKycApproved)
-    └── Sanitization (lib/sanitize.ts)
+    ├── Validation Zod (lib/validators/*)
+    ├── Autorisation (requireRole, requireKycApproved)
+    └── Assainissement (lib/sanitize.ts)
     │
     ▼
-[Supabase Client (server)] ──► [Postgres + RLS policies]
+[Client Supabase (serveur)] ──► [Postgres + politiques RLS]
     │
     ▼
-[Storage buckets] ◄── signed URLs (kyc-docs, listing-photos, contracts)
+[Buckets Storage] ◄── URLs signées (kyc-docs, listing-photos, contracts)
 
-[metals.dev API] ──► [/api/prices] ──► [price_cache table] ──► [Browser]
+[API metals.dev] ──► [/api/prices] ──► [table price_cache] ──► [Navigateur]
                          │
-                    15-min TTL cache
-                    coltan/diamond: price=null, priceType=indicative
+                    cache TTL 15 min
+                    coltan/diamond : price=null, priceType=indicative
 ```
 
-## Project Structure
+## Structure du projet
 
 ```
 app/
   [locale]/
-    (marketing)/     landing, prices, solutions, resources, about
-    (auth)/          login, register, forgot-password, verify
-    (platform)/      dashboard, marketplace, offers, orders, …
-    (admin)/         admin dashboard, users, kyc-review, …
+    (marketing)/     accueil, cotations, solutions, ressources, à propos
+    (auth)/          connexion, inscription, mot de passe oublié, vérification
+    (platform)/      tableau de bord, place de marché, offres, commandes, …
+    (admin)/         administration, utilisateurs, révision KYC, …
   api/               /health, /prices
 lib/
-  supabase/          browser, server, admin (service-role), middleware clients
-  auth/              session helpers, auth actions
+  supabase/          clients navigateur, serveur, admin (service-role), middleware
+  auth/              helpers de session, actions d'authentification
   rbac.ts            requireRole(), requireKycApproved(), canAccessRoute()
-  validators/        one Zod schema file per domain
+  validators/        un fichier schéma Zod par domaine
   constants/         minerals.ts, kyc-requirements.ts
-  email.ts           email abstraction (Supabase now, Resend later)
-actions/             all mutations (Zod-validated server actions)
-types/               database.types.ts (generated), domain.ts (z.infer exports)
-messages/            fr.json (default), en.json
-supabase/migrations/ versioned SQL (13 migrations)
+  email.ts           abstraction e-mail (Supabase maintenant, Resend plus tard)
+actions/             toutes les mutations (server actions validées par Zod)
+types/               database.types.ts (généré), domain.ts (exports z.infer)
+messages/            fr.json (canonique), en.json (traduction)
+supabase/migrations/ SQL versionné (13 migrations)
 ```
 
-## Getting Started
+## Démarrage rapide
 
-### Prerequisites
+### Prérequis
 
 - Node.js 20+
 - Supabase CLI (`npm i -g supabase`)
-- Docker (for local Supabase)
+- Docker (pour Supabase local)
 
-### Setup
+### Installation
 
 ```bash
-# Clone and install
+# Cloner et installer les dépendances
 npm install
 
-# Environment
+# Variables d'environnement
 cp .env.example .env
-# Fill in Supabase URL, anon key, service role key, METALS_API_KEY
+# Renseigner l'URL Supabase, la clé anon, la clé service role, METALS_API_KEY
 
-# Start local Supabase and apply migrations
+# Démarrer Supabase local et appliquer les migrations
 supabase start
 supabase db reset
 
-# Regenerate TypeScript types (optional — stub included)
+# Régénérer les types TypeScript (optionnel — stub inclus)
 npm run types:gen
 
-# Create admin user (one-time)
+# Créer l'utilisateur administrateur (une fois)
 npx tsx scripts/create-admin.ts
 
-# Development
+# Développement
 npm run dev
 ```
 
-### Verify
+### Vérification
 
 ```bash
 npm run lint
@@ -107,98 +107,98 @@ npm test
 npm run build
 ```
 
-## Security Architecture
+## Architecture de sécurité
 
-### Authorization
+### Autorisation
 
-- **Single surface**: `lib/rbac.ts` — middleware calls `canAccessRoute()`, server actions call `requireRole()` / `requireKycApproved()`
-- **RLS on every table**: policies read `profiles.role` directly, not stale JWT claims
-- **Never use `user_metadata`** for authorization — only `app_metadata` / `profiles` table
-- **Service role**: `lib/supabase/admin.ts` has `import 'server-only'` + ESLint blocks client import
+- **Surface unique** : `lib/rbac.ts` — le middleware appelle `canAccessRoute()`, les server actions appellent `requireRole()` / `requireKycApproved()`
+- **RLS sur chaque table** : les politiques lisent `profiles.role` directement, pas les claims JWT obsolètes
+- **Ne jamais utiliser `user_metadata`** pour l'autorisation — uniquement `app_metadata` / table `profiles`
+- **Service role** : `lib/supabase/admin.ts` a `import 'server-only'` + ESLint bloque l'import côté client
 
-### KYC Requirements by Role
+### Documents KYC requis par rôle
 
-| Role | Required documents |
-|------|--------------------|
+| Rôle | Documents requis |
+|------|------------------|
 | buyer | id_card |
 | institution | id_card, business_registration |
 | seller | id_card, business_registration |
 | cooperative | id_card, business_registration, mining_permit |
 
-Enforced in `lib/constants/kyc-requirements.ts` and `actions/kyc.ts`.
+Appliqué dans `lib/constants/kyc-requirements.ts` et `actions/kyc.ts`.
 
-### Order Creation
+### Création de commande
 
-Orders are created **only** via `create_order_from_offer()` SECURITY DEFINER function — atomically accepts offer, snapshots price/qty, expires sibling offers, marks listing sold. One transaction, no partial states.
+Les commandes sont créées **uniquement** via la fonction SECURITY DEFINER `create_order_from_offer()` — accepte l'offre de façon atomique, fige prix/quantité, expire les offres sœurs, marque l'annonce comme vendue. Une transaction, aucun état partiel.
 
-### Storage Buckets
+### Buckets Storage
 
-| Bucket | Access |
-|--------|--------|
-| kyc-docs | Private — owner + admin read |
-| listing-photos | Public read — owner write |
-| contracts | Private — order parties + admin |
+| Bucket | Accès |
+|--------|-------|
+| kyc-docs | Privé — propriétaire + admin en lecture |
+| listing-photos | Lecture publique — écriture propriétaire |
+| contracts | Privé — parties de la commande + admin |
 
-### Audit Log
+### Journal d'audit
 
-Append-only `audit_log` table — INSERT via Postgres triggers on kyc_documents, listings, offers, orders. No UPDATE/DELETE grants.
+Table `audit_log` en append-only — INSERT via déclencheurs Postgres sur kyc_documents, listings, offers, orders. Aucun droit UPDATE/DELETE.
 
-### Threat Model
+### Modèle de menaces
 
-| Threat | Mitigation |
-|--------|------------|
-| Privilege escalation | Role in `profiles` + RLS; admin via `is_admin()` |
-| IDOR | RLS party-scoped; server actions re-validate ownership |
-| XSS | `lib/sanitize.ts` on write; React escapes on read |
-| Service role leak | server-only guard + ESLint rule |
-| Audit tampering | INSERT-only audit_log; trigger-based |
-| API abuse | Rate limit on `/api/prices` (60 req/min/IP) |
+| Menace | Atténuation |
+|--------|-------------|
+| Escalade de privilèges | Rôle dans `profiles` + RLS ; admin via `is_admin()` |
+| IDOR | RLS limité aux parties ; les server actions re-valident la propriété |
+| XSS | `lib/sanitize.ts` à l'écriture ; React échappe à la lecture |
+| Fuite service role | garde server-only + règle ESLint |
+| Altération de l'audit | audit_log INSERT-only ; basé sur des déclencheurs |
+| Abus d'API | Rate limit sur `/api/prices` (60 req/min/IP) |
 
-## Phase Plan
+## Plan de phases
 
-### Phase 1 (Weeks 1–3): Foundation, Auth+KYC, Marketplace, Price Feed, Messaging
+### Phase 1 (semaines 1–3) : Fondation, Auth+KYC, Place de marché, Cotations, Messagerie
 
-| Component | Routes | Tables |
+| Composant | Routes | Tables |
 |-----------|--------|--------|
-| Foundation | all stubs | migrations 00001–00002 |
+| Fondation | tous les stubs | migrations 00001–00002 |
 | Auth | `(auth)/*` | profiles |
 | KYC | settings | kyc_documents, storage kyc-docs |
-| Marketplace | marketplace, marketplace/[id] | listings, listing_photos |
-| Price feed | prices, /api/prices | price_cache |
-| Messaging | listing detail | conversations, messages |
+| Place de marché | marketplace, marketplace/[id] | listings, listing_photos |
+| Cotations | prices, /api/prices | price_cache |
+| Messagerie | détail annonce | conversations, messages |
 
-### Phase 2 (Weeks 4–6): Offers, Orders, Contracts, Dashboard, Admin
+### Phase 2 (semaines 4–6) : Offres, Commandes, Contrats, Tableau de bord, Admin
 
-| Component | Routes | Tables |
+| Composant | Routes | Tables |
 |-----------|--------|--------|
-| Offers | offers | offers |
-| Orders | orders | orders (via create_order_from_offer) |
-| Contracts | contracts | contracts, storage contracts |
-| Payments | payments (stub) | — (Phase 2 business decision) |
-| Dashboard | dashboard | cross-table reads |
-| Admin | (admin)/* | all + audit_log |
+| Offres | offers | offers |
+| Commandes | orders | orders (via create_order_from_offer) |
+| Contrats | contracts | contracts, storage contracts |
+| Paiements | payments (stub) | — (décision métier Phase 2) |
+| Tableau de bord | dashboard | lectures croisées |
+| Admin | (admin)/* | toutes + audit_log |
 
-### Phase 3 (Weeks 7–8): Traceability, Shipments, Notifications, Reports, Hardening
+### Phase 3 (semaines 7–8) : Traçabilité, Expéditions, Notifications, Rapports, Durcissement
 
-| Component | Routes | Tables |
+| Composant | Routes | Tables |
 |-----------|--------|--------|
-| Traceability | listing detail, reports | lot_traceability, custody_events |
-| Logistics | logistics | shipments |
-| Notifications | header bell | notifications |
-| Reports | reports | analytics queries |
-| E2E | — | Playwright test suite |
+| Traçabilité | détail annonce, reports | lot_traceability, custody_events |
+| Logistique | logistics | shipments |
+| Notifications | cloche en-tête | notifications |
+| Rapports | reports | requêtes analytiques |
+| E2E | — | suite de tests Playwright |
 
-## API Routes
+## Routes API
 
 ### `GET /api/health`
 
-Health check for Netlify. Returns `{ status, timestamp, version }`.
+Contrôle de santé pour Netlify. Retourne `{ status, timestamp, version }`.
 
 ### `GET /api/prices`
 
-Proxies metals.dev spot prices with 15-minute cache in `price_cache`.
+Proxy des cotations spot metals.dev avec cache de 15 minutes dans `price_cache`.
 
-Response shape per mineral:
+Forme de réponse par minerai :
 
 ```json
 {
@@ -229,20 +229,27 @@ Response shape per mineral:
 }
 ```
 
-Coltan and diamond always return `price: null` with `isIndicative: true` — UI renders "Prix indicatif — négocié".
+Le coltan et le diamant retournent toujours `price: null` avec `isIndicative: true` — l'interface affiche « Prix indicatif — négocié ».
 
-## Type Generation
+## Génération des types
 
 ```bash
 npm run types:gen
 ```
 
-Regenerates `types/database.types.ts` from local Supabase. The committed stub matches migrations — regenerate after any schema change.
+Régénère `types/database.types.ts` depuis Supabase local. Le stub commité correspond aux migrations — régénérer après toute modification de schéma.
 
-## Design System
+## Système de design
 
-UI implementation rules are in `.cursor/rules/biashara-design-system.mdc`. Reference screens: `design/reference-screens.png`.
+Les règles d'implémentation de l'interface sont dans `.cursor/rules/biashara-design-system.mdc`. Écrans de référence : `design/reference-screens.png`.
 
-## License
+## Internationalisation
 
-Proprietary — BIASHARA platform.
+- **Locale par défaut** : `fr` avec `localePrefix: 'as-needed'` — le français est servi à `/dashboard`, l'anglais à `/en/dashboard`
+- **Source canonique** : `messages/fr.json` — rédigé en premier en français professionnel
+- **Traduction** : `messages/en.json` — traduction fidèle de la version française
+- **Formatage** : `Intl.DateTimeFormat('fr-FR')` et `Intl.NumberFormat('fr-FR')` via `lib/utils/format.ts` et `lib/utils/dates.ts`
+
+## Licence
+
+Propriétaire — plateforme BIASHARA.

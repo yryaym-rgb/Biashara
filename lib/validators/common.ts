@@ -15,6 +15,6 @@ export const phoneSchema = z
   .string()
   .min(8)
   .max(20)
-  .regex(/^\+?[0-9\s\-()]+$/, 'Invalid phone format');
+  .regex(/^\+?[0-9\s\-()]+$/, 'validation.phoneInvalid');
 
 export type PaginationInput = z.infer<typeof paginationSchema>;
