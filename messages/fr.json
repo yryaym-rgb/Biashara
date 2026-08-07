@@ -223,6 +223,7 @@
         "historyEmptyDescription": "L'historique des cotations se construit — revenez demain.",
         "timeframeSoon": "Bientôt disponible",
         "trendChartAria": "Graphique de tendance du prix du cuivre",
+        "chartAria": "Graphique de tendance du prix du cuivre",
         "timeframes": {
           "1W": "1S",
           "1M": "1M",
@@ -258,29 +259,144 @@
       }
     },
     "prices": {
-      "title": "Cotations du marché",
+      "title": "Cotations des matières premières",
+      "eyebrow": "MARCHÉ EN TEMPS RÉEL",
+      "subtitle": "Cotations actualisées toutes les 15 minutes à partir de sources de marché publiques — transparence totale sur l'origine et la fraîcheur des données.",
       "indicative": "Prix indicatif — négocié",
       "unavailable": "Cotation non disponible pour ce minerai",
       "lastUpdated": "Dernière mise à jour",
       "source": "Source",
-      "disclaimer": "Les cotations affichées sont indicatives et peuvent différer des prix négociés sur la place de marché."
+      "disclaimer": "Les cotations affichées sont indicatives et peuvent différer des prix négociés sur la place de marché.",
+      "error": "Cotations momentanément indisponibles. Réessayez dans quelques instants.",
+      "retry": "Réessayer",
+      "chartTitle": "Historique — {mineral}",
+      "historyEmptyTitle": "Historique en construction",
+      "historyEmptyDescription": "L'historique se construit — revenez demain.",
+      "indicativeHistory": "Ce minerai ne dispose pas de cotation spot publique — le prix est négocié entre les parties.",
+      "timeframeSoon": "Bientôt disponible",
+      "chartAria": "Graphique de tendance du prix du {mineral}",
+      "timeframes": {
+        "1W": "1S",
+        "1M": "1M",
+        "3M": "3M",
+        "1Y": "1A",
+        "ALL": "TOUT"
+      },
+      "table": {
+        "mineral": "Minerai",
+        "price": "Cotation",
+        "change": "Variation",
+        "updated": "Mise à jour"
+      },
+      "guide": {
+        "title": "Comment lire nos cotations",
+        "paragraph1": "Les cotations spot (cobalt, cuivre, or, lithium) proviennent de metals.dev, une source de données de marché publique. Chaque valeur est actualisée automatiquement toutes les 15 minutes et enregistrée dans notre historique pour suivre l'évolution des prix.",
+        "paragraph2": "La variation affichée compare la cotation actuelle au dernier point d'historique disponible. Si l'historique est insuffisant, aucune variation n'est affichée — nous ne fabriquons jamais de données.",
+        "paragraph3": "Pour le coltan et le diamant, aucune cotation spot standardisée n'existe sur les marchés publics. BIASHARA affiche « Prix indicatif — négocié » : le prix final est convenu entre acheteur et vendeur sur la place de marché."
+      }
     },
     "solutions": {
-      "title": "Solutions",
+      "title": "Une plateforme pensée pour chaque acteur du commerce minier",
+      "eyebrow": "SOLUTIONS",
+      "subtitle": "Que vous soyez coopérative, négociant, exportateur ou acheteur international — BIASHARA met à disposition les outils disponibles aujourd'hui sur la plateforme.",
+      "comingSoon": "Bientôt disponible",
+      "audiences": {
+        "cooperatives": {
+          "title": "Coopératives minières",
+          "forWhom": "Pour les producteurs artisanaux et coopératives qui souhaitent accéder au marché.",
+          "capability1": { "label": "Publier des annonces sur la place de marché" },
+          "capability2": { "label": "Vérification KYC pour la conformité réglementaire" },
+          "capability3": { "label": "Codes de traçabilité par lot" }
+        },
+        "traders": {
+          "title": "Négociants",
+          "forWhom": "Pour les intermédiaires qui achètent et revendent des minerais en RDC.",
+          "capability1": { "label": "Parcourir les offres de vendeurs vérifiés" },
+          "capability2": { "label": "Négocier via le flux d'offres intégré" },
+          "capability3": { "label": "Cotations de référence en temps réel" }
+        },
+        "exporters": {
+          "title": "Exportateurs",
+          "forWhom": "Pour les entreprises qui exportent des minerais congolais vers l'international.",
+          "capability1": { "label": "Accès à la place de marché sécurisée" },
+          "capability2": { "label": "Vérification KYC des partenaires commerciaux" },
+          "capability3": { "label": "Suivi logistique des expéditions" }
+        },
+        "buyers": {
+          "title": "Acheteurs internationaux",
+          "forWhom": "Pour les acheteurs étrangers à la recherche de minerais congolais traçables.",
+          "capability1": { "label": "Annonces de vendeurs vérifiés par KYC" },
+          "capability2": { "label": "Faire des offres et négocier en ligne" },
+          "capability3": { "label": "Cotations internationales de référence" }
+        }
+      },
+      "cta": {
+        "title": "Prêt à commencer ?",
+        "subtitle": "Créez votre compte pour accéder à la place de marché et aux cotations en temps réel.",
+        "primaryCta": "Créer un compte"
+      },
       "traceability": "Traçabilité",
       "marketplace": "Place de marché sécurisée",
       "compliance": "Vérification KYC et conformité"
     },
     "resources": {
-      "title": "Ressources",
+      "title": "Comprendre le commerce minier en RDC",
+      "eyebrow": "RESSOURCES",
+      "subtitle": "Guides pratiques pour naviguer la réglementation, la traçabilité et les cotations du secteur minier congolais.",
+      "readTime": "{minutes} min de lecture",
+      "readMore": "Lire l'article",
+      "backToResources": "Retour aux ressources",
       "documentation": "Documentation",
-      "guides": "Guides pratiques"
+      "guides": "Guides pratiques",
+      "articles": {
+        "kyc-minier-rdc": {
+          "title": "Comprendre le KYC minier en RDC",
+          "excerpt": "Pourquoi la vérification d'identité est obligatoire et comment BIASHARA l'applique aux acteurs du secteur.",
+          "p1": "Le Know Your Customer (KYC) et la lutte contre le blanchiment d'argent (AML) sont au cœur de la réglementation minière en République démocratique du Congo. Tout acteur qui achète, vend ou exporte des minerais doit pouvoir prouver son identité, son statut juridique et l'origine licite de ses activités.",
+          "p2": "En RDC, le cadre légal repose notamment sur le Code minier, les décrets d'application de l'ITIE (Initiative pour la Transparence dans les Industries Extractives) et les exigences des acheteurs internationaux soumis au devoir de vigilance de l'UE et aux réglementations américaines (Dodd-Frank Section 1502 sur les minerais des conflits).",
+          "p3": "Sur BIASHARA, la vérification KYC est obligatoire avant toute publication d'annonce ou toute offre d'achat. Chaque utilisateur doit fournir une pièce d'identité, un justificatif d'adresse et, pour les entités morales, les statuts et documents d'enregistrement de l'entreprise.",
+          "p4": "Les documents sont examinés manuellement par notre équipe de conformité. Ce processus peut prendre plusieurs jours ouvrables. Tant que le KYC n'est pas approuvé, l'utilisateur peut consulter la place de marché et les cotations, mais ne peut pas publier ni négocier.",
+          "p5": "Le refus d'un dossier KYC est toujours motivé : l'utilisateur reçoit une notification indiquant les documents à corriger ou à compléter. Il peut soumettre un nouveau dossier après correction.",
+          "p6": "La conformité KYC protège l'ensemble de l'écosystème : les coopératives contre les acheteurs non identifiés, les exportateurs contre les risques réputationnels, et les acheteurs internationaux contre l'approvisionnement en minerais de source illicite."
+        },
+        "tracabilite-minerais": {
+          "title": "La traçabilité des minerais, étape par étape",
+          "excerpt": "Comment un lot de minerai est suivi de la mine à l'acheteur, et ce que BIASHARA prépare pour l'avenir.",
+          "p1": "La traçabilité des minerais désigne la capacité à suivre un lot spécifique depuis son point d'extraction jusqu'à sa destination finale. En RDC, cette exigence répond à la fois aux réglementations nationales, aux standards internationaux (OCDE, CTC) et aux attentes des acheteurs soucieux de l'origine de leurs matières premières.",
+          "p2": "Un système de traçabilité efficace repose sur trois piliers : l'identification unique de chaque lot, l'enregistrement de chaque transfert de garde (custody), et la documentation associée (certificats d'origine, bons de pesée, factures).",
+          "p3": "Sur le terrain, la traçabilité commence à la mine ou au point de collecte artisanale. Chaque lot reçoit un identifiant — souvent un code alphanumérique lié au minerai, à la province et à la date de production. Ce code accompagne le minerai à chaque étape : négociant, entrepôt, exportateur, port.",
+          "p4": "BIASHARA prévoit un système de codes de traçabilité par lot, intégré aux annonces de la place de marché. Cette fonctionnalité est en cours de développement : l'infrastructure de base existe dans notre base de données, mais l'interface utilisateur n'est pas encore disponible.",
+          "p5": "En attendant, les vendeurs vérifiés sur BIASHARA peuvent documenter l'origine de leurs minerais dans la description de leur annonce : province d'extraction, grade, pureté et certifications disponibles. Les acheteurs peuvent poser des questions via le flux de messagerie intégré avant de faire une offre.",
+          "p6": "La traçabilité ne se limite pas à la technologie : elle implique aussi des pratiques de terrain — registres papier aux mines, pesées certifiées, contrôles aux postes frontaliers. BIASHARA ne remplace pas ces contrôles physiques, mais vise à en créer un registre numérique vérifiable.",
+          "p7": "Pour les acheteurs internationaux, demander la documentation de traçabilité avant tout engagement contractuel reste une bonne pratique, indépendamment de la plateforme utilisée."
+        },
+        "lire-cotations-internationales": {
+          "title": "Lire les cotations internationales",
+          "excerpt": "Comment interpréter les prix spot affichés sur BIASHARA et ce qu'ils signifient pour vos négociations.",
+          "p1": "Les cotations internationales des métaux sont fixées sur des places boursières et des marchés de gros (LME pour le cuivre et le cobalt, COMEX pour l'or, marchés spécialisés pour le lithium). Ces prix spot reflètent l'offre et la demande mondiales à un instant donné, en dollars américains.",
+          "p2": "Sur BIASHARA, les cotations spot pour le cobalt, le cuivre, l'or et le lithium proviennent de metals.dev, une source de données de marché publique. Elles sont actualisées toutes les 15 minutes et servent de référence — pas de prix d'achat garanti.",
+          "p3": "Le prix réel d'une transaction en RDC intègre des facteurs locaux que le spot international ne capture pas : qualité et pureté du minerai, coûts de transport depuis la province d'origine, taxes et redevances minières, conditions de paiement et risque de change.",
+          "p4": "Pour le coltan (tantalite) et le diamant, il n'existe pas de cotation spot standardisée sur les marchés publics. Les prix sont négociés bilatéralement en fonction du grade, de la quantité et des conditions de livraison. BIASHARA affiche « Prix indicatif — négocié » pour ces minerais.",
+          "p5": "La variation quotidienne affichée sur BIASHARA compare la cotation actuelle au dernier point d'historique enregistré. Si l'historique est insuffisant (moins de deux points de données), aucune variation n'est affichée. L'historique se construit progressivement, jour après jour.",
+          "p6": "Avant de négocier, consultez la cotation de référence, puis ajustez votre offre en fonction des spécificités du lot : grade, pureté, volume disponible et province d'origine. La place de marché BIASHARA est conçue pour faciliter cette négociation informée."
+        }
+      }
     },
     "about": {
       "title": "À propos de BIASHARA",
+      "eyebrow": "À PROPOS",
       "mission": "Notre mission",
       "missionText": "Connecter les acteurs du secteur minier congolais à des acheteurs internationaux dans un cadre transparent, traçable et conforme.",
-      "team": "Notre équipe"
+      "team": "Notre équipe",
+      "story": {
+        "title": "Notre histoire — contenu à venir",
+        "description": "Nous préparons le récit de BIASHARA et la présentation de notre équipe. Revenez prochainement pour en savoir plus sur qui nous sommes."
+      },
+      "contact": {
+        "title": "Nous contacter",
+        "description": "Aucune adresse e-mail de contact dédiée n'est configurée pour le moment. Créez un compte sur la plateforme pour accéder à la messagerie intégrée et échanger avec notre équipe une fois inscrit.",
+        "cta": "Créer un compte"
+      }
     }
   },
   "routes": {

@@ -223,6 +223,7 @@
         "historyEmptyDescription": "Price history is being built — check back tomorrow.",
         "timeframeSoon": "Coming soon",
         "trendChartAria": "Copper price trend chart",
+        "chartAria": "Copper price trend chart",
         "timeframes": {
           "1W": "1W",
           "1M": "1M",
@@ -258,29 +259,144 @@
       }
     },
     "prices": {
-      "title": "Market Prices",
+      "title": "Commodity prices",
+      "eyebrow": "REAL-TIME MARKET",
+      "subtitle": "Quotes refreshed every 15 minutes from public market sources — full transparency on data origin and freshness.",
       "indicative": "Indicative price — negotiable",
       "unavailable": "Price unavailable for this mineral",
       "lastUpdated": "Last updated",
       "source": "Source",
-      "disclaimer": "Prices shown are indicative and may differ from negotiated prices on the marketplace."
+      "disclaimer": "Prices shown are indicative and may differ from negotiated prices on the marketplace.",
+      "error": "Quotes temporarily unavailable. Please try again in a few moments.",
+      "retry": "Retry",
+      "chartTitle": "History — {mineral}",
+      "historyEmptyTitle": "History building",
+      "historyEmptyDescription": "History is being built — check back tomorrow.",
+      "indicativeHistory": "This mineral has no public spot quote — price is negotiated between parties.",
+      "timeframeSoon": "Coming soon",
+      "chartAria": "{mineral} price trend chart",
+      "timeframes": {
+        "1W": "1W",
+        "1M": "1M",
+        "3M": "3M",
+        "1Y": "1Y",
+        "ALL": "ALL"
+      },
+      "table": {
+        "mineral": "Mineral",
+        "price": "Quote",
+        "change": "Change",
+        "updated": "Updated"
+      },
+      "guide": {
+        "title": "How to read our quotes",
+        "paragraph1": "Spot quotes (cobalt, copper, gold, lithium) come from metals.dev, a public market data source. Each value is refreshed automatically every 15 minutes and stored in our history to track price trends.",
+        "paragraph2": "The change shown compares the current quote to the latest available history point. If history is insufficient, no change is displayed — we never fabricate data.",
+        "paragraph3": "For coltan and diamond, no standardized spot quote exists on public markets. BIASHARA shows \"Indicative price — negotiable\": the final price is agreed between buyer and seller on the marketplace."
+      }
     },
     "solutions": {
-      "title": "Solutions",
+      "title": "A platform built for every mining trade stakeholder",
+      "eyebrow": "SOLUTIONS",
+      "subtitle": "Whether you are a cooperative, trader, exporter, or international buyer — BIASHARA provides the tools available on the platform today.",
+      "comingSoon": "Coming soon",
+      "audiences": {
+        "cooperatives": {
+          "title": "Mining cooperatives",
+          "forWhom": "For artisanal producers and cooperatives seeking market access.",
+          "capability1": { "label": "Publish listings on the marketplace" },
+          "capability2": { "label": "KYC verification for regulatory compliance" },
+          "capability3": { "label": "Lot-level traceability codes" }
+        },
+        "traders": {
+          "title": "Traders",
+          "forWhom": "For intermediaries who buy and resell minerals in the DRC.",
+          "capability1": { "label": "Browse offers from verified sellers" },
+          "capability2": { "label": "Negotiate through the integrated offer flow" },
+          "capability3": { "label": "Real-time reference quotes" }
+        },
+        "exporters": {
+          "title": "Exporters",
+          "forWhom": "For companies exporting Congolese minerals internationally.",
+          "capability1": { "label": "Access to the secure marketplace" },
+          "capability2": { "label": "KYC verification of business partners" },
+          "capability3": { "label": "Shipment logistics tracking" }
+        },
+        "buyers": {
+          "title": "International buyers",
+          "forWhom": "For foreign buyers seeking traceable Congolese minerals.",
+          "capability1": { "label": "Listings from KYC-verified sellers" },
+          "capability2": { "label": "Make offers and negotiate online" },
+          "capability3": { "label": "International reference quotes" }
+        }
+      },
+      "cta": {
+        "title": "Ready to get started?",
+        "subtitle": "Create your account to access the marketplace and real-time quotes.",
+        "primaryCta": "Create account"
+      },
       "traceability": "Traceability",
       "marketplace": "Secure marketplace",
       "compliance": "KYC verification and compliance"
     },
     "resources": {
-      "title": "Resources",
+      "title": "Understanding mining trade in the DRC",
+      "eyebrow": "RESOURCES",
+      "subtitle": "Practical guides to navigate regulation, traceability, and quotes in the Congolese mining sector.",
+      "readTime": "{minutes} min read",
+      "readMore": "Read article",
+      "backToResources": "Back to resources",
       "documentation": "Documentation",
-      "guides": "Practical guides"
+      "guides": "Practical guides",
+      "articles": {
+        "kyc-minier-rdc": {
+          "title": "Understanding mining KYC in the DRC",
+          "excerpt": "Why identity verification is mandatory and how BIASHARA applies it to sector stakeholders.",
+          "p1": "Know Your Customer (KYC) and anti-money laundering (AML) are at the heart of mining regulation in the Democratic Republic of Congo. Any stakeholder who buys, sells, or exports minerals must be able to prove their identity, legal status, and the lawful origin of their activities.",
+          "p2": "In the DRC, the legal framework rests notably on the Mining Code, EITI (Extractive Industries Transparency Initiative) implementing decrees, and the requirements of international buyers subject to EU due diligence and US regulations (Dodd-Frank Section 1502 on conflict minerals).",
+          "p3": "On BIASHARA, KYC verification is mandatory before publishing any listing or making any purchase offer. Each user must provide proof of identity, proof of address, and for legal entities, company statutes and registration documents.",
+          "p4": "Documents are reviewed manually by our compliance team. This process may take several business days. Until KYC is approved, users can browse the marketplace and quotes but cannot publish or negotiate.",
+          "p5": "A rejected KYC file is always explained: the user receives a notification indicating which documents to correct or complete. They may submit a new file after correction.",
+          "p6": "KYC compliance protects the entire ecosystem: cooperatives against unidentified buyers, exporters against reputational risk, and international buyers against sourcing illicit minerals."
+        },
+        "tracabilite-minerais": {
+          "title": "Mineral traceability, step by step",
+          "excerpt": "How a mineral lot is tracked from mine to buyer, and what BIASHARA is preparing for the future.",
+          "p1": "Mineral traceability is the ability to follow a specific lot from its extraction point to its final destination. In the DRC, this requirement responds to national regulations, international standards (OECD, CTC), and buyer expectations regarding the origin of their raw materials.",
+          "p2": "An effective traceability system rests on three pillars: unique lot identification, recording of each custody transfer, and associated documentation (certificates of origin, weigh notes, invoices).",
+          "p3": "In the field, traceability begins at the mine or artisanal collection point. Each lot receives an identifier — often an alphanumeric code linked to the mineral, province, and production date. This code accompanies the mineral at every step: trader, warehouse, exporter, port.",
+          "p4": "BIASHARA plans a lot-level traceability code system integrated with marketplace listings. This feature is under development: the underlying infrastructure exists in our database, but the user interface is not yet available.",
+          "p5": "In the meantime, verified sellers on BIASHARA can document the origin of their minerals in their listing description: extraction province, grade, purity, and available certifications. Buyers can ask questions via the integrated messaging flow before making an offer.",
+          "p6": "Traceability is not just technology: it also involves field practices — paper registers at mines, certified weighings, checks at border posts. BIASHARA does not replace these physical controls but aims to create a verifiable digital record.",
+          "p7": "For international buyers, requesting traceability documentation before any contractual commitment remains good practice, regardless of the platform used."
+        },
+        "lire-cotations-internationales": {
+          "title": "Reading international quotes",
+          "excerpt": "How to interpret spot prices displayed on BIASHARA and what they mean for your negotiations.",
+          "p1": "International metal quotes are set on exchanges and wholesale markets (LME for copper and cobalt, COMEX for gold, specialized markets for lithium). These spot prices reflect global supply and demand at a given moment, in US dollars.",
+          "p2": "On BIASHARA, spot quotes for cobalt, copper, gold, and lithium come from metals.dev, a public market data source. They are refreshed every 15 minutes and serve as a reference — not a guaranteed purchase price.",
+          "p3": "The actual price of a transaction in the DRC incorporates local factors that international spot does not capture: mineral quality and purity, transport costs from the province of origin, mining taxes and royalties, payment terms, and exchange risk.",
+          "p4": "For coltan (tantalite) and diamond, no standardized spot quote exists on public markets. Prices are negotiated bilaterally based on grade, quantity, and delivery terms. BIASHARA displays \"Indicative price — negotiable\" for these minerals.",
+          "p5": "The daily change shown on BIASHARA compares the current quote to the last recorded history point. If history is insufficient (fewer than two data points), no change is displayed. History builds progressively, day by day.",
+          "p6": "Before negotiating, consult the reference quote, then adjust your offer based on lot specifics: grade, purity, available volume, and province of origin. The BIASHARA marketplace is designed to facilitate this informed negotiation."
+        }
+      }
     },
     "about": {
       "title": "About BIASHARA",
+      "eyebrow": "ABOUT",
       "mission": "Our mission",
       "missionText": "Connecting Congolese mining stakeholders with international buyers in a transparent, traceable, and compliant framework.",
-      "team": "Our team"
+      "team": "Our team",
+      "story": {
+        "title": "Our story — content coming soon",
+        "description": "We are preparing BIASHARA's story and team presentation. Check back soon to learn more about who we are."
+      },
+      "contact": {
+        "title": "Contact us",
+        "description": "No dedicated contact email is configured yet. Create an account on the platform to access integrated messaging and reach our team once registered.",
+        "cta": "Create account"
+      }
     }
   },
   "routes": {
