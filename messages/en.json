@@ -1,0 +1,218 @@
+{
+  "common": {
+    "appName": "BIASHARA",
+    "loading": "Loading…",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "empty": "No data available"
+  },
+  "nav": {
+    "home": "Home",
+    "marketplace": "Marketplace",
+    "prices": "Prices",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "about": "About Us",
+    "dashboard": "Dashboard",
+    "offers": "Offers",
+    "orders": "Orders",
+    "contracts": "Contracts",
+    "payments": "Payments",
+    "logistics": "Logistics",
+    "reports": "Reports",
+    "settings": "Settings",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "getStarted": "Get Started"
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "email": "Email address",
+      "password": "Password",
+      "submit": "Sign in",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create account"
+    },
+    "register": {
+      "title": "Create account",
+      "fullName": "Full name",
+      "email": "Email address",
+      "password": "Password",
+      "role": "Account type",
+      "companyName": "Company name",
+      "submit": "Create account",
+      "hasAccount": "Already have an account?",
+      "login": "Sign in",
+      "terms": "I agree to the Terms of Service"
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "email": "Email address",
+      "submit": "Send reset link",
+      "backToLogin": "Back to login"
+    },
+    "verify": {
+      "title": "Verify your account",
+      "description": "Check your email to confirm your account.",
+      "resend": "Resend email"
+    }
+  },
+  "marketing": {
+    "landing": {
+      "title": "BIASHARA — Trusted mineral trading",
+      "eyebrow": "B2B Platform — Democratic Republic of Congo",
+      "heroLine1": "Trade Boldly.",
+      "heroLine2": "Trust Deeply.",
+      "heroLine3": "Grow Together.",
+      "cta": "Get Started"
+    },
+    "prices": {
+      "title": "Market Prices",
+      "indicative": "Indicative price — negotiable",
+      "unavailable": "Price unavailable",
+      "lastUpdated": "Last updated",
+      "source": "Source"
+    },
+    "solutions": {
+      "title": "Solutions",
+      "traceability": "Traceability",
+      "marketplace": "Secure marketplace",
+      "compliance": "KYC compliance"
+    },
+    "resources": {
+      "title": "Resources",
+      "documentation": "Documentation",
+      "guides": "Guides"
+    },
+    "about": {
+      "title": "About BIASHARA",
+      "mission": "Our mission",
+      "team": "Our team"
+    }
+  },
+  "routes": {
+    "dashboard": { "title": "Dashboard" },
+    "marketplace": { "title": "Marketplace" },
+    "marketplaceDetail": { "title": "Listing details" },
+    "offers": { "title": "Offers" },
+    "orders": { "title": "Orders" },
+    "contracts": { "title": "Contracts" },
+    "payments": { "title": "Payments" },
+    "logistics": { "title": "Logistics" },
+    "reports": { "title": "Reports" },
+    "settings": { "title": "Settings" }
+  },
+  "platform": {
+    "dashboard": {
+      "welcome": "Welcome back",
+      "totalOrders": "Total orders",
+      "activeContracts": "Active contracts",
+      "totalSpent": "Total spent",
+      "shipments": "Shipments",
+      "emptyOrders": "No orders yet"
+    },
+    "marketplace": {
+      "title": "Marketplace",
+      "search": "Search minerals…",
+      "filters": "Filters",
+      "postOffer": "Post an offer",
+      "viewDetails": "View details",
+      "empty": "No listings published yet",
+      "quantityAvailable": "{quantity} {unit} available"
+    },
+    "offers": {
+      "title": "Offers",
+      "empty": "No active offers",
+      "pending": "Pending",
+      "countered": "Countered",
+      "accepted": "Accepted",
+      "declined": "Declined",
+      "expired": "Expired"
+    },
+    "orders": {
+      "title": "Orders",
+      "empty": "No orders yet",
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "inTransit": "In transit",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "disputed": "Disputed"
+    },
+    "contracts": {
+      "title": "Contracts",
+      "empty": "No contracts yet",
+      "sign": "Sign",
+      "signed": "Signed",
+      "pending": "Awaiting signature"
+    },
+    "payments": {
+      "title": "Payments",
+      "empty": "Payments module — Phase 2",
+      "comingSoon": "Payments coming soon"
+    },
+    "logistics": {
+      "title": "Logistics",
+      "empty": "No shipments yet",
+      "tracking": "Tracking",
+      "carrier": "Carrier"
+    },
+    "reports": {
+      "title": "Reports",
+      "empty": "No reports available"
+    },
+    "settings": {
+      "title": "Settings",
+      "profile": "Profile",
+      "kyc": "KYC verification",
+      "language": "Language",
+      "kycPending": "Verification in progress",
+      "kycApproved": "Account verified",
+      "kycRejected": "Verification rejected"
+    }
+  },
+  "admin": {
+    "dashboard": { "title": "Administration" },
+    "users": { "title": "Users" },
+    "kycReview": { "title": "KYC Review" },
+    "listingsModeration": { "title": "Listings moderation" },
+    "auditLog": { "title": "Audit log" }
+  },
+  "minerals": {
+    "cobalt": "Cobalt",
+    "copper": "Copper",
+    "gold": "Gold",
+    "coltan": "Coltan",
+    "lithium": "Lithium",
+    "diamond": "Diamond"
+  },
+  "units": {
+    "MT": "MT",
+    "oz": "oz",
+    "kg": "kg",
+    "carat": "carat"
+  },
+  "errors": {
+    "unauthorized": "You must be signed in",
+    "forbidden": "Access denied",
+    "kycRequired": "KYC verification required",
+    "notFound": "Page not found",
+    "validation": "Invalid data",
+    "rateLimit": "Too many requests — try again later"
+  },
+  "kyc": {
+    "id_card": "ID card",
+    "business_registration": "Business registration",
+    "mining_permit": "Mining permit",
+    "export_license": "Export license",
+    "upload": "Upload document",
+    "required": "Required documents"
+  }
+}

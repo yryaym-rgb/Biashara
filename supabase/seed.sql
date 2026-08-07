@@ -1,0 +1,2 @@
+-- Admin user bootstrap is handled via scripts/create-admin.ts (service-role).
+-- This file intentionally contains no business seed data.
