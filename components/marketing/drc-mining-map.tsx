@@ -12,6 +12,12 @@ import {
 import type { DrcProvince } from '@/lib/constants/provinces';
 import { cn } from '@/lib/utils/cn';
 
+const VIEWBOX_PARTS = DRC_MAP_VIEWBOX.split(/\s+/).map(Number);
+const VIEWBOX_X = VIEWBOX_PARTS[0] ?? 0;
+const VIEWBOX_Y = VIEWBOX_PARTS[1] ?? 0;
+const VIEWBOX_WIDTH = VIEWBOX_PARTS[2] ?? 400;
+const VIEWBOX_HEIGHT = VIEWBOX_PARTS[3] ?? 600;
+
 export interface DrcMiningMapProps {
   listingCounts: Record<string, number>;
 }
@@ -22,21 +28,26 @@ export function DrcMiningMap({ listingCounts }: DrcMiningMapProps) {
   const router = useRouter();
   const [activeProvince, setActiveProvince] = React.useState<DrcProvince | null>(null);
   const [tooltipPos, setTooltipPos] = React.useState<{ x: number; y: number } | null>(null);
+  const svgRef = React.useRef<SVGSVGElement>(null);
+
+  function setTooltipFromCentroid(province: DrcProvince) {
+    const svg = svgRef.current;
+    const region = DRC_MAP_REGIONS.find((entry) => entry.province === province);
+    if (!svg || !region) return;
+
+    const rect = svg.getBoundingClientRect();
+    setTooltipPos({
+      x: ((region.labelX - VIEWBOX_X) / VIEWBOX_WIDTH) * rect.width,
+      y: ((region.labelY - VIEWBOX_Y) / VIEWBOX_HEIGHT) * rect.height,
+    });
+  }
 
   function handleProvinceEnter(
     province: DrcProvince,
-    event: React.MouseEvent<SVGPathElement> | React.FocusEvent<SVGPathElement>,
+    _event: React.MouseEvent<SVGPathElement> | React.FocusEvent<SVGPathElement>,
   ) {
-    const svg = event.currentTarget.ownerSVGElement;
-    if (!svg) return;
-
-    const rect = svg.getBoundingClientRect();
-    const pathRect = event.currentTarget.getBoundingClientRect();
     setActiveProvince(province);
-    setTooltipPos({
-      x: pathRect.left + pathRect.width / 2 - rect.left,
-      y: pathRect.top + pathRect.height / 2 - rect.top,
-    });
+    setTooltipFromCentroid(province);
   }
 
   function handleProvinceLeave() {
@@ -66,16 +77,17 @@ export function DrcMiningMap({ listingCounts }: DrcMiningMapProps) {
   return (
     <div className="relative mx-auto w-full max-w-[480px]">
       <svg
+        ref={svgRef}
         viewBox={DRC_MAP_VIEWBOX}
         className="w-full h-auto"
         role="img"
         aria-label={t('mapAria')}
       >
         <rect
-          x="0"
-          y="0"
-          width="400"
-          height="600"
+          x={VIEWBOX_X}
+          y={VIEWBOX_Y}
+          width={VIEWBOX_WIDTH}
+          height={VIEWBOX_HEIGHT}
           className="fill-bg-tint"
           aria-hidden="true"
         />
@@ -141,6 +153,8 @@ export function DrcMiningMap({ listingCounts }: DrcMiningMapProps) {
           )}
         </div>
       ) : null}
+
+      <p className="mt-3 text-center text-[11px] text-muted">{t('attribution')}</p>
     </div>
   );
 }
