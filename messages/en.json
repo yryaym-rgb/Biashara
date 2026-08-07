@@ -186,6 +186,13 @@
       "ctaVideo": "Watch the video",
       "heroImageAlt": "Raw mineral samples — cobalt, copper, and gold",
       "heroImagePlaceholder": "Hero image to be added",
+      "heroSearch": {
+        "placeholder": "Search for a mineral, region…",
+        "submit": "Search"
+      },
+      "ticker": {
+        "ariaLabel": "Live mineral quotes"
+      },
       "features": {
         "priceTransparency": {
           "title": "Transparent prices",
@@ -207,6 +214,38 @@
           "title": "AI market intelligence",
           "description": "Predictive analytics to anticipate trends in the mining market."
         }
+      },
+      "howItWorks": {
+        "eyebrow": "HOW IT WORKS",
+        "title": "From ore to transaction, with full transparency",
+        "comingSoonBadge": "Coming soon",
+        "steps": {
+          "publish": {
+            "title": "Publish or explore",
+            "description": "Browse active listings or publish your mineral on the marketplace."
+          },
+          "kyc": {
+            "title": "KYC verification",
+            "description": "Submit identity documents to be verified before publishing or negotiating."
+          },
+          "negotiate": {
+            "title": "Negotiate with confidence",
+            "description": "Make an offer on a listing — quantity, price, and message sent to the seller."
+          },
+          "traceability": {
+            "title": "Guaranteed traceability",
+            "description": "Each lot receives a unique code in the database — public display of codes coming soon."
+          }
+        }
+      },
+      "map": {
+        "eyebrow": "FROM THE DRC TO THE WORLD",
+        "title": "One country, exceptional mineral wealth",
+        "mapAria": "Stylized map of DRC provinces",
+        "provinceLinkAria": "View listings from {province}",
+        "activeListings": "{count, plural, one {# active listing from this region} other {# active listings from this region}}",
+        "noListings": "No listings at the moment",
+        "cobaltFact": "The DRC is one of the world's leading cobalt producers — a widely documented public fact from industry sources."
       },
       "prices": {
         "eyebrow": "REAL-TIME MARKET DATA",

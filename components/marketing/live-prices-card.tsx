@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/lib/i18n/navigation';
 import { MINERALS, type MineralId } from '@/lib/constants/minerals';
 import { MINERAL_DOT_CLASS } from '@/lib/prices/mineral-dots';
-import type { PricesResponse } from '@/lib/prices/types';
+import { fetchPricesClient } from '@/lib/prices/fetch-client';
 import { formatPricePerUnit } from '@/lib/utils/format';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -17,14 +17,6 @@ import { cn } from '@/lib/utils/cn';
 const STALE_TIME_MS = 15 * 60 * 1000;
 const REFETCH_INTERVAL_MS = 15 * 60 * 1000;
 const ROW_HEIGHT_CLASS = 'h-12';
-
-async function fetchPrices(): Promise<PricesResponse> {
-  const response = await fetch('/api/prices');
-  if (!response.ok) {
-    throw new Error('prices_fetch_failed');
-  }
-  return response.json() as Promise<PricesResponse>;
-}
 
 function formatChangeBadge(change: number): string {
   const sign = change > 0 ? '+' : '';
@@ -122,7 +114,7 @@ export function LivePricesCard() {
 
   const { data, isLoading, isError, refetch, isFetching, dataUpdatedAt } = useQuery({
     queryKey: ['prices', 'live'],
-    queryFn: fetchPrices,
+    queryFn: fetchPricesClient,
     staleTime: STALE_TIME_MS,
     refetchInterval: REFETCH_INTERVAL_MS,
     refetchOnWindowFocus: false,

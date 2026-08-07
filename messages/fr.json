@@ -186,6 +186,13 @@
       "ctaVideo": "Voir la vidéo",
       "heroImageAlt": "Échantillons de minerais bruts — cobalt, cuivre et or",
       "heroImagePlaceholder": "Image héro à ajouter",
+      "heroSearch": {
+        "placeholder": "Rechercher un minerai, une région…",
+        "submit": "Rechercher"
+      },
+      "ticker": {
+        "ariaLabel": "Cotations minérales en direct"
+      },
       "features": {
         "priceTransparency": {
           "title": "Transparence des prix",
@@ -207,6 +214,38 @@
           "title": "Intelligence de marché IA",
           "description": "Analyses prédictives pour anticiper les tendances du marché minier."
         }
+      },
+      "howItWorks": {
+        "eyebrow": "COMMENT ÇA MARCHE",
+        "title": "Du minerai à la transaction, en toute transparence",
+        "comingSoonBadge": "Bientôt visible",
+        "steps": {
+          "publish": {
+            "title": "Publiez ou explorez",
+            "description": "Parcourez les annonces actives ou publiez votre minerai sur la place de marché."
+          },
+          "kyc": {
+            "title": "Vérification KYC",
+            "description": "Soumettez vos documents d'identité pour être vérifié avant de publier ou négocier."
+          },
+          "negotiate": {
+            "title": "Négociez en toute confiance",
+            "description": "Faites une offre sur une annonce — quantité, prix et message envoyés au vendeur."
+          },
+          "traceability": {
+            "title": "Traçabilité garantie",
+            "description": "Chaque lot reçoit un code unique en base — affichage public des codes à venir."
+          }
+        }
+      },
+      "map": {
+        "eyebrow": "DE LA RDC VERS LE MONDE",
+        "title": "Un pays, une richesse minérale exceptionnelle",
+        "mapAria": "Carte stylisée des provinces de la RDC",
+        "provinceLinkAria": "Voir les annonces de {province}",
+        "activeListings": "{count, plural, one {# annonce active de cette région} other {# annonces actives de cette région}}",
+        "noListings": "Aucune annonce pour le moment",
+        "cobaltFact": "La RDC est l'un des principaux producteurs mondiaux de cobalt — une donnée publique largement documentée par les sources sectorielles."
       },
       "prices": {
         "eyebrow": "DONNÉES DE MARCHÉ EN TEMPS RÉEL",

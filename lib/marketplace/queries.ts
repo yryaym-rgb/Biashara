@@ -89,6 +89,28 @@ export async function getActiveListings(
   };
 }
 
+/** Active listing counts keyed by origin_province — real Supabase query results only. */
+export async function getActiveListingCountsByProvince(): Promise<Record<string, number>> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from('listings')
+    .select('origin_province')
+    .eq('status', 'active');
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  const counts: Record<string, number> = {};
+  for (const row of data ?? []) {
+    const province = row.origin_province;
+    counts[province] = (counts[province] ?? 0) + 1;
+  }
+
+  return counts;
+}
+
 export async function getListingById(listingId: string): Promise<MarketplaceListingRow | null> {
   const supabase = await createClient();
   const profile = await getProfile();

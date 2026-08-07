@@ -33,7 +33,13 @@ function isActivePath(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export function Navbar() {
+export function Navbar({
+  stickyOffsetClass = 'top-0',
+  topBandHeight = 0,
+}: {
+  stickyOffsetClass?: string;
+  topBandHeight?: number;
+}) {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
@@ -70,7 +76,7 @@ export function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg">
+    <header className={cn('sticky z-50 border-b border-border bg-bg', stickyOffsetClass)}>
       <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link href="/" className="flex shrink-0 items-center gap-3 focus-visible:outline-offset-4">
           <Image
@@ -178,7 +184,7 @@ export function Navbar() {
       {mobileOpen ? (
         <div
           id="mobile-nav"
-          className="fixed inset-0 top-[72px] z-40 bg-bg md:hidden"
+          className={cn('fixed inset-0 z-40 bg-bg md:hidden', mobileNavTopClass)}
           role="dialog"
           aria-modal="true"
           aria-label={t('mainNavigation')}
