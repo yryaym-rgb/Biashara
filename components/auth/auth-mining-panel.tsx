@@ -1,9 +1,7 @@
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 import { ImageIcon } from 'lucide-react';
-import { existsSync } from 'fs';
-import path from 'path';
-
-const AUTH_IMAGE_PATH = path.join(process.cwd(), 'public/images/auth-mining.jpg');
 
 export interface AuthMiningPanelProps {
   imageAlt: string;
@@ -11,11 +9,11 @@ export interface AuthMiningPanelProps {
 }
 
 export function AuthMiningPanel({ imageAlt, placeholderLabel }: AuthMiningPanelProps) {
-  const hasImage = existsSync(AUTH_IMAGE_PATH);
+  const [imageFailed, setImageFailed] = useState(false);
 
   return (
     <div className="relative hidden h-full min-h-screen w-full lg:block">
-      {hasImage ? (
+      {!imageFailed ? (
         <Image
           src="/images/auth-mining.jpg"
           alt={imageAlt}
@@ -23,6 +21,7 @@ export function AuthMiningPanel({ imageAlt, placeholderLabel }: AuthMiningPanelP
           className="object-cover object-center"
           sizes="50vw"
           priority
+          onError={() => setImageFailed(true)}
         />
       ) : (
         <div

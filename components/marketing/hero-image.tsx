@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 import { ImageIcon } from 'lucide-react';
 
@@ -70,17 +72,18 @@ function HeroGlobeAccent() {
 }
 
 export interface HeroImageProps {
-  hasHeroImage: boolean;
   imageAlt: string;
   placeholderLabel: string;
 }
 
-export function HeroImage({ hasHeroImage, imageAlt, placeholderLabel }: HeroImageProps) {
+export function HeroImage({ imageAlt, placeholderLabel }: HeroImageProps) {
+  const [imageFailed, setImageFailed] = useState(false);
+
   return (
     <div className="relative w-full overflow-hidden lg:min-h-[480px]">
       <HeroGlobeAccent />
       <div className="relative z-[1] h-[280px] w-full overflow-hidden rounded-card card-shadow lg:h-[480px]">
-        {hasHeroImage ? (
+        {!imageFailed ? (
           <Image
             src="/images/hero-minerals.jpg"
             alt={imageAlt}
@@ -88,6 +91,7 @@ export function HeroImage({ hasHeroImage, imageAlt, placeholderLabel }: HeroImag
             className="hero-ken-burns object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 600px"
             priority
+            onError={() => setImageFailed(true)}
           />
         ) : (
           <div
