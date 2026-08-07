@@ -108,11 +108,37 @@
   "marketing": {
     "landing": {
       "title": "BIASHARA — Commerce minier de confiance",
-      "eyebrow": "Plateforme B2B — République démocratique du Congo",
-      "heroLine1": "Négociez en toute confiance.",
-      "heroLine2": "Tracez chaque lot.",
-      "heroLine3": "Développez votre activité.",
-      "cta": "Commencer"
+      "eyebrow": "L'AVENIR DU COMMERCE DES MINERAIS",
+      "heroLine1": "Commercez avec audace.",
+      "heroLine2": "Échangez en confiance.",
+      "heroLine3": "Grandissez ensemble.",
+      "subtitle": "BIASHARA est la plateforme tout-en-un pour le négoce de minerais, la traçabilité et les transactions sécurisées de la RDC vers le monde.",
+      "ctaMarketplace": "Explorer la place de marché →",
+      "ctaVideo": "Voir la vidéo",
+      "heroImageAlt": "Échantillons de minerais bruts — cobalt, cuivre et or",
+      "heroImagePlaceholder": "Image héro à ajouter",
+      "features": {
+        "priceTransparency": {
+          "title": "Transparence des prix",
+          "description": "Cotations en temps réel et historique des prix pour négocier en toute clarté."
+        },
+        "blockchainTraceability": {
+          "title": "Traçabilité blockchain",
+          "description": "Chaque lot est enregistré et vérifiable de la mine au port d'exportation."
+        },
+        "securePayments": {
+          "title": "Paiements sécurisés",
+          "description": "Transactions protégées et conformes aux normes internationales."
+        },
+        "smartLogistics": {
+          "title": "Logistique intelligente",
+          "description": "Suivi des expéditions et optimisation des corridors logistiques."
+        },
+        "aiMarketIntelligence": {
+          "title": "Intelligence de marché IA",
+          "description": "Analyses prédictives pour anticiper les tendances du marché minier."
+        }
+      }
     },
     "prices": {
       "title": "Cotations du marché",

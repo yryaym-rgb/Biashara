@@ -108,11 +108,37 @@
   "marketing": {
     "landing": {
       "title": "BIASHARA — Trusted mineral trading",
-      "eyebrow": "B2B Platform — Democratic Republic of Congo",
-      "heroLine1": "Trade with confidence.",
-      "heroLine2": "Trace every lot.",
-      "heroLine3": "Grow your business.",
-      "cta": "Get Started"
+      "eyebrow": "THE FUTURE OF MINERAL TRADE",
+      "heroLine1": "Trade boldly.",
+      "heroLine2": "Exchange with confidence.",
+      "heroLine3": "Grow together.",
+      "subtitle": "BIASHARA is the all-in-one platform for mineral trading, traceability, and secure transactions from the DRC to the world.",
+      "ctaMarketplace": "Explore the marketplace →",
+      "ctaVideo": "Watch the video",
+      "heroImageAlt": "Raw mineral samples — cobalt, copper, and gold",
+      "heroImagePlaceholder": "Hero image to be added",
+      "features": {
+        "priceTransparency": {
+          "title": "Transparent prices",
+          "description": "Real-time quotes and price history so you can negotiate with full clarity."
+        },
+        "blockchainTraceability": {
+          "title": "Blockchain traceability",
+          "description": "Every lot is recorded and verifiable from the mine to the export port."
+        },
+        "securePayments": {
+          "title": "Secure payments",
+          "description": "Protected transactions aligned with international standards."
+        },
+        "smartLogistics": {
+          "title": "Smart logistics",
+          "description": "Shipment tracking and optimized logistics corridors."
+        },
+        "aiMarketIntelligence": {
+          "title": "AI market intelligence",
+          "description": "Predictive analytics to anticipate trends in the mining market."
+        }
+      }
     },
     "prices": {
       "title": "Market Prices",
