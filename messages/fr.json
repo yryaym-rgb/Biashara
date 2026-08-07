@@ -466,6 +466,14 @@
       "submit": "Accéder",
       "accessDenied": "Accès refusé."
     },
+    "login": {
+      "title": "Connexion administration",
+      "description": "Connectez-vous avec vos identifiants administrateur.",
+      "emailLabel": "Identifiant",
+      "passwordLabel": "Mot de passe",
+      "submit": "Se connecter",
+      "invalidCredentials": "Identifiants invalides"
+    },
     "common": {
       "unknownActor": "Système",
       "unknownUser": "Utilisateur sans nom",

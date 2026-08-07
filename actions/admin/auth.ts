@@ -12,10 +12,12 @@ import {
   verifyAdminPassphrase,
 } from '@/lib/admin/gate';
 import { rateLimit } from '@/lib/rate-limit';
+import { loginSchema } from '@/lib/validators/auth';
 import type { Locale } from '@/lib/i18n/config';
 
 const GATE_RESPONSE_MIN_MS = 400;
 const ADMIN_GATE_RATE_LIMIT = { limit: 5, windowMs: 15 * 60 * 1000 };
+const ADMIN_LOGIN_RATE_LIMIT = { limit: 5, windowMs: 15 * 60 * 1000 };
 
 async function withConstantTiming<T>(minMs: number, fn: () => Promise<T>): Promise<T> {
   const start = Date.now();
@@ -31,12 +33,6 @@ async function withConstantTiming<T>(minMs: number, fn: () => Promise<T>): Promi
 
 export async function verifyAdminGatePassphrase(passphrase: string) {
   return withConstantTiming(GATE_RESPONSE_MIN_MS, async () => {
-    try {
-      requireRole(await getProfile(), ['admin']);
-    } catch {
-      return { error: 'accessDenied' as const };
-    }
-
     const headersList = await headers();
     const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
     const limit = rateLimit(
@@ -51,6 +47,45 @@ export async function verifyAdminGatePassphrase(passphrase: string) {
 
     const cookieStore = await cookies();
     cookieStore.set(ADMIN_GATE_COOKIE, getAdminGateCookieValue(), getAdminGateCookieOptions());
+
+    return { success: true as const };
+  });
+}
+
+export async function adminLoginAction(email: string, password: string) {
+  return withConstantTiming(GATE_RESPONSE_MIN_MS, async () => {
+    const headersList = await headers();
+    const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+    const limit = rateLimit(
+      `admin-login:${ip}`,
+      ADMIN_LOGIN_RATE_LIMIT.limit,
+      ADMIN_LOGIN_RATE_LIMIT.windowMs,
+    );
+
+    if (!limit.success) {
+      return { error: 'invalidCredentials' as const };
+    }
+
+    const parsed = loginSchema.safeParse({ email, password });
+    if (!parsed.success) {
+      return { error: 'invalidCredentials' as const };
+    }
+
+    const supabase = await createClient();
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email: parsed.data.email,
+      password: parsed.data.password,
+    });
+
+    if (signInError) {
+      return { error: 'invalidCredentials' as const };
+    }
+
+    const profile = await getProfile();
+    if (!profile || profile.role !== 'admin') {
+      await supabase.auth.signOut();
+      return { error: 'invalidCredentials' as const };
+    }
 
     return { success: true as const };
   });

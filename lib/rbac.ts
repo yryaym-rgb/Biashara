@@ -169,23 +169,16 @@ export function canAccessRoute(
     return { allowed: true };
   }
 
+  if (group === 'admin') {
+    return { allowed: true };
+  }
+
   if (!profile) {
     return {
       allowed: false,
       redirectTo: `${localePrefix}/login`,
       reason: 'unauthenticated',
     };
-  }
-
-  if (group === 'admin') {
-    if (profile.role !== 'admin') {
-      return {
-        allowed: false,
-        redirectTo: `${localePrefix}/dashboard`,
-        reason: 'forbidden',
-      };
-    }
-    return { allowed: true };
   }
 
   if (group === 'platform') {
