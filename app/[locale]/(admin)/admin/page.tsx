@@ -1,5 +1,6 @@
-import { PageStub } from '@/components/page-stub';
+import { redirect } from 'next/navigation';
+import { adminPath } from '@/lib/admin/path';
 
-export default function AdminDashboardPage() {
-  return <PageStub titleKey="dashboard.title" namespace="admin" />;
+export default function AdminRootRedirect() {
+  redirect(adminPath());
 }

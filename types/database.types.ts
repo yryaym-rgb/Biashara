@@ -301,6 +301,7 @@ export type Database = {
           origin_province: string;
           certifications: string[];
           status: Database['public']['Enums']['listing_status'];
+          rejection_reason: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -320,6 +321,7 @@ export type Database = {
           origin_province: string;
           certifications?: string[];
           status?: Database['public']['Enums']['listing_status'];
+          rejection_reason?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -339,6 +341,7 @@ export type Database = {
           origin_province?: string;
           certifications?: string[];
           status?: Database['public']['Enums']['listing_status'];
+          rejection_reason?: string | null;
           created_at?: string;
           updated_at?: string;
         };

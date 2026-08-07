@@ -1,5 +1,6 @@
-import { PageStub } from '@/components/page-stub';
+import { redirect } from 'next/navigation';
+import { adminAuditLogPath } from '@/lib/admin/path';
 
-export default function AuditLogPage() {
-  return <PageStub titleKey="auditLog.title" namespace="admin" />;
+export default function AdminAuditLogRedirect() {
+  redirect(adminAuditLogPath());
 }

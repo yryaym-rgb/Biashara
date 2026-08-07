@@ -1,5 +1,6 @@
-import { PageStub } from '@/components/page-stub';
+import { redirect } from 'next/navigation';
+import { adminKycReviewPath } from '@/lib/admin/path';
 
-export default function KycReviewPage() {
-  return <PageStub titleKey="kycReview.title" namespace="admin" />;
+export default function AdminKycRedirect() {
+  redirect(adminKycReviewPath());
 }
