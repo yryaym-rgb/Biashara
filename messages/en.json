@@ -138,6 +138,54 @@
           "title": "AI market intelligence",
           "description": "Predictive analytics to anticipate trends in the mining market."
         }
+      },
+      "prices": {
+        "eyebrow": "REAL-TIME MARKET DATA",
+        "title": "Built for the future of mineral trade",
+        "description": "Every price on BIASHARA comes from real market data, refreshed continuously — no delays, no guesswork.",
+        "ctaSolutions": "Discover our solutions",
+        "liveCardTitle": "Live quotes",
+        "trendCardTitle": "Market trend",
+        "indicative": "Indicative price — negotiable",
+        "error": "Quotes temporarily unavailable. Please try again in a few moments.",
+        "retry": "Retry",
+        "viewAll": "View all quotes →",
+        "historyEmptyTitle": "History building",
+        "historyEmptyDescription": "Price history is being built — check back tomorrow.",
+        "timeframeSoon": "Coming soon",
+        "trendChartAria": "Copper price trend chart",
+        "timeframes": {
+          "1W": "1W",
+          "1M": "1M",
+          "3M": "3M",
+          "1Y": "1Y",
+          "ALL": "ALL"
+        }
+      },
+      "credibility": {
+        "eyebrow": "WHY BIASHARA",
+        "title": "Built for the DRC mining ecosystem",
+        "subtitle": "Informal transactions, opaque pricing, difficult market access for artisanal producers — BIASHARA addresses the real challenges of Congolese mineral trade.",
+        "items": {
+          "kyc": {
+            "title": "KYC/AML compliance",
+            "description": "Rigorous verification of every buyer and seller before any transaction."
+          },
+          "traceability": {
+            "title": "Lot-level traceability",
+            "description": "A unique identifier tracks every shipment from mine to buyer."
+          },
+          "bilingual": {
+            "title": "Bilingual, built for the DRC",
+            "description": "Fully French platform with English for international buyers."
+          }
+        }
+      },
+      "cta": {
+        "title": "Ready to trade with confidence?",
+        "subtitle": "Join the marketplace connecting Congolese mines to buyers worldwide.",
+        "primaryCta": "Create account",
+        "secondaryCta": "Explore the marketplace"
       }
     },
     "prices": {

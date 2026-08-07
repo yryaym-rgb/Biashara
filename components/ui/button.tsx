@@ -3,7 +3,7 @@ import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { Slot } from '@/components/ui/slot';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'outline-light';
 export type ButtonSize = 'md' | 'sm';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -20,6 +20,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     'bg-bg text-ink border border-border hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
   ghost:
     'bg-transparent text-brand-blue hover:text-brand-blue-dark motion-safe:transition-colors motion-safe:duration-150',
+  'outline-light':
+    'bg-transparent text-[color:var(--white)] border border-[color:color-mix(in_srgb,var(--white)_60%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--white)_10%,transparent)] motion-safe:transition-colors motion-safe:duration-150',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
