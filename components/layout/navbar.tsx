@@ -75,6 +75,8 @@ export function Navbar({
     };
   }, [mobileOpen]);
 
+  const mobileNavTopClass = topBandHeight > 0 ? 'top-[112px]' : 'top-[72px]';
+
   return (
     <header className={cn('sticky z-50 border-b border-border bg-bg', stickyOffsetClass)}>
       <Container className="flex h-[72px] items-center justify-between gap-4">
@@ -184,7 +186,7 @@ export function Navbar({
       {mobileOpen ? (
         <div
           id="mobile-nav"
-          className={cn('fixed inset-0 z-40 bg-bg md:hidden', mobileNavTopClass)}
+          className={cn('fixed right-0 bottom-0 left-0 z-40 bg-bg md:hidden', mobileNavTopClass)}
           role="dialog"
           aria-modal="true"
           aria-label={t('mainNavigation')}
