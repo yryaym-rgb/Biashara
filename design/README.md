@@ -8,3 +8,11 @@ La page d'accueil attend une photo licence de minerais bruts à `public/images/h
 Ne pas utiliser des rendus 3D, illustrations IA ou images non licence.
 
 Si le fichier est absent, l'interface affiche un placeholder `--bg-tint` (pas une image cassée).
+
+## Image auth (`public/images/auth-mining.jpg`)
+
+Les écrans d'authentification (connexion, inscription, etc.) attendent une photo licence de site minier à `public/images/auth-mining.jpg`.
+**Remplacer ce fichier par notre asset licence** (photographie réelle — forage, mine à ciel ouvert, paysage minier en RDC).
+Ne pas utiliser des rendus 3D, illustrations IA ou images non licence.
+
+Si le fichier est absent, l'interface affiche un placeholder `--bg-tint` (pas une image cassée).

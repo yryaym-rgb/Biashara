@@ -1,50 +1,54 @@
 import 'server-only';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import { registerSchema } from '@/lib/validators/profile';
+import { registerStep1Schema } from '@/lib/validators/auth';
 import { sendAuthEmail } from '@/lib/email';
+import { mapAuthError } from '@/lib/auth/errors';
 import type { Locale } from '@/lib/i18n/config';
 
 export async function signInWithPassword(email: string, password: string) {
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
-    return { error: error.message };
+    return { error: error.message, errorKey: mapAuthError(error.message) };
   }
   return { data };
 }
 
 export async function signUp(input: unknown, locale: Locale) {
-  const parsed = registerSchema.safeParse(input);
+  const parsed = registerStep1Schema.safeParse(input);
   if (!parsed.success) {
     return { error: 'validation', details: parsed.error.flatten() };
   }
 
-  const { email, password, role, companyName } = parsed.data;
+  const { email, password, role, fullName } = parsed.data;
   const supabase = await createClient();
+  const prefix = locale === 'fr' ? '' : `/${locale}`;
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      data: { locale },
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/${locale === 'fr' ? '' : `${locale}/`}verify`,
+      data: { locale, role, full_name: fullName },
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}${prefix}/verify`,
     },
   });
 
   if (error) {
-    return { error: error.message };
+    return { error: error.message, errorKey: mapAuthError(error.message) };
   }
 
-  if (data.user) {
-    await supabase
-      .from('profiles')
-      .update({
-        role,
-        company_name: companyName ?? null,
-        locale,
-      })
-      .eq('id', data.user.id);
+  if (data.session) {
+    return { data: { user: data.user, hasSession: true, role, locale } };
+  }
+
+  const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (!signInError && signInData.session) {
+    return { data: { user: data.user, hasSession: true, role, locale } };
   }
 
   await sendAuthEmail({
@@ -54,7 +58,7 @@ export async function signUp(input: unknown, locale: Locale) {
     data: { email },
   });
 
-  return { data };
+  return { data: { user: data.user, hasSession: false, role, locale } };
 }
 
 export async function signOut(locale: Locale) {
@@ -72,15 +76,47 @@ export async function resetPassword(email: string, locale: Locale) {
   });
 
   if (error) {
-    return { error: error.message };
+    return { error: error.message, errorKey: mapAuthError(error.message) };
   }
 
-  await sendAuthEmail({
-    to: email,
-    template: 'password_reset',
-    locale,
-    data: { email },
+  return { success: true };
+}
+
+export async function resendVerificationEmail(email: string) {
+  const supabase = await createClient();
+  const { error } = await supabase.auth.resend({
+    type: 'signup',
+    email,
   });
+
+  if (error) {
+    return { error: error.message, errorKey: mapAuthError(error.message) };
+  }
+
+  return { success: true };
+}
+
+export async function verifyEmailToken(tokenHash: string, type: 'signup' | 'email') {
+  const supabase = await createClient();
+  const { error } = await supabase.auth.verifyOtp({
+    token_hash: tokenHash,
+    type,
+  });
+
+  if (error) {
+    return { error: error.message, errorKey: mapAuthError(error.message) };
+  }
+
+  return { success: true };
+}
+
+export async function exchangeCodeForSession(code: string) {
+  const supabase = await createClient();
+  const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+  if (error) {
+    return { error: error.message, errorKey: mapAuthError(error.message) };
+  }
 
   return { success: true };
 }

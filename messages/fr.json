@@ -42,39 +42,108 @@
     "getStarted": "Commencer"
   },
   "auth": {
+    "shell": {
+      "miningImageAlt": "Site minier en République démocratique du Congo",
+      "miningPlaceholder": "Image d'authentification à ajouter",
+      "homeLabel": "BIASHARA — Accueil"
+    },
+    "errors": {
+      "invalidCredentials": "Adresse e-mail ou mot de passe incorrect.",
+      "emailNotConfirmed": "Votre adresse e-mail n'a pas encore été confirmée. Consultez votre boîte de réception.",
+      "userAlreadyExists": "Un compte existe déjà pour cette adresse e-mail.",
+      "weakPassword": "Le mot de passe ne respecte pas les exigences de sécurité.",
+      "rateLimited": "Trop de tentatives — patientez quelques instants avant de réessayer.",
+      "unknown": "Une erreur s'est produite. Réessayez ou contactez le support.",
+      "invalidFileType": "Format de fichier non accepté. Utilisez PDF, JPEG ou PNG.",
+      "fileTooLarge": "Le fichier dépasse la taille maximale de 10 Mo.",
+      "uploadFailed": "Le téléversement a échoué. Réessayez."
+    },
     "login": {
+      "heading": "Content de vous revoir !",
       "title": "Se connecter",
+      "tabPassword": "Connexion",
+      "tabOtp": "Connexion avec OTP",
       "email": "Adresse e-mail",
       "password": "Mot de passe",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
       "submit": "Se connecter",
       "forgotPassword": "Mot de passe oublié ?",
-      "noAccount": "Vous n'avez pas encore de compte ?",
+      "orContinueWith": "Ou continuer avec",
+      "oauthGoogle": "Google",
+      "oauthMicrosoft": "Microsoft",
+      "oauthApple": "Apple",
+      "comingSoon": "Bientôt disponible",
+      "otpDescription": "Recevez un code de connexion par e-mail. Cette fonctionnalité sera disponible prochainement.",
+      "otpSubmit": "Envoyer le code",
+      "noAccount": "Pas encore de compte ?",
       "createAccount": "Créer un compte"
     },
     "register": {
+      "heading": "Créer un compte",
       "title": "Créer un compte",
+      "stepperLabel": "Étapes d'inscription",
+      "steps": {
+        "1": "Informations du compte",
+        "2": "Vérification",
+        "3": "Terminé"
+      },
       "fullName": "Nom complet",
       "email": "Adresse e-mail",
       "password": "Mot de passe",
+      "passwordConfirm": "Confirmer le mot de passe",
       "role": "Type de compte",
-      "companyName": "Nom de l'entreprise",
+      "roles": {
+        "seller": "Vendeur",
+        "buyer": "Acheteur",
+        "cooperative": "Coopérative"
+      },
+      "terms": "J'accepte les <termsLink>Conditions d'utilisation</termsLink> et la <privacyLink>Politique de confidentialité</privacyLink>",
+      "termsRequired": "Vous devez accepter les conditions pour continuer",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "continue": "Continuer",
+      "back": "Retour",
       "submit": "Créer le compte",
       "hasAccount": "Vous avez déjà un compte ?",
       "login": "Se connecter",
-      "terms": "J'accepte les conditions générales d'utilisation"
+      "kyc": {
+        "description": "Téléversez les documents requis pour votre type de compte. Nos équipes les examineront avant d'activer vos droits de publication.",
+        "sessionExpired": "Votre session d'inscription a expiré. Recommencez depuis l'étape 1.",
+        "upload": "Téléverser",
+        "uploading": "Téléversement en cours…",
+        "uploadSuccess": "Document téléversé avec succès",
+        "acceptedFormats": "PDF, JPEG ou PNG — 10 Mo max."
+      },
+      "complete": {
+        "title": "Compte créé — vérification en cours",
+        "description": "Votre compte a été créé. Un e-mail de confirmation vous a été envoyé si ce n'est pas déjà fait.",
+        "reviewNote": "L'examen de vos documents KYC prend généralement quelques jours ouvrables. Vous pourrez publier des annonces ou soumettre des offres une fois votre compte approuvé.",
+        "goToDashboard": "Aller au tableau de bord"
+      }
     },
     "forgotPassword": {
       "title": "Mot de passe oublié",
-      "description": "Saisissez votre adresse e-mail. Nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+      "description": "Saisissez votre adresse e-mail. Si un compte existe pour cette adresse, un e-mail de réinitialisation vous sera envoyé.",
       "email": "Adresse e-mail",
       "submit": "Envoyer le lien de réinitialisation",
       "backToLogin": "Retour à la connexion",
-      "success": "Si un compte existe pour cette adresse, un e-mail de réinitialisation a été envoyé. Consultez votre boîte de réception."
+      "success": "Si un compte existe pour cette adresse, un e-mail de réinitialisation a été envoyé."
     },
     "verify": {
       "title": "Vérification du compte",
+      "verifying": "Vérification de votre adresse e-mail en cours…",
+      "successTitle": "E-mail vérifié",
+      "successDescription": "Votre adresse e-mail a été confirmée — vous pouvez vous connecter.",
+      "goToLogin": "Se connecter",
+      "errorTitle": "Lien invalide ou expiré",
+      "errorDescription": "Ce lien de vérification n'est plus valide. Demandez un nouvel e-mail de confirmation ci-dessous.",
+      "resendEmailLabel": "Adresse e-mail",
+      "resend": "Renvoyer l'e-mail",
+      "resendSuccess": "Si un compte existe pour cette adresse, un nouvel e-mail de confirmation a été envoyé.",
+      "resendError": "Impossible d'envoyer l'e-mail. Réessayez dans quelques instants.",
       "description": "Un e-mail de confirmation vous a été envoyé. Cliquez sur le lien qu'il contient pour activer votre compte.",
-      "resend": "Renvoyer l'e-mail de confirmation",
       "checkSpam": "Vérifiez également votre dossier de courriers indésirables si vous ne trouvez pas le message."
     }
   },

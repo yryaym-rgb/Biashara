@@ -1,6 +1,7 @@
 'use server';
 
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { getProfile } from '@/lib/auth/session';
 import { requireAuth, requireRole } from '@/lib/rbac';
 import { kycUploadSchema, kycReviewSchema } from '@/lib/validators/kyc';
@@ -12,6 +13,9 @@ import { sendTransactionalEmail } from '@/lib/email';
 import type { Database } from '@/types/database.types';
 
 type KycDocumentType = Database['public']['Enums']['kyc_document_type'];
+
+const ALLOWED_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png'] as const;
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 export async function uploadKycDocument(input: unknown) {
   const profile = requireAuth(await getProfile());
@@ -40,6 +44,79 @@ export async function uploadKycDocument(input: unknown) {
     .from('profiles')
     .update({ kyc_status: 'pending' })
     .eq('id', profile.id);
+
+  return { data };
+}
+
+export async function uploadRegistrationKycDocument(formData: FormData) {
+  const userId = formData.get('userId');
+  const type = formData.get('type');
+  const file = formData.get('file');
+
+  if (typeof userId !== 'string' || typeof type !== 'string' || !(file instanceof File)) {
+    return { error: 'validation' };
+  }
+
+  const parsed = kycUploadSchema.safeParse({ type, storagePath: 'pending' });
+  if (!parsed.success) {
+    return { error: 'validation', details: parsed.error.flatten() };
+  }
+
+  if (!ALLOWED_MIME_TYPES.includes(file.type as (typeof ALLOWED_MIME_TYPES)[number])) {
+    return { error: 'invalidFileType' };
+  }
+
+  if (file.size > MAX_FILE_SIZE) {
+    return { error: 'fileTooLarge' };
+  }
+
+  const profile = await getProfile();
+  const isOwnUpload = profile?.id === userId;
+
+  const admin = createAdminClient();
+
+  if (!isOwnUpload) {
+    const { data: authUser, error: userError } = await admin.auth.admin.getUserById(userId);
+    if (userError || !authUser.user) {
+      return { error: 'userNotFound' };
+    }
+  }
+
+  const extension = file.name.split('.').pop() ?? 'bin';
+  const storagePath = `${userId}/${type}/${Date.now()}.${extension}`;
+
+  const fileBuffer = Buffer.from(await file.arrayBuffer());
+
+  const { error: uploadError } = await admin.storage
+    .from('kyc-docs')
+    .upload(storagePath, fileBuffer, {
+      contentType: file.type,
+      upsert: true,
+    });
+
+  if (uploadError) {
+    return { error: uploadError.message };
+  }
+
+  const { data, error } = await admin
+    .from('kyc_documents')
+    .upsert({
+      user_id: userId,
+      type: parsed.data.type,
+      storage_path: storagePath,
+      status: 'pending',
+    })
+    .select()
+    .single();
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  await admin
+    .from('profiles')
+    .update({ kyc_status: 'pending' })
+    .eq('id', userId);
 
   return { data };
 }

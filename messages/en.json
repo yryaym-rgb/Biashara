@@ -42,39 +42,108 @@
     "getStarted": "Get Started"
   },
   "auth": {
+    "shell": {
+      "miningImageAlt": "Mining site in the Democratic Republic of Congo",
+      "miningPlaceholder": "Authentication image to be added",
+      "homeLabel": "BIASHARA — Home"
+    },
+    "errors": {
+      "invalidCredentials": "Incorrect email address or password.",
+      "emailNotConfirmed": "Your email address has not been confirmed yet. Check your inbox.",
+      "userAlreadyExists": "An account already exists for this email address.",
+      "weakPassword": "Password does not meet security requirements.",
+      "rateLimited": "Too many attempts — please wait a moment before trying again.",
+      "unknown": "An error occurred. Please try again or contact support.",
+      "invalidFileType": "File format not accepted. Use PDF, JPEG, or PNG.",
+      "fileTooLarge": "File exceeds the maximum size of 10 MB.",
+      "uploadFailed": "Upload failed. Please try again."
+    },
     "login": {
+      "heading": "Welcome back!",
       "title": "Sign in",
+      "tabPassword": "Sign in",
+      "tabOtp": "Sign in with OTP",
       "email": "Email address",
       "password": "Password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
       "submit": "Sign in",
       "forgotPassword": "Forgot password?",
+      "orContinueWith": "Or continue with",
+      "oauthGoogle": "Google",
+      "oauthMicrosoft": "Microsoft",
+      "oauthApple": "Apple",
+      "comingSoon": "Coming soon",
+      "otpDescription": "Receive a sign-in code by email. This feature will be available soon.",
+      "otpSubmit": "Send code",
       "noAccount": "Don't have an account yet?",
       "createAccount": "Create account"
     },
     "register": {
+      "heading": "Create account",
       "title": "Create account",
+      "stepperLabel": "Registration steps",
+      "steps": {
+        "1": "Account information",
+        "2": "Verification",
+        "3": "Complete"
+      },
       "fullName": "Full name",
       "email": "Email address",
       "password": "Password",
+      "passwordConfirm": "Confirm password",
       "role": "Account type",
-      "companyName": "Company name",
+      "roles": {
+        "seller": "Seller",
+        "buyer": "Buyer",
+        "cooperative": "Cooperative"
+      },
+      "terms": "I agree to the <termsLink>Terms of Service</termsLink> and <privacyLink>Privacy Policy</privacyLink>",
+      "termsRequired": "You must accept the terms to continue",
+      "passwordMismatch": "Passwords do not match",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "continue": "Continue",
+      "back": "Back",
       "submit": "Create account",
       "hasAccount": "Already have an account?",
       "login": "Sign in",
-      "terms": "I agree to the Terms of Service"
+      "kyc": {
+        "description": "Upload the required documents for your account type. Our team will review them before activating your listing rights.",
+        "sessionExpired": "Your registration session has expired. Start again from step 1.",
+        "upload": "Upload",
+        "uploading": "Uploading…",
+        "uploadSuccess": "Document uploaded successfully",
+        "acceptedFormats": "PDF, JPEG, or PNG — 10 MB max."
+      },
+      "complete": {
+        "title": "Account created — verification in progress",
+        "description": "Your account has been created. A confirmation email has been sent if not already done.",
+        "reviewNote": "KYC document review typically takes a few business days. You will be able to post listings or submit offers once your account is approved.",
+        "goToDashboard": "Go to dashboard"
+      }
     },
     "forgotPassword": {
       "title": "Forgot password",
-      "description": "Enter your email address. We will send you a link to reset your password.",
+      "description": "Enter your email address. If an account exists for this address, a reset email will be sent.",
       "email": "Email address",
       "submit": "Send reset link",
       "backToLogin": "Back to sign in",
-      "success": "If an account exists for this address, a reset email has been sent. Check your inbox."
+      "success": "If an account exists for this address, a reset email has been sent."
     },
     "verify": {
       "title": "Verify your account",
+      "verifying": "Verifying your email address…",
+      "successTitle": "Email verified",
+      "successDescription": "Your email address has been confirmed — you can sign in.",
+      "goToLogin": "Sign in",
+      "errorTitle": "Invalid or expired link",
+      "errorDescription": "This verification link is no longer valid. Request a new confirmation email below.",
+      "resendEmailLabel": "Email address",
+      "resend": "Resend email",
+      "resendSuccess": "If an account exists for this address, a new confirmation email has been sent.",
+      "resendError": "Unable to send email. Please try again in a moment.",
       "description": "A confirmation email has been sent. Click the link inside to activate your account.",
-      "resend": "Resend confirmation email",
       "checkSpam": "Also check your spam folder if you cannot find the message."
     }
   },
