@@ -26,11 +26,14 @@ export async function createConversation(input: unknown) {
 
   const { data, error } = await supabase
     .from('conversations')
-    .upsert({
-      listing_id: parsed.data.listingId,
-      buyer_id: profile.id,
-      seller_id: listing.seller_id,
-    })
+    .upsert(
+      {
+        listing_id: parsed.data.listingId,
+        buyer_id: profile.id,
+        seller_id: listing.seller_id,
+      },
+      { onConflict: 'listing_id,buyer_id' },
+    )
     .select()
     .single();
 

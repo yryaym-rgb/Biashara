@@ -5,6 +5,7 @@ import {
   requireKycApproved,
   canAccessRoute,
   classifyRoute,
+  isPublicMarketplaceRoute,
   UnauthorizedError,
   ForbiddenError,
   KycRequiredError,
@@ -47,6 +48,33 @@ describe('rbac', () => {
     expect(classifyRoute('/admin')).toBe('admin');
     expect(classifyRoute('/login')).toBe('auth');
     expect(classifyRoute('/')).toBe('marketing');
+  });
+
+  it('identifies public marketplace routes', () => {
+    expect(isPublicMarketplaceRoute('/marketplace')).toBe(true);
+    expect(isPublicMarketplaceRoute('/marketplace/new')).toBe(false);
+    expect(isPublicMarketplaceRoute('/marketplace/abc/edit')).toBe(false);
+    expect(isPublicMarketplaceRoute('/marketplace/abc')).toBe(true);
+  });
+
+  it('allows public marketplace browsing', () => {
+    expect(canAccessRoute('/marketplace', null, 'fr').allowed).toBe(true);
+    expect(
+      canAccessRoute('/marketplace/00000000-0000-0000-0000-000000000001', null, 'fr').allowed,
+    ).toBe(true);
+    expect(canAccessRoute('/en/marketplace', null, 'en').allowed).toBe(true);
+  });
+
+  it('blocks unauthenticated marketplace new listing', () => {
+    const result = canAccessRoute('/marketplace/new', null, 'fr');
+    expect(result.allowed).toBe(false);
+    expect(result.redirectTo).toBe('/login');
+  });
+
+  it('allows authenticated sellers to open new listing page regardless of KYC', () => {
+    const seller = { ...baseProfile, role: 'seller' as const, kyc_status: 'pending' as const };
+    const result = canAccessRoute('/marketplace/new', seller, 'fr');
+    expect(result.allowed).toBe(true);
   });
 
   it('blocks unauthenticated platform access', () => {
