@@ -21,7 +21,7 @@ export async function createConversation(input: unknown) {
     .single();
 
   if (!listing) {
-    return { error: 'Listing not found' };
+    return { error: 'listingNotFound' };
   }
 
   const { data, error } = await supabase

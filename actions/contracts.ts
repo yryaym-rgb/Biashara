@@ -46,7 +46,7 @@ export async function signContract(input: unknown) {
     .single();
 
   if (!order) {
-    return { error: 'Order not found' };
+    return { error: 'orderNotFound' };
   }
 
   const isParty =

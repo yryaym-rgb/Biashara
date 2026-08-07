@@ -48,7 +48,7 @@ export async function addShipmentCheckpoint(input: unknown) {
     .single();
 
   if (fetchError || !shipment) {
-    return { error: 'Shipment not found' };
+    return { error: 'shipmentNotFound' };
   }
 
   const checkpoints = Array.isArray(shipment.checkpoints) ? shipment.checkpoints : [];
