@@ -101,6 +101,23 @@ export interface RouteAccessResult {
   reason?: 'unauthenticated' | 'forbidden' | 'kyc_required';
 }
 
+/** Marketplace list and detail are public; creation requires authentication. */
+export function isPublicMarketplaceRoute(pathname: string): boolean {
+  const path = stripLocale(pathname);
+  if (path === '/marketplace') {
+    return true;
+  }
+  const detailMatch = /^\/marketplace\/([^/]+)$/.exec(path);
+  if (!detailMatch) {
+    return false;
+  }
+  const segment = detailMatch[1];
+  if (!segment) {
+    return false;
+  }
+  return segment !== 'new' && !segment.endsWith('edit');
+}
+
 /**
  * Single authorization surface for middleware route gating.
  * Returns redirect target when access is denied.
@@ -124,6 +141,10 @@ export function canAccessRoute(
     return { allowed: true };
   }
 
+  if (group === 'platform' && isPublicMarketplaceRoute(pathname)) {
+    return { allowed: true };
+  }
+
   if (!profile) {
     return {
       allowed: false,
@@ -144,18 +165,6 @@ export function canAccessRoute(
   }
 
   if (group === 'platform') {
-    const path = stripLocale(pathname);
-    const isListingCreation =
-      path === '/marketplace/new' || path.endsWith('/edit');
-
-    if (isListingCreation && isSellerRole(profile.role) && profile.kyc_status !== 'approved') {
-      return {
-        allowed: false,
-        redirectTo: `${localePrefix}/settings`,
-        reason: 'kyc_required',
-      };
-    }
-
     return { allowed: true };
   }
 

@@ -1,0 +1,33 @@
+/**
+ * Provinces of the Democratic Republic of the Congo — used for listing origin and filters.
+ */
+export const DRC_PROVINCES = [
+  'Bas-Uélé',
+  'Équateur',
+  'Haut-Katanga',
+  'Haut-Lomami',
+  'Haut-Uélé',
+  'Ituri',
+  'Kasaï',
+  'Kasaï-Central',
+  'Kasaï-Oriental',
+  'Kinshasa',
+  'Kongo-Central',
+  'Kwango',
+  'Kwilu',
+  'Lomami',
+  'Lualaba',
+  'Mai-Ndombe',
+  'Maniema',
+  'Mongala',
+  'Nord-Kivu',
+  'Nord-Ubangi',
+  'Sankuru',
+  'Sud-Kivu',
+  'Sud-Ubangi',
+  'Tanganyika',
+  'Tshopo',
+  'Tshuapa',
+] as const;
+
+export type DrcProvince = (typeof DRC_PROVINCES)[number];
