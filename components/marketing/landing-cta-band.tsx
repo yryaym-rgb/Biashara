@@ -5,8 +5,20 @@ import { Container } from '@/components/ui/container';
 import { KitengeStrip } from '@/components/ui/kitenge-strip';
 import { ScrollReveal } from '@/lib/motion/scroll-reveal';
 
-export async function LandingCtaBand() {
-  const t = await getTranslations('marketing.landing.cta');
+interface LandingCtaBandProps {
+  namespace?: string;
+  primaryHref?: '/register' | '/marketplace';
+  secondaryHref?: '/register' | '/marketplace';
+  showSecondary?: boolean;
+}
+
+export async function LandingCtaBand({
+  namespace = 'marketing.landing.cta',
+  primaryHref = '/register',
+  secondaryHref = '/marketplace',
+  showSecondary = true,
+}: LandingCtaBandProps = {}) {
+  const t = await getTranslations(namespace);
 
   return (
     <section className="relative overflow-hidden bg-brand-blue-dark py-14 lg:py-24">
@@ -25,11 +37,13 @@ export async function LandingCtaBand() {
             </p>
             <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:justify-center">
               <Button asChild variant="primary" className="w-full sm:w-auto">
-                <Link href="/register">{t('primaryCta')}</Link>
+                <Link href={primaryHref}>{t('primaryCta')}</Link>
               </Button>
-              <Button asChild variant="outline-light" className="w-full sm:w-auto">
-                <Link href="/marketplace">{t('secondaryCta')}</Link>
-              </Button>
+              {showSecondary ? (
+                <Button asChild variant="outline-light" className="w-full sm:w-auto">
+                  <Link href={secondaryHref}>{t('secondaryCta')}</Link>
+                </Button>
+              ) : null}
             </div>
           </div>
         </ScrollReveal>

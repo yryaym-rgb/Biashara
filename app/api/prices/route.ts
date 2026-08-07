@@ -5,7 +5,7 @@ import { rateLimit, PRICES_RATE_LIMIT } from '@/lib/rate-limit';
 import type { Database } from '@/types/database.types';
 
 const CACHE_TTL_MS = 15 * 60 * 1000;
-const CHART_MINERAL: MineralId = 'copper';
+const DEFAULT_HISTORY_MINERAL: MineralId = 'copper';
 
 type MineralType = Database['public']['Enums']['mineral_type'];
 type PriceType = Database['public']['Enums']['price_type'];
@@ -117,14 +117,19 @@ function buildPriceEntries(
   });
 }
 
-async function upsertCopperHistory(
+function isValidMineralId(value: string | null): value is MineralId {
+  return value !== null && MINERALS.some((mineral) => mineral.id === value);
+}
+
+async function upsertMineralHistory(
   admin: ReturnType<typeof createAdminClient>,
+  mineral: MineralId,
   price: number,
 ): Promise<void> {
   const recordedDate = todayUtcDate();
   await admin.from('price_history').upsert(
     {
-      mineral: CHART_MINERAL as MineralType,
+      mineral: mineral as MineralType,
       price,
       currency: 'USD',
       recorded_at: new Date().toISOString(),
@@ -132,6 +137,19 @@ async function upsertCopperHistory(
     },
     { onConflict: 'mineral,recorded_date' },
   );
+}
+
+async function upsertSpotPriceHistory(
+  admin: ReturnType<typeof createAdminClient>,
+  spotPrices: Partial<Record<MineralId, number>>,
+): Promise<void> {
+  for (const mineral of MINERALS) {
+    if (!mineral.hasSpotPrice) continue;
+    const price = spotPrices[mineral.id];
+    if (price !== undefined) {
+      await upsertMineralHistory(admin, mineral.id, price);
+    }
+  }
 }
 
 async function computeDailyChanges(
@@ -164,11 +182,14 @@ async function computeDailyChanges(
   return changes;
 }
 
-async function getPriceHistory(admin: ReturnType<typeof createAdminClient>) {
+async function getPriceHistory(
+  admin: ReturnType<typeof createAdminClient>,
+  mineral: MineralId,
+) {
   const { data } = await admin
     .from('price_history')
     .select('price, currency, recorded_date')
-    .eq('mineral', CHART_MINERAL as MineralType)
+    .eq('mineral', mineral as MineralType)
     .order('recorded_date', { ascending: true });
 
   return (data ?? []).map((row) => ({
@@ -208,13 +229,17 @@ export async function GET(request: NextRequest) {
   }
 
   const wantsHistory = request.nextUrl.searchParams.get('history') === '1';
+  const mineralParam = request.nextUrl.searchParams.get('mineral');
+  const historyMineral = isValidMineralId(mineralParam)
+    ? mineralParam
+    : DEFAULT_HISTORY_MINERAL;
   const admin = createAdminClient();
   const now = Date.now();
 
   if (wantsHistory) {
-    const history = await getPriceHistory(admin);
+    const history = await getPriceHistory(admin, historyMineral);
     return NextResponse.json({
-      mineral: CHART_MINERAL,
+      mineral: historyMineral,
       history,
     });
   }
@@ -236,9 +261,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    if (spotPrices[CHART_MINERAL] !== undefined) {
-      await upsertCopperHistory(admin, spotPrices[CHART_MINERAL]!);
-    }
+    await upsertSpotPriceHistory(admin, spotPrices);
 
     const changes = await computeDailyChanges(admin, spotPrices);
     const minerals = mapCachedRows(cached).map((entry) => ({
@@ -273,9 +296,7 @@ export async function GET(request: NextRequest) {
 
   const fetchedAt = new Date().toISOString();
 
-  if (spotPrices[CHART_MINERAL] !== undefined) {
-    await upsertCopperHistory(admin, spotPrices[CHART_MINERAL]!);
-  }
+  await upsertSpotPriceHistory(admin, spotPrices);
 
   const changes = await computeDailyChanges(admin, spotPrices);
   const entries = buildPriceEntries(spotPrices, fetchedAt, changes);
