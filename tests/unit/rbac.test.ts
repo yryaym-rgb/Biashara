@@ -45,7 +45,7 @@ describe('rbac', () => {
   it('classifies platform routes', () => {
     expect(classifyRoute('/dashboard')).toBe('platform');
     expect(classifyRoute('/en/dashboard')).toBe('platform');
-    expect(classifyRoute('/admin')).toBe('admin');
+    expect(classifyRoute('/admin')).toBe('marketing');
     expect(classifyRoute('/login')).toBe('auth');
     expect(classifyRoute('/')).toBe('marketing');
   });
@@ -83,15 +83,8 @@ describe('rbac', () => {
     expect(result.redirectTo).toBe('/login');
   });
 
-  it('blocks non-admin from admin routes', () => {
+  it('treats /admin literal as marketing (no special route)', () => {
     const result = canAccessRoute('/admin', baseProfile, 'fr');
-    expect(result.allowed).toBe(false);
-    expect(result.reason).toBe('forbidden');
-  });
-
-  it('allows admin access', () => {
-    const admin = { ...baseProfile, role: 'admin' as const };
-    const result = canAccessRoute('/admin', admin, 'fr');
     expect(result.allowed).toBe(true);
   });
 

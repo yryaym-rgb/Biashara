@@ -28,7 +28,7 @@ export function PassphraseGateForm() {
               startTransition(async () => {
                 const result = await verifyAdminGatePassphrase(passphrase);
                 if (result.error) {
-                  setError(t('invalidPassphrase'));
+                  setError(t('accessDenied'));
                   return;
                 }
                 router.refresh();

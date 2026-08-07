@@ -1,6 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { getProfile, getUser } from '@/lib/auth/session';
@@ -11,20 +11,49 @@ import {
   getAdminGateCookieValue,
   verifyAdminPassphrase,
 } from '@/lib/admin/gate';
-import { adminPath } from '@/lib/admin/path';
+import { rateLimit } from '@/lib/rate-limit';
 import type { Locale } from '@/lib/i18n/config';
 
-export async function verifyAdminGatePassphrase(passphrase: string) {
-  requireRole(await getProfile(), ['admin']);
+const GATE_RESPONSE_MIN_MS = 400;
+const ADMIN_GATE_RATE_LIMIT = { limit: 5, windowMs: 15 * 60 * 1000 };
 
-  if (!verifyAdminPassphrase(passphrase)) {
-    return { error: 'invalidPassphrase' };
+async function withConstantTiming<T>(minMs: number, fn: () => Promise<T>): Promise<T> {
+  const start = Date.now();
+  try {
+    return await fn();
+  } finally {
+    const elapsed = Date.now() - start;
+    if (elapsed < minMs) {
+      await new Promise((resolve) => setTimeout(resolve, minMs - elapsed));
+    }
   }
+}
 
-  const cookieStore = await cookies();
-  cookieStore.set(ADMIN_GATE_COOKIE, getAdminGateCookieValue(), getAdminGateCookieOptions());
+export async function verifyAdminGatePassphrase(passphrase: string) {
+  return withConstantTiming(GATE_RESPONSE_MIN_MS, async () => {
+    try {
+      requireRole(await getProfile(), ['admin']);
+    } catch {
+      return { error: 'accessDenied' as const };
+    }
 
-  return { success: true };
+    const headersList = await headers();
+    const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+    const limit = rateLimit(
+      `admin-gate:${ip}`,
+      ADMIN_GATE_RATE_LIMIT.limit,
+      ADMIN_GATE_RATE_LIMIT.windowMs,
+    );
+
+    if (!limit.success || !verifyAdminPassphrase(passphrase)) {
+      return { error: 'accessDenied' as const };
+    }
+
+    const cookieStore = await cookies();
+    cookieStore.set(ADMIN_GATE_COOKIE, getAdminGateCookieValue(), getAdminGateCookieOptions());
+
+    return { success: true as const };
+  });
 }
 
 export async function adminLogoutAction(locale: Locale) {

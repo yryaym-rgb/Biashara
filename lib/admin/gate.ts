@@ -1,6 +1,7 @@
 import 'server-only';
-import { createHmac, timingSafeEqual } from 'crypto';
+import { createHmac } from 'crypto';
 import { cookies } from 'next/headers';
+import { secureCompareStrings } from '@/lib/admin/secure-compare';
 
 export const ADMIN_GATE_COOKIE = 'biashara_admin_gate';
 
@@ -27,7 +28,11 @@ export function getAdminGateSecret(): string {
 }
 
 export function isValidAdminGateSegment(segment: string): boolean {
-  return segment === getAdminGateSecret();
+  const secret = process.env.ADMIN_GATE_SECRET;
+  if (!secret) {
+    return false;
+  }
+  return secureCompareStrings(segment, secret);
 }
 
 function buildGateCookieValue(): string {
@@ -35,15 +40,11 @@ function buildGateCookieValue(): string {
 }
 
 export function verifyAdminPassphrase(passphrase: string): boolean {
-  const expected = getPassphrase();
-  if (passphrase.length !== expected.length) {
+  const expected = process.env.ADMIN_PASSPHRASE;
+  if (!expected) {
     return false;
   }
-  try {
-    return timingSafeEqual(Buffer.from(passphrase), Buffer.from(expected));
-  } catch {
-    return false;
-  }
+  return secureCompareStrings(passphrase, expected);
 }
 
 export function isAdminGateCookieValid(value: string | undefined): boolean {
@@ -51,14 +52,7 @@ export function isAdminGateCookieValid(value: string | undefined): boolean {
     return false;
   }
   const expected = buildGateCookieValue();
-  if (value.length !== expected.length) {
-    return false;
-  }
-  try {
-    return timingSafeEqual(Buffer.from(value), Buffer.from(expected));
-  } catch {
-    return false;
-  }
+  return secureCompareStrings(value, expected);
 }
 
 export async function hasAdminGateAccess(): Promise<boolean> {
