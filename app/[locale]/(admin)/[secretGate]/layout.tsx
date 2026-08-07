@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { AdminShell } from '@/components/admin/admin-shell';
 import { PassphraseGateForm } from '@/components/admin/passphrase-gate-form';
@@ -13,6 +14,10 @@ import {
   adminPath,
   adminUsersPath,
 } from '@/lib/admin/path';
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default async function SecretGateAdminLayout({
   children,

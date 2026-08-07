@@ -66,23 +66,18 @@ const PLATFORM_PREFIXES = [
   '/settings',
 ];
 
-const ADMIN_PREFIXES = ['/admin'];
-
 const AUTH_PREFIXES = ['/login', '/register', '/forgot-password', '/verify'];
 
-export function classifyRoute(pathname: string): RouteGroup {
-  const path = stripLocale(pathname);
-
-  if (ADMIN_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
-    return 'admin';
+/** Edge-safe constant-time string compare for middleware routing hints. */
+function secureCompareStrings(a: string, b: string): boolean {
+  const len = Math.max(a.length, b.length);
+  let mismatch = a.length ^ b.length;
+  for (let i = 0; i < len; i++) {
+    const ca = i < a.length ? a.charCodeAt(i) : 0;
+    const cb = i < b.length ? b.charCodeAt(i) : 0;
+    mismatch |= ca ^ cb;
   }
-  if (PLATFORM_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
-    return 'platform';
-  }
-  if (AUTH_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
-    return 'auth';
-  }
-  return 'marketing';
+  return mismatch === 0;
 }
 
 export function stripLocale(pathname: string): string {
@@ -93,6 +88,35 @@ export function stripLocale(pathname: string): string {
     return '/';
   }
   return pathname;
+}
+
+/** True when the first path segment matches ADMIN_GATE_SECRET (timing-safe). */
+export function isAdminGatePath(pathname: string): boolean {
+  const secret = process.env.ADMIN_GATE_SECRET;
+  if (!secret) {
+    return false;
+  }
+  const path = stripLocale(pathname);
+  const firstSegment = path.split('/').filter(Boolean)[0];
+  if (!firstSegment) {
+    return false;
+  }
+  return secureCompareStrings(firstSegment, secret);
+}
+
+export function classifyRoute(pathname: string): RouteGroup {
+  if (isAdminGatePath(pathname)) {
+    return 'admin';
+  }
+  const path = stripLocale(pathname);
+
+  if (PLATFORM_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
+    return 'platform';
+  }
+  if (AUTH_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
+    return 'auth';
+  }
+  return 'marketing';
 }
 
 export interface RouteAccessResult {

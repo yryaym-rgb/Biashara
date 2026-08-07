@@ -464,7 +464,7 @@
       "description": "Enter the passphrase to access the administration area.",
       "passphraseLabel": "Passphrase",
       "submit": "Enter",
-      "invalidPassphrase": "Incorrect passphrase."
+      "accessDenied": "Access denied."
     },
     "common": {
       "unknownActor": "System",

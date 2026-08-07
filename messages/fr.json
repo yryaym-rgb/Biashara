@@ -464,7 +464,7 @@
       "description": "Saisissez la phrase de passe pour accéder à l'espace d'administration.",
       "passphraseLabel": "Phrase de passe",
       "submit": "Accéder",
-      "invalidPassphrase": "Phrase de passe incorrecte."
+      "accessDenied": "Accès refusé."
     },
     "common": {
       "unknownActor": "Système",

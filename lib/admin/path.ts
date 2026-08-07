@@ -2,11 +2,11 @@ import { getAdminGateSecret } from '@/lib/admin/gate';
 
 /**
  * Build an admin path segment (without locale prefix).
- * Never hardcode `/admin/...` in application code — use this helper.
+ * Uses only the gate secret — no literal route hints.
  */
 export function adminPath(...segments: string[]): string {
   const gate = getAdminGateSecret();
-  const parts = ['admin', gate, ...segments.filter(Boolean)];
+  const parts = [gate, ...segments.filter(Boolean)];
   return `/${parts.join('/')}`;
 }
 

@@ -19,20 +19,31 @@ describe('admin path helper', () => {
     delete process.env.ADMIN_PASSPHRASE;
   });
 
-  it('builds admin paths with gate segment', () => {
-    expect(adminPath()).toBe('/admin/secret-gate-123');
-    expect(adminUsersPath()).toBe('/admin/secret-gate-123/users');
-    expect(adminUsersPath('user-uuid')).toBe('/admin/secret-gate-123/users/user-uuid');
+  it('builds admin paths with gate segment only (no /admin prefix)', () => {
+    expect(adminPath()).toBe('/secret-gate-123');
+    expect(adminUsersPath()).toBe('/secret-gate-123/users');
+    expect(adminUsersPath('user-uuid')).toBe('/secret-gate-123/users/user-uuid');
   });
 
-  it('validates gate segment', () => {
+  it('validates gate segment with timing-safe compare', () => {
     expect(isValidAdminGateSegment('secret-gate-123')).toBe(true);
     expect(isValidAdminGateSegment('wrong')).toBe(false);
+  });
+
+  it('rejects gate segment when ADMIN_GATE_SECRET is unset', () => {
+    delete process.env.ADMIN_GATE_SECRET;
+    expect(isValidAdminGateSegment('secret-gate-123')).toBe(false);
   });
 
   it('verifies passphrase with timing-safe compare', () => {
     expect(verifyAdminPassphrase('my-passphrase')).toBe(true);
     expect(verifyAdminPassphrase('wrong')).toBe(false);
+    expect(verifyAdminPassphrase('my-passphrase-extra')).toBe(false);
+  });
+
+  it('rejects passphrase when ADMIN_PASSPHRASE is unset', () => {
+    delete process.env.ADMIN_PASSPHRASE;
+    expect(verifyAdminPassphrase('my-passphrase')).toBe(false);
   });
 
   it('validates gate cookie value', () => {
