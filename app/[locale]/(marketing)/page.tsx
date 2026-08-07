@@ -1,5 +1,3 @@
-import { existsSync } from 'fs';
-import { join } from 'path';
 import { BrainCircuit, LineChart, Lock, ShieldCheck, Truck } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
@@ -12,8 +10,6 @@ import { LandingCtaBand } from '@/components/marketing/landing-cta-band';
 import { LandingPricesSection } from '@/components/marketing/landing-prices-section';
 import { ScrollReveal } from '@/lib/motion/scroll-reveal';
 import { cn } from '@/lib/utils/cn';
-
-const HERO_IMAGE_FILE = join(process.cwd(), 'public/images/hero-minerals.jpg');
 
 const FEATURE_KEYS = [
   'priceTransparency',
@@ -68,7 +64,6 @@ export default async function LandingPage({
   setRequestLocale(locale);
 
   const t = await getTranslations('marketing.landing');
-  const hasHeroImage = existsSync(HERO_IMAGE_FILE);
 
   return (
     <>
@@ -114,7 +109,6 @@ export default async function LandingPage({
             </div>
 
             <HeroImage
-              hasHeroImage={hasHeroImage}
               imageAlt={t('heroImageAlt')}
               placeholderLabel={t('heroImagePlaceholder')}
             />
