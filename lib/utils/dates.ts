@@ -19,3 +19,32 @@ export function formatDateTime(date: Date | string, locale: string): string {
     minute: '2-digit',
   }).format(d);
 }
+
+const RELATIVE_TIME_UNITS: Array<{
+  unit: Intl.RelativeTimeFormatUnit;
+  seconds: number;
+}> = [
+  { unit: 'year', seconds: 60 * 60 * 24 * 365 },
+  { unit: 'month', seconds: 60 * 60 * 24 * 30 },
+  { unit: 'week', seconds: 60 * 60 * 24 * 7 },
+  { unit: 'day', seconds: 60 * 60 * 24 },
+  { unit: 'hour', seconds: 60 * 60 },
+  { unit: 'minute', seconds: 60 },
+  { unit: 'second', seconds: 1 },
+];
+
+export function formatRelativeTime(date: Date | string, locale: string): string {
+  const d = typeof date === 'string' ? new Date(date) : date;
+  const diffSeconds = Math.round((d.getTime() - Date.now()) / 1000);
+  const absSeconds = Math.abs(diffSeconds);
+  const rtf = new Intl.RelativeTimeFormat(resolveIntlLocale(locale), { numeric: 'auto' });
+
+  for (const { unit, seconds } of RELATIVE_TIME_UNITS) {
+    if (absSeconds >= seconds || unit === 'second') {
+      const value = Math.round(diffSeconds / seconds);
+      return rtf.format(value, unit);
+    }
+  }
+
+  return rtf.format(0, 'second');
+}

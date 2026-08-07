@@ -1,5 +1,6 @@
-import { PageStub } from '@/components/page-stub';
+import { redirect } from 'next/navigation';
+import { adminListingsModerationPath } from '@/lib/admin/path';
 
-export default function ListingsModerationPage() {
-  return <PageStub titleKey="listingsModeration.title" namespace="admin" />;
+export default function AdminListingsModerationRedirect() {
+  redirect(adminListingsModerationPath());
 }

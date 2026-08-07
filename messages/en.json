@@ -441,15 +441,211 @@
       "language": "Language",
       "kycPending": "Verification in progress — our team is reviewing your documents",
       "kycApproved": "Account verified",
-      "kycRejected": "Verification rejected — review the reasons and resubmit your documents"
+      "kycRejected": "Verification rejected — review the reasons and resubmit your documents",
+      "myListings": "My listings"
     }
   },
   "admin": {
-    "dashboard": { "title": "Administration" },
-    "users": { "title": "Users" },
-    "kycReview": { "title": "KYC Review" },
-    "listingsModeration": { "title": "Listings moderation" },
-    "auditLog": { "title": "Audit log" }
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "kycReview": "KYC verification",
+      "listingsModeration": "Listings moderation",
+      "auditLog": "Audit log"
+    },
+    "shell": {
+      "sidebarLabel": "Admin navigation",
+      "openDrawer": "Open menu",
+      "closeDrawer": "Close menu",
+      "logout": "Sign out"
+    },
+    "gate": {
+      "title": "Admin access",
+      "description": "Enter the passphrase to access the administration area.",
+      "passphraseLabel": "Passphrase",
+      "submit": "Enter",
+      "invalidPassphrase": "Incorrect passphrase."
+    },
+    "common": {
+      "unknownActor": "System",
+      "unknownUser": "Unnamed user",
+      "notAvailable": "Not provided",
+      "applyFilters": "Apply",
+      "cancel": "Cancel",
+      "confirmReject": "Confirm rejection",
+      "rejectionReasonLabel": "Rejection reason",
+      "rejectionReasonRequired": "A rejection reason is required.",
+      "actionFailed": "The action failed. Please try again.",
+      "paginationLabel": "Pagination",
+      "paginationSummary": "Page {page} of {totalPages}",
+      "paginationPrevious": "Previous",
+      "paginationNext": "Next"
+    },
+    "roles": {
+      "buyer": "Buyer",
+      "seller": "Seller",
+      "cooperative": "Cooperative",
+      "institution": "Institution",
+      "admin": "Administrator"
+    },
+    "kycStatus": {
+      "none": "Not submitted",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "listingStatus": {
+      "draft": "Draft",
+      "pending_review": "Pending",
+      "active": "Active",
+      "paused": "Paused",
+      "sold": "Sold",
+      "rejected": "Rejected"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "eyebrow": "Administration",
+      "stats": {
+        "pendingKyc": "Pending KYC",
+        "pendingListings": "Pending listings",
+        "verifiedUsers": "Verified users",
+        "activeListings": "Active listings"
+      },
+      "recentActivity": "Recent activity",
+      "noActivity": "No activity recorded yet.",
+      "quickLinks": {
+        "users": "Users",
+        "kycReview": "KYC verification",
+        "listingsModeration": "Listings moderation",
+        "auditLog": "Audit log"
+      }
+    },
+    "users": {
+      "title": "Users",
+      "searchPlaceholder": "Search by name or company…",
+      "filterRole": "Filter by role",
+      "filterKycStatus": "Filter by KYC status",
+      "emptyTitle": "No users found",
+      "emptyDescription": "No profiles match your search criteria.",
+      "backToList": "Back to list",
+      "columns": {
+        "name": "Name / company",
+        "role": "Role",
+        "kycStatus": "KYC status",
+        "memberSince": "Member since",
+        "listings": "Listings",
+        "orders": "Orders"
+      },
+      "detail": {
+        "profile": "Profile",
+        "email": "Email",
+        "role": "Role",
+        "kycStatus": "KYC status",
+        "memberSince": "Member since",
+        "country": "Country",
+        "phone": "Phone",
+        "kycDocuments": "KYC documents",
+        "noKycDocuments": "No KYC documents submitted.",
+        "viewDocument": "View document",
+        "listings": "Listings",
+        "noListings": "No listings published.",
+        "orders": "Orders",
+        "noOrders": "No orders."
+      }
+    },
+    "kycReview": {
+      "title": "KYC verification",
+      "approve": "Approve",
+      "reject": "Reject",
+      "rejectDialogTitle": "Reject KYC document",
+      "viewDocument": "View document",
+      "tabs": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected"
+      },
+      "columns": {
+        "applicant": "Applicant",
+        "documentType": "Document type",
+        "submitted": "Submitted",
+        "document": "Document",
+        "actions": "Actions"
+      },
+      "empty": {
+        "pending": {
+          "title": "No pending documents",
+          "description": "All KYC documents have been processed — everything is up to date."
+        },
+        "approved": {
+          "title": "No approved documents",
+          "description": "Approved documents will appear here after validation."
+        },
+        "rejected": {
+          "title": "No rejected documents",
+          "description": "Rejected documents will appear here with their reason."
+        }
+      }
+    },
+    "listingsModeration": {
+      "title": "Listings moderation",
+      "approve": "Approve",
+      "reject": "Reject",
+      "rejectDialogTitle": "Reject listing",
+      "tabs": {
+        "pending_review": "Pending",
+        "active": "Active",
+        "rejected": "Rejected"
+      },
+      "columns": {
+        "listing": "Listing",
+        "seller": "Seller",
+        "quantityPrice": "Quantity / price",
+        "submitted": "Submitted"
+      },
+      "empty": {
+        "pending_review": {
+          "title": "No pending listings",
+          "description": "No listings pending review — everything is up to date."
+        },
+        "active": {
+          "title": "No active listings",
+          "description": "Approved and published listings will appear here."
+        },
+        "rejected": {
+          "title": "No rejected listings",
+          "description": "Rejected listings will appear here with their reason."
+        }
+      }
+    },
+    "auditLog": {
+      "title": "Audit log",
+      "filterEntity": "Entity type",
+      "filterAction": "Action",
+      "filterDateFrom": "Start date",
+      "filterDateTo": "End date",
+      "emptyTitle": "No entries",
+      "emptyDescription": "No audit entries match your filters.",
+      "showDiff": "Show details",
+      "hideDiff": "Hide details",
+      "columns": {
+        "actor": "Actor",
+        "action": "Action",
+        "entity": "Entity",
+        "timestamp": "Timestamp"
+      },
+      "actions": {
+        "insert": "created",
+        "update": "updated",
+        "delete": "deleted"
+      },
+      "entities": {
+        "kyc_documents": "KYC document",
+        "listings": "listing",
+        "offers": "offer",
+        "orders": "order",
+        "profiles": "profile"
+      }
+    }
   },
   "minerals": {
     "cobalt": "Cobalt",
