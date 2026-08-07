@@ -324,6 +324,23 @@
     .price-pulse {
       animation: price-pulse 900ms ease-out;
     }
+
+    @keyframes price-ticker-marquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .price-ticker-track {
+      animation: price-ticker-marquee 45s linear infinite;
+    }
+
+    .price-ticker-marquee:hover .price-ticker-track {
+      animation-play-state: paused;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

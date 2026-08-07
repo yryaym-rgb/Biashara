@@ -7,7 +7,10 @@ import { Container } from '@/components/ui/container';
 import { HeroImage } from '@/components/marketing/hero-image';
 import { LandingCredibilitySection } from '@/components/marketing/landing-credibility-section';
 import { LandingCtaBand } from '@/components/marketing/landing-cta-band';
+import { LandingHowItWorksSection } from '@/components/marketing/landing-how-it-works-section';
+import { LandingMapSection } from '@/components/marketing/landing-map-section';
 import { LandingPricesSection } from '@/components/marketing/landing-prices-section';
+import { HeroQuickSearch } from '@/components/marketing/hero-quick-search';
 import { ScrollReveal } from '@/lib/motion/scroll-reveal';
 import { cn } from '@/lib/utils/cn';
 
@@ -106,6 +109,8 @@ export default async function LandingPage({
                   </Link>
                 </Button>
               </div>
+
+              <HeroQuickSearch />
             </div>
 
             <HeroImage
@@ -152,8 +157,10 @@ export default async function LandingPage({
         </Container>
       </section>
 
+      <LandingHowItWorksSection />
       <LandingPricesSection />
       <LandingCredibilitySection />
+      <LandingMapSection />
       <LandingCtaBand />
     </>
   );
