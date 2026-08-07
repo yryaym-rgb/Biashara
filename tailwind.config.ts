@@ -17,6 +17,7 @@ const config: Config = {
         ink: 'var(--ink)',
         body: 'var(--body)',
         muted: 'var(--muted)',
+        bg: 'var(--bg)',
         'bg-tint': 'var(--bg-tint)',
         border: 'var(--border)',
         success: 'var(--success)',

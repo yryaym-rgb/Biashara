@@ -17,6 +17,11 @@
     "ogDescription": "Négocez cobalt, cuivre, or, coltan, lithium et diamant en toute confiance sur la place de marché de référence en RDC."
   },
   "nav": {
+    "appName": "BIASHARA",
+    "mainNavigation": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "language": "Langue",
     "home": "Accueil",
     "marketplace": "Place de marché",
     "prices": "Cotations",
@@ -72,6 +77,33 @@
       "resend": "Renvoyer l'e-mail de confirmation",
       "checkSpam": "Vérifiez également votre dossier de courriers indésirables si vous ne trouvez pas le message."
     }
+  },
+  "footer": {
+    "platform": {
+      "title": "Plateforme",
+      "marketplace": "Place de marché",
+      "prices": "Cotations",
+      "dashboard": "Tableau de bord"
+    },
+    "solutions": {
+      "title": "Solutions",
+      "traceability": "Traçabilité",
+      "marketplace": "Place de marché sécurisée",
+      "compliance": "Conformité KYC"
+    },
+    "company": {
+      "title": "Entreprise",
+      "about": "À propos",
+      "resources": "Ressources",
+      "getStarted": "Commencer"
+    },
+    "legal": {
+      "title": "Mentions légales",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Politique de cookies"
+    },
+    "copyright": "© {year} BIASHARA. Tous droits réservés."
   },
   "marketing": {
     "landing": {
