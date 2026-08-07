@@ -644,6 +644,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      price_history: {
+        Row: {
+          id: string;
+          mineral: Database['public']['Enums']['mineral_type'];
+          price: number;
+          currency: string;
+          recorded_at: string;
+          recorded_date: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          mineral: Database['public']['Enums']['mineral_type'];
+          price: number;
+          currency?: string;
+          recorded_at?: string;
+          recorded_date?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          mineral?: Database['public']['Enums']['mineral_type'];
+          price?: number;
+          currency?: string;
+          recorded_at?: string;
+          recorded_date?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       profiles: {
         Row: {
           id: string;

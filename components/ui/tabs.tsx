@@ -47,9 +47,17 @@ export function TabsList({ className, ...props }: TabsListProps) {
 
 export interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value: string;
+  disabledTooltip?: string;
 }
 
-export function TabsTrigger({ className, value, children, ...props }: TabsTriggerProps) {
+export function TabsTrigger({
+  className,
+  value,
+  children,
+  disabled,
+  disabledTooltip,
+  ...props
+}: TabsTriggerProps) {
   const { value: selectedValue, onValueChange } = useTabsContext();
   const isActive = selectedValue === value;
 
@@ -58,14 +66,22 @@ export function TabsTrigger({ className, value, children, ...props }: TabsTrigge
       type="button"
       role="tab"
       aria-selected={isActive}
+      aria-disabled={disabled || undefined}
+      title={disabled && disabledTooltip ? disabledTooltip : undefined}
       className={cn(
         'relative pb-3 text-[15px] font-semibold text-body',
         'hover:text-ink motion-safe:transition-colors motion-safe:duration-150',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
         isActive && 'tab-active',
+        disabled && 'cursor-not-allowed opacity-40 hover:text-body',
         className,
       )}
-      onClick={() => onValueChange(value)}
+      onClick={() => {
+        if (!disabled) {
+          onValueChange(value);
+        }
+      }}
+      disabled={disabled}
       {...props}
     >
       {children}

@@ -138,6 +138,54 @@
           "title": "Intelligence de marché IA",
           "description": "Analyses prédictives pour anticiper les tendances du marché minier."
         }
+      },
+      "prices": {
+        "eyebrow": "DONNÉES DE MARCHÉ EN TEMPS RÉEL",
+        "title": "Conçu pour l'avenir du commerce des minerais",
+        "description": "Chaque cotation sur BIASHARA provient de données de marché réelles, actualisées en continu — sans délai ni approximation.",
+        "ctaSolutions": "Découvrir nos solutions",
+        "liveCardTitle": "Cotations en direct",
+        "trendCardTitle": "Tendance du marché",
+        "indicative": "Prix indicatif — négocié",
+        "error": "Cotations momentanément indisponibles. Réessayez dans quelques instants.",
+        "retry": "Réessayer",
+        "viewAll": "Voir toutes les cotations →",
+        "historyEmptyTitle": "Historique en construction",
+        "historyEmptyDescription": "L'historique des cotations se construit — revenez demain.",
+        "timeframeSoon": "Bientôt disponible",
+        "trendChartAria": "Graphique de tendance du prix du cuivre",
+        "timeframes": {
+          "1W": "1S",
+          "1M": "1M",
+          "3M": "3M",
+          "1Y": "1A",
+          "ALL": "TOUT"
+        }
+      },
+      "credibility": {
+        "eyebrow": "POURQUOI BIASHARA",
+        "title": "Conçue pour l'écosystème minier de la RDC",
+        "subtitle": "Transactions informelles, prix opaques, accès difficile au marché pour les producteurs artisanaux — BIASHARA répond aux défis concrets du négoce minier congolais.",
+        "items": {
+          "kyc": {
+            "title": "Conformité KYC/AML",
+            "description": "Vérification rigoureuse de chaque acheteur et vendeur avant toute transaction."
+          },
+          "traceability": {
+            "title": "Traçabilité de chaque lot",
+            "description": "Un identifiant unique suit chaque cargaison de la mine à l'acheteur."
+          },
+          "bilingual": {
+            "title": "Bilingue, pensé pour la RDC",
+            "description": "Plateforme entièrement en français, avec l'anglais pour les acheteurs internationaux."
+          }
+        }
+      },
+      "cta": {
+        "title": "Prêt à commercer en toute confiance ?",
+        "subtitle": "Rejoignez la place de marché qui connecte les mines congolaises aux acheteurs du monde entier.",
+        "primaryCta": "Créer un compte",
+        "secondaryCta": "Explorer la place de marché"
       }
     },
     "prices": {
