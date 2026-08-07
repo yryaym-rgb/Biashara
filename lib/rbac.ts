@@ -1,0 +1,167 @@
+import type { Profile } from '@/lib/auth/session';
+import type { UserRole } from '@/lib/validators/profile';
+import type { Database } from '@/types/database.types';
+
+type KycStatus = Database['public']['Enums']['kyc_status'];
+
+export class UnauthorizedError extends Error {
+  constructor(message = 'Unauthorized') {
+    super(message);
+    this.name = 'UnauthorizedError';
+  }
+}
+
+export class ForbiddenError extends Error {
+  constructor(message = 'Forbidden') {
+    super(message);
+    this.name = 'ForbiddenError';
+  }
+}
+
+export class KycRequiredError extends Error {
+  constructor(message = 'KYC approval required') {
+    super(message);
+    this.name = 'KycRequiredError';
+  }
+}
+
+export function requireAuth(profile: Profile | null): Profile {
+  if (!profile) {
+    throw new UnauthorizedError();
+  }
+  return profile;
+}
+
+export function requireRole(profile: Profile | null, roles: UserRole[]): Profile {
+  const authed = requireAuth(profile);
+  if (!roles.includes(authed.role as UserRole)) {
+    throw new ForbiddenError();
+  }
+  return authed;
+}
+
+export function requireKycApproved(profile: Profile | null): Profile {
+  const authed = requireAuth(profile);
+  if (authed.kyc_status !== 'approved') {
+    throw new KycRequiredError();
+  }
+  return authed;
+}
+
+export function isSellerRole(role: string): boolean {
+  return role === 'seller' || role === 'cooperative';
+}
+
+type RouteGroup = 'marketing' | 'auth' | 'platform' | 'admin';
+
+const PLATFORM_PREFIXES = [
+  '/dashboard',
+  '/marketplace',
+  '/offers',
+  '/orders',
+  '/contracts',
+  '/payments',
+  '/logistics',
+  '/reports',
+  '/settings',
+];
+
+const ADMIN_PREFIXES = ['/admin'];
+
+const AUTH_PREFIXES = ['/login', '/register', '/forgot-password', '/verify'];
+
+export function classifyRoute(pathname: string): RouteGroup {
+  const path = stripLocale(pathname);
+
+  if (ADMIN_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
+    return 'admin';
+  }
+  if (PLATFORM_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
+    return 'platform';
+  }
+  if (AUTH_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`))) {
+    return 'auth';
+  }
+  return 'marketing';
+}
+
+export function stripLocale(pathname: string): string {
+  if (pathname.startsWith('/en/')) {
+    return pathname.slice(3) || '/';
+  }
+  if (pathname === '/en') {
+    return '/';
+  }
+  return pathname;
+}
+
+export interface RouteAccessResult {
+  allowed: boolean;
+  redirectTo?: string;
+  reason?: 'unauthenticated' | 'forbidden' | 'kyc_required';
+}
+
+/**
+ * Single authorization surface for middleware route gating.
+ * Returns redirect target when access is denied.
+ */
+export function canAccessRoute(
+  pathname: string,
+  profile: Profile | null,
+  locale: string,
+): RouteAccessResult {
+  const group = classifyRoute(pathname);
+  const localePrefix = locale === 'fr' ? '' : `/${locale}`;
+
+  if (group === 'marketing') {
+    return { allowed: true };
+  }
+
+  if (group === 'auth') {
+    if (profile) {
+      return { allowed: false, redirectTo: `${localePrefix}/dashboard` };
+    }
+    return { allowed: true };
+  }
+
+  if (!profile) {
+    return {
+      allowed: false,
+      redirectTo: `${localePrefix}/login`,
+      reason: 'unauthenticated',
+    };
+  }
+
+  if (group === 'admin') {
+    if (profile.role !== 'admin') {
+      return {
+        allowed: false,
+        redirectTo: `${localePrefix}/dashboard`,
+        reason: 'forbidden',
+      };
+    }
+    return { allowed: true };
+  }
+
+  if (group === 'platform') {
+    const path = stripLocale(pathname);
+    const isListingCreation =
+      path === '/marketplace/new' || path.endsWith('/edit');
+
+    if (isListingCreation && isSellerRole(profile.role) && profile.kyc_status !== 'approved') {
+      return {
+        allowed: false,
+        redirectTo: `${localePrefix}/settings`,
+        reason: 'kyc_required',
+      };
+    }
+
+    return { allowed: true };
+  }
+
+  return { allowed: true };
+}
+
+export function isKycApproved(status: KycStatus): boolean {
+  return status === 'approved';
+}

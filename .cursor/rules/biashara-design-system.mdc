@@ -1,0 +1,87 @@
+---
+description: Biashara design system — MANDATORY for all UI work
+alwaysApply: true
+---
+
+# BIASHARA DESIGN LAW
+You are implementing an ALREADY-APPROVED design (see design/reference-screens.png).
+You are a pixel-perfect implementer, NOT a designer. You have ZERO creative freedom
+on colors, fonts, spacing, or layout. If something is not specified, ask — never invent.
+
+## 1. COLOR TOKENS (the ONLY colors allowed — use CSS variables, never raw hex in components)
+--brand-blue:      #1D5FA8;  /* primary brand blue — links, active nav, secondary buttons */
+--brand-blue-dark: #12335C;  /* headings, footer bg, dark text on light */
+--brand-gold:      #E9A319;  /* primary CTA fill, accents, highlights */
+--brand-gold-dark: #C9880D;  /* CTA hover, gold text on white */
+--ink:             #0E2A47;  /* heading text */
+--body:            #5B6B7C;  /* body/secondary text */
+--muted:           #8A97A6;  /* captions, placeholders, timestamps */
+--bg:              #FFFFFF;  /* page background */
+--bg-tint:         #F7F9FC;  /* alternating sections, table headers, dashboard bg */
+--border:          #E7ECF2;  /* all card/input borders, dividers */
+--success:         #1E9E5A;  --danger: #D64545;  /* price up/down, status only */
+
+FORBIDDEN: purple, violet, teal, pink, black backgrounds, dark mode, neon,
+any gradient except: (a) gold CTA gradient linear-gradient(180deg,#F6C453,#E9A319)
+and (b) the hero sky-tint. No glassmorphism. No colored glows.
+
+## 2. TYPOGRAPHY
+Font: "Plus Jakarta Sans" (Google Fonts) for EVERYTHING. No second font. No serif.
+- H1 hero: 56px / 700 / line-height 1.1 / color --ink. Multi-line slogan style:
+  each sentence on its own line ending with a period; the LAST line is --brand-gold.
+- H2 section: 34px / 700 / --ink
+- H3 card title: 18px / 600 / --ink
+- Body: 16px / 400 / --body / line-height 1.65
+- Eyebrow label above H1/H2: 12px / 600 / uppercase / letter-spacing 0.12em / --muted
+- Data numbers (prices, stats): 600 weight, tabular-nums
+FORBIDDEN: emojis in UI, italic decoration, font sizes not listed above.
+
+## 3. SPACING, RADII, SHADOWS
+- Spacing scale: 4/8/12/16/24/32/48/64/96px only.
+- Section vertical padding: 96px desktop, 56px mobile. Max content width: 1200px, centered.
+- Card: bg white, border 1px --border, radius 14px, shadow 0 1px 3px rgba(14,42,71,.06).
+  Hover: shadow 0 8px 24px rgba(14,42,71,.10), translateY(-2px), 150ms ease.
+- Buttons: radius 10px, height 44px, padding 0 22px, font 15px/600.
+  Primary = gold gradient, white is NEVER used as primary-button text-on-gold —
+  use #FFFFFF text, hover darkens to --brand-gold-dark.
+  Secondary = white bg, 1px --border, --ink text. Ghost = --brand-blue text, no border.
+- Inputs: height 46px, radius 10px, border 1px --border, focus ring 2px rgba(29,95,168,.35).
+FORBIDDEN: radius > 16px on cards, pill-shaped cards, heavy drop shadows, borders thicker than 1px.
+
+## 4. LAYOUT DNA (matches reference screens exactly)
+- Navbar: white, sticky, 72px. Left: logo (design/reference-logo) + "BIASHARA" wordmark
+  14px/700 letterspaced --ink. Center: Home, Marketplace, Prices, Solutions ▾, Resources ▾,
+  About Us. Right: language switcher "EN ▾", gold "Get Started" button. Active link:
+  --brand-blue with 2px gold underline offset 6px.
+- Footer: --brand-blue-dark bg, white text, and ABOVE it the kitenge strip: a horizontal
+  band (~90px) of geometric African diamond/triangle pattern in muted blue/gold/cream —
+  implement as a repeating inline SVG pattern, not an image download.
+- Icons: lucide-react ONLY, 1.75px stroke, --brand-blue, inside 44px rounded-10px
+  --bg-tint squares when used as feature icons.
+- Charts: Recharts. Line color --brand-gold, 2px, subtle gold area fill fading to
+  transparent, grid lines --border dashed, no legend boxes, tooltip = white card style.
+- Photography: real mining/minerals imagery only (drills, cobalt ore, open pits,
+  DRC landscapes). Never abstract 3D renders, never AI-slop illustrations.
+
+## 5. COMPONENT PATTERNS
+- Listing card (marketplace): 72px square photo thumb (radius 10) left; middle: name (H3),
+  purity/grade line 13px --muted, seller row with 16px map-pin icon + "DR Congo" location;
+  right column: qty available 13px --muted, price 20px/700 --ink with unit 13px --muted
+  ("/MT", "/oz", "/kg"), gold "View Details" small button (36px height).
+- Stat card (dashboard): white card, small icon top-right in --bg-tint square, value
+  28px/700 --ink, label 13px --muted, delta chip 12px (--success or --danger tint bg).
+- Status chips: 12px/600, radius 6px, tinted bg at 12% opacity of status color.
+- Tabs (marketplace categories): text tabs, active = --brand-blue + 2px gold underline.
+- Tables: header row --bg-tint, 13px/600 uppercase --muted; rows 1px --border dividers.
+
+## 6. QUALITY FLOOR (non-negotiable)
+- Fully responsive: 1440 / 1024 / 768 / 390 breakpoints. Test 390px before calling done.
+- Visible keyboard focus states. prefers-reduced-motion respected. Alt text everywhere.
+- All UI text via i18n dictionary (FR default, EN toggle) — never hardcoded strings.
+- NO placeholder lorem ipsum, NO fake statistics, NO invented partner logos.
+  If real data isn't wired yet, render honest empty states ("Aucune offre publiée pour
+  le moment"), never fabricated numbers.
+
+## 7. IF IN DOUBT
+Stop and ask. Matching design/reference-screens.png beats finishing fast.
+Any deviation from this file is a bug.

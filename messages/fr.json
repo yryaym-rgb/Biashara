@@ -1,0 +1,218 @@
+{
+  "common": {
+    "appName": "BIASHARA",
+    "loading": "Chargement…",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "back": "Retour",
+    "next": "Suivant",
+    "empty": "Aucune donnée disponible"
+  },
+  "nav": {
+    "home": "Accueil",
+    "marketplace": "Marché",
+    "prices": "Prix",
+    "solutions": "Solutions",
+    "resources": "Ressources",
+    "about": "À propos",
+    "dashboard": "Tableau de bord",
+    "offers": "Offres",
+    "orders": "Commandes",
+    "contracts": "Contrats",
+    "payments": "Paiements",
+    "logistics": "Logistique",
+    "reports": "Rapports",
+    "settings": "Paramètres",
+    "login": "Connexion",
+    "register": "Inscription",
+    "logout": "Déconnexion",
+    "getStarted": "Commencer"
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Pas encore de compte ?",
+      "createAccount": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "role": "Type de compte",
+      "companyName": "Nom de l'entreprise",
+      "submit": "Créer le compte",
+      "hasAccount": "Déjà un compte ?",
+      "login": "Se connecter",
+      "terms": "J'accepte les conditions d'utilisation"
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "email": "Adresse e-mail",
+      "submit": "Envoyer le lien",
+      "backToLogin": "Retour à la connexion"
+    },
+    "verify": {
+      "title": "Vérification du compte",
+      "description": "Consultez votre boîte e-mail pour confirmer votre compte.",
+      "resend": "Renvoyer l'e-mail"
+    }
+  },
+  "marketing": {
+    "landing": {
+      "title": "BIASHARA — Commerce minier de confiance",
+      "eyebrow": "Plateforme B2B — République Démocratique du Congo",
+      "heroLine1": "Commercez avec audace.",
+      "heroLine2": "Faites confiance en profondeur.",
+      "heroLine3": "Grandissez ensemble.",
+      "cta": "Commencer"
+    },
+    "prices": {
+      "title": "Prix du marché",
+      "indicative": "Prix indicatif — négocié",
+      "unavailable": "Prix non disponible",
+      "lastUpdated": "Dernière mise à jour",
+      "source": "Source"
+    },
+    "solutions": {
+      "title": "Solutions",
+      "traceability": "Traçabilité",
+      "marketplace": "Marché sécurisé",
+      "compliance": "Conformité KYC"
+    },
+    "resources": {
+      "title": "Ressources",
+      "documentation": "Documentation",
+      "guides": "Guides"
+    },
+    "about": {
+      "title": "À propos de BIASHARA",
+      "mission": "Notre mission",
+      "team": "Notre équipe"
+    }
+  },
+  "routes": {
+    "dashboard": { "title": "Tableau de bord" },
+    "marketplace": { "title": "Marché" },
+    "marketplaceDetail": { "title": "Détail de l'annonce" },
+    "offers": { "title": "Offres" },
+    "orders": { "title": "Commandes" },
+    "contracts": { "title": "Contrats" },
+    "payments": { "title": "Paiements" },
+    "logistics": { "title": "Logistique" },
+    "reports": { "title": "Rapports" },
+    "settings": { "title": "Paramètres" }
+  },
+  "platform": {
+    "dashboard": {
+      "welcome": "Bienvenue",
+      "totalOrders": "Commandes totales",
+      "activeContracts": "Contrats actifs",
+      "totalSpent": "Total dépensé",
+      "shipments": "Expéditions",
+      "emptyOrders": "Aucune commande pour le moment"
+    },
+    "marketplace": {
+      "title": "Marché",
+      "search": "Rechercher des minerais…",
+      "filters": "Filtres",
+      "postOffer": "Publier une offre",
+      "viewDetails": "Voir les détails",
+      "empty": "Aucune offre publiée pour le moment",
+      "quantityAvailable": "{quantity} {unit} disponibles"
+    },
+    "offers": {
+      "title": "Offres",
+      "empty": "Aucune offre en cours",
+      "pending": "En attente",
+      "countered": "Contre-offre",
+      "accepted": "Acceptée",
+      "declined": "Refusée",
+      "expired": "Expirée"
+    },
+    "orders": {
+      "title": "Commandes",
+      "empty": "Aucune commande pour le moment",
+      "confirmed": "Confirmée",
+      "processing": "En traitement",
+      "inTransit": "En transit",
+      "delivered": "Livrée",
+      "cancelled": "Annulée",
+      "disputed": "Litige"
+    },
+    "contracts": {
+      "title": "Contrats",
+      "empty": "Aucun contrat pour le moment",
+      "sign": "Signer",
+      "signed": "Signé",
+      "pending": "En attente de signature"
+    },
+    "payments": {
+      "title": "Paiements",
+      "empty": "Module de paiement — Phase 2",
+      "comingSoon": "Les paiements seront disponibles prochainement"
+    },
+    "logistics": {
+      "title": "Logistique",
+      "empty": "Aucune expédition pour le moment",
+      "tracking": "Suivi",
+      "carrier": "Transporteur"
+    },
+    "reports": {
+      "title": "Rapports",
+      "empty": "Aucun rapport disponible"
+    },
+    "settings": {
+      "title": "Paramètres",
+      "profile": "Profil",
+      "kyc": "Vérification KYC",
+      "language": "Langue",
+      "kycPending": "Vérification en cours",
+      "kycApproved": "Compte vérifié",
+      "kycRejected": "Vérification refusée"
+    }
+  },
+  "admin": {
+    "dashboard": { "title": "Administration" },
+    "users": { "title": "Utilisateurs" },
+    "kycReview": { "title": "Révision KYC" },
+    "listingsModeration": { "title": "Modération des annonces" },
+    "auditLog": { "title": "Journal d'audit" }
+  },
+  "minerals": {
+    "cobalt": "Cobalt",
+    "copper": "Cuivre",
+    "gold": "Or",
+    "coltan": "Coltan",
+    "lithium": "Lithium",
+    "diamond": "Diamant"
+  },
+  "units": {
+    "MT": "TM",
+    "oz": "oz",
+    "kg": "kg",
+    "carat": "carat"
+  },
+  "errors": {
+    "unauthorized": "Vous devez être connecté",
+    "forbidden": "Accès refusé",
+    "kycRequired": "Vérification KYC requise",
+    "notFound": "Page introuvable",
+    "validation": "Données invalides",
+    "rateLimit": "Trop de requêtes — réessayez plus tard"
+  },
+  "kyc": {
+    "id_card": "Pièce d'identité",
+    "business_registration": "Registre de commerce",
+    "mining_permit": "Permis minier",
+    "export_license": "Licence d'exportation",
+    "upload": "Téléverser un document",
+    "required": "Documents requis"
+  }
+}

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-blue: #1d5fa8;
+  --brand-blue-dark: #12335c;
+  --brand-gold: #e9a319;
+  --brand-gold-dark: #c9880d;
+  --ink: #0e2a47;
+  --body: #5b6b7c;
+  --muted: #8a97a6;
+  --bg: #ffffff;
+  --bg-tint: #f7f9fc;
+  --border: #e7ecf2;
+  --success: #1e9e5a;
+  --danger: #d64545;
+  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-plus-jakarta);
+    color: var(--body);
+    background-color: var(--bg);
+  }
+
+  body {
+    margin: 0;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+    margin: 0;
+  }
+
+  a {
+    color: var(--brand-blue);
+    text-decoration: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    outline: 2px solid rgba(29, 95, 168, 0.35);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
