@@ -1,5 +1,5 @@
-import { PageStub } from '@/components/page-stub';
+import { LoginForm } from '@/components/auth/login-form';
 
 export default function LoginPage() {
-  return <PageStub titleKey="login.title" namespace="auth" />;
+  return <LoginForm />;
 }

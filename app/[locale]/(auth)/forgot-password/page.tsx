@@ -1,5 +1,5 @@
-import { PageStub } from '@/components/page-stub';
+import { ForgotPasswordForm } from '@/components/auth/forgot-password-form';
 
 export default function ForgotPasswordPage() {
-  return <PageStub titleKey="forgotPassword.title" namespace="auth" />;
+  return <ForgotPasswordForm />;
 }
