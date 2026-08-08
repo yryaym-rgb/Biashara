@@ -14,6 +14,8 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { MineralPriceChart } from '@/components/marketing/mineral-price-chart';
+import { CurrencySelectorComingSoon } from '@/components/marketing/currency-selector-coming-soon';
+import { AfricanMarketsFilter } from '@/components/marketing/african-markets-filter';
 import { cn } from '@/lib/utils/cn';
 
 const STALE_TIME_MS = 15 * 60 * 1000;
@@ -111,6 +113,8 @@ export function PricesPageContent() {
 
   return (
     <div className="flex flex-col gap-12">
+      <AfricanMarketsFilter />
+
       <div className="overflow-hidden rounded-card border border-border bg-bg card-shadow">
         {isError ? (
           <div className="flex flex-col items-center justify-center gap-4 px-6 py-16 text-center">
@@ -229,18 +233,21 @@ export function PricesPageContent() {
       </div>
 
       <div className="flex flex-col gap-6">
-        <Tabs
-          value={selectedMineral}
-          onValueChange={(value) => setSelectedMineral(value as MineralId)}
-        >
-          <TabsList className="gap-4">
-            {orderedMinerals.map((mineralId) => (
-              <TabsTrigger key={mineralId} value={mineralId} className="text-[13px]">
-                {tMinerals(mineralId)}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <Tabs
+            value={selectedMineral}
+            onValueChange={(value) => setSelectedMineral(value as MineralId)}
+          >
+            <TabsList className="gap-4">
+              {orderedMinerals.map((mineralId) => (
+                <TabsTrigger key={mineralId} value={mineralId} className="text-[13px]">
+                  {tMinerals(mineralId)}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+          <CurrencySelectorComingSoon />
+        </div>
 
         <MineralPriceChart
           key={selectedMineral}

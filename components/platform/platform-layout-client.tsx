@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/lib/i18n/navigation';
 import { PlatformShell } from '@/components/platform/platform-shell';
-import { getPlatformNavItems, getPlatformPageTitleKey } from '@/lib/platform/nav';
+import { getPlatformNavSections, getPlatformPageTitleKey } from '@/lib/platform/nav';
 import type { NotificationRow } from '@/lib/notifications/types';
 import type { Database } from '@/types/database.types';
 
@@ -32,7 +32,7 @@ export function PlatformLayoutClient({
   const titleKey = getPlatformPageTitleKey(pathname);
   const t = useTranslations();
   const pageTitle = t(titleKey);
-  const navItems = getPlatformNavItems(role);
+  const navSections = getPlatformNavSections(role);
 
   return (
     <PlatformShell
@@ -41,7 +41,7 @@ export function PlatformLayoutClient({
       email={email}
       role={role}
       locale={locale}
-      navItems={navItems}
+      navSections={navSections}
       unreadMessagesCount={unreadMessagesCount}
       recentNotifications={recentNotifications}
       unreadNotificationsCount={unreadNotificationsCount}

@@ -13,7 +13,8 @@ import {
 } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import { requireAuth, isSellerRole } from '@/lib/rbac';
-import { getProfile } from '@/lib/auth/session';
+import { getProfile, getUser } from '@/lib/auth/session';
+import { displayName } from '@/lib/admin/display';
 import { getUserKycDocuments } from '@/lib/admin/queries';
 import {
   getBuyerDashboardStats,
@@ -26,6 +27,8 @@ import {
 import { getActionCenterItems } from '@/lib/platform/action-center';
 import { getMarketInsightForUser } from '@/lib/platform/market-insight';
 import { getTradingMixForUser } from '@/lib/platform/trading-mix';
+import { getTrustScoreForUser } from '@/lib/platform/trust-score-queries';
+import { getSuggestedListingsForUser } from '@/lib/platform/suggestions';
 import {
   getDashboardPersona,
   getDashboardStatKeys,
@@ -42,6 +45,16 @@ import { DashboardActionCenter } from '@/components/platform/dashboard-action-ce
 import { DashboardMarketInsight } from '@/components/platform/dashboard-market-insight';
 import { DashboardTradingMix } from '@/components/platform/dashboard-trading-mix';
 import { DashboardExportButton } from '@/components/platform/dashboard-export-button';
+import {
+  DashboardHeader,
+  DashboardTrustScore,
+} from '@/components/platform/dashboard-header';
+import { DashboardSuggestions } from '@/components/platform/dashboard-suggestions';
+import {
+  DashboardComplianceComingSoon,
+  DashboardEscrowComingSoon,
+  DashboardRecommendationsComingSoon,
+} from '@/components/platform/dashboard-coming-soon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Container } from '@/components/ui/container';
 import { formatCurrency, formatNumber } from '@/lib/utils/format';
@@ -65,13 +78,17 @@ export default async function DashboardPage({
   setRequestLocale(locale);
 
   const profile = requireAuth(await getProfile());
+  const user = await getUser();
   const persona = getDashboardPersona(profile.role);
   const isSeller = isSellerRole(profile.role);
 
   const t = await getTranslations({ locale, namespace: 'platform.dashboard' });
+  const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
   const tOffers = await getTranslations({ locale, namespace: 'platform.offers' });
   const tOrders = await getTranslations({ locale, namespace: 'platform.orders' });
   const tListingStatus = await getTranslations({ locale, namespace: 'admin.listingStatus' });
+
+  const userDisplayName = displayName(profile.company_name, user?.email ?? tCommon('unknownUser'));
 
   const [
     activityCounts,
@@ -84,6 +101,8 @@ export default async function DashboardPage({
     actionCenterItems,
     marketInsight,
     tradingMix,
+    trustScore,
+    suggestions,
   ] = await Promise.all([
     getDashboardActivityCounts(profile.id),
     getDashboardRecentActivity(profile.id, 10),
@@ -95,6 +114,8 @@ export default async function DashboardPage({
     getActionCenterItems(profile.id),
     getMarketInsightForUser(profile.id),
     getTradingMixForUser(profile.id),
+    getTrustScoreForUser(profile.id, profile.kyc_status, profile.created_at),
+    getSuggestedListingsForUser(profile.id),
   ]);
 
   const isNewAccount = isNewDashboardAccount(activityCounts);
@@ -143,9 +164,11 @@ export default async function DashboardPage({
   return (
     <Container>
       <div className="space-y-6">
-        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-muted">
-          {t('eyebrow')}
-        </p>
+        <DashboardHeader
+          displayName={userDisplayName}
+          role={profile.role}
+          kycStatus={profile.kyc_status}
+        />
 
         {shouldShowKycBanner(profile.kyc_status) ? (
           <KycStatusBanner
@@ -189,9 +212,23 @@ export default async function DashboardPage({
         {!isNewAccount ? (
           <>
             <div className="grid gap-4 lg:grid-cols-2">
+              <DashboardTrustScore trustScore={trustScore} />
               <DashboardMarketInsight insight={marketInsight} />
-              <DashboardTradingMix segments={tradingMix} />
             </div>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <DashboardTradingMix segments={tradingMix} />
+              <div className="grid gap-4">
+                <DashboardEscrowComingSoon />
+                <DashboardRecommendationsComingSoon />
+              </div>
+            </div>
+
+            <DashboardComplianceComingSoon />
+
+            {suggestions.length > 0 ? (
+              <DashboardSuggestions groups={suggestions} locale={locale} />
+            ) : null}
 
             {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
 

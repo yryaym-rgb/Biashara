@@ -8,7 +8,10 @@ export type PlatformNavKey =
   | 'listings'
   | 'orders'
   | 'messages'
+  | 'documents'
   | 'settings';
+
+export type PlatformNavSectionKey = 'main' | 'supplyChain' | 'company';
 
 export interface PlatformNavItem {
   key: PlatformNavKey;
@@ -18,27 +21,48 @@ export interface PlatformNavItem {
     | '/offers'
     | '/settings'
     | '/orders'
-    | '/messages';
+    | '/messages'
+    | '/documents';
 }
 
+export interface PlatformNavSection {
+  key: PlatformNavSectionKey;
+  items: PlatformNavItem[];
+}
+
+export function getPlatformNavSections(
+  role: Database['public']['Enums']['user_role'],
+): PlatformNavSection[] {
+  const main: PlatformNavItem[] = [
+    { key: 'dashboard', href: '/dashboard' },
+    { key: 'marketplace', href: '/marketplace' },
+    { key: 'orders', href: '/orders' },
+    { key: 'offers', href: '/offers' },
+    { key: 'messages', href: '/messages' },
+  ];
+
+  const supplyChain: PlatformNavItem[] = [];
+
+  if (isSellerRole(role)) {
+    supplyChain.push({ key: 'listings', href: '/settings' });
+  }
+
+  supplyChain.push({ key: 'documents', href: '/documents' });
+
+  const company: PlatformNavItem[] = [{ key: 'settings', href: '/settings' }];
+
+  return [
+    { key: 'main', items: main },
+    { key: 'supplyChain', items: supplyChain },
+    { key: 'company', items: company },
+  ];
+}
+
+/** @deprecated Use getPlatformNavSections */
 export function getPlatformNavItems(
   role: Database['public']['Enums']['user_role'],
 ): PlatformNavItem[] {
-  const items: PlatformNavItem[] = [
-    { key: 'dashboard', href: '/dashboard' },
-    { key: 'marketplace', href: '/marketplace' },
-    { key: 'offers', href: '/offers' },
-  ];
-
-  if (isSellerRole(role)) {
-    items.push({ key: 'listings', href: '/settings' });
-  }
-
-  items.push({ key: 'orders', href: '/orders' });
-  items.push({ key: 'messages', href: '/messages' });
-  items.push({ key: 'settings', href: '/settings' });
-
-  return items;
+  return getPlatformNavSections(role).flatMap((section) => section.items);
 }
 
 export type PlatformPageKey =
@@ -49,6 +73,7 @@ export type PlatformPageKey =
   | 'messages'
   | 'notifications'
   | 'settings'
+  | 'documents'
   | 'contracts'
   | 'payments'
   | 'logistics'
@@ -64,6 +89,7 @@ const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   messages: 'platform.messages.title',
   notifications: 'notifications.title',
   settings: 'platform.settings.title',
+  documents: 'platform.documents.title',
   contracts: 'platform.contracts.title',
   payments: 'platform.payments.title',
   logistics: 'platform.logistics.title',
@@ -96,6 +122,9 @@ export function resolvePlatformPageKey(pathname: string): PlatformPageKey {
   }
   if (pathname === '/notifications' || pathname.startsWith('/notifications/')) {
     return 'notifications';
+  }
+  if (pathname === '/documents' || pathname.startsWith('/documents/')) {
+    return 'documents';
   }
   if (pathname === '/settings' || pathname.startsWith('/settings/')) {
     return 'settings';
