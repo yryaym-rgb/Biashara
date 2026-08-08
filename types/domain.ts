@@ -29,13 +29,15 @@ export type {
 export type { OrderStatusUpdateInput } from '@/lib/validators/order';
 
 export type {
-  ContractSignInput,
+  ContractConfirmInput,
   ContractUploadInput,
 } from '@/lib/validators/contract';
 
 export type {
   ShipmentCreateInput,
-  ShipmentCheckpointInput,
+  ShipmentManualCheckpointInput,
+  ShipmentProgressInput,
+  ShipmentUpdateDetailsInput,
 } from '@/lib/validators/shipment';
 
 export type {

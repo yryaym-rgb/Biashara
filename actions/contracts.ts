@@ -1,10 +1,16 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { createClient } from '@/lib/supabase/server';
 import { getProfile } from '@/lib/auth/session';
 import { requireAuth } from '@/lib/rbac';
-import { contractSignSchema, contractUploadSchema } from '@/lib/validators/contract';
+import { contractConfirmSchema, contractUploadSchema } from '@/lib/validators/contract';
 import type { Database } from '@/types/database.types';
+
+function revalidateOrderPaths(orderId: string) {
+  revalidatePath('/orders');
+  revalidatePath(`/orders/${orderId}`);
+}
 
 export async function uploadContract(input: unknown) {
   requireAuth(await getProfile());
@@ -27,12 +33,13 @@ export async function uploadContract(input: unknown) {
     return { error: error.message };
   }
 
+  revalidateOrderPaths(parsed.data.orderId);
   return { data };
 }
 
-export async function signContract(input: unknown) {
+export async function confirmOrderTerms(input: unknown) {
   const profile = requireAuth(await getProfile());
-  const parsed = contractSignSchema.safeParse(input);
+  const parsed = contractConfirmSchema.safeParse(input);
   if (!parsed.success) {
     return { error: 'validation', details: parsed.error.flatten() };
   }
@@ -57,6 +64,24 @@ export async function signContract(input: unknown) {
     return { error: 'forbidden' };
   }
 
+  const { data: contract } = await supabase
+    .from('contracts')
+    .select('buyer_signed, seller_signed')
+    .eq('order_id', parsed.data.orderId)
+    .maybeSingle();
+
+  if (!contract) {
+    return { error: 'contractNotFound' };
+  }
+
+  if (parsed.data.party === 'buyer' && contract.buyer_signed) {
+    return { error: 'alreadyConfirmed' };
+  }
+
+  if (parsed.data.party === 'seller' && contract.seller_signed) {
+    return { error: 'alreadyConfirmed' };
+  }
+
   const updatePayload: Database['public']['Tables']['contracts']['Update'] =
     parsed.data.party === 'buyer'
       ? { buyer_signed: true, buyer_signed_at: new Date().toISOString() }
@@ -73,5 +98,11 @@ export async function signContract(input: unknown) {
     return { error: error.message };
   }
 
+  revalidateOrderPaths(parsed.data.orderId);
   return { data };
+}
+
+/** @deprecated Use confirmOrderTerms */
+export async function signContract(input: unknown) {
+  return confirmOrderTerms(input);
 }
