@@ -19,7 +19,9 @@ import {
   getBuyerDashboardStats,
   getDashboardActivityCounts,
   getDashboardRecentActivity,
+  getDashboardRecentOrders,
   getSellerDashboardStats,
+  getSellerSalesVolumeByDay,
 } from '@/lib/platform/queries';
 import {
   getDashboardPersona,
@@ -31,6 +33,8 @@ import {
 import { KycStatusBanner } from '@/components/platform/kyc-status-banner';
 import { DashboardStatCard } from '@/components/platform/dashboard-stat-card';
 import { DashboardWelcomePanel } from '@/components/platform/dashboard-welcome-panel';
+import { DashboardSalesChart } from '@/components/platform/dashboard-sales-chart';
+import { DashboardRecentOrdersTable } from '@/components/platform/dashboard-recent-orders-table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Container } from '@/components/ui/container';
 import { formatCurrency, formatNumber } from '@/lib/utils/format';
@@ -68,12 +72,16 @@ export default async function DashboardPage({
     kycDocuments,
     sellerStats,
     buyerStats,
+    salesVolume,
+    recentOrders,
   ] = await Promise.all([
     getDashboardActivityCounts(profile.id),
     getDashboardRecentActivity(profile.id, 10),
     shouldShowKycBanner(profile.kyc_status) ? getUserKycDocuments(profile.id) : Promise.resolve([]),
     isSeller ? getSellerDashboardStats(profile.id) : Promise.resolve(null),
     !isSeller ? getBuyerDashboardStats(profile.id) : Promise.resolve(null),
+    isSeller ? getSellerSalesVolumeByDay(profile.id) : Promise.resolve([]),
+    getDashboardRecentOrders(profile.id, 8),
   ]);
 
   const isNewAccount = isNewDashboardAccount(activityCounts);
@@ -82,6 +90,7 @@ export default async function DashboardPage({
     .map((doc) => doc.type);
 
   const statKeys = getDashboardStatKeys(profile.role);
+  const hasOrders = recentOrders.some((row) => row.kind === 'order');
 
   const statValues: Record<DashboardStatKey, string | number> = {
     activeListings: sellerStats?.activeListings ?? 0,
@@ -119,14 +128,11 @@ export default async function DashboardPage({
   }
 
   return (
-    <Container className="py-12 md:py-16">
+    <Container>
       <div className="space-y-8">
-        <div>
-          <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-muted">
-            {t('eyebrow')}
-          </p>
-          <h1 className="mt-2">{t('title')}</h1>
-        </div>
+        <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-muted">
+          {t('eyebrow')}
+        </p>
 
         {shouldShowKycBanner(profile.kyc_status) ? (
           <KycStatusBanner
@@ -164,6 +170,18 @@ export default async function DashboardPage({
             ))}
           </div>
         )}
+
+        {!isNewAccount ? (
+          <>
+            {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
+
+            <DashboardRecentOrdersTable
+              rows={recentOrders}
+              locale={locale}
+              hasOrders={hasOrders}
+            />
+          </>
+        ) : null}
 
         <div className="grid gap-8 lg:grid-cols-2">
           <Card>

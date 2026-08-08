@@ -452,6 +452,21 @@
     "settings": { "title": "Paramètres" }
   },
   "platform": {
+    "nav": {
+      "dashboard": "Tableau de bord",
+      "marketplace": "Place de marché",
+      "offers": "Mes offres",
+      "listings": "Mes annonces",
+      "orders": "Mes commandes",
+      "settings": "Paramètres"
+    },
+    "shell": {
+      "sidebarLabel": "Navigation plateforme",
+      "openDrawer": "Ouvrir le menu",
+      "closeDrawer": "Fermer le menu",
+      "logout": "Se déconnecter",
+      "notifications": "Notifications"
+    },
     "dashboard": {
       "eyebrow": "Espace utilisateur",
       "title": "Tableau de bord",
@@ -491,6 +506,18 @@
         "order": "Commande pour « {title} » — {status}",
         "listing": "Annonce « {title} » — {status}",
         "untitled": "Sans titre"
+      },
+      "salesOverview": "Aperçu des ventes",
+      "salesChartEmpty": "Vos statistiques apparaîtront ici après vos premières ventes.",
+      "recentOrders": "Commandes récentes",
+      "recentOrdersEmpty": "Aucune commande récente pour le moment.",
+      "recentOffersFallback": "Offres récentes",
+      "table": {
+        "mineral": "Minerai",
+        "counterpart": "Contrepartie",
+        "amount": "Montant",
+        "status": "Statut",
+        "date": "Date"
       }
     },
     "marketplace": {
@@ -582,13 +609,35 @@
       }
     },
     "offers": {
-      "title": "Offres",
+      "title": "Mes offres",
+      "tabs": {
+        "sent": "Envoyées",
+        "received": "Reçues"
+      },
+      "emptySent": "Vous n'avez pas encore envoyé d'offre.",
+      "emptyReceived": "Vous n'avez pas encore reçu d'offre.",
+      "emptyCta": "Parcourir la place de marché",
       "empty": "Aucune offre en cours. Consultez la place de marché pour soumettre une proposition.",
       "pending": "En attente",
       "countered": "Contre-offre",
       "accepted": "Acceptée",
       "declined": "Refusée",
-      "expired": "Expirée"
+      "expired": "Expirée",
+      "waitingSeller": "En attente de réponse du vendeur",
+      "waitingBuyer": "En attente de réponse de l'acheteur",
+      "accept": "Accepter",
+      "decline": "Décliner",
+      "counter": "Contre-offre",
+      "viewOrder": "Voir la commande",
+      "counterpartyUnknown": "Utilisateur vérifié",
+      "submittedOn": "Soumise le {date}",
+      "chainLabel": "Historique de négociation",
+      "counterForm": {
+        "quantity": "Quantité",
+        "price": "Prix proposé (USD)",
+        "message": "Message (facultatif)",
+        "submit": "Envoyer la contre-offre"
+      }
     },
     "orders": {
       "title": "Commandes",
