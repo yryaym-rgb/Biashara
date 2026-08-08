@@ -470,6 +470,26 @@
       "logout": "Se déconnecter",
       "notifications": "Notifications"
     },
+    "commandPalette": {
+      "title": "Recherche",
+      "open": "Ouvrir la recherche",
+      "close": "Fermer la recherche",
+      "placeholder": "Rechercher annonces, offres, commandes, conversations…",
+      "hint": "Tapez pour rechercher dans vos données",
+      "searching": "Recherche en cours…",
+      "noResults": "Aucun résultat pour cette recherche.",
+      "groups": {
+        "listings": "Annonces",
+        "offers": "Offres",
+        "orders": "Commandes",
+        "conversations": "Conversations"
+      },
+      "keyboard": {
+        "navigate": "naviguer",
+        "select": "sélectionner",
+        "close": "fermer"
+      }
+    },
     "dashboard": {
       "eyebrow": "Espace utilisateur",
       "title": "Tableau de bord",
@@ -521,6 +541,46 @@
         "amount": "Montant",
         "status": "Statut",
         "date": "Date"
+      },
+      "actionCenter": {
+        "title": "Nécessite votre attention",
+        "allClear": "Tout est à jour.",
+        "action": "Voir",
+        "items": {
+          "pending_offer": "Offre en attente — {title}",
+          "disputed_order": "Commande en litige — {title}",
+          "rejected_kyc": "Document KYC refusé — {type}",
+          "rejected_listing": "Annonce refusée — {title}"
+        }
+      },
+      "marketInsight": {
+        "title": "Tendance de marché",
+        "insight": "Le prix du {mineral} a {direction} de {change} % cette semaine",
+        "up": "augmenté",
+        "down": "baissé",
+        "emptyTitle": "Pas encore de données de marché",
+        "emptyDescription": "Vos tendances de prix apparaîtront ici une fois que vous aurez une activité de négoce et un historique de prix suffisant.",
+        "sparklineLabel": "Évolution du prix du {mineral} sur 7 jours"
+      },
+      "tradingMix": {
+        "title": "Répartition des échanges",
+        "orders": "commandes",
+        "chartLabel": "Répartition de vos commandes par minerai",
+        "emptyTitle": "Aucune commande",
+        "emptyDescription": "Votre répartition par minerai apparaîtra ici après vos premières transactions."
+      },
+      "export": {
+        "button": "Exporter mes transactions",
+        "columns": {
+          "date": "Date",
+          "mineral": "Minerai",
+          "quantity": "Quantité",
+          "price": "Prix unitaire",
+          "total": "Montant total",
+          "counterpart": "Contrepartie",
+          "status": "Statut",
+          "reference": "Référence"
+        }
       }
     },
     "marketplace": {

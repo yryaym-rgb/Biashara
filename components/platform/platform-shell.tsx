@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
+import { CommandPaletteProvider } from '@/components/platform/command-palette';
 import { PlatformNav } from '@/components/platform/platform-nav';
 import { PlatformTopBar } from '@/components/platform/platform-top-bar';
 import type { NotificationRow } from '@/lib/notifications/types';
@@ -41,6 +42,7 @@ export function PlatformShell({
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
+    <CommandPaletteProvider>
     <div className="min-h-screen bg-bg">
       <div className="flex min-h-screen">
         <aside
@@ -105,5 +107,6 @@ export function PlatformShell({
         </button>
       ) : null}
     </div>
+    </CommandPaletteProvider>
   );
 }
