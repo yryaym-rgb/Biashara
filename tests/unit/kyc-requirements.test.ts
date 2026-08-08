@@ -3,6 +3,7 @@ import {
   KYC_REQUIREMENTS,
   getRequiredKycDocuments,
   hasAllRequiredKycDocuments,
+  hasSubmittedAllRequiredKycDocuments,
 } from '@/lib/constants/kyc-requirements';
 
 describe('KYC requirements per role', () => {
@@ -43,6 +44,13 @@ describe('KYC requirements per role', () => {
     expect(
       hasAllRequiredKycDocuments('cooperative', ['id_card', 'business_registration']),
     ).toBe(false);
+  });
+
+  it('reports submitted when all required docs have rows (any status)', () => {
+    expect(
+      hasSubmittedAllRequiredKycDocuments('seller', ['id_card', 'business_registration']),
+    ).toBe(true);
+    expect(hasSubmittedAllRequiredKycDocuments('seller', ['id_card'])).toBe(false);
   });
 
   it('covers every user role in KYC_REQUIREMENTS', () => {

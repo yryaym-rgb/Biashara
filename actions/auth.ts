@@ -11,6 +11,8 @@ import {
   verifyEmailToken,
   exchangeCodeForSession,
 } from '@/lib/auth/actions';
+import { setRegistrationCookies, clearRegistrationCookies } from '@/lib/auth/registration';
+import { getUser } from '@/lib/auth/session';
 import type { Locale } from '@/lib/i18n/config';
 import type { Database } from '@/types/database.types';
 
@@ -45,9 +47,30 @@ export async function registerAction(input: unknown, locale: Locale) {
       result.data.role,
       result.data.locale ?? locale,
     );
+    await setRegistrationCookies(result.data.user.id, result.data.role);
   }
 
   return result;
+}
+
+export async function clearRegistrationSessionAction() {
+  await clearRegistrationCookies();
+  return { success: true };
+}
+
+export async function getRegistrationUserEmail(userId: string): Promise<string | null> {
+  const user = await getUser();
+  if (user?.id === userId && user.email) {
+    return user.email;
+  }
+
+  const admin = createAdminClient();
+  const { data, error } = await admin.auth.admin.getUserById(userId);
+  if (error || !data.user?.email) {
+    return null;
+  }
+
+  return data.user.email;
 }
 
 export async function logoutAction(locale: Locale) {

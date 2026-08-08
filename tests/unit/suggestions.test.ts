@@ -18,7 +18,7 @@ function makeListing(
     status: 'active',
     seller: null,
     listing_photos: [],
-  } as MarketplaceListingRow;
+  } as unknown as MarketplaceListingRow;
 }
 
 describe('suggestion query logic', () => {

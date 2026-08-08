@@ -14,6 +14,7 @@ export interface KycDocumentUploadProps {
   documentType: KycDocumentType;
   label: string;
   disabled?: boolean;
+  onUploadSuccess?: () => void;
 }
 
 type UploadState = 'idle' | 'uploading' | 'success' | 'error';
@@ -23,6 +24,7 @@ export function KycDocumentUpload({
   documentType,
   label,
   disabled = false,
+  onUploadSuccess,
 }: KycDocumentUploadProps) {
   const t = useTranslations('auth.register.kyc');
   const tErrors = useTranslations('auth.errors');
@@ -65,6 +67,7 @@ export function KycDocumentUpload({
       }
 
       setState('success');
+      onUploadSuccess?.();
     } catch {
       setError(tErrors('uploadFailed'));
       setState('error');

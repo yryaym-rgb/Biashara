@@ -44,6 +44,7 @@ export default async function PlatformLayout({
   return (
     <PlatformLayoutClient
       displayName={name}
+      companyName={profile.company_name}
       email={user?.email ?? null}
       role={profile.role}
       locale={locale}

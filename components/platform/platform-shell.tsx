@@ -17,6 +17,7 @@ export interface PlatformShellProps {
   children: React.ReactNode;
   pageTitle: string;
   displayName: string;
+  companyName: string | null;
   email: string | null;
   role: Database['public']['Enums']['user_role'];
   locale: string;
@@ -30,6 +31,7 @@ export function PlatformShell({
   children,
   pageTitle,
   displayName,
+  companyName,
   email,
   role,
   locale,
@@ -86,6 +88,7 @@ export function PlatformShell({
           <PlatformTopBar
             pageTitle={pageTitle}
             displayName={displayName}
+            companyName={companyName}
             email={email}
             role={role}
             locale={locale}

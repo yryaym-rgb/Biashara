@@ -33,3 +33,12 @@ export function hasAllRequiredKycDocuments(
   const required = getRequiredKycDocuments(role);
   return required.every((docType) => approvedTypes.includes(docType));
 }
+
+/** True when every required document type has a submitted row (any status). */
+export function hasSubmittedAllRequiredKycDocuments(
+  role: UserRole,
+  submittedTypes: readonly KycDocumentType[],
+): boolean {
+  const required = getRequiredKycDocuments(role);
+  return required.every((docType) => submittedTypes.includes(docType));
+}

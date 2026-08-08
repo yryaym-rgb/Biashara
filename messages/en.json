@@ -114,14 +114,16 @@
       "kyc": {
         "description": "Upload the required documents for your account type. Our team will review them before activating your listing rights.",
         "sessionExpired": "Your registration session has expired. Start again from step 1.",
+        "incomplete": "Upload all required documents before continuing.",
         "upload": "Upload",
         "uploading": "Uploading…",
         "uploadSuccess": "Document uploaded successfully",
         "acceptedFormats": "PDF, JPEG, or PNG — 10 MB max."
       },
       "complete": {
-        "title": "Account created — verification in progress",
-        "description": "Your account has been created. A confirmation email has been sent if not already done.",
+        "title": "Account created",
+        "emailLead": "Check your inbox — We sent a confirmation link to {email}. You must confirm your email before you can sign in.",
+        "emailLeadNoEmail": "Check your inbox — We sent a confirmation link. You must confirm your email before you can sign in.",
         "reviewNote": "KYC document review typically takes a few business days. You will be able to post listings or submit offers once your account is approved.",
         "goToDashboard": "Go to dashboard"
       }
@@ -504,6 +506,9 @@
       "openDrawer": "Open menu",
       "closeDrawer": "Close menu",
       "logout": "Log out",
+      "profile": "Profile",
+      "dashboard": "Dashboard",
+      "userMenu": "User menu",
       "notifications": "Notifications"
     },
     "commandPalette": {

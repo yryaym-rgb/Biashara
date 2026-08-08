@@ -8,7 +8,12 @@ import { kycUploadSchema, kycReviewSchema } from '@/lib/validators/kyc';
 import {
   getRequiredKycDocuments,
   hasAllRequiredKycDocuments,
+  hasSubmittedAllRequiredKycDocuments,
 } from '@/lib/constants/kyc-requirements';
+import {
+  getRegistrationContext,
+} from '@/lib/auth/registration';
+import { getRegistrationUserEmail } from '@/actions/auth';
 import { sendTransactionalEmail } from '@/lib/email';
 import type { Database } from '@/types/database.types';
 
@@ -16,6 +21,35 @@ type KycDocumentType = Database['public']['Enums']['kyc_document_type'];
 
 const ALLOWED_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png'] as const;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+export async function getSubmittedKycDocumentTypesForUser(
+  userId: string,
+): Promise<KycDocumentType[]> {
+  const profile = await getProfile();
+  if (profile?.id === userId) {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from('kyc_documents')
+      .select('type')
+      .eq('user_id', userId);
+
+    if (!error && data) {
+      return data.map((row) => row.type as KycDocumentType);
+    }
+  }
+
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from('kyc_documents')
+    .select('type')
+    .eq('user_id', userId);
+
+  if (error || !data) {
+    return [];
+  }
+
+  return data.map((row) => row.type as KycDocumentType);
+}
 
 export async function uploadKycDocument(input: unknown) {
   const profile = requireAuth(await getProfile());
@@ -195,4 +229,38 @@ export async function reviewKycDocument(input: unknown) {
 
 export async function getKycRequirementsForRole(role: Database['public']['Enums']['user_role']) {
   return getRequiredKycDocuments(role);
+}
+
+export async function getRegistrationKycStatus() {
+  const context = await getRegistrationContext();
+  if (!context) {
+    return { error: 'noContext' as const };
+  }
+
+  const submittedTypes = await getSubmittedKycDocumentTypesForUser(context.userId);
+  const complete = hasSubmittedAllRequiredKycDocuments(context.role, submittedTypes);
+  const email = await getRegistrationUserEmail(context.userId);
+
+  return {
+    data: {
+      userId: context.userId,
+      role: context.role,
+      submittedTypes,
+      complete,
+      email,
+    },
+  };
+}
+
+export async function verifyRegistrationKycComplete() {
+  const result = await getRegistrationKycStatus();
+  if (result.error) {
+    return { error: result.error };
+  }
+
+  if (!result.data?.complete) {
+    return { error: 'kycIncomplete' as const };
+  }
+
+  return { data: result.data };
 }

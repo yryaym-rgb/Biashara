@@ -10,6 +10,7 @@ import type { Database } from '@/types/database.types';
 export interface PlatformLayoutClientProps {
   children: React.ReactNode;
   displayName: string;
+  companyName: string | null;
   email: string | null;
   role: Database['public']['Enums']['user_role'];
   locale: string;
@@ -21,6 +22,7 @@ export interface PlatformLayoutClientProps {
 export function PlatformLayoutClient({
   children,
   displayName,
+  companyName,
   email,
   role,
   locale,
@@ -38,6 +40,7 @@ export function PlatformLayoutClient({
     <PlatformShell
       pageTitle={pageTitle}
       displayName={displayName}
+      companyName={companyName}
       email={email}
       role={role}
       locale={locale}

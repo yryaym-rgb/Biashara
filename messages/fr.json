@@ -114,14 +114,16 @@
       "kyc": {
         "description": "Téléversez les documents requis pour votre type de compte. Nos équipes les examineront avant d'activer vos droits de publication.",
         "sessionExpired": "Votre session d'inscription a expiré. Recommencez depuis l'étape 1.",
+        "incomplete": "Téléversez tous les documents requis avant de continuer.",
         "upload": "Téléverser",
         "uploading": "Téléversement en cours…",
         "uploadSuccess": "Document téléversé avec succès",
         "acceptedFormats": "PDF, JPEG ou PNG — 10 Mo max."
       },
       "complete": {
-        "title": "Compte créé — vérification en cours",
-        "description": "Votre compte a été créé. Un e-mail de confirmation vous a été envoyé si ce n'est pas déjà fait.",
+        "title": "Compte créé",
+        "emailLead": "Vérifiez votre boîte e-mail — Nous avons envoyé un lien de confirmation à {email}. Vous devez confirmer votre e-mail avant de pouvoir vous connecter.",
+        "emailLeadNoEmail": "Vérifiez votre boîte e-mail — Nous avons envoyé un lien de confirmation. Vous devez confirmer votre e-mail avant de pouvoir vous connecter.",
         "reviewNote": "L'examen de vos documents KYC prend généralement quelques jours ouvrables. Vous pourrez publier des annonces ou soumettre des offres une fois votre compte approuvé.",
         "goToDashboard": "Aller au tableau de bord"
       }
@@ -503,7 +505,10 @@
       "sidebarLabel": "Navigation plateforme",
       "openDrawer": "Ouvrir le menu",
       "closeDrawer": "Fermer le menu",
-      "logout": "Se déconnecter",
+      "logout": "Déconnexion",
+      "profile": "Profil",
+      "dashboard": "Tableau de bord",
+      "userMenu": "Menu utilisateur",
       "notifications": "Notifications"
     },
     "commandPalette": {
