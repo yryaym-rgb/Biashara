@@ -398,3 +398,251 @@ export async function getDashboardRecentActivity(
       timestamp: pickActivityTimestamp(candidate),
     }));
 }
+
+export interface SalesVolumePoint {
+  date: string;
+  volume: number;
+}
+
+const SALES_CHART_WINDOW_DAYS = 30;
+
+function salesChartCutoff(): string {
+  const cutoff = new Date();
+  cutoff.setUTCDate(cutoff.getUTCDate() - SALES_CHART_WINDOW_DAYS);
+  return cutoff.toISOString();
+}
+
+export async function getSellerSalesVolumeByDay(
+  sellerId: string,
+): Promise<SalesVolumePoint[]> {
+  const supabase = await createClient();
+  const cutoff = salesChartCutoff();
+
+  const { data, error } = await supabase
+    .from('orders')
+    .select('created_at, price_amount, quantity')
+    .eq('seller_id', sellerId)
+    .gte('created_at', cutoff)
+    .not('status', 'in', '(cancelled,disputed)')
+    .order('created_at', { ascending: true });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  const byDay = new Map<string, number>();
+
+  for (const order of data ?? []) {
+    const day = order.created_at.slice(0, 10);
+    const amount = Number(order.price_amount) * Number(order.quantity);
+    byDay.set(day, (byDay.get(day) ?? 0) + amount);
+  }
+
+  return Array.from(byDay.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([date, volume]) => ({ date, volume }));
+}
+
+export interface DashboardRecentRow {
+  id: string;
+  kind: 'order' | 'offer';
+  mineral: string;
+  listingTitle: string;
+  counterpartName: string;
+  amount: number;
+  currency: string;
+  unit: string;
+  quantity: number;
+  status: string;
+  timestamp: string;
+  orderId?: string;
+}
+
+export async function getDashboardRecentOrders(
+  userId: string,
+  limit = 8,
+): Promise<DashboardRecentRow[]> {
+  const supabase = await createClient();
+
+  const [buyerOrdersRes, sellerOrdersRes] = await Promise.all([
+    supabase
+      .from('orders')
+      .select(
+        `
+          id,
+          status,
+          price_amount,
+          quantity,
+          currency,
+          created_at,
+          buyer:profiles!orders_buyer_id_fkey(company_name),
+          seller:profiles!orders_seller_id_fkey(company_name),
+          listing:listings(title, mineral, unit)
+        `,
+      )
+      .eq('buyer_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(limit),
+    supabase
+      .from('orders')
+      .select(
+        `
+          id,
+          status,
+          price_amount,
+          quantity,
+          currency,
+          created_at,
+          buyer:profiles!orders_buyer_id_fkey(company_name),
+          seller:profiles!orders_seller_id_fkey(company_name),
+          listing:listings(title, mineral, unit)
+        `,
+      )
+      .eq('seller_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(limit),
+  ]);
+
+  if (buyerOrdersRes.error) {
+    throw new Error(buyerOrdersRes.error.message);
+  }
+  if (sellerOrdersRes.error) {
+    throw new Error(sellerOrdersRes.error.message);
+  }
+
+  const orderRows: DashboardRecentRow[] = [];
+
+  const pushOrder = (
+    row: NonNullable<typeof buyerOrdersRes.data>[number],
+    role: 'buyer' | 'seller',
+  ) => {
+    const listing = Array.isArray(row.listing) ? row.listing[0] : row.listing;
+    const buyer = Array.isArray(row.buyer) ? row.buyer[0] : row.buyer;
+    const seller = Array.isArray(row.seller) ? row.seller[0] : row.seller;
+    const counterpart =
+      role === 'buyer'
+        ? seller?.company_name?.trim() || ''
+        : buyer?.company_name?.trim() || '';
+
+    orderRows.push({
+      id: row.id,
+      kind: 'order',
+      mineral: listing?.mineral ?? '',
+      listingTitle: listing?.title ?? '',
+      counterpartName: counterpart,
+      amount: Number(row.price_amount) * Number(row.quantity),
+      currency: row.currency,
+      unit: listing?.unit ?? 'MT',
+      quantity: Number(row.quantity),
+      status: row.status,
+      timestamp: row.created_at,
+      orderId: row.id,
+    });
+  };
+
+  for (const row of buyerOrdersRes.data ?? []) {
+    pushOrder(row, 'buyer');
+  }
+  for (const row of sellerOrdersRes.data ?? []) {
+    pushOrder(row, 'seller');
+  }
+
+  const dedupedOrders = Array.from(
+    new Map(orderRows.map((row) => [row.id, row])).values(),
+  )
+    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+    .slice(0, limit);
+
+  if (dedupedOrders.length > 0) {
+    return dedupedOrders;
+  }
+
+  const [buyerOffersRes, sellerOffersRes] = await Promise.all([
+    supabase
+      .from('offers')
+      .select(
+        `
+          id,
+          status,
+          offered_price,
+          quantity,
+          created_at,
+          listing:listings(title, mineral, unit, price_currency, seller:profiles!listings_seller_id_fkey(company_name))
+        `,
+      )
+      .eq('buyer_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(limit),
+    supabase
+      .from('offers')
+      .select(
+        `
+          id,
+          status,
+          offered_price,
+          quantity,
+          created_at,
+          buyer:profiles!offers_buyer_id_fkey(company_name),
+          listing:listings!inner(title, mineral, unit, price_currency, seller_id)
+        `,
+      )
+      .eq('listing.seller_id', userId)
+      .order('created_at', { ascending: false })
+      .limit(limit),
+  ]);
+
+  if (buyerOffersRes.error) {
+    throw new Error(buyerOffersRes.error.message);
+  }
+  if (sellerOffersRes.error) {
+    throw new Error(sellerOffersRes.error.message);
+  }
+
+  const offerRows: DashboardRecentRow[] = [];
+
+  for (const row of buyerOffersRes.data ?? []) {
+    const listing = Array.isArray(row.listing) ? row.listing[0] : row.listing;
+    const seller = listing?.seller
+      ? Array.isArray(listing.seller)
+        ? listing.seller[0]
+        : listing.seller
+      : null;
+
+    offerRows.push({
+      id: row.id,
+      kind: 'offer',
+      mineral: listing?.mineral ?? '',
+      listingTitle: listing?.title ?? '',
+      counterpartName: seller?.company_name?.trim() || '',
+      amount: Number(row.offered_price) * Number(row.quantity),
+      currency: listing?.price_currency ?? 'USD',
+      unit: listing?.unit ?? 'MT',
+      quantity: Number(row.quantity),
+      status: row.status,
+      timestamp: row.created_at,
+    });
+  }
+
+  for (const row of sellerOffersRes.data ?? []) {
+    const listing = Array.isArray(row.listing) ? row.listing[0] : row.listing;
+    const buyer = Array.isArray(row.buyer) ? row.buyer[0] : row.buyer;
+
+    offerRows.push({
+      id: row.id,
+      kind: 'offer',
+      mineral: listing?.mineral ?? '',
+      listingTitle: listing?.title ?? '',
+      counterpartName: buyer?.company_name?.trim() || '',
+      amount: Number(row.offered_price) * Number(row.quantity),
+      currency: listing?.price_currency ?? 'USD',
+      unit: listing?.unit ?? 'MT',
+      quantity: Number(row.quantity),
+      status: row.status,
+      timestamp: row.created_at,
+    });
+  }
+
+  return Array.from(new Map(offerRows.map((row) => [row.id, row])).values())
+    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+    .slice(0, limit);
+}

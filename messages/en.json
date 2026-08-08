@@ -452,6 +452,21 @@
     "settings": { "title": "Settings" }
   },
   "platform": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "marketplace": "Marketplace",
+      "offers": "My offers",
+      "listings": "My listings",
+      "orders": "My orders",
+      "settings": "Settings"
+    },
+    "shell": {
+      "sidebarLabel": "Platform navigation",
+      "openDrawer": "Open menu",
+      "closeDrawer": "Close menu",
+      "logout": "Log out",
+      "notifications": "Notifications"
+    },
     "dashboard": {
       "eyebrow": "User space",
       "title": "Dashboard",
@@ -491,6 +506,18 @@
         "order": "Order for “{title}” — {status}",
         "listing": "Listing “{title}” — {status}",
         "untitled": "Untitled"
+      },
+      "salesOverview": "Sales overview",
+      "salesChartEmpty": "Your statistics will appear here after your first sales.",
+      "recentOrders": "Recent orders",
+      "recentOrdersEmpty": "No recent orders yet.",
+      "recentOffersFallback": "Recent offers",
+      "table": {
+        "mineral": "Mineral",
+        "counterpart": "Counterparty",
+        "amount": "Amount",
+        "status": "Status",
+        "date": "Date"
       }
     },
     "marketplace": {
@@ -582,13 +609,35 @@
       }
     },
     "offers": {
-      "title": "Offers",
+      "title": "My offers",
+      "tabs": {
+        "sent": "Sent",
+        "received": "Received"
+      },
+      "emptySent": "You have not sent any offers yet.",
+      "emptyReceived": "You have not received any offers yet.",
+      "emptyCta": "Browse the marketplace",
       "empty": "No active offers. Browse the marketplace to submit a proposal.",
       "pending": "Pending",
       "countered": "Countered",
       "accepted": "Accepted",
       "declined": "Declined",
-      "expired": "Expired"
+      "expired": "Expired",
+      "waitingSeller": "Awaiting seller response",
+      "waitingBuyer": "Awaiting buyer response",
+      "accept": "Accept",
+      "decline": "Decline",
+      "counter": "Counter offer",
+      "viewOrder": "View order",
+      "counterpartyUnknown": "Verified user",
+      "submittedOn": "Submitted on {date}",
+      "chainLabel": "Negotiation history",
+      "counterForm": {
+        "quantity": "Quantity",
+        "price": "Offered price (USD)",
+        "message": "Message (optional)",
+        "submit": "Send counter offer"
+      }
     },
     "orders": {
       "title": "Orders",

@@ -4,6 +4,8 @@ import type { StatusChipVariant } from '@/components/ui/badge';
 type KycStatus = Database['public']['Enums']['kyc_status'];
 type UserRole = Database['public']['Enums']['user_role'];
 type ListingStatus = Database['public']['Enums']['listing_status'];
+type OfferStatus = Database['public']['Enums']['offer_status'];
+type OrderStatus = Database['public']['Enums']['order_status'];
 
 export function kycStatusVariant(status: KycStatus): StatusChipVariant {
   switch (status) {
@@ -41,6 +43,38 @@ export function listingStatusVariant(status: ListingStatus): StatusChipVariant {
     case 'pending_review':
       return 'warning';
     case 'sold':
+      return 'info';
+    default:
+      return 'neutral';
+  }
+}
+
+export function offerStatusVariant(status: OfferStatus): StatusChipVariant {
+  switch (status) {
+    case 'accepted':
+      return 'success';
+    case 'declined':
+    case 'expired':
+      return 'danger';
+    case 'pending':
+      return 'warning';
+    case 'countered':
+      return 'info';
+    default:
+      return 'neutral';
+  }
+}
+
+export function orderStatusVariant(status: OrderStatus): StatusChipVariant {
+  switch (status) {
+    case 'delivered':
+      return 'success';
+    case 'cancelled':
+    case 'disputed':
+      return 'danger';
+    case 'confirmed':
+    case 'processing':
+    case 'in_transit':
       return 'info';
     default:
       return 'neutral';
