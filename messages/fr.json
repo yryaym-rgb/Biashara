@@ -453,12 +453,45 @@
   },
   "platform": {
     "dashboard": {
-      "welcome": "Bienvenue",
-      "totalOrders": "Commandes totales",
-      "activeContracts": "Contrats actifs",
-      "totalSpent": "Montant total engagé",
-      "shipments": "Expéditions en cours",
-      "emptyOrders": "Aucune commande pour le moment. Parcourez la place de marché pour trouver des offres."
+      "eyebrow": "Espace utilisateur",
+      "title": "Tableau de bord",
+      "recentActivity": "Activité récente",
+      "noActivity": "Aucune activité pour le moment.",
+      "kycBanner": {
+        "pending": "Votre vérification KYC est en cours d'examen.",
+        "rejected": "Votre vérification KYC nécessite votre attention.",
+        "none": "Complétez votre vérification KYC pour publier des annonces et faire des offres.",
+        "cta": "Voir le statut des documents"
+      },
+      "stats": {
+        "activeListings": "Mes annonces actives",
+        "pendingOffersReceived": "Offres reçues en attente",
+        "ordersInProgress": "Commandes en cours",
+        "monthlyRevenue": "Chiffre d'affaires ce mois",
+        "pendingOffersSent": "Offres envoyées en attente",
+        "recentlyViewedListings": "Annonces consultées récemment"
+      },
+      "quickLinks": {
+        "marketplace": "Place de marché",
+        "offers": "Mes offres",
+        "listings": "Mes annonces",
+        "settings": "Paramètres"
+      },
+      "welcomePanel": {
+        "title": "Bienvenue sur Biashara",
+        "sellerApproved": "Votre compte est prêt. Publiez votre première annonce pour rejoindre la place de marché.",
+        "sellerKyc": "Complétez votre vérification KYC, puis publiez votre première annonce pour rejoindre la place de marché.",
+        "buyerApproved": "Explorez la place de marché pour découvrir des minerais vérifiés et soumettre vos premières offres.",
+        "buyerKyc": "Explorez la place de marché pendant que votre vérification KYC est en cours. Vous pourrez faire des offres une fois approuvé.",
+        "ctaPostListing": "Publier une annonce",
+        "ctaExplore": "Explorer la place de marché"
+      },
+      "activity": {
+        "offer": "Offre sur « {title} » — {status}",
+        "order": "Commande pour « {title} » — {status}",
+        "listing": "Annonce « {title} » — {status}",
+        "untitled": "Sans titre"
+      }
     },
     "marketplace": {
       "title": "Place de marché",

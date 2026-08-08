@@ -1,0 +1,400 @@
+import 'server-only';
+
+import { createClient } from '@/lib/supabase/server';
+import type { Database } from '@/types/database.types';
+import type { DashboardActivityCounts } from '@/lib/platform/dashboard';
+
+const IN_PROGRESS_ORDER_STATUSES: Database['public']['Enums']['order_status'][] = [
+  'confirmed',
+  'processing',
+  'in_transit',
+];
+
+const RECENT_LISTING_WINDOW_DAYS = 30;
+
+type OfferStatus = Database['public']['Enums']['offer_status'];
+type OrderStatus = Database['public']['Enums']['order_status'];
+type ListingStatus = Database['public']['Enums']['listing_status'];
+
+export interface SellerDashboardStats {
+  activeListings: number;
+  pendingOffersReceived: number;
+  ordersInProgress: number;
+  monthlyRevenue: number;
+}
+
+export interface BuyerDashboardStats {
+  pendingOffersSent: number;
+  ordersInProgress: number;
+  recentlyViewedListings: number;
+}
+
+export interface DashboardActivityEvent {
+  id: string;
+  kind: 'offer' | 'order' | 'listing';
+  entityId: string;
+  listingTitle: string;
+  status: string;
+  timestamp: string;
+}
+
+function startOfCurrentMonth(): string {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString();
+}
+
+function recentListingCutoff(): string {
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - RECENT_LISTING_WINDOW_DAYS);
+  return cutoff.toISOString();
+}
+
+export async function getSellerDashboardStats(userId: string): Promise<SellerDashboardStats> {
+  const supabase = await createClient();
+  const monthStart = startOfCurrentMonth();
+
+  const [activeListingsRes, pendingOffersRes, ordersInProgressRes, monthlyOrdersRes] =
+    await Promise.all([
+      supabase
+        .from('listings')
+        .select('id', { count: 'exact', head: true })
+        .eq('seller_id', userId)
+        .eq('status', 'active'),
+      supabase
+        .from('offers')
+        .select('id, listings!inner(seller_id)', { count: 'exact', head: true })
+        .eq('listings.seller_id', userId)
+        .eq('status', 'pending'),
+      supabase
+        .from('orders')
+        .select('id', { count: 'exact', head: true })
+        .eq('seller_id', userId)
+        .in('status', IN_PROGRESS_ORDER_STATUSES),
+      supabase
+        .from('orders')
+        .select('price_amount, quantity')
+        .eq('seller_id', userId)
+        .gte('created_at', monthStart)
+        .not('status', 'in', '(cancelled,disputed)'),
+    ]);
+
+  if (activeListingsRes.error) {
+    throw new Error(activeListingsRes.error.message);
+  }
+  if (pendingOffersRes.error) {
+    throw new Error(pendingOffersRes.error.message);
+  }
+  if (ordersInProgressRes.error) {
+    throw new Error(ordersInProgressRes.error.message);
+  }
+  if (monthlyOrdersRes.error) {
+    throw new Error(monthlyOrdersRes.error.message);
+  }
+
+  const monthlyRevenue = (monthlyOrdersRes.data ?? []).reduce(
+    (sum, order) => sum + Number(order.price_amount) * Number(order.quantity),
+    0,
+  );
+
+  return {
+    activeListings: activeListingsRes.count ?? 0,
+    pendingOffersReceived: pendingOffersRes.count ?? 0,
+    ordersInProgress: ordersInProgressRes.count ?? 0,
+    monthlyRevenue,
+  };
+}
+
+export async function getBuyerDashboardStats(userId: string): Promise<BuyerDashboardStats> {
+  const supabase = await createClient();
+  const recentCutoff = recentListingCutoff();
+
+  const [pendingOffersRes, ordersInProgressRes, offerListingsRes, conversationListingsRes] =
+    await Promise.all([
+      supabase
+        .from('offers')
+        .select('id', { count: 'exact', head: true })
+        .eq('buyer_id', userId)
+        .eq('status', 'pending'),
+      supabase
+        .from('orders')
+        .select('id', { count: 'exact', head: true })
+        .eq('buyer_id', userId)
+        .in('status', IN_PROGRESS_ORDER_STATUSES),
+      supabase
+        .from('offers')
+        .select('listing_id')
+        .eq('buyer_id', userId)
+        .gte('created_at', recentCutoff),
+      supabase
+        .from('conversations')
+        .select('listing_id')
+        .eq('buyer_id', userId)
+        .gte('created_at', recentCutoff),
+    ]);
+
+  if (pendingOffersRes.error) {
+    throw new Error(pendingOffersRes.error.message);
+  }
+  if (ordersInProgressRes.error) {
+    throw new Error(ordersInProgressRes.error.message);
+  }
+  if (offerListingsRes.error) {
+    throw new Error(offerListingsRes.error.message);
+  }
+  if (conversationListingsRes.error) {
+    throw new Error(conversationListingsRes.error.message);
+  }
+
+  const recentListingIds = new Set<string>();
+  for (const row of offerListingsRes.data ?? []) {
+    recentListingIds.add(row.listing_id);
+  }
+  for (const row of conversationListingsRes.data ?? []) {
+    recentListingIds.add(row.listing_id);
+  }
+
+  return {
+    pendingOffersSent: pendingOffersRes.count ?? 0,
+    ordersInProgress: ordersInProgressRes.count ?? 0,
+    recentlyViewedListings: recentListingIds.size,
+  };
+}
+
+export async function getDashboardActivityCounts(userId: string): Promise<DashboardActivityCounts> {
+  const supabase = await createClient();
+
+  const [listingsRes, buyerOffersRes, sellerOffersRes, buyerOrdersRes, sellerOrdersRes, conversationsRes] =
+    await Promise.all([
+      supabase
+        .from('listings')
+        .select('id', { count: 'exact', head: true })
+        .eq('seller_id', userId),
+      supabase
+        .from('offers')
+        .select('id', { count: 'exact', head: true })
+        .eq('buyer_id', userId),
+      supabase
+        .from('offers')
+        .select('id, listings!inner(seller_id)', { count: 'exact', head: true })
+        .eq('listings.seller_id', userId),
+      supabase
+        .from('orders')
+        .select('id', { count: 'exact', head: true })
+        .eq('buyer_id', userId),
+      supabase
+        .from('orders')
+        .select('id', { count: 'exact', head: true })
+        .eq('seller_id', userId),
+      supabase
+        .from('conversations')
+        .select('id', { count: 'exact', head: true })
+        .or(`buyer_id.eq.${userId},seller_id.eq.${userId}`),
+    ]);
+
+  const errors = [
+    listingsRes.error,
+    buyerOffersRes.error,
+    sellerOffersRes.error,
+    buyerOrdersRes.error,
+    sellerOrdersRes.error,
+    conversationsRes.error,
+  ].filter(Boolean);
+
+  if (errors.length > 0) {
+    throw new Error(errors[0]!.message);
+  }
+
+  return {
+    listings: listingsRes.count ?? 0,
+    offers: (buyerOffersRes.count ?? 0) + (sellerOffersRes.count ?? 0),
+    orders: (buyerOrdersRes.count ?? 0) + (sellerOrdersRes.count ?? 0),
+    conversations: conversationsRes.count ?? 0,
+  };
+}
+
+interface ActivityCandidate {
+  id: string;
+  kind: 'offer' | 'order' | 'listing';
+  entityId: string;
+  listingTitle: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+function pickActivityTimestamp(candidate: ActivityCandidate): string {
+  return candidate.updatedAt > candidate.createdAt ? candidate.updatedAt : candidate.createdAt;
+}
+
+export async function getDashboardRecentActivity(
+  userId: string,
+  limit = 10,
+): Promise<DashboardActivityEvent[]> {
+  const supabase = await createClient();
+
+  const [buyerOffersRes, sellerOffersRes, buyerOrdersRes, sellerOrdersRes, listingsRes] =
+    await Promise.all([
+      supabase
+        .from('offers')
+        .select(
+          `
+            id,
+            status,
+            created_at,
+            updated_at,
+            listing:listings(title)
+          `,
+        )
+        .eq('buyer_id', userId)
+        .order('updated_at', { ascending: false })
+        .limit(limit),
+      supabase
+        .from('offers')
+        .select(
+          `
+            id,
+            status,
+            created_at,
+            updated_at,
+            listing:listings!inner(title, seller_id)
+          `,
+        )
+        .eq('listing.seller_id', userId)
+        .order('updated_at', { ascending: false })
+        .limit(limit),
+      supabase
+        .from('orders')
+        .select(
+          `
+            id,
+            status,
+            created_at,
+            updated_at,
+            listing:listings(title)
+          `,
+        )
+        .eq('buyer_id', userId)
+        .order('updated_at', { ascending: false })
+        .limit(limit),
+      supabase
+        .from('orders')
+        .select(
+          `
+            id,
+            status,
+            created_at,
+            updated_at,
+            listing:listings(title)
+          `,
+        )
+        .eq('seller_id', userId)
+        .order('updated_at', { ascending: false })
+        .limit(limit),
+      supabase
+        .from('listings')
+        .select('id, title, status, created_at, updated_at')
+        .eq('seller_id', userId)
+        .neq('status', 'draft')
+        .order('updated_at', { ascending: false })
+        .limit(limit),
+    ]);
+
+  const errors = [
+    buyerOffersRes.error,
+    sellerOffersRes.error,
+    buyerOrdersRes.error,
+    sellerOrdersRes.error,
+    listingsRes.error,
+  ].filter(Boolean);
+
+  if (errors.length > 0) {
+    throw new Error(errors[0]!.message);
+  }
+
+  const candidates: ActivityCandidate[] = [];
+
+  const pushOffer = (row: {
+    id: string;
+    status: OfferStatus;
+    created_at: string;
+    updated_at: string;
+    listing: { title: string } | { title: string }[] | null;
+  }) => {
+    const listing = Array.isArray(row.listing) ? row.listing[0] : row.listing;
+    candidates.push({
+      id: `offer-${row.id}`,
+      kind: 'offer',
+      entityId: row.id,
+      listingTitle: listing?.title ?? '',
+      status: row.status,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    });
+  };
+
+  const pushOrder = (row: {
+    id: string;
+    status: OrderStatus;
+    created_at: string;
+    updated_at: string;
+    listing: { title: string } | { title: string }[] | null;
+  }) => {
+    const listing = Array.isArray(row.listing) ? row.listing[0] : row.listing;
+    candidates.push({
+      id: `order-${row.id}`,
+      kind: 'order',
+      entityId: row.id,
+      listingTitle: listing?.title ?? '',
+      status: row.status,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    });
+  };
+
+  for (const row of buyerOffersRes.data ?? []) {
+    pushOffer(row);
+  }
+  for (const row of sellerOffersRes.data ?? []) {
+    pushOffer(row);
+  }
+  for (const row of buyerOrdersRes.data ?? []) {
+    pushOrder(row);
+  }
+  for (const row of sellerOrdersRes.data ?? []) {
+    pushOrder(row);
+  }
+  for (const row of listingsRes.data ?? []) {
+    candidates.push({
+      id: `listing-${row.id}`,
+      kind: 'listing',
+      entityId: row.id,
+      listingTitle: row.title,
+      status: row.status as ListingStatus,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    });
+  }
+
+  const deduped = new Map<string, ActivityCandidate>();
+  for (const candidate of candidates) {
+    const existing = deduped.get(candidate.id);
+    if (!existing || pickActivityTimestamp(candidate) > pickActivityTimestamp(existing)) {
+      deduped.set(candidate.id, candidate);
+    }
+  }
+
+  return Array.from(deduped.values())
+    .sort(
+      (a, b) =>
+        new Date(pickActivityTimestamp(b)).getTime() - new Date(pickActivityTimestamp(a)).getTime(),
+    )
+    .slice(0, limit)
+    .map((candidate) => ({
+      id: candidate.id,
+      kind: candidate.kind,
+      entityId: candidate.entityId,
+      listingTitle: candidate.listingTitle,
+      status: candidate.status,
+      timestamp: pickActivityTimestamp(candidate),
+    }));
+}
