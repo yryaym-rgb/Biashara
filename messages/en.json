@@ -453,12 +453,45 @@
   },
   "platform": {
     "dashboard": {
-      "welcome": "Welcome",
-      "totalOrders": "Total orders",
-      "activeContracts": "Active contracts",
-      "totalSpent": "Total amount committed",
-      "shipments": "Shipments in progress",
-      "emptyOrders": "No orders yet. Browse the marketplace to find offers."
+      "eyebrow": "User space",
+      "title": "Dashboard",
+      "recentActivity": "Recent activity",
+      "noActivity": "No activity yet.",
+      "kycBanner": {
+        "pending": "Your KYC verification is under review.",
+        "rejected": "Your KYC verification needs your attention.",
+        "none": "Complete your KYC verification to publish listings and make offers.",
+        "cta": "Check document status"
+      },
+      "stats": {
+        "activeListings": "My active listings",
+        "pendingOffersReceived": "Pending offers received",
+        "ordersInProgress": "Orders in progress",
+        "monthlyRevenue": "Revenue this month",
+        "pendingOffersSent": "Pending offers sent",
+        "recentlyViewedListings": "Recently viewed listings"
+      },
+      "quickLinks": {
+        "marketplace": "Marketplace",
+        "offers": "My offers",
+        "listings": "My listings",
+        "settings": "Settings"
+      },
+      "welcomePanel": {
+        "title": "Welcome to Biashara",
+        "sellerApproved": "Your account is ready. Post your first listing to join the marketplace.",
+        "sellerKyc": "Complete your KYC verification, then post your first listing to join the marketplace.",
+        "buyerApproved": "Explore the marketplace to discover verified minerals and submit your first offers.",
+        "buyerKyc": "Explore the marketplace while your KYC verification is in progress. You can make offers once approved.",
+        "ctaPostListing": "Post a listing",
+        "ctaExplore": "Explore marketplace"
+      },
+      "activity": {
+        "offer": "Offer on “{title}” — {status}",
+        "order": "Order for “{title}” — {status}",
+        "listing": "Listing “{title}” — {status}",
+        "untitled": "Untitled"
+      }
     },
     "marketplace": {
       "title": "Marketplace",
