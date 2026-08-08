@@ -744,7 +744,56 @@
       "kycPending": "Vérification en cours — nos équipes examinent vos documents",
       "kycApproved": "Compte vérifié",
       "kycRejected": "Vérification refusée — consultez les motifs et soumettez à nouveau vos documents",
-      "myListings": "Mes annonces"
+      "myListings": "Mes annonces",
+      "tabs": {
+        "profile": "Profil",
+        "security": "Sécurité",
+        "kyc": "Vérification KYC",
+        "listings": "Mes annonces"
+      },
+      "profileForm": {
+        "title": "Informations du profil",
+        "companyName": "Nom de l'entreprise",
+        "country": "Pays",
+        "phone": "Téléphone",
+        "phoneHint": "Format international recommandé (ex. +243…)",
+        "email": "Adresse e-mail",
+        "role": "Type de compte",
+        "memberSince": "Membre depuis",
+        "emailReadOnlyHint": "La modification de l'adresse e-mail n'est pas disponible ici.",
+        "submit": "Enregistrer les modifications",
+        "success": "Profil mis à jour avec succès.",
+        "error": "La mise à jour du profil a échoué. Réessayez."
+      },
+      "security": {
+        "title": "Mot de passe",
+        "description": "Choisissez un mot de passe d'au moins 12 caractères.",
+        "newPassword": "Nouveau mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "submit": "Mettre à jour le mot de passe",
+        "success": "Mot de passe mis à jour avec succès.",
+        "error": "La mise à jour du mot de passe a échoué. Réessayez.",
+        "passwordMismatch": "Les mots de passe ne correspondent pas"
+      },
+      "countries": {
+        "CD": "République démocratique du Congo",
+        "CG": "République du Congo",
+        "AO": "Angola",
+        "RW": "Rwanda",
+        "BI": "Burundi",
+        "UG": "Ouganda",
+        "TZ": "Tanzanie",
+        "ZM": "Zambie",
+        "CF": "République centrafricaine",
+        "GA": "Gabon",
+        "CM": "Cameroun",
+        "KE": "Kenya",
+        "ZA": "Afrique du Sud",
+        "BE": "Belgique",
+        "FR": "France",
+        "US": "États-Unis",
+        "CN": "Chine"
+      }
     }
   },
   "admin": {
