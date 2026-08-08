@@ -141,6 +141,22 @@ export async function getListingById(listingId: string): Promise<MarketplaceList
   const isAdmin = profile?.role === 'admin';
 
   if (listing.status !== 'active' && !isOwner && !isAdmin) {
+    if (listing.status === 'sold' && profile) {
+      const { count, error: orderError } = await supabase
+        .from('orders')
+        .select('id', { count: 'exact', head: true })
+        .eq('listing_id', listingId)
+        .or(`buyer_id.eq.${profile.id},seller_id.eq.${profile.id}`);
+
+      if (orderError) {
+        throw new Error(orderError.message);
+      }
+
+      if ((count ?? 0) > 0) {
+        return listing;
+      }
+    }
+
     return null;
   }
 

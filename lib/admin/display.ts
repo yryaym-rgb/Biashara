@@ -69,12 +69,14 @@ export function orderStatusVariant(status: OrderStatus): StatusChipVariant {
   switch (status) {
     case 'delivered':
       return 'success';
-    case 'cancelled':
+    case 'in_transit':
+      return 'warning';
     case 'disputed':
       return 'danger';
+    case 'cancelled':
+      return 'neutral';
     case 'confirmed':
     case 'processing':
-    case 'in_transit':
       return 'info';
     default:
       return 'neutral';
