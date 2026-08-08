@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from '@/lib/i18n/navigation';
+import { useSearchParamValues } from '@/lib/hooks/use-search-param-values';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SettingsProfileForm } from '@/components/platform/settings-profile-form';
 import { SettingsPasswordForm } from '@/components/platform/settings-password-form';
@@ -10,9 +11,8 @@ import {
   SettingsListingsPanel,
 } from '@/components/platform/settings-kyc-listings-panels';
 import { CooperativeSitesForm } from '@/components/platform/cooperative-sites-form';
-import { cn } from '@/lib/utils/cn';
 import type { Database } from '@/types/database.types';
-import type { CooperativeSiteRow } from '@/lib/platform/lots';
+import type { CooperativeSiteRow } from '@/lib/platform/lots.types';
 
 type KycDocument = Database['public']['Tables']['kyc_documents']['Row'];
 type Listing = Database['public']['Tables']['listings']['Row'];
@@ -20,6 +20,17 @@ type KycStatus = Database['public']['Enums']['kyc_status'];
 type UserRole = Database['public']['Enums']['user_role'];
 
 export type SettingsTab = 'profile' | 'security' | 'kyc' | 'listings';
+
+function resolveActiveTab(
+  tabs: SettingsTab[],
+  tabParam: string | null,
+  initialTab: SettingsTab,
+): SettingsTab {
+  if (tabParam && tabs.includes(tabParam as SettingsTab)) {
+    return tabParam as SettingsTab;
+  }
+  return tabs.includes(initialTab) ? initialTab : 'profile';
+}
 
 export interface SettingsPageContentProps {
   locale: string;
@@ -57,12 +68,13 @@ export function SettingsPageContent({
   const t = useTranslations('platform.settings');
   const router = useRouter();
   const pathname = usePathname();
+  const { tab: tabParam } = useSearchParamValues(['tab']);
 
   const tabs: SettingsTab[] = showListingsTab
     ? ['profile', 'security', 'kyc', 'listings']
     : ['profile', 'security', 'kyc'];
 
-  const activeTab = tabs.includes(initialTab) ? initialTab : 'profile';
+  const activeTab = resolveActiveTab(tabs, tabParam ?? null, initialTab);
 
   function handleTabChange(value: string) {
     const params = new URLSearchParams();
@@ -96,35 +108,33 @@ export function SettingsPageContent({
         </TabsList>
       </Tabs>
 
-      <div className={cn(activeTab !== 'profile' && 'hidden')}>
-        <SettingsProfileForm
-          locale={locale}
-          email={email}
-          role={role}
-          memberSince={memberSince}
-          initialCompanyName={companyName}
-          initialCountry={country}
-          initialPhone={phone}
-        />
-        {showCooperativeSites ? (
-          <div className="mt-6">
-            <CooperativeSitesForm initialSites={cooperativeSites} />
-          </div>
-        ) : null}
-      </div>
-
-      <div className={cn(activeTab !== 'security' && 'hidden')}>
-        <SettingsPasswordForm />
-      </div>
-
-      <div className={cn(activeTab !== 'kyc' && 'hidden')}>
-        <SettingsKycPanel kycStatus={kycStatus} rejectedDocuments={rejectedDocuments} />
-      </div>
-
-      {showListingsTab ? (
-        <div className={cn(activeTab !== 'listings' && 'hidden')}>
-          <SettingsListingsPanel listings={sellerListings} />
+      {activeTab === 'profile' ? (
+        <div>
+          <SettingsProfileForm
+            locale={locale}
+            email={email}
+            role={role}
+            memberSince={memberSince}
+            initialCompanyName={companyName}
+            initialCountry={country}
+            initialPhone={phone}
+          />
+          {showCooperativeSites ? (
+            <div className="mt-6">
+              <CooperativeSitesForm initialSites={cooperativeSites} />
+            </div>
+          ) : null}
         </div>
+      ) : null}
+
+      {activeTab === 'security' ? <SettingsPasswordForm /> : null}
+
+      {activeTab === 'kyc' ? (
+        <SettingsKycPanel kycStatus={kycStatus} rejectedDocuments={rejectedDocuments} />
+      ) : null}
+
+      {showListingsTab && activeTab === 'listings' ? (
+        <SettingsListingsPanel listings={sellerListings} />
       ) : null}
     </div>
   );

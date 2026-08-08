@@ -19,7 +19,7 @@ interface PhotoEntry {
   previewUrl: string;
 }
 
-import type { UnlinkedLotOption } from '@/lib/platform/lots';
+import type { UnlinkedLotOption } from '@/lib/platform/lots.types';
 
 export interface ListingNewFormProps {
   availableLots?: UnlinkedLotOption[];
