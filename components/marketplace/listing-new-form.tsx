@@ -19,7 +19,17 @@ interface PhotoEntry {
   previewUrl: string;
 }
 
-export function ListingNewForm() {
+import type { UnlinkedLotOption } from '@/lib/platform/lots';
+
+export interface ListingNewFormProps {
+  availableLots?: UnlinkedLotOption[];
+  showLotSelect?: boolean;
+}
+
+export function ListingNewForm({
+  availableLots = [],
+  showLotSelect = false,
+}: ListingNewFormProps) {
   const t = useTranslations('platform.marketplace.new');
   const tMinerals = useTranslations('minerals');
   const tUnits = useTranslations('units');
@@ -38,6 +48,7 @@ export function ListingNewForm() {
   const [originProvince, setOriginProvince] = React.useState('');
   const [certInput, setCertInput] = React.useState('');
   const [certifications, setCertifications] = React.useState<string[]>([]);
+  const [lotId, setLotId] = React.useState('');
   const [photos, setPhotos] = React.useState<PhotoEntry[]>([]);
   const [fieldErrors, setFieldErrors] = React.useState<Record<string, string>>({});
   const [formError, setFormError] = React.useState<string | null>(null);
@@ -122,6 +133,7 @@ export function ListingNewForm() {
       priceCurrency: 'USD',
       originProvince,
       certifications,
+      lotId: lotId || undefined,
     };
 
     const parsed = listingCreateSchema.safeParse(input);
@@ -160,12 +172,13 @@ export function ListingNewForm() {
     if (priceAmount) formData.set('priceAmount', priceAmount);
     formData.set('originProvince', originProvince);
     formData.set('certifications', JSON.stringify(certifications));
+    if (lotId) formData.set('lotId', lotId);
     photos.forEach((photo) => formData.append('photos', photo.file));
 
     setLoading(true);
     try {
       const result = await createListingWithPhotos(formData);
-      if (result.error) {
+      if ('error' in result && result.error) {
         setFormError(tValidation('required'));
         return;
       }
@@ -203,6 +216,23 @@ export function ListingNewForm() {
           label: tMinerals(id),
         }))}
       />
+
+      {showLotSelect && availableLots.length > 0 ? (
+        <Select
+          label={t('linkedLot')}
+          value={lotId}
+          onChange={(event) => setLotId(event.target.value)}
+          hint={t('linkedLotHint')}
+          placeholder={t('linkedLotPlaceholder')}
+          options={[
+            { value: '', label: t('linkedLotNone') },
+            ...availableLots.map((lot) => ({
+              value: lot.id,
+              label: `${lot.lot_code} · ${tMinerals(lot.mineral as (typeof MINERAL_IDS)[number])}`,
+            })),
+          ]}
+        />
+      ) : null}
 
       <Input
         label={t('listingTitle')}

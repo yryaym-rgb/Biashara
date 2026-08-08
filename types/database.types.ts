@@ -104,6 +104,44 @@ export type Database = {
           },
         ];
       };
+      cooperative_sites: {
+        Row: {
+          id: string;
+          cooperative_id: string;
+          site_name: string;
+          zea_reference: string;
+          province: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          cooperative_id: string;
+          site_name: string;
+          zea_reference: string;
+          province: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          cooperative_id?: string;
+          site_name?: string;
+          zea_reference?: string;
+          province?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'cooperative_sites_cooperative_id_fkey';
+            columns: ['cooperative_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       conversations: {
         Row: {
           id: string;
@@ -358,7 +396,13 @@ export type Database = {
       lot_traceability: {
         Row: {
           id: string;
-          listing_id: string;
+          listing_id: string | null;
+          cooperative_id: string | null;
+          mineral: Database['public']['Enums']['mineral_type'] | null;
+          initial_weight_kg: number | null;
+          extraction_date: string | null;
+          notes: string | null;
+          site_id: string | null;
           lot_code: string;
           origin_mine: string | null;
           origin_province: string;
@@ -368,7 +412,13 @@ export type Database = {
         };
         Insert: {
           id?: string;
-          listing_id: string;
+          listing_id?: string | null;
+          cooperative_id?: string | null;
+          mineral?: Database['public']['Enums']['mineral_type'] | null;
+          initial_weight_kg?: number | null;
+          extraction_date?: string | null;
+          notes?: string | null;
+          site_id?: string | null;
           lot_code: string;
           origin_mine?: string | null;
           origin_province: string;
@@ -378,7 +428,13 @@ export type Database = {
         };
         Update: {
           id?: string;
-          listing_id?: string;
+          listing_id?: string | null;
+          cooperative_id?: string | null;
+          mineral?: Database['public']['Enums']['mineral_type'] | null;
+          initial_weight_kg?: number | null;
+          extraction_date?: string | null;
+          notes?: string | null;
+          site_id?: string | null;
           lot_code?: string;
           origin_mine?: string | null;
           origin_province?: string;
@@ -388,10 +444,24 @@ export type Database = {
         };
         Relationships: [
           {
+            foreignKeyName: 'lot_traceability_cooperative_id_fkey';
+            columns: ['cooperative_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+          {
             foreignKeyName: 'lot_traceability_listing_id_fkey';
             columns: ['listing_id'];
-            isOneToOne: true;
+            isOneToOne: false;
             referencedRelation: 'listings';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'lot_traceability_site_id_fkey';
+            columns: ['site_id'];
+            isOneToOne: false;
+            referencedRelation: 'cooperative_sites';
             referencedColumns: ['id'];
           },
         ];
@@ -771,8 +841,11 @@ export type Database = {
         Args: { p_mineral: Database['public']['Enums']['mineral_type'] };
         Returns: string;
       };
+      can_view_lot: { Args: { p_lot_id: string }; Returns: boolean };
       is_admin: { Args: Record<string, never>; Returns: boolean };
+      is_cooperative_owner: { Args: Record<string, never>; Returns: boolean };
       is_kyc_approved: { Args: Record<string, never>; Returns: boolean };
+      owns_lot: { Args: { p_lot_id: string }; Returns: boolean };
       current_user_role: {
         Args: Record<string, never>;
         Returns: Database['public']['Enums']['user_role'];

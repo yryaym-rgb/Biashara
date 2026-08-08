@@ -23,6 +23,10 @@ export type ListingPhotoRow = Pick<
 export type MarketplaceListingRow = Database['public']['Tables']['listings']['Row'] & {
   seller: ListingSellerProfile | null;
   listing_photos: ListingPhotoRow[];
+  lot_traceability: Pick<
+    Database['public']['Tables']['lot_traceability']['Row'],
+    'id' | 'lot_code'
+  > | null;
 };
 
 export interface MarketplaceListingsResult {
@@ -30,6 +34,37 @@ export interface MarketplaceListingsResult {
   total: number;
   page: number;
   pageSize: number;
+}
+
+type LotTraceabilitySummary = Pick<
+  Database['public']['Tables']['lot_traceability']['Row'],
+  'id' | 'lot_code'
+>;
+
+function normalizeLotTraceability(
+  value: LotTraceabilitySummary | LotTraceabilitySummary[] | null | undefined,
+): LotTraceabilitySummary | null {
+  if (!value) {
+    return null;
+  }
+
+  if (Array.isArray(value)) {
+    return value[0] ?? null;
+  }
+
+  return value;
+}
+
+function normalizeMarketplaceListing(
+  listing: MarketplaceListingRow & {
+    lot_traceability?: LotTraceabilitySummary | LotTraceabilitySummary[] | null;
+  },
+): MarketplaceListingRow {
+  const { lot_traceability, ...rest } = listing;
+  return {
+    ...rest,
+    lot_traceability: normalizeLotTraceability(lot_traceability),
+  };
 }
 
 export async function getActiveListings(
@@ -46,7 +81,8 @@ export async function getActiveListings(
       `
         *,
         seller:profiles!listings_seller_id_fkey(company_name, kyc_status, created_at),
-        listing_photos(id, storage_path, sort_order)
+        listing_photos(id, storage_path, sort_order),
+        lot_traceability(id, lot_code)
       `,
       { count: 'exact' },
     )
@@ -82,7 +118,11 @@ export async function getActiveListings(
   }
 
   return {
-    listings: (data ?? []) as MarketplaceListingRow[],
+    listings: (data ?? []).map((listing) =>
+      normalizeMarketplaceListing(listing as MarketplaceListingRow & {
+        lot_traceability?: LotTraceabilitySummary | LotTraceabilitySummary[] | null;
+      }),
+    ),
     total: count ?? 0,
     page,
     pageSize: MARKETPLACE_PAGE_SIZE,
@@ -121,7 +161,8 @@ export async function getListingById(listingId: string): Promise<MarketplaceList
       `
         *,
         seller:profiles!listings_seller_id_fkey(company_name, kyc_status, created_at),
-        listing_photos(id, storage_path, sort_order)
+        listing_photos(id, storage_path, sort_order),
+        lot_traceability(id, lot_code)
       `,
     )
     .eq('id', listingId)
@@ -136,7 +177,11 @@ export async function getListingById(listingId: string): Promise<MarketplaceList
     return null;
   }
 
-  const listing = data as MarketplaceListingRow;
+  const listing = normalizeMarketplaceListing(
+    data as MarketplaceListingRow & {
+      lot_traceability?: LotTraceabilitySummary | LotTraceabilitySummary[] | null;
+    },
+  );
   const isOwner = profile?.id === listing.seller_id;
   const isAdmin = profile?.role === 'admin';
 

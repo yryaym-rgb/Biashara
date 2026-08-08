@@ -1,7 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
-import { requireAuth, isSellerRole } from '@/lib/rbac';
+import { requireAuth, isSellerRole, isCooperativeRole } from '@/lib/rbac';
 import { getProfile, getUser } from '@/lib/auth/session';
 import { getUserKycDocuments, getUserListings } from '@/lib/admin/queries';
+import { getCooperativeSites } from '@/lib/platform/lots';
 import { Container } from '@/components/ui/container';
 import {
   SettingsPageContent,
@@ -39,10 +40,13 @@ export default async function SettingsPage({
   const rawSearchParams = await searchParams;
 
   const showListingsTab = isSellerRole(profile.role);
+  const showCooperativeSites =
+    isCooperativeRole(profile.role) && profile.kyc_status === 'approved';
 
-  const [kycDocuments, listings] = await Promise.all([
+  const [kycDocuments, listings, cooperativeSites] = await Promise.all([
     getUserKycDocuments(profile.id),
     showListingsTab ? getUserListings(profile.id) : Promise.resolve([]),
+    showCooperativeSites ? getCooperativeSites(profile.id) : Promise.resolve([]),
   ]);
 
   const rejectedDocuments = kycDocuments.filter((doc) => doc.status === 'rejected');
@@ -66,6 +70,8 @@ export default async function SettingsPage({
         rejectedDocuments={rejectedDocuments}
         sellerListings={sellerListings}
         showListingsTab={showListingsTab}
+        showCooperativeSites={showCooperativeSites}
+        cooperativeSites={cooperativeSites}
         initialTab={initialTab}
       />
     </Container>

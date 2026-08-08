@@ -52,6 +52,10 @@ export function isSellerRole(role: string): boolean {
   return role === 'seller' || role === 'cooperative';
 }
 
+export function isCooperativeRole(role: string): boolean {
+  return role === 'cooperative';
+}
+
 type RouteGroup = 'marketing' | 'auth' | 'platform' | 'admin';
 
 const PLATFORM_PREFIXES = [
@@ -66,6 +70,7 @@ const PLATFORM_PREFIXES = [
   '/logistics',
   '/reports',
   '/settings',
+  '/lots',
 ];
 
 const AUTH_PREFIXES = ['/login', '/register', '/forgot-password', '/verify'];
@@ -144,6 +149,17 @@ export function isPublicMarketplaceRoute(pathname: string): boolean {
   return segment !== 'new' && !segment.endsWith('edit');
 }
 
+/** Lot custody timelines are public when RLS allows read (e.g. linked active listing). */
+export function isPublicLotDetailRoute(pathname: string): boolean {
+  const path = stripLocale(pathname);
+  const detailMatch = /^\/lots\/([^/]+)$/.exec(path);
+  if (!detailMatch) {
+    return false;
+  }
+  const segment = detailMatch[1];
+  return Boolean(segment && segment !== 'new');
+}
+
 /**
  * Single authorization surface for middleware route gating.
  * Returns redirect target when access is denied.
@@ -168,6 +184,10 @@ export function canAccessRoute(
   }
 
   if (group === 'platform' && isPublicMarketplaceRoute(pathname)) {
+    return { allowed: true };
+  }
+
+  if (group === 'platform' && isPublicLotDetailRoute(pathname)) {
     return { allowed: true };
   }
 

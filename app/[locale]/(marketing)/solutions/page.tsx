@@ -35,7 +35,7 @@ const CAPABILITY_KEYS = ['capability1', 'capability2', 'capability3'] as const;
 type CapabilityKey = (typeof CAPABILITY_KEYS)[number];
 
 const COMING_SOON: Record<AudienceKey, Record<CapabilityKey, boolean>> = {
-  cooperatives: { capability1: false, capability2: false, capability3: true },
+  cooperatives: { capability1: false, capability2: false, capability3: false },
   traders: { capability1: false, capability2: false, capability3: false },
   exporters: { capability1: false, capability2: false, capability3: true },
   buyers: { capability1: false, capability2: false, capability3: false },

@@ -9,8 +9,10 @@ import {
   SettingsKycPanel,
   SettingsListingsPanel,
 } from '@/components/platform/settings-kyc-listings-panels';
+import { CooperativeSitesForm } from '@/components/platform/cooperative-sites-form';
 import { cn } from '@/lib/utils/cn';
 import type { Database } from '@/types/database.types';
+import type { CooperativeSiteRow } from '@/lib/platform/lots';
 
 type KycDocument = Database['public']['Tables']['kyc_documents']['Row'];
 type Listing = Database['public']['Tables']['listings']['Row'];
@@ -31,6 +33,8 @@ export interface SettingsPageContentProps {
   rejectedDocuments: KycDocument[];
   sellerListings: Listing[];
   showListingsTab: boolean;
+  showCooperativeSites: boolean;
+  cooperativeSites: CooperativeSiteRow[];
   initialTab: SettingsTab;
 }
 
@@ -46,6 +50,8 @@ export function SettingsPageContent({
   rejectedDocuments,
   sellerListings,
   showListingsTab,
+  showCooperativeSites,
+  cooperativeSites,
   initialTab,
 }: SettingsPageContentProps) {
   const t = useTranslations('platform.settings');
@@ -100,6 +106,11 @@ export function SettingsPageContent({
           initialCountry={country}
           initialPhone={phone}
         />
+        {showCooperativeSites ? (
+          <div className="mt-6">
+            <CooperativeSitesForm initialSites={cooperativeSites} />
+          </div>
+        ) : null}
       </div>
 
       <div className={cn(activeTab !== 'security' && 'hidden')}>

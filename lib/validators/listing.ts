@@ -30,6 +30,7 @@ export const listingCreateSchema = z.object({
   priceType: z.enum(priceTypes),
   originProvince: z.string().min(2).max(100),
   certifications: z.array(z.string().max(100)).max(20).default([]),
+  lotId: z.string().uuid().optional(),
 });
 
 export const listingUpdateSchema = listingCreateSchema.partial().extend({
