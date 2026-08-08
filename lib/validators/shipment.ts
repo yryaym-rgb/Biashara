@@ -13,15 +13,30 @@ const shipmentStatuses = [
 export const shipmentCreateSchema = z.object({
   orderId: z.string().uuid(),
   carrier: z.string().min(1).max(200),
-  trackingRef: z.string().min(1).max(200).optional(),
+  trackingRef: z.string().max(200).optional(),
 });
 
-export const shipmentCheckpointSchema = z.object({
+export const shipmentUpdateDetailsSchema = z.object({
+  shipmentId: z.string().uuid(),
+  carrier: z.string().min(1).max(200),
+  trackingRef: z.string().max(200).optional(),
+});
+
+export const shipmentProgressSchema = z.object({
   shipmentId: z.string().uuid(),
   status: z.enum(shipmentStatuses),
-  location: z.string().max(200).optional(),
-  notes: z.string().max(1000).optional(),
 });
 
+export const shipmentManualCheckpointSchema = z.object({
+  shipmentId: z.string().uuid(),
+  note: z.string().min(1).max(500),
+  location: z.string().max(200).optional(),
+});
+
+/** @deprecated Use shipmentManualCheckpointSchema */
+export const shipmentCheckpointSchema = shipmentManualCheckpointSchema;
+
 export type ShipmentCreateInput = z.infer<typeof shipmentCreateSchema>;
-export type ShipmentCheckpointInput = z.infer<typeof shipmentCheckpointSchema>;
+export type ShipmentUpdateDetailsInput = z.infer<typeof shipmentUpdateDetailsSchema>;
+export type ShipmentProgressInput = z.infer<typeof shipmentProgressSchema>;
+export type ShipmentManualCheckpointInput = z.infer<typeof shipmentManualCheckpointSchema>;

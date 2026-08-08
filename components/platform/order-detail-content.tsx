@@ -4,9 +4,13 @@ import { Link } from '@/lib/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { OrderAccordSection } from '@/components/platform/order-accord-section';
 import { OrderDisputeForm } from '@/components/platform/order-dispute-form';
 import { OrderProgressActions } from '@/components/platform/order-progress-actions';
+import { OrderShipmentSection } from '@/components/platform/order-shipment-section';
 import { OrderStatusTimeline } from '@/components/platform/order-status-timeline';
+import type { OrderContractView } from '@/lib/contracts/ensure-order-contract';
+import type { PlatformOrderShipment } from '@/lib/platform/order-shipment';
 import { displayName, orderStatusVariant } from '@/lib/admin/display';
 import {
   formatOrderReference,
@@ -20,16 +24,22 @@ import type { MineralId } from '@/lib/constants/minerals';
 
 export interface OrderDetailContentProps {
   order: PlatformOrderDetail;
+  contract: OrderContractView | null;
+  shipment: PlatformOrderShipment | null;
   userId: string;
   isAdmin: boolean;
   locale: string;
+  contractDownloadName: string;
 }
 
 export async function OrderDetailContent({
   order,
+  contract,
+  shipment,
   userId,
   isAdmin,
   locale,
+  contractDownloadName,
 }: OrderDetailContentProps) {
   const t = await getTranslations({ locale, namespace: 'platform.orders' });
   const tMinerals = await getTranslations({ locale, namespace: 'minerals' });
@@ -159,6 +169,24 @@ export async function OrderDetailContent({
           nextStatus={nextStatus}
         />
       ) : null}
+
+      {contract ? (
+        <OrderAccordSection
+          orderId={order.id}
+          contract={contract}
+          isBuyer={isBuyer}
+          isSeller={isSeller}
+          locale={locale}
+          downloadFileName={contractDownloadName}
+        />
+      ) : null}
+
+      <OrderShipmentSection
+        orderId={order.id}
+        shipment={shipment}
+        isSeller={canManageProgress}
+        locale={locale}
+      />
 
       {canDispute && isDisputableOrderStatus(order.status) ? (
         <OrderDisputeForm
