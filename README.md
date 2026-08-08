@@ -107,6 +107,42 @@ npm test
 npm run build
 ```
 
+### Tests end-to-end (Playwright)
+
+Les tests e2e visitent chaque route publique, chaque page d'authentification, l'espace plateforme (session utilisateur réelle) et l'administration (porte secrète + phrase de passe + connexion admin). Chaque test attend le rendu de la page, puis échoue si une `console.error` ou une exception non interceptée se produit — c'est le garde-fou principal contre les boucles de rendu React et les erreurs d'hydratation.
+
+**Prérequis**
+
+1. Supabase local (ou projet de test) démarré avec les migrations appliquées (`supabase start` puis `supabase db reset`).
+2. Un utilisateur plateforme et un administrateur créés (voir `npx tsx scripts/create-admin.ts` pour l'admin).
+3. Variables dans `.env` (voir `.env.example`) :
+
+```bash
+PLAYWRIGHT_BASE_URL=http://localhost:3000
+E2E_USER_EMAIL=test@example.com
+E2E_USER_PASSWORD=...
+E2E_ADMIN_EMAIL=admin@biashara.cd
+E2E_ADMIN_PASSWORD=...
+ADMIN_GATE_SECRET=your-secret-gate-segment
+ADMIN_PASSPHRASE=your-admin-passphrase
+```
+
+**Exécution**
+
+```bash
+# Build de production puis suite e2e (Playwright démarre `npm run start` automatiquement)
+npm run build
+npm run test:e2e
+```
+
+Pour cibler uniquement les pages marketing sans authentification :
+
+```bash
+npx playwright test --project=guest
+```
+
+**Checklist PR** : tout changement touchant l'interface (`components/`, `app/`, styles) doit passer `npm run test:e2e` en local avant merge.
+
 ## Architecture de sécurité
 
 ### Autorisation

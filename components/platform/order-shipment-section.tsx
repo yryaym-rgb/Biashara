@@ -60,8 +60,14 @@ export function OrderShipmentSection({
   const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    setCarrier(shipment?.carrier ?? '');
-    setTrackingRef(shipment?.tracking_ref ?? '');
+    setCarrier((current) => {
+      const next = shipment?.carrier ?? '';
+      return current === next ? current : next;
+    });
+    setTrackingRef((current) => {
+      const next = shipment?.tracking_ref ?? '';
+      return current === next ? current : next;
+    });
   }, [shipment?.carrier, shipment?.tracking_ref]);
 
   const progressOptions = shipment

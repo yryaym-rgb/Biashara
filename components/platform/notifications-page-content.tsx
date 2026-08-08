@@ -19,7 +19,7 @@ import { useRouter } from '@/lib/i18n/navigation';
 import { getNotificationContent } from '@/lib/notifications/messages';
 import { parseNotificationPayload } from '@/lib/notifications/payload';
 import type { NotificationRow } from '@/lib/notifications/types';
-import { formatRelativeTime } from '@/lib/utils/dates';
+import { RelativeTime } from '@/components/ui/relative-time';
 import { cn } from '@/lib/utils/cn';
 
 export interface NotificationsPageContentProps {
@@ -165,9 +165,11 @@ export function NotificationsPageContent({
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-[15px] leading-relaxed text-ink">{getMessage(notification)}</p>
-                  <p className="mt-1 text-[13px] text-muted">
-                    {formatRelativeTime(notification.created_at, locale)}
-                  </p>
+                  <RelativeTime
+                    className="mt-1 text-[13px] text-muted"
+                    date={notification.created_at}
+                    locale={locale}
+                  />
                 </div>
                 {isUnread ? (
                   <span

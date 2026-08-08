@@ -8,7 +8,7 @@ import { MINERALS, type MineralId } from '@/lib/constants/minerals';
 import { MINERAL_DOT_CLASS } from '@/lib/prices/mineral-dots';
 import type { PricesResponse } from '@/lib/prices/types';
 import { formatPricePerUnit } from '@/lib/utils/format';
-import { formatRelativeTime } from '@/lib/utils/dates';
+import { RelativeTime } from '@/components/ui/relative-time';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -219,9 +219,11 @@ export function PricesPageContent() {
                             )}
                           </td>
                           <td className="hidden px-4 py-4 text-right md:table-cell">
-                            <span className="text-[13px] text-muted">
-                              {formatRelativeTime(entry.fetchedAt, locale)}
-                            </span>
+                            <RelativeTime
+                              className="text-[13px] text-muted"
+                              date={entry.fetchedAt}
+                              locale={locale}
+                            />
                           </td>
                         </tr>
                       );

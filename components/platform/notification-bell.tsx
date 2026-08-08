@@ -15,7 +15,7 @@ import { Link, useRouter } from '@/lib/i18n/navigation';
 import { getNotificationContent } from '@/lib/notifications/messages';
 import { parseNotificationPayload } from '@/lib/notifications/payload';
 import type { NotificationRow } from '@/lib/notifications/types';
-import { formatRelativeTime } from '@/lib/utils/dates';
+import { RelativeTime } from '@/components/ui/relative-time';
 import { cn } from '@/lib/utils/cn';
 
 export interface NotificationBellProps {
@@ -82,7 +82,9 @@ export function NotificationBell({
   const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
-    setUnreadCount(initialUnreadCount);
+    setUnreadCount((current) =>
+      current === initialUnreadCount ? current : initialUnreadCount,
+    );
   }, [initialUnreadCount]);
 
   React.useEffect(() => {
@@ -185,9 +187,11 @@ export function NotificationBell({
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-[14px] leading-snug text-ink">{getMessage(notification)}</p>
-                        <p className="mt-1 text-[12px] text-muted">
-                          {formatRelativeTime(notification.created_at, locale)}
-                        </p>
+                        <RelativeTime
+                          className="mt-1 text-[12px] text-muted"
+                          date={notification.created_at}
+                          locale={locale}
+                        />
                       </div>
                       {isUnread ? (
                         <span

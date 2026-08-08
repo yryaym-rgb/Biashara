@@ -42,7 +42,7 @@ function ConfirmationCheckbox({
   const [checked, setChecked] = React.useState(signed);
 
   React.useEffect(() => {
-    setChecked(signed);
+    setChecked((current) => (current === signed ? current : signed));
   }, [signed]);
 
   async function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
