@@ -44,6 +44,7 @@ export function useCommandPalette() {
 
 export function CommandPaletteProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent | globalThis.KeyboardEvent) {
@@ -60,7 +61,7 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
   return (
     <CommandPaletteContext.Provider value={{ open, setOpen }}>
       {children}
-      <CommandPaletteOverlay open={open} onClose={() => setOpen(false)} />
+      <CommandPaletteOverlay open={open} onClose={close} />
     </CommandPaletteContext.Provider>
   );
 }
@@ -91,6 +92,7 @@ function CommandPaletteOverlay({ open, onClose }: CommandPaletteOverlayProps) {
   const router = useRouter();
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
+  const wasOpenRef = useRef(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<CommandPaletteSearchResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -119,18 +121,20 @@ function CommandPaletteOverlay({ open, onClose }: CommandPaletteOverlayProps) {
   }, []);
 
   useEffect(() => {
-    if (!open) {
+    if (open) {
+      wasOpenRef.current = true;
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+
+    if (wasOpenRef.current) {
       setQuery('');
       setResults(null);
       setActiveIndex(0);
-      return;
+      wasOpenRef.current = false;
     }
-
-    const timer = setTimeout(() => {
-      inputRef.current?.focus();
-    }, 0);
-
-    return () => clearTimeout(timer);
   }, [open]);
 
   useEffect(() => {

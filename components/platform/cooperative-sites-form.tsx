@@ -32,9 +32,9 @@ function toDraft(site: CooperativeSiteRow): SiteDraft {
   };
 }
 
-function createEmptySite(): SiteDraft {
+function createEmptySite(id: string): SiteDraft {
   return {
-    id: crypto.randomUUID(),
+    id,
     siteName: '',
     zeaReference: '',
     province: '',
@@ -45,9 +45,11 @@ export function CooperativeSitesForm({ initialSites }: CooperativeSitesFormProps
   const t = useTranslations('platform.settings.cooperativeSites');
   const tValidation = useTranslations('validation');
   const router = useRouter();
+  const baseSiteId = React.useId();
+  const nextSiteKeyRef = React.useRef(0);
 
   const [sites, setSites] = React.useState<SiteDraft[]>(
-    initialSites.length > 0 ? initialSites.map(toDraft) : [createEmptySite()],
+    initialSites.length > 0 ? initialSites.map(toDraft) : [createEmptySite(`${baseSiteId}-0`)],
   );
   const [fieldErrors, setFieldErrors] = React.useState<Record<string, string>>({});
   const [formError, setFormError] = React.useState<string | null>(null);
@@ -181,7 +183,11 @@ export function CooperativeSitesForm({ initialSites }: CooperativeSitesFormProps
             <Button
               type="button"
               variant="secondary"
-              onClick={() => setSites((current) => [...current, createEmptySite()])}
+              onClick={() => {
+                nextSiteKeyRef.current += 1;
+                const siteId = `${baseSiteId}-${nextSiteKeyRef.current}`;
+                setSites((current) => [...current, createEmptySite(siteId)]);
+              }}
               disabled={loading}
               className="w-full sm:w-auto"
             >

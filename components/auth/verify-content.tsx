@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParamValues } from '@/lib/hooks/use-search-param-values';
 import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,7 +17,11 @@ type VerifyState = 'verifying' | 'success' | 'error';
 
 export function VerifyContent() {
   const t = useTranslations('auth.verify');
-  const searchParams = useSearchParams();
+  const { token_hash: tokenHash, type, code } = useSearchParamValues([
+    'token_hash',
+    'type',
+    'code',
+  ]);
 
   const [state, setState] = React.useState<VerifyState>('verifying');
   const [resendEmail, setResendEmail] = React.useState('');
@@ -27,10 +31,6 @@ export function VerifyContent() {
 
   React.useEffect(() => {
     async function verify() {
-      const tokenHash = searchParams.get('token_hash');
-      const type = searchParams.get('type') as 'signup' | 'email' | null;
-      const code = searchParams.get('code');
-
       if (code) {
         const result = await exchangeAuthCodeAction(code);
         setState('success' in result && result.success ? 'success' : 'error');
@@ -38,7 +38,10 @@ export function VerifyContent() {
       }
 
       if (tokenHash && type) {
-        const result = await verifyEmailAction(tokenHash, type);
+        const result = await verifyEmailAction(
+          tokenHash,
+          type as 'signup' | 'email',
+        );
         setState('success' in result && result.success ? 'success' : 'error');
         return;
       }
@@ -47,7 +50,7 @@ export function VerifyContent() {
     }
 
     void verify();
-  }, [searchParams]);
+  }, [tokenHash, type, code]);
 
   async function handleResend(event: React.FormEvent) {
     event.preventDefault();

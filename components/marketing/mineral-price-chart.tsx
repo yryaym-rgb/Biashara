@@ -131,7 +131,7 @@ export function MineralPriceChart({
     if (!history.length) return;
     if (!hasEnoughDataForTimeframe(history, timeframe)) {
       const firstAvailable = TIMEFRAMES.find((tf) => hasEnoughDataForTimeframe(history, tf));
-      if (firstAvailable) {
+      if (firstAvailable && firstAvailable !== timeframe) {
         setTimeframe(firstAvailable);
       }
     }

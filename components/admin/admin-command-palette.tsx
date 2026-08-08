@@ -41,6 +41,7 @@ export function useAdminCommandPalette() {
 
 export function AdminCommandPaletteProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent | globalThis.KeyboardEvent) {
@@ -57,7 +58,7 @@ export function AdminCommandPaletteProvider({ children }: { children: React.Reac
   return (
     <AdminCommandPaletteContext.Provider value={{ open, setOpen }}>
       {children}
-      <AdminCommandPaletteOverlay open={open} onClose={() => setOpen(false)} />
+      <AdminCommandPaletteOverlay open={open} onClose={close} />
     </AdminCommandPaletteContext.Provider>
   );
 }
@@ -82,6 +83,7 @@ function AdminCommandPaletteOverlay({ open, onClose }: AdminCommandPaletteOverla
   const router = useRouter();
   const inputId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
+  const wasOpenRef = useRef(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<AdminSearchGroupedResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -110,18 +112,20 @@ function AdminCommandPaletteOverlay({ open, onClose }: AdminCommandPaletteOverla
   }, []);
 
   useEffect(() => {
-    if (!open) {
+    if (open) {
+      wasOpenRef.current = true;
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+
+    if (wasOpenRef.current) {
       setQuery('');
       setResults(null);
       setActiveIndex(0);
-      return;
+      wasOpenRef.current = false;
     }
-
-    const timer = setTimeout(() => {
-      inputRef.current?.focus();
-    }, 0);
-
-    return () => clearTimeout(timer);
   }, [open]);
 
   useEffect(() => {

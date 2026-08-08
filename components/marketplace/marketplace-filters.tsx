@@ -39,12 +39,26 @@ export function MarketplaceFiltersPanel({
   const [maxPrice, setMaxPrice] = React.useState(initialMaxPrice ?? '');
 
   React.useEffect(() => {
-    if (open) {
-      setMineral(initialMineral ?? '');
-      setProvince(initialProvince ?? '');
-      setMinPrice(initialMinPrice ?? '');
-      setMaxPrice(initialMaxPrice ?? '');
+    if (!open) {
+      return;
     }
+
+    setMineral((current) => {
+      const next = initialMineral ?? '';
+      return current === next ? current : next;
+    });
+    setProvince((current) => {
+      const next = initialProvince ?? '';
+      return current === next ? current : next;
+    });
+    setMinPrice((current) => {
+      const next = initialMinPrice ?? '';
+      return current === next ? current : next;
+    });
+    setMaxPrice((current) => {
+      const next = initialMaxPrice ?? '';
+      return current === next ? current : next;
+    });
   }, [open, initialMineral, initialProvince, initialMinPrice, initialMaxPrice]);
 
   function applyFilters() {
@@ -202,7 +216,10 @@ export function MarketplaceSearchBar({
   const [query, setQuery] = React.useState(initialQuery ?? '');
 
   React.useEffect(() => {
-    setQuery(initialQuery ?? '');
+    setQuery((current) => {
+      const next = initialQuery ?? '';
+      return current === next ? current : next;
+    });
   }, [initialQuery]);
 
   function handleSubmit(event: React.FormEvent) {

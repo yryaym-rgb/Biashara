@@ -16,7 +16,7 @@ import type {
   MessageRow,
 } from '@/lib/platform/messages';
 import { messageCreateSchema } from '@/lib/validators/message';
-import { formatRelativeTime } from '@/lib/utils/dates';
+import { RelativeTime } from '@/components/ui/relative-time';
 import { cn } from '@/lib/utils/cn';
 
 export interface MessagesInboxContentProps {
@@ -50,21 +50,42 @@ export function MessagesInboxContent({
   );
 
   const threadEndRef = React.useRef<HTMLDivElement>(null);
+  const markedReadConversationRef = React.useRef<string | null>(null);
 
   React.useEffect(() => {
-    setMessages(initialMessages);
+    setMessages((current) =>
+      current === initialMessages ? current : initialMessages,
+    );
   }, [initialMessages, selectedConversationId]);
 
   React.useEffect(() => {
-    setUnreadByConversation(
-      Object.fromEntries(conversations.map((conversation) => [conversation.id, conversation.hasUnread])),
+    const nextUnread = Object.fromEntries(
+      conversations.map((conversation) => [conversation.id, conversation.hasUnread]),
     );
+    setUnreadByConversation((current) => {
+      const currentKeys = Object.keys(current);
+      const nextKeys = Object.keys(nextUnread);
+      if (
+        currentKeys.length === nextKeys.length &&
+        nextKeys.every((key) => current[key] === nextUnread[key])
+      ) {
+        return current;
+      }
+      return nextUnread;
+    });
   }, [conversations]);
 
   React.useEffect(() => {
     if (!selectedConversationId) {
+      markedReadConversationRef.current = null;
       return;
     }
+
+    if (markedReadConversationRef.current === selectedConversationId) {
+      return;
+    }
+
+    markedReadConversationRef.current = selectedConversationId;
 
     void markConversationAsRead({ conversationId: selectedConversationId }).then((result) => {
       if (!result.error) {
@@ -226,12 +247,11 @@ export function MessagesInboxContent({
                         {conversation.counterpartyName}
                       </p>
                       {conversation.lastMessageAt ? (
-                        <time
+                        <RelativeTime
                           className="shrink-0 text-[12px] text-muted"
-                          dateTime={conversation.lastMessageAt}
-                        >
-                          {formatRelativeTime(conversation.lastMessageAt, locale)}
-                        </time>
+                          date={conversation.lastMessageAt}
+                          locale={locale}
+                        />
                       ) : null}
                     </div>
                     <p className="truncate text-[13px] text-muted">
@@ -307,12 +327,11 @@ export function MessagesInboxContent({
                       )}
                     >
                       <p className="whitespace-pre-wrap break-words">{message.body}</p>
-                      <time
+                      <RelativeTime
                         className="mt-2 block text-[12px] text-muted"
-                        dateTime={message.created_at}
-                      >
-                        {formatRelativeTime(message.created_at, locale)}
-                      </time>
+                        date={message.created_at}
+                        locale={locale}
+                      />
                     </div>
                   </div>
                 );
