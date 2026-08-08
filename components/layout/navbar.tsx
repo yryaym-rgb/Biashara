@@ -4,11 +4,14 @@ import * as React from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { logoutAction } from '@/actions/auth';
+import { LogoutConfirmDialog } from '@/components/auth/logout-confirm-dialog';
+import { UserAvatarMenu } from '@/components/platform/user-avatar-menu';
 import { Link, usePathname } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { cn } from '@/lib/utils/cn';
-import { locales } from '@/lib/i18n/config';
+import { locales, type Locale } from '@/lib/i18n/config';
 import logo from '@/design/reference-logo.jpeg';
 
 interface NavItem {
@@ -33,18 +36,27 @@ function isActivePath(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+export interface NavbarProps {
+  stickyOffsetClass?: string;
+  topBandHeight?: number;
+  isAuthenticated?: boolean;
+  companyName?: string | null;
+  email?: string | null;
+}
+
 export function Navbar({
   stickyOffsetClass = 'top-0',
   topBandHeight = 0,
-}: {
-  stickyOffsetClass?: string;
-  topBandHeight?: number;
-}) {
+  isAuthenticated = false,
+  companyName = null,
+  email = null,
+}: NavbarProps) {
   const t = useTranslations('nav');
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [langOpen, setLangOpen] = React.useState(false);
+  const [logoutDialogOpen, setLogoutDialogOpen] = React.useState(false);
   const langMenuRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -159,9 +171,17 @@ export function Navbar({
             ) : null}
           </div>
 
-          <Button asChild size="md" className="hidden md:inline-flex">
-            <Link href="/register">{t('getStarted')}</Link>
-          </Button>
+          {isAuthenticated ? (
+            <UserAvatarMenu
+              companyName={companyName}
+              email={email}
+              onLogoutRequest={() => setLogoutDialogOpen(true)}
+            />
+          ) : (
+            <Button asChild size="md" className="hidden md:inline-flex">
+              <Link href="/register">{t('getStarted')}</Link>
+            </Button>
+          )}
 
           <button
             type="button"
@@ -237,14 +257,23 @@ export function Navbar({
               </div>
             </div>
 
-            <div className="mt-auto px-4 pb-8">
-              <Button asChild className="w-full">
-                <Link href="/register">{t('getStarted')}</Link>
-              </Button>
-            </div>
+            {!isAuthenticated ? (
+              <div className="mt-auto px-4 pb-8">
+                <Button asChild className="w-full">
+                  <Link href="/register">{t('getStarted')}</Link>
+                </Button>
+              </div>
+            ) : null}
           </Container>
         </div>
       ) : null}
+      <LogoutConfirmDialog
+        open={logoutDialogOpen}
+        onClose={() => setLogoutDialogOpen(false)}
+        onConfirm={async () => {
+          await logoutAction(locale);
+        }}
+      />
     </header>
   );
 }
