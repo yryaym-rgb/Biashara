@@ -19,6 +19,7 @@ export interface PlatformShellProps {
   role: Database['public']['Enums']['user_role'];
   locale: string;
   navItems: PlatformNavItem[];
+  unreadMessagesCount?: number;
 }
 
 export function PlatformShell({
@@ -29,6 +30,7 @@ export function PlatformShell({
   role,
   locale,
   navItems,
+  unreadMessagesCount = 0,
 }: PlatformShellProps) {
   const t = useTranslations('platform.shell');
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -55,7 +57,11 @@ export function PlatformShell({
             />
             <span className="text-[14px] font-bold tracking-[0.08em] text-ink">BIASHARA</span>
           </div>
-          <PlatformNav items={navItems} onNavigate={() => setDrawerOpen(false)} />
+          <PlatformNav
+            items={navItems}
+            unreadMessagesCount={unreadMessagesCount}
+            onNavigate={() => setDrawerOpen(false)}
+          />
         </aside>
 
         {drawerOpen ? (

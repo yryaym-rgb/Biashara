@@ -59,6 +59,7 @@ const PLATFORM_PREFIXES = [
   '/marketplace',
   '/offers',
   '/orders',
+  '/messages',
   '/contracts',
   '/payments',
   '/logistics',

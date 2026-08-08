@@ -445,6 +445,7 @@
     "marketplaceDetail": { "title": "Détail de l'annonce" },
     "offers": { "title": "Offres" },
     "orders": { "title": "Commandes" },
+    "messages": { "title": "Messagerie" },
     "contracts": { "title": "Contrats" },
     "payments": { "title": "Paiements" },
     "logistics": { "title": "Expéditions" },
@@ -458,6 +459,8 @@
       "offers": "Mes offres",
       "listings": "Mes annonces",
       "orders": "Mes commandes",
+      "messages": "Messagerie",
+      "messagesUnread": "{count, plural, one {# conversation non lue} other {# conversations non lues}}",
       "settings": "Paramètres"
     },
     "shell": {
@@ -695,6 +698,20 @@
         "status": "Statut",
         "date": "Date"
       }
+    },
+    "messages": {
+      "title": "Messagerie",
+      "empty": "Vous n'avez pas encore de conversation.",
+      "emptyDescription": "Explorez la place de marché pour contacter un vendeur.",
+      "emptyCta": "Explorer la place de marché",
+      "counterpartyUnknown": "Contrepartie",
+      "conversationListLabel": "Liste des conversations",
+      "threadLabel": "Fil de conversation",
+      "selectConversation": "Sélectionnez une conversation pour afficher les messages.",
+      "backToList": "Retour aux conversations",
+      "composeLabel": "Votre message",
+      "send": "Envoyer",
+      "unreadIndicator": "Messages non lus"
     },
     "contracts": {
       "title": "Contrats",

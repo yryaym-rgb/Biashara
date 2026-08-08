@@ -12,6 +12,7 @@ export interface PlatformLayoutClientProps {
   email: string | null;
   role: Database['public']['Enums']['user_role'];
   locale: string;
+  unreadMessagesCount?: number;
 }
 
 export function PlatformLayoutClient({
@@ -20,6 +21,7 @@ export function PlatformLayoutClient({
   email,
   role,
   locale,
+  unreadMessagesCount = 0,
 }: PlatformLayoutClientProps) {
   const pathname = usePathname();
   const titleKey = getPlatformPageTitleKey(pathname);
@@ -35,6 +37,7 @@ export function PlatformLayoutClient({
       role={role}
       locale={locale}
       navItems={navItems}
+      unreadMessagesCount={unreadMessagesCount}
     >
       {children}
     </PlatformShell>
