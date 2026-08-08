@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getProfile } from '@/lib/auth/session';
 import { requireAuth, requireKycApproved, isSellerRole } from '@/lib/rbac';
 import { listingCreateSchema, listingUpdateSchema } from '@/lib/validators/listing';
+import { linkLotToListingAction } from '@/actions/lots';
 import { sanitizeText } from '@/lib/sanitize';
 import { LISTING_PHOTOS_BUCKET } from '@/lib/marketplace/photos';
 import { LISTING_CREATE_STATUS } from '@/lib/marketplace/constants';
@@ -44,6 +45,7 @@ function parseListingInputFromFormData(formData: FormData) {
     priceCurrency: 'USD',
     originProvince: formData.get('originProvince'),
     certifications,
+    lotId: formData.get('lotId') || undefined,
   };
 }
 
@@ -137,6 +139,17 @@ export async function createListing(input: unknown) {
 
   if (error) {
     return { error: error.message };
+  }
+
+  if (parsed.data.lotId) {
+    const linkResult = await linkLotToListingAction({
+      lotId: parsed.data.lotId,
+      listingId: data.id,
+    });
+
+    if (linkResult.error) {
+      return { error: linkResult.error, data };
+    }
   }
 
   return { data };

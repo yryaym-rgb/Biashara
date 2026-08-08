@@ -204,8 +204,8 @@
           "description": "Real-time quotes and price history so you can negotiate with full clarity."
         },
         "blockchainTraceability": {
-          "title": "Blockchain traceability",
-          "description": "Every lot is recorded and verifiable from the mine to the export port."
+          "title": "Lot traceability",
+          "description": "Cooperatives register each lot and custody step — manual self-reported entries, visible on linked listings."
         },
         "securePayments": {
           "title": "Secure payments",
@@ -239,7 +239,7 @@
           },
           "traceability": {
             "title": "Guaranteed traceability",
-            "description": "Each lot receives a unique code in the database — public display of codes coming soon."
+            "description": "Cooperatives create a unique lot code and record each custody step — visible on the linked listing, self-reported declarations."
           }
         }
       },
@@ -294,7 +294,7 @@
           },
           "traceability": {
             "title": "Lot-level traceability",
-            "description": "A unique identifier tracks every shipment from mine to buyer."
+            "description": "Cooperatives register a unique code and custody steps — manual self-reported entries, not independently verified beyond KYC."
           },
           "bilingual": {
             "title": "Bilingual, built for the DRC",
@@ -437,7 +437,7 @@
           "p1": "Mineral traceability is the ability to follow a specific lot from its extraction point to its final destination. In the DRC, this requirement responds to national regulations, international standards (OECD, CTC), and buyer expectations regarding the origin of their raw materials.",
           "p2": "An effective traceability system rests on three pillars: unique lot identification, recording of each custody transfer, and associated documentation (certificates of origin, weigh notes, invoices).",
           "p3": "In the field, traceability begins at the mine or artisanal collection point. Each lot receives an identifier — often an alphanumeric code linked to the mineral, province, and production date. This code accompanies the mineral at every step: trader, warehouse, exporter, port.",
-          "p4": "BIASHARA plans a lot-level traceability code system integrated with marketplace listings. This feature is under development: the underlying infrastructure exists in our database, but the user interface is not yet available.",
+          "p4": "BIASHARA now offers a lot-level traceability code system integrated with marketplace listings. KYC-approved cooperatives create lots with unique codes, manually record each custody step, and can link a lot to a listing. Buyers view the read-only timeline on the listing — these are cooperative self-reported declarations, not independently verified beyond KYC.",
           "p5": "In the meantime, verified sellers on BIASHARA can document the origin of their minerals in their listing description: extraction province, grade, purity, and available certifications. Buyers can ask questions via the integrated messaging flow before making an offer.",
           "p6": "Traceability is not just technology: it also involves field practices — paper registers at mines, certified weighings, checks at border posts. BIASHARA does not replace these physical controls but aims to create a verifiable digital record.",
           "p7": "For international buyers, requesting traceability documentation before any contractual commitment remains good practice, regardless of the platform used."
@@ -490,6 +490,7 @@
       "marketplace": "Marketplace",
       "offers": "My offers",
       "listings": "My listings",
+      "lots": "My lots",
       "orders": "My orders",
       "messages": "Messages",
       "documents": "Documents",
@@ -706,6 +707,9 @@
       "paginationSummary": "Page {page} of {totalPages}",
       "paginationPrevious": "Previous",
       "paginationNext": "Next",
+      "traceability": {
+        "badge": "Traceable lot — {code}"
+      },
       "detail": {
         "back": "Back to marketplace",
         "description": "Description",
@@ -758,7 +762,87 @@
         "removePhoto": "Remove",
         "submit": "Submit for review",
         "submitSuccess": "Your listing has been submitted. It will be reviewed before publication.",
-        "pendingReviewNote": "Your listing will be reviewed before publication — you will be notified once it is active."
+        "pendingReviewNote": "Your listing will be reviewed before publication — you will be notified once it is active.",
+        "linkedLot": "Traceable lot (optional)",
+        "linkedLotHint": "Link a lot already created in My lots. Visible on the listing once published.",
+        "linkedLotPlaceholder": "Select a lot",
+        "linkedLotNone": "No linked lot"
+      }
+    },
+    "lots": {
+      "title": "My lots",
+      "subtitle": "Lots registered by your cooperative — manual self-reported entries, not independently verified beyond KYC.",
+      "createCta": "Create a lot",
+      "viewDetail": "View lot",
+      "cooperativeOnly": "Only verified cooperatives can manage lots.",
+      "kycRequiredTitle": "KYC verification required",
+      "kycRequiredDescription": "Your cooperative account must be approved before creating or managing lots.",
+      "kycRequiredCta": "Complete KYC verification",
+      "emptyTitle": "No lots yet",
+      "emptyDescription": "Create your first lot to start traceability for your production.",
+      "table": {
+        "code": "Lot code",
+        "mineral": "Mineral",
+        "stage": "Current stage",
+        "checkpoints": "Custody points",
+        "actions": "Actions"
+      },
+      "new": {
+        "title": "Create a lot",
+        "subtitle": "Register a new lot with a platform-generated unique code.",
+        "mineral": "Mineral",
+        "initialWeight": "Initial weight (kg)",
+        "initialWeightHint": "Weight declared by the cooperative at extraction.",
+        "site": "Site / ZEA",
+        "extractionDate": "Extraction date",
+        "notes": "Notes",
+        "notesHint": "Additional information declared by the cooperative.",
+        "submit": "Create lot",
+        "selfReportedNotice": "Manual cooperative declaration — not independently verified beyond KYC.",
+        "noSites": "Add at least one mining site in your settings before creating a lot.",
+        "noSitesCta": "Settings",
+        "forbidden": "Only verified cooperatives can create lots.",
+        "siteNotFound": "Site not found. Check your sites in settings.",
+        "error": "Lot creation failed. Please try again.",
+        "kycRequiredTitle": "KYC verification required",
+        "kycRequiredDescription": "Your cooperative account must be approved before creating a lot.",
+        "kycRequiredCta": "Complete KYC verification"
+      },
+      "detail": {
+        "title": "Lot detail",
+        "back": "Back",
+        "selfReportedNotice": "Timeline declared by the cooperative — not independently verified beyond KYC.",
+        "mineral": "Mineral",
+        "initialWeight": "Initial weight",
+        "weightValue": "{weight} kg",
+        "extractionDate": "Extraction date",
+        "site": "Site / ZEA",
+        "siteValue": "{name} — ZEA {zea} ({province})",
+        "createdAt": "Created on",
+        "linkedListing": "Linked listing",
+        "viewListing": "View listing",
+        "notes": "Notes",
+        "notProvided": "Not provided"
+      },
+      "custody": {
+        "title": "Custody timeline",
+        "selfReportedNotice": "Custody points entered manually by the cooperative — not GPS-verified or third-party audited.",
+        "empty": "No custody points yet.",
+        "addTitle": "Add custody point",
+        "stageLabel": "Stage",
+        "noteLabel": "Note",
+        "timestampLabel": "Timestamp",
+        "timestampHint": "Leave blank to use the current time.",
+        "addCta": "Add custody point",
+        "forbidden": "Only the owning cooperative can add custody points.",
+        "saveError": "Failed to add custody point. Please try again.",
+        "stages": {
+          "extraction": "Extraction",
+          "weighing": "Weighing",
+          "sampling": "Sampling",
+          "analysis": "Analysis",
+          "collection_point": "Collection point"
+        }
       }
     },
     "offers": {
@@ -1004,6 +1088,21 @@
         "FR": "France",
         "US": "United States",
         "CN": "China"
+      },
+      "cooperativeSites": {
+        "title": "Mining sites",
+        "description": "Enter your cooperative's sites and ZEA references. Required to create traceable lots.",
+        "siteLabel": "Site {index}",
+        "siteName": "Site name",
+        "zeaReference": "ZEA reference",
+        "zeaHint": "Artisanal Exploitation Zone — reference declared by the cooperative.",
+        "province": "Province",
+        "addSite": "Add site",
+        "removeSite": "Remove site",
+        "submit": "Save sites",
+        "success": "Sites saved successfully.",
+        "error": "Failed to save sites. Please try again.",
+        "forbidden": "Only verified cooperatives can manage sites."
       }
     }
   },

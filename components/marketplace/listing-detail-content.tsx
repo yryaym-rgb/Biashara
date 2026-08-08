@@ -8,6 +8,7 @@ import { ListingGallery } from '@/components/marketplace/listing-gallery';
 import { ListingPriceDisplay } from '@/components/marketplace/listing-price-display';
 import { OfferForm } from '@/components/marketplace/offer-form';
 import { ContactSellerPanel } from '@/components/marketplace/contact-seller-panel';
+import { LotTraceabilityBadge } from '@/components/marketplace/lot-traceability-badge';
 import { SellerCard } from '@/components/marketplace/seller-card';
 import {
   formatGradePurityLine,
@@ -69,6 +70,15 @@ export async function ListingDetailContent({
             <h1 className="mt-2 text-[34px] font-bold leading-tight text-ink">{listing.title}</h1>
             {gradeLine ? (
               <p className="mt-2 text-[13px] text-muted">{gradeLine}</p>
+            ) : null}
+            {listing.lot_traceability ? (
+              <div className="mt-3">
+                <LotTraceabilityBadge
+                  lotId={listing.lot_traceability.id}
+                  lotCode={listing.lot_traceability.lot_code}
+                  locale={locale}
+                />
+              </div>
             ) : null}
           </div>
 

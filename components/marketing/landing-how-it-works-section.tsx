@@ -73,13 +73,6 @@ export async function LandingHowItWorksSection() {
                     <div className="flex min-w-0 flex-col gap-1 md:items-center">
                       <h3 className="text-[16px] font-semibold text-ink">
                         {t(`steps.${stepKey}.title`)}
-                        {stepKey === 'traceability' ? (
-                          <span className="ml-2 align-middle">
-                            <span className="rounded-[6px] bg-[color-mix(in_srgb,var(--brand-gold)_12%,transparent)] px-2 py-0.5 text-[11px] font-semibold text-brand-gold-dark">
-                              {t('comingSoonBadge')}
-                            </span>
-                          </span>
-                        ) : null}
                       </h3>
                       <p className="text-[13px] leading-snug text-muted">
                         {t(`steps.${stepKey}.description`)}

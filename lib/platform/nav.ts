@@ -1,11 +1,12 @@
 import type { Database } from '@/types/database.types';
-import { isSellerRole } from '@/lib/rbac';
+import { isSellerRole, isCooperativeRole } from '@/lib/rbac';
 
 export type PlatformNavKey =
   | 'dashboard'
   | 'marketplace'
   | 'offers'
   | 'listings'
+  | 'lots'
   | 'orders'
   | 'messages'
   | 'documents'
@@ -22,7 +23,8 @@ export interface PlatformNavItem {
     | '/settings'
     | '/orders'
     | '/messages'
-    | '/documents';
+    | '/documents'
+    | '/lots';
 }
 
 export interface PlatformNavSection {
@@ -45,6 +47,10 @@ export function getPlatformNavSections(
 
   if (isSellerRole(role)) {
     supplyChain.push({ key: 'listings', href: '/settings' });
+  }
+
+  if (isCooperativeRole(role)) {
+    supplyChain.push({ key: 'lots', href: '/lots' });
   }
 
   supplyChain.push({ key: 'documents', href: '/documents' });
@@ -79,7 +85,10 @@ export type PlatformPageKey =
   | 'logistics'
   | 'reports'
   | 'marketplaceNew'
-  | 'marketplaceDetail';
+  | 'marketplaceDetail'
+  | 'lots'
+  | 'lotsNew'
+  | 'lotsDetail';
 
 const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   dashboard: 'platform.dashboard.title',
@@ -96,6 +105,9 @@ const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   reports: 'platform.reports.title',
   marketplaceNew: 'platform.marketplace.new.title',
   marketplaceDetail: 'platform.marketplace.title',
+  lots: 'platform.lots.title',
+  lotsNew: 'platform.lots.new.title',
+  lotsDetail: 'platform.lots.detail.title',
 };
 
 export function resolvePlatformPageKey(pathname: string): PlatformPageKey {
@@ -128,6 +140,15 @@ export function resolvePlatformPageKey(pathname: string): PlatformPageKey {
   }
   if (pathname === '/settings' || pathname.startsWith('/settings/')) {
     return 'settings';
+  }
+  if (pathname === '/lots/new') {
+    return 'lotsNew';
+  }
+  if (pathname.startsWith('/lots/')) {
+    return 'lotsDetail';
+  }
+  if (pathname === '/lots' || pathname.startsWith('/lots')) {
+    return 'lots';
   }
   if (pathname === '/contracts' || pathname.startsWith('/contracts/')) {
     return 'contracts';

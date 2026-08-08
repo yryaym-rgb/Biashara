@@ -4,6 +4,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { ListingThumb } from '@/components/marketplace/listing-thumb';
 import { ListingPriceDisplay } from '@/components/marketplace/listing-price-display';
+import { LotTraceabilityBadge } from '@/components/marketplace/lot-traceability-badge';
 import {
   formatGradePurityLine,
   formatQuantityValue,
@@ -46,6 +47,16 @@ export async function ListingRow({ listing, locale }: ListingRowProps) {
             {tMinerals(mineral)}
             {gradeLine ? ` · ${gradeLine}` : ''}
           </p>
+
+          {listing.lot_traceability ? (
+            <div className="mt-2">
+              <LotTraceabilityBadge
+                lotId={listing.lot_traceability.id}
+                lotCode={listing.lot_traceability.lot_code}
+                locale={locale}
+              />
+            </div>
+          ) : null}
 
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-muted">
             <span className="flex items-center gap-1">

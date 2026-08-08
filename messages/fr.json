@@ -204,8 +204,8 @@
           "description": "Cotations en temps réel et historique des prix pour négocier en toute clarté."
         },
         "blockchainTraceability": {
-          "title": "Traçabilité blockchain",
-          "description": "Chaque lot est enregistré et vérifiable de la mine au port d'exportation."
+          "title": "Traçabilité des lots",
+          "description": "Les coopératives enregistrent chaque lot et ses étapes de garde — déclarations manuelles, visibles sur les annonces liées."
         },
         "securePayments": {
           "title": "Paiements sécurisés",
@@ -239,7 +239,7 @@
           },
           "traceability": {
             "title": "Traçabilité garantie",
-            "description": "Chaque lot reçoit un code unique en base — affichage public des codes à venir."
+            "description": "Les coopératives créent un code de lot unique et enregistrent chaque étape — visible sur l'annonce liée, déclarations auto-déclarées."
           }
         }
       },
@@ -294,7 +294,7 @@
           },
           "traceability": {
             "title": "Traçabilité de chaque lot",
-            "description": "Un identifiant unique suit chaque cargaison de la mine à l'acheteur."
+            "description": "Les coopératives enregistrent un code unique et les étapes de garde — déclarations manuelles, non vérifiées indépendamment au-delà du KYC."
           },
           "bilingual": {
             "title": "Bilingue, pensé pour la RDC",
@@ -437,7 +437,7 @@
           "p1": "La traçabilité des minerais désigne la capacité à suivre un lot spécifique depuis son point d'extraction jusqu'à sa destination finale. En RDC, cette exigence répond à la fois aux réglementations nationales, aux standards internationaux (OCDE, CTC) et aux attentes des acheteurs soucieux de l'origine de leurs matières premières.",
           "p2": "Un système de traçabilité efficace repose sur trois piliers : l'identification unique de chaque lot, l'enregistrement de chaque transfert de garde (custody), et la documentation associée (certificats d'origine, bons de pesée, factures).",
           "p3": "Sur le terrain, la traçabilité commence à la mine ou au point de collecte artisanale. Chaque lot reçoit un identifiant — souvent un code alphanumérique lié au minerai, à la province et à la date de production. Ce code accompagne le minerai à chaque étape : négociant, entrepôt, exportateur, port.",
-          "p4": "BIASHARA prévoit un système de codes de traçabilité par lot, intégré aux annonces de la place de marché. Cette fonctionnalité est en cours de développement : l'infrastructure de base existe dans notre base de données, mais l'interface utilisateur n'est pas encore disponible.",
+          "p4": "BIASHARA propose désormais un système de codes de traçabilité par lot, intégré aux annonces de la place de marché. Les coopératives vérifiées (KYC approuvé) créent des lots avec un code unique, enregistrent manuellement chaque étape de garde, et peuvent lier un lot à une annonce. Les acheteurs consultent la chronologie en lecture seule sur l'annonce — il s'agit de déclarations auto-déclarées par la coopérative, non vérifiées indépendamment au-delà du KYC.",
           "p5": "En attendant, les vendeurs vérifiés sur BIASHARA peuvent documenter l'origine de leurs minerais dans la description de leur annonce : province d'extraction, grade, pureté et certifications disponibles. Les acheteurs peuvent poser des questions via le flux de messagerie intégré avant de faire une offre.",
           "p6": "La traçabilité ne se limite pas à la technologie : elle implique aussi des pratiques de terrain — registres papier aux mines, pesées certifiées, contrôles aux postes frontaliers. BIASHARA ne remplace pas ces contrôles physiques, mais vise à en créer un registre numérique vérifiable.",
           "p7": "Pour les acheteurs internationaux, demander la documentation de traçabilité avant tout engagement contractuel reste une bonne pratique, indépendamment de la plateforme utilisée."
@@ -490,6 +490,7 @@
       "marketplace": "Place de marché",
       "offers": "Mes offres",
       "listings": "Mes annonces",
+      "lots": "Mes lots",
       "orders": "Mes commandes",
       "messages": "Messagerie",
       "documents": "Documents",
@@ -706,6 +707,9 @@
       "paginationSummary": "Page {page} sur {totalPages}",
       "paginationPrevious": "Précédent",
       "paginationNext": "Suivant",
+      "traceability": {
+        "badge": "Lot traçable — {code}"
+      },
       "detail": {
         "back": "Retour à la place de marché",
         "description": "Description",
@@ -758,7 +762,87 @@
         "removePhoto": "Supprimer",
         "submit": "Soumettre pour examen",
         "submitSuccess": "Votre annonce a été soumise. Elle sera examinée avant publication.",
-        "pendingReviewNote": "Votre annonce sera examinée avant publication — vous recevrez une notification une fois qu'elle sera active."
+        "pendingReviewNote": "Votre annonce sera examinée avant publication — vous recevrez une notification une fois qu'elle sera active.",
+        "linkedLot": "Lot traçable (facultatif)",
+        "linkedLotHint": "Liez un lot déjà créé dans Mes lots. Visible sur l'annonce une fois publiée.",
+        "linkedLotPlaceholder": "Sélectionner un lot",
+        "linkedLotNone": "Aucun lot lié"
+      }
+    },
+    "lots": {
+      "title": "Mes lots",
+      "subtitle": "Lots enregistrés par votre coopérative — déclarations manuelles, non vérifiées indépendamment au-delà du KYC.",
+      "createCta": "Créer un lot",
+      "viewDetail": "Voir le lot",
+      "cooperativeOnly": "Seules les coopératives vérifiées peuvent gérer des lots.",
+      "kycRequiredTitle": "Vérification KYC requise",
+      "kycRequiredDescription": "Votre compte coopérative doit être approuvé avant de créer ou gérer des lots.",
+      "kycRequiredCta": "Compléter la vérification KYC",
+      "emptyTitle": "Aucun lot pour le moment",
+      "emptyDescription": "Créez votre premier lot pour commencer la traçabilité de votre production.",
+      "table": {
+        "code": "Code lot",
+        "mineral": "Minerai",
+        "stage": "Étape actuelle",
+        "checkpoints": "Points de garde",
+        "actions": "Actions"
+      },
+      "new": {
+        "title": "Créer un lot",
+        "subtitle": "Enregistrez un nouveau lot avec un code unique généré par la plateforme.",
+        "mineral": "Minerai",
+        "initialWeight": "Poids initial (kg)",
+        "initialWeightHint": "Poids déclaré par la coopérative à l'extraction.",
+        "site": "Site / ZEA",
+        "extractionDate": "Date d'extraction",
+        "notes": "Notes",
+        "notesHint": "Informations complémentaires déclarées par la coopérative.",
+        "submit": "Créer le lot",
+        "selfReportedNotice": "Déclaration manuelle par la coopérative — non vérifiée indépendamment au-delà du KYC.",
+        "noSites": "Ajoutez au moins un site minier dans vos paramètres avant de créer un lot.",
+        "noSitesCta": "Paramètres",
+        "forbidden": "Seules les coopératives vérifiées peuvent créer des lots.",
+        "siteNotFound": "Site introuvable. Vérifiez vos sites dans les paramètres.",
+        "error": "La création du lot a échoué. Réessayez.",
+        "kycRequiredTitle": "Vérification KYC requise",
+        "kycRequiredDescription": "Votre compte coopérative doit être approuvé avant de créer un lot.",
+        "kycRequiredCta": "Compléter la vérification KYC"
+      },
+      "detail": {
+        "title": "Détail du lot",
+        "back": "Retour",
+        "selfReportedNotice": "Chronologie déclarée par la coopérative — non vérifiée indépendamment au-delà du KYC.",
+        "mineral": "Minerai",
+        "initialWeight": "Poids initial",
+        "weightValue": "{weight} kg",
+        "extractionDate": "Date d'extraction",
+        "site": "Site / ZEA",
+        "siteValue": "{name} — ZEA {zea} ({province})",
+        "createdAt": "Créé le",
+        "linkedListing": "Annonce liée",
+        "viewListing": "Voir l'annonce",
+        "notes": "Notes",
+        "notProvided": "Non renseigné"
+      },
+      "custody": {
+        "title": "Chronologie de garde",
+        "selfReportedNotice": "Points de garde saisis manuellement par la coopérative — non vérifiés par GPS ni par un tiers.",
+        "empty": "Aucun point de garde pour le moment.",
+        "addTitle": "Ajouter un point de garde",
+        "stageLabel": "Étape",
+        "noteLabel": "Note",
+        "timestampLabel": "Horodatage",
+        "timestampHint": "Laisser vide pour utiliser l'heure actuelle.",
+        "addCta": "Ajouter le point de garde",
+        "forbidden": "Seule la coopérative propriétaire peut ajouter des points de garde.",
+        "saveError": "L'ajout du point de garde a échoué. Réessayez.",
+        "stages": {
+          "extraction": "Extraction",
+          "weighing": "Pesée",
+          "sampling": "Échantillonnage",
+          "analysis": "Analyse",
+          "collection_point": "Point de collecte"
+        }
       }
     },
     "offers": {
@@ -1004,6 +1088,21 @@
         "FR": "France",
         "US": "États-Unis",
         "CN": "Chine"
+      },
+      "cooperativeSites": {
+        "title": "Sites miniers",
+        "description": "Renseignez les sites et références ZEA de votre coopérative. Requis pour créer des lots traçables.",
+        "siteLabel": "Site {index}",
+        "siteName": "Nom du site",
+        "zeaReference": "Référence ZEA",
+        "zeaHint": "Zone d'Exploitation Artisanale — référence déclarée par la coopérative.",
+        "province": "Province",
+        "addSite": "Ajouter un site",
+        "removeSite": "Supprimer le site",
+        "submit": "Enregistrer les sites",
+        "success": "Sites enregistrés avec succès.",
+        "error": "L'enregistrement des sites a échoué. Réessayez.",
+        "forbidden": "Seules les coopératives vérifiées peuvent gérer des sites."
       }
     }
   },

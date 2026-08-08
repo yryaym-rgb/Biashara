@@ -2,7 +2,8 @@ import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import { getProfile } from '@/lib/auth/session';
-import { isSellerRole } from '@/lib/rbac';
+import { isSellerRole, isCooperativeRole } from '@/lib/rbac';
+import { getUnlinkedLotsForCooperative } from '@/lib/platform/lots';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -74,13 +75,21 @@ export default async function MarketplaceNewPage({
     );
   }
 
+  const availableLots =
+    isCooperativeRole(profile.role)
+      ? await getUnlinkedLotsForCooperative(profile.id)
+      : [];
+
   return (
     <Container className="py-12 md:py-16">
       <div className="mx-auto max-w-2xl">
         <h1 className="text-[34px] font-bold leading-tight text-ink">{t('title')}</h1>
         <p className="mt-3 text-base text-body">{t('subtitle')}</p>
         <div className="mt-8">
-          <ListingNewForm />
+          <ListingNewForm
+            availableLots={availableLots}
+            showLotSelect={isCooperativeRole(profile.role)}
+          />
         </div>
       </div>
     </Container>
