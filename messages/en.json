@@ -1013,6 +1013,7 @@
       "users": "Users",
       "kycReview": "KYC verification",
       "listingsModeration": "Listings moderation",
+      "reports": "Reports",
       "auditLog": "Audit log"
     },
     "shell": {
@@ -1185,6 +1186,147 @@
           "title": "No rejected listings",
           "description": "Rejected listings will appear here with their reason."
         }
+      }
+    },
+    "reports": {
+      "title": "Platform reports",
+      "eyebrow": "Administration",
+      "description": "Real-time metrics, operational alerts, and on-demand exports.",
+      "alerts": {
+        "title": "Operational alerts",
+        "allClear": "No pending alerts — everything is up to date.",
+        "action": "View",
+        "items": {
+          "aging_listing": "Listing pending for over 48 h: {title}",
+          "aging_kyc": "KYC document pending for over 48 h — {company} ({type})",
+          "unresolved_dispute": "Unresolved disputed order: {title}",
+          "high_dispute_rate_user": "High dispute rate ({rate}%) — {company}"
+        }
+      },
+      "charts": {
+        "transactionVolume": {
+          "title": "Transaction volume",
+          "empty": "Insufficient data to display the chart.",
+          "granularity": {
+            "daily": "Daily",
+            "weekly": "Weekly"
+          }
+        },
+        "mineralDistribution": {
+          "title": "Distribution by mineral",
+          "emptyTitle": "No orders",
+          "emptyDescription": "No orders recorded to calculate distribution.",
+          "chartLabel": "Order distribution by mineral",
+          "orders": "orders"
+        },
+        "userGrowth": {
+          "title": "User growth",
+          "empty": "Insufficient data to display the chart.",
+          "granularity": {
+            "daily": "Daily",
+            "weekly": "Weekly"
+          },
+          "tooltipNew": "New: {count}",
+          "tooltipCumulative": "Cumulative: {count}"
+        },
+        "kycFunnel": {
+          "title": "KYC funnel",
+          "empty": "No profiles recorded."
+        },
+        "listingFunnel": {
+          "title": "Listing funnel",
+          "empty": "No listings recorded."
+        },
+        "disputeRate": {
+          "title": "Dispute rate",
+          "empty": "Insufficient data to display the trend.",
+          "granularity": {
+            "daily": "Daily",
+            "weekly": "Weekly"
+          },
+          "tooltipRate": "{rate}%",
+          "tooltipCounts": "{disputed} disputes out of {total} orders"
+        }
+      },
+      "exports": {
+        "title": "Export center",
+        "csvSection": "CSV exports",
+        "pdfSection": "PDF report",
+        "csv": {
+          "users": "Users / profiles",
+          "listings": "Listings",
+          "orders": "Orders",
+          "audit-log": "Audit log"
+        },
+        "pdf": {
+          "report": "Platform report (PDF)",
+          "hint": "Generated on demand with current metrics.",
+          "documentTitle": "BIASHARA Platform Report",
+          "generatedAt": "Generated on",
+          "totalUsers": "Registered users",
+          "totalListings": "Published listings",
+          "totalOrders": "Orders",
+          "totalVolume": "Total transaction volume",
+          "disputeRate": "Global dispute rate",
+          "kycFunnel": "KYC funnel",
+          "listingFunnel": "Listing funnel",
+          "mineralDistribution": "Distribution by mineral",
+          "footer": "Document automatically generated from platform data."
+        },
+        "columns": {
+          "id": "ID",
+          "companyName": "Company",
+          "role": "Role",
+          "country": "Country",
+          "phone": "Phone",
+          "locale": "Locale",
+          "kycStatus": "KYC status",
+          "createdAt": "Created at",
+          "updatedAt": "Updated at",
+          "sellerId": "Seller ID",
+          "mineral": "Mineral",
+          "title": "Title",
+          "grade": "Grade",
+          "purity": "Purity",
+          "quantity": "Quantity",
+          "unit": "Unit",
+          "priceAmount": "Price",
+          "priceCurrency": "Currency",
+          "priceType": "Price type",
+          "originProvince": "Province",
+          "status": "Status",
+          "offerId": "Offer ID",
+          "listingId": "Listing ID",
+          "buyerId": "Buyer ID",
+          "listingTitle": "Listing title",
+          "currency": "Currency",
+          "disputeReason": "Dispute reason",
+          "disputedAt": "Disputed at",
+          "actorId": "Actor ID",
+          "action": "Action",
+          "entity": "Entity",
+          "entityId": "Entity ID",
+          "diff": "Diff"
+        }
+      }
+    },
+    "search": {
+      "title": "Admin search",
+      "open": "Open search",
+      "close": "Close",
+      "placeholder": "Search users, listings, orders…",
+      "hint": "Type to search across the entire platform.",
+      "searching": "Searching…",
+      "noResults": "No results found.",
+      "groups": {
+        "users": "Users",
+        "listings": "Listings",
+        "orders": "Orders"
+      },
+      "keyboard": {
+        "navigate": "navigate",
+        "select": "select",
+        "close": "close"
       }
     },
     "auditLog": {

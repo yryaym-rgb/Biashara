@@ -1013,6 +1013,7 @@
       "users": "Utilisateurs",
       "kycReview": "Vérification KYC",
       "listingsModeration": "Modération des annonces",
+      "reports": "Rapports",
       "auditLog": "Journal d'audit"
     },
     "shell": {
@@ -1185,6 +1186,147 @@
           "title": "Aucune annonce rejetée",
           "description": "Les annonces rejetées apparaîtront ici avec leur motif."
         }
+      }
+    },
+    "reports": {
+      "title": "Rapports de plateforme",
+      "eyebrow": "Administration",
+      "description": "Métriques en temps réel, alertes opérationnelles et exports à la demande.",
+      "alerts": {
+        "title": "Alertes opérationnelles",
+        "allClear": "Aucune alerte en attente — tout est à jour.",
+        "action": "Voir",
+        "items": {
+          "aging_listing": "Annonce en attente depuis plus de 48 h : {title}",
+          "aging_kyc": "Document KYC en attente depuis plus de 48 h — {company} ({type})",
+          "unresolved_dispute": "Commande en litige non résolue : {title}",
+          "high_dispute_rate_user": "Taux de litige élevé ({rate} %) — {company}"
+        }
+      },
+      "charts": {
+        "transactionVolume": {
+          "title": "Volume des transactions",
+          "empty": "Données insuffisantes pour afficher le graphique.",
+          "granularity": {
+            "daily": "Quotidien",
+            "weekly": "Hebdomadaire"
+          }
+        },
+        "mineralDistribution": {
+          "title": "Répartition par minerai",
+          "emptyTitle": "Aucune commande",
+          "emptyDescription": "Aucune commande enregistrée pour calculer la répartition.",
+          "chartLabel": "Répartition des commandes par minerai",
+          "orders": "commandes"
+        },
+        "userGrowth": {
+          "title": "Croissance des utilisateurs",
+          "empty": "Données insuffisantes pour afficher le graphique.",
+          "granularity": {
+            "daily": "Quotidien",
+            "weekly": "Hebdomadaire"
+          },
+          "tooltipNew": "Nouveaux : {count}",
+          "tooltipCumulative": "Cumulé : {count}"
+        },
+        "kycFunnel": {
+          "title": "Entonnoir KYC",
+          "empty": "Aucun profil enregistré."
+        },
+        "listingFunnel": {
+          "title": "Entonnoir des annonces",
+          "empty": "Aucune annonce enregistrée."
+        },
+        "disputeRate": {
+          "title": "Taux de litige",
+          "empty": "Données insuffisantes pour afficher la tendance.",
+          "granularity": {
+            "daily": "Quotidien",
+            "weekly": "Hebdomadaire"
+          },
+          "tooltipRate": "{rate} %",
+          "tooltipCounts": "{disputed} litiges sur {total} commandes"
+        }
+      },
+      "exports": {
+        "title": "Centre d'export",
+        "csvSection": "Exports CSV",
+        "pdfSection": "Rapport PDF",
+        "csv": {
+          "users": "Utilisateurs / profils",
+          "listings": "Annonces",
+          "orders": "Commandes",
+          "audit-log": "Journal d'audit"
+        },
+        "pdf": {
+          "report": "Rapport de plateforme (PDF)",
+          "hint": "Généré à la demande avec les métriques actuelles.",
+          "documentTitle": "Rapport de plateforme BIASHARA",
+          "generatedAt": "Généré le",
+          "totalUsers": "Utilisateurs inscrits",
+          "totalListings": "Annonces publiées",
+          "totalOrders": "Commandes",
+          "totalVolume": "Volume total des transactions",
+          "disputeRate": "Taux de litige global",
+          "kycFunnel": "Entonnoir KYC",
+          "listingFunnel": "Entonnoir des annonces",
+          "mineralDistribution": "Répartition par minerai",
+          "footer": "Document généré automatiquement à partir des données de la plateforme."
+        },
+        "columns": {
+          "id": "ID",
+          "companyName": "Entreprise",
+          "role": "Rôle",
+          "country": "Pays",
+          "phone": "Téléphone",
+          "locale": "Langue",
+          "kycStatus": "Statut KYC",
+          "createdAt": "Créé le",
+          "updatedAt": "Mis à jour le",
+          "sellerId": "ID vendeur",
+          "mineral": "Minerai",
+          "title": "Titre",
+          "grade": "Grade",
+          "purity": "Pureté",
+          "quantity": "Quantité",
+          "unit": "Unité",
+          "priceAmount": "Prix",
+          "priceCurrency": "Devise",
+          "priceType": "Type de prix",
+          "originProvince": "Province",
+          "status": "Statut",
+          "offerId": "ID offre",
+          "listingId": "ID annonce",
+          "buyerId": "ID acheteur",
+          "listingTitle": "Titre annonce",
+          "currency": "Devise",
+          "disputeReason": "Motif litige",
+          "disputedAt": "Date litige",
+          "actorId": "ID acteur",
+          "action": "Action",
+          "entity": "Entité",
+          "entityId": "ID entité",
+          "diff": "Différences"
+        }
+      }
+    },
+    "search": {
+      "title": "Recherche administration",
+      "open": "Ouvrir la recherche",
+      "close": "Fermer",
+      "placeholder": "Rechercher utilisateurs, annonces, commandes…",
+      "hint": "Tapez pour rechercher sur toute la plateforme.",
+      "searching": "Recherche en cours…",
+      "noResults": "Aucun résultat trouvé.",
+      "groups": {
+        "users": "Utilisateurs",
+        "listings": "Annonces",
+        "orders": "Commandes"
+      },
+      "keyboard": {
+        "navigate": "naviguer",
+        "select": "sélectionner",
+        "close": "fermer"
       }
     },
     "auditLog": {

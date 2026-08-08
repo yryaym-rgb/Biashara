@@ -13,8 +13,10 @@ import {
   adminKycReviewPath,
   adminListingsModerationPath,
   adminPath,
+  adminReportsPath,
   adminUsersPath,
 } from '@/lib/admin/path';
+import { AdminCommandPaletteProvider } from '@/components/admin/admin-command-palette';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -52,17 +54,20 @@ export default async function SecretGateAdminLayout({
     { key: 'users', href: adminUsersPath() },
     { key: 'kycReview', href: adminKycReviewPath() },
     { key: 'listingsModeration', href: adminListingsModerationPath() },
+    { key: 'reports', href: adminReportsPath() },
     { key: 'auditLog', href: adminAuditLogPath() },
   ];
 
   return (
-    <AdminShell
-      adminName={adminName}
-      adminEmail={email}
-      locale={locale}
-      navItems={navItems}
-    >
-      {children}
-    </AdminShell>
+    <AdminCommandPaletteProvider>
+      <AdminShell
+        adminName={adminName}
+        adminEmail={email}
+        locale={locale}
+        navItems={navItems}
+      >
+        {children}
+      </AdminShell>
+    </AdminCommandPaletteProvider>
   );
 }

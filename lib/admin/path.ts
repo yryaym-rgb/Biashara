@@ -27,3 +27,7 @@ export function adminListingsModerationPath(listingId?: string): string {
 export function adminAuditLogPath(): string {
   return adminPath('audit-log');
 }
+
+export function adminReportsPath(): string {
+  return adminPath('reports');
+}
