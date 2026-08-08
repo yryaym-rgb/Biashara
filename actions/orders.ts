@@ -12,6 +12,7 @@ import {
 } from '@/lib/platform/order-status';
 import { orderDisputeSchema, orderProgressSchema } from '@/lib/validators/order';
 import { sanitizeText } from '@/lib/sanitize';
+import { createNotification } from '@/lib/notifications/create';
 import type { Database } from '@/types/database.types';
 
 function revalidateOrderPaths(orderId: string) {
@@ -54,6 +55,12 @@ export async function progressOrderStatus(input: unknown) {
     return { error: error.message };
   }
 
+  await createNotification(data.buyer_id, 'order', {
+    action: 'status_changed',
+    orderId: data.id,
+    status: nextStatus,
+  });
+
   revalidateOrderPaths(parsed.data.orderId);
   return { data };
 }
@@ -94,6 +101,12 @@ export async function disputeOrder(input: unknown) {
   if (error) {
     return { error: error.message };
   }
+
+  await createNotification(data.seller_id, 'order', {
+    action: 'disputed',
+    orderId: data.id,
+    reason: sanitizeText(parsed.data.reason, 2000),
+  });
 
   revalidateOrderPaths(parsed.data.orderId);
   return { data };

@@ -12,6 +12,7 @@ import {
 import { kycApproveSchema, kycRejectSchema } from '@/lib/validators/admin';
 import { adminPath } from '@/lib/admin/path';
 import { sendTransactionalEmail } from '@/lib/email';
+import { createNotification } from '@/lib/notifications/create';
 import type { Database } from '@/types/database.types';
 
 type KycDocumentType = Database['public']['Enums']['kyc_document_type'];
@@ -54,6 +55,11 @@ export async function approveKycDocument(input: unknown) {
     return { error: error.message };
   }
 
+  await createNotification(doc.user_id, 'kyc', {
+    action: 'approved',
+    documentType: doc.type as KycDocumentType,
+  });
+
   const { data: approvedDocs } = await supabase
     .from('kyc_documents')
     .select('type')
@@ -95,7 +101,7 @@ export async function rejectKycDocument(input: unknown) {
   const supabase = await createClient();
   const { data: doc, error: fetchError } = await supabase
     .from('kyc_documents')
-    .select('user_id')
+    .select('user_id, type')
     .eq('id', parsed.data.documentId)
     .single();
 
@@ -121,6 +127,12 @@ export async function rejectKycDocument(input: unknown) {
     .from('profiles')
     .update({ kyc_status: 'rejected' })
     .eq('id', doc.user_id);
+
+  await createNotification(doc.user_id, 'kyc', {
+    action: 'rejected',
+    documentType: doc.type as KycDocumentType,
+    reason: parsed.data.reason,
+  });
 
   revalidatePath(adminPath());
   revalidatePath(adminPath('kyc-review'));

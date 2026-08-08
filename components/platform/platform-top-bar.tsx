@@ -2,12 +2,13 @@
 
 import { useTransition } from 'react';
 import { useTranslations } from 'next-intl';
-import { Bell } from 'lucide-react';
 import { logoutAction } from '@/actions/auth';
 import { AdminMenuButton } from '@/components/admin/admin-shell';
+import { NotificationBell } from '@/components/platform/notification-bell';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { roleVariant } from '@/lib/admin/display';
+import type { NotificationRow } from '@/lib/notifications/types';
 import type { Database } from '@/types/database.types';
 import type { Locale } from '@/lib/i18n/config';
 
@@ -19,6 +20,8 @@ export interface PlatformTopBarProps {
   locale: string;
   onMenuClick: () => void;
   menuButtonLabel: string;
+  recentNotifications: NotificationRow[];
+  unreadNotificationsCount: number;
 }
 
 function avatarInitial(displayName: string, email: string | null): string {
@@ -34,6 +37,8 @@ export function PlatformTopBar({
   locale,
   onMenuClick,
   menuButtonLabel,
+  recentNotifications,
+  unreadNotificationsCount,
 }: PlatformTopBarProps) {
   const t = useTranslations('platform.shell');
   const tRoles = useTranslations('admin.roles');
@@ -47,13 +52,11 @@ export function PlatformTopBar({
       </div>
 
       <div className="flex shrink-0 items-center gap-4">
-        <button
-          type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-button border border-border bg-bg text-brand-blue hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-          aria-label={t('notifications')}
-        >
-          <Bell className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
-        </button>
+        <NotificationBell
+          notifications={recentNotifications}
+          unreadCount={unreadNotificationsCount}
+          locale={locale}
+        />
 
         <div className="hidden items-center gap-3 sm:flex">
           <div

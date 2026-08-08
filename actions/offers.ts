@@ -15,6 +15,7 @@ import {
   acceptOfferSchema,
 } from '@/lib/validators/offer';
 import { sanitizeText } from '@/lib/sanitize';
+import { createNotification } from '@/lib/notifications/create';
 import type { Database } from '@/types/database.types';
 
 function revalidateOfferPaths() {
@@ -46,6 +47,20 @@ export async function createOffer(input: unknown) {
 
   if (error) {
     return { error: error.message };
+  }
+
+  const { data: listing } = await supabase
+    .from('listings')
+    .select('seller_id, title')
+    .eq('id', parsed.data.listingId)
+    .single();
+
+  if (listing) {
+    await createNotification(listing.seller_id, 'offer', {
+      action: 'received',
+      offerId: data.id,
+      listingTitle: listing.title,
+    });
   }
 
   revalidateOfferPaths();
@@ -103,6 +118,15 @@ export async function counterOffer(input: unknown) {
     return { error: error.message };
   }
 
+  const sellerId = parent.listing.seller_id;
+  const recipientId = profile.id === sellerId ? parent.buyer_id : sellerId;
+
+  await createNotification(recipientId, 'offer', {
+    action: 'countered',
+    offerId: data.id,
+    listingTitle: parent.listing.title,
+  });
+
   revalidateOfferPaths();
   return { data };
 }
@@ -134,6 +158,12 @@ export async function acceptOffer(input: unknown) {
     return { error: error.message };
   }
 
+  await createNotification(offer.buyer_id, 'offer', {
+    action: 'accepted',
+    offerId: offer.id,
+    listingTitle: offer.listing.title,
+  });
+
   revalidateOfferPaths();
   return { orderId };
 }
@@ -164,6 +194,15 @@ export async function declineOffer(offerId: string) {
   if (error) {
     return { error: error.message };
   }
+
+  const sellerId = offer.listing.seller_id;
+  const recipientId = profile.id === sellerId ? offer.buyer_id : sellerId;
+
+  await createNotification(recipientId, 'offer', {
+    action: 'declined',
+    offerId: offer.id,
+    listingTitle: offer.listing.title,
+  });
 
   revalidateOfferPaths();
   return { data };

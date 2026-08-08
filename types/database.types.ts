@@ -800,7 +800,7 @@ export type Database = {
         | 'coltan'
         | 'lithium'
         | 'diamond';
-      notification_type: 'kyc' | 'offer' | 'order' | 'message' | 'system';
+      notification_type: 'kyc' | 'offer' | 'order' | 'message' | 'system' | 'listing';
       offer_status:
         | 'pending'
         | 'countered'

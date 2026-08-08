@@ -47,6 +47,7 @@ export type PlatformPageKey =
   | 'offers'
   | 'orders'
   | 'messages'
+  | 'notifications'
   | 'settings'
   | 'contracts'
   | 'payments'
@@ -61,6 +62,7 @@ const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   offers: 'platform.offers.title',
   orders: 'platform.orders.title',
   messages: 'platform.messages.title',
+  notifications: 'notifications.title',
   settings: 'platform.settings.title',
   contracts: 'platform.contracts.title',
   payments: 'platform.payments.title',
@@ -91,6 +93,9 @@ export function resolvePlatformPageKey(pathname: string): PlatformPageKey {
   }
   if (pathname === '/messages' || pathname.startsWith('/messages/')) {
     return 'messages';
+  }
+  if (pathname === '/notifications' || pathname.startsWith('/notifications/')) {
+    return 'notifications';
   }
   if (pathname === '/settings' || pathname.startsWith('/settings/')) {
     return 'settings';
