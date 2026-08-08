@@ -7,11 +7,18 @@ export type PlatformNavKey =
   | 'offers'
   | 'listings'
   | 'orders'
+  | 'messages'
   | 'settings';
 
 export interface PlatformNavItem {
   key: PlatformNavKey;
-  href: '/dashboard' | '/marketplace' | '/offers' | '/settings' | '/orders';
+  href:
+    | '/dashboard'
+    | '/marketplace'
+    | '/offers'
+    | '/settings'
+    | '/orders'
+    | '/messages';
 }
 
 export function getPlatformNavItems(
@@ -28,6 +35,7 @@ export function getPlatformNavItems(
   }
 
   items.push({ key: 'orders', href: '/orders' });
+  items.push({ key: 'messages', href: '/messages' });
   items.push({ key: 'settings', href: '/settings' });
 
   return items;
@@ -38,6 +46,7 @@ export type PlatformPageKey =
   | 'marketplace'
   | 'offers'
   | 'orders'
+  | 'messages'
   | 'settings'
   | 'contracts'
   | 'payments'
@@ -51,6 +60,7 @@ const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   marketplace: 'platform.marketplace.title',
   offers: 'platform.offers.title',
   orders: 'platform.orders.title',
+  messages: 'platform.messages.title',
   settings: 'platform.settings.title',
   contracts: 'platform.contracts.title',
   payments: 'platform.payments.title',
@@ -78,6 +88,9 @@ export function resolvePlatformPageKey(pathname: string): PlatformPageKey {
   }
   if (pathname === '/orders' || pathname.startsWith('/orders/')) {
     return 'orders';
+  }
+  if (pathname === '/messages' || pathname.startsWith('/messages/')) {
+    return 'messages';
   }
   if (pathname === '/settings' || pathname.startsWith('/settings/')) {
     return 'settings';

@@ -445,6 +445,7 @@
     "marketplaceDetail": { "title": "Listing details" },
     "offers": { "title": "Offers" },
     "orders": { "title": "Orders" },
+    "messages": { "title": "Messages" },
     "contracts": { "title": "Contracts" },
     "payments": { "title": "Payments" },
     "logistics": { "title": "Shipments" },
@@ -458,6 +459,8 @@
       "offers": "My offers",
       "listings": "My listings",
       "orders": "My orders",
+      "messages": "Messages",
+      "messagesUnread": "{count, plural, one {# unread conversation} other {# unread conversations}}",
       "settings": "Settings"
     },
     "shell": {
@@ -695,6 +698,20 @@
         "status": "Status",
         "date": "Date"
       }
+    },
+    "messages": {
+      "title": "Messages",
+      "empty": "You don't have any conversations yet.",
+      "emptyDescription": "Explore the marketplace to contact a seller.",
+      "emptyCta": "Explore the marketplace",
+      "counterpartyUnknown": "Counterparty",
+      "conversationListLabel": "Conversation list",
+      "threadLabel": "Conversation thread",
+      "selectConversation": "Select a conversation to view messages.",
+      "backToList": "Back to conversations",
+      "composeLabel": "Your message",
+      "send": "Send",
+      "unreadIndicator": "Unread messages"
     },
     "contracts": {
       "title": "Contracts",
