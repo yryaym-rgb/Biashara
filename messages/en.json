@@ -744,7 +744,56 @@
       "kycPending": "Verification in progress — our team is reviewing your documents",
       "kycApproved": "Account verified",
       "kycRejected": "Verification rejected — review the reasons and resubmit your documents",
-      "myListings": "My listings"
+      "myListings": "My listings",
+      "tabs": {
+        "profile": "Profile",
+        "security": "Security",
+        "kyc": "KYC verification",
+        "listings": "My listings"
+      },
+      "profileForm": {
+        "title": "Profile information",
+        "companyName": "Company name",
+        "country": "Country",
+        "phone": "Phone",
+        "phoneHint": "International format recommended (e.g. +243…)",
+        "email": "Email address",
+        "role": "Account type",
+        "memberSince": "Member since",
+        "emailReadOnlyHint": "Email changes are not available here.",
+        "submit": "Save changes",
+        "success": "Profile updated successfully.",
+        "error": "Profile update failed. Please try again."
+      },
+      "security": {
+        "title": "Password",
+        "description": "Choose a password with at least 12 characters.",
+        "newPassword": "New password",
+        "confirmPassword": "Confirm password",
+        "submit": "Update password",
+        "success": "Password updated successfully.",
+        "error": "Password update failed. Please try again.",
+        "passwordMismatch": "Passwords do not match"
+      },
+      "countries": {
+        "CD": "Democratic Republic of the Congo",
+        "CG": "Republic of the Congo",
+        "AO": "Angola",
+        "RW": "Rwanda",
+        "BI": "Burundi",
+        "UG": "Uganda",
+        "TZ": "Tanzania",
+        "ZM": "Zambia",
+        "CF": "Central African Republic",
+        "GA": "Gabon",
+        "CM": "Cameroon",
+        "KE": "Kenya",
+        "ZA": "South Africa",
+        "BE": "Belgium",
+        "FR": "France",
+        "US": "United States",
+        "CN": "China"
+      }
     }
   },
   "admin": {
