@@ -241,10 +241,11 @@
       "map": {
         "eyebrow": "FROM THE DRC TO THE WORLD",
         "title": "One country, exceptional mineral wealth",
-        "mapAria": "Stylized map of DRC provinces",
+        "mapAria": "Map of DRC provinces",
         "provinceLinkAria": "View listings from {province}",
         "activeListings": "{count, plural, one {# active listing from this region} other {# active listings from this region}}",
         "noListings": "No listings at the moment",
+        "attribution": "Map data: geoBoundaries (CC BY 4.0)",
         "cobaltFact": "The DRC is one of the world's leading cobalt producers — a widely documented public fact from industry sources."
       },
       "prices": {

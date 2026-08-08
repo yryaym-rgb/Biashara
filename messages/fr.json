@@ -241,10 +241,11 @@
       "map": {
         "eyebrow": "DE LA RDC VERS LE MONDE",
         "title": "Un pays, une richesse minérale exceptionnelle",
-        "mapAria": "Carte stylisée des provinces de la RDC",
+        "mapAria": "Carte des provinces de la RDC",
         "provinceLinkAria": "Voir les annonces de {province}",
         "activeListings": "{count, plural, one {# annonce active de cette région} other {# annonces actives de cette région}}",
         "noListings": "Aucune annonce pour le moment",
+        "attribution": "Données cartographiques : geoBoundaries (CC BY 4.0)",
         "cobaltFact": "La RDC est l'un des principaux producteurs mondiaux de cobalt — une donnée publique largement documentée par les sources sectorielles."
       },
       "prices": {
