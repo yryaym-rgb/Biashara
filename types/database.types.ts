@@ -546,6 +546,8 @@ export type Database = {
           unit: Database['public']['Enums']['quantity_unit'];
           currency: string;
           status: Database['public']['Enums']['order_status'];
+          dispute_reason: string | null;
+          disputed_at: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -560,6 +562,8 @@ export type Database = {
           unit: Database['public']['Enums']['quantity_unit'];
           currency?: string;
           status?: Database['public']['Enums']['order_status'];
+          dispute_reason?: string | null;
+          disputed_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -574,6 +578,8 @@ export type Database = {
           unit?: Database['public']['Enums']['quantity_unit'];
           currency?: string;
           status?: Database['public']['Enums']['order_status'];
+          dispute_reason?: string | null;
+          disputed_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
