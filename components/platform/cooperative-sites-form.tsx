@@ -10,7 +10,7 @@ import { cooperativeSitesFormSchema } from '@/lib/validators/lot';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input, Select } from '@/components/ui/input';
-import type { CooperativeSiteRow } from '@/lib/platform/lots';
+import type { CooperativeSiteRow } from '@/lib/platform/lots.types';
 
 interface SiteDraft {
   id: string;
@@ -32,7 +32,10 @@ function toDraft(site: CooperativeSiteRow): SiteDraft {
   };
 }
 
-function createEmptySite(id: string): SiteDraft {
+/** Stable sentinel for the first empty draft row — must match on server and client. */
+const INITIAL_EMPTY_SITE_ID = '__new_site__';
+
+function createEmptySite(id: string = INITIAL_EMPTY_SITE_ID): SiteDraft {
   return {
     id,
     siteName: '',
@@ -48,8 +51,8 @@ export function CooperativeSitesForm({ initialSites }: CooperativeSitesFormProps
   const baseSiteId = React.useId();
   const nextSiteKeyRef = React.useRef(0);
 
-  const [sites, setSites] = React.useState<SiteDraft[]>(
-    initialSites.length > 0 ? initialSites.map(toDraft) : [createEmptySite(`${baseSiteId}-0`)],
+  const [sites, setSites] = React.useState<SiteDraft[]>(() =>
+    initialSites.length > 0 ? initialSites.map(toDraft) : [createEmptySite()],
   );
   const [fieldErrors, setFieldErrors] = React.useState<Record<string, string>>({});
   const [formError, setFormError] = React.useState<string | null>(null);

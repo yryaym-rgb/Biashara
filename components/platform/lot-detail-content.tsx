@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { LotCustodySection } from '@/components/platform/lot-custody-section';
 import { formatDate, formatDateTime } from '@/lib/utils/dates';
-import type { LotDetail } from '@/lib/platform/lots';
+import type { LotDetail } from '@/lib/platform/lots.types';
 import type { MineralId } from '@/lib/constants/minerals';
 
 export interface LotDetailContentProps {

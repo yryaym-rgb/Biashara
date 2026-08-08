@@ -8,7 +8,7 @@ import { MINERAL_IDS } from '@/lib/constants/minerals';
 import { lotCreateSchema } from '@/lib/validators/lot';
 import { Button } from '@/components/ui/button';
 import { Input, Select, Textarea } from '@/components/ui/input';
-import type { CooperativeSiteRow } from '@/lib/platform/lots';
+import type { CooperativeSiteRow } from '@/lib/platform/lots.types';
 
 export interface LotNewFormProps {
   sites: CooperativeSiteRow[];
