@@ -9,7 +9,8 @@ import { Select } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { PasswordInput } from '@/components/auth/password-input';
 import { KycDocumentUpload } from '@/components/auth/kyc-document-upload';
-import { registerAction } from '@/actions/auth';
+import { registerAction, clearRegistrationSessionAction } from '@/actions/auth';
+import { getRegistrationKycStatus, verifyRegistrationKycComplete } from '@/actions/kyc';
 import { registerStep1Schema } from '@/lib/validators/auth';
 import {
   parseRegisterStep,
@@ -29,7 +30,11 @@ const REGISTRATION_ROLE_KEY = 'biashara_registration_role';
 
 const STEPS: RegisterStep[] = [1, 2, 3];
 
-export function RegisterStepper() {
+export interface RegisterStepperProps {
+  registrationEmail?: string | null;
+}
+
+export function RegisterStepper({ registrationEmail = null }: RegisterStepperProps) {
   const t = useTranslations('auth.register');
   const tKyc = useTranslations('kyc');
   const tErrors = useTranslations('auth.errors');
@@ -52,6 +57,29 @@ export function RegisterStepper() {
   const [loading, setLoading] = React.useState(false);
   const [userId, setUserId] = React.useState<string | null>(null);
   const [registeredRole, setRegisteredRole] = React.useState<UserRole>('buyer');
+  const [kycComplete, setKycComplete] = React.useState(false);
+  const [kycChecking, setKycChecking] = React.useState(false);
+  const [step2Error, setStep2Error] = React.useState<string | null>(null);
+  const [confirmedEmail, setConfirmedEmail] = React.useState<string | null>(registrationEmail);
+
+  const refreshKycStatus = React.useCallback(async () => {
+    setKycChecking(true);
+    try {
+      const result = await getRegistrationKycStatus();
+      if (result.data) {
+        setUserId(result.data.userId);
+        setRegisteredRole(result.data.role);
+        setKycComplete(result.data.complete);
+        if (result.data.email) {
+          setConfirmedEmail(result.data.email);
+        }
+        sessionStorage.setItem(REGISTRATION_USER_KEY, result.data.userId);
+        sessionStorage.setItem(REGISTRATION_ROLE_KEY, result.data.role);
+      }
+    } finally {
+      setKycChecking(false);
+    }
+  }, []);
 
   React.useEffect(() => {
     const storedUserId = sessionStorage.getItem(REGISTRATION_USER_KEY);
@@ -59,6 +87,18 @@ export function RegisterStepper() {
     if (storedUserId) setUserId(storedUserId);
     if (storedRole) setRegisteredRole(storedRole);
   }, []);
+
+  React.useEffect(() => {
+    if (registrationEmail) {
+      setConfirmedEmail(registrationEmail);
+    }
+  }, [registrationEmail]);
+
+  React.useEffect(() => {
+    if (currentStep === 2) {
+      void refreshKycStatus();
+    }
+  }, [currentStep, refreshKycStatus]);
 
   function goToStep(step: RegisterStep) {
     const url = buildRegisterStepUrl(pathname, step, new URLSearchParams(searchParams.toString()));
@@ -125,9 +165,30 @@ export function RegisterStepper() {
         sessionStorage.setItem(REGISTRATION_ROLE_KEY, role);
         setUserId(newUserId);
         setRegisteredRole(role);
+        setConfirmedEmail(parsed.data.email);
       }
 
       goToStep(2);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleStep2Continue() {
+    setStep2Error(null);
+    setLoading(true);
+    try {
+      const result = await verifyRegistrationKycComplete();
+      if (result.error === 'kycIncomplete') {
+        setStep2Error(t('kyc.incomplete'));
+        await refreshKycStatus();
+        return;
+      }
+      if (result.error) {
+        setStep2Error(t('kyc.sessionExpired'));
+        return;
+      }
+      goToStep(3);
     } finally {
       setLoading(false);
     }
@@ -140,6 +201,8 @@ export function RegisterStepper() {
     { value: 'buyer', label: t('roles.buyer') },
     { value: 'cooperative', label: t('roles.cooperative') },
   ];
+
+  const displayEmail = confirmedEmail ?? email;
 
   return (
     <div className="flex flex-col gap-6">
@@ -291,6 +354,12 @@ export function RegisterStepper() {
         <div className="flex flex-col gap-4">
           <p className="text-[15px] text-body">{t('kyc.description')}</p>
 
+          {step2Error ? (
+            <p className="rounded-button border border-danger/20 bg-danger/10 px-4 py-3 text-[13px] text-danger" role="alert">
+              {step2Error}
+            </p>
+          ) : null}
+
           {!userId ? (
             <p className="rounded-button border border-danger/20 bg-danger/10 px-4 py-3 text-[13px] text-danger" role="alert">
               {t('kyc.sessionExpired')}
@@ -303,6 +372,7 @@ export function RegisterStepper() {
                   userId={userId}
                   documentType={docType}
                   label={tKyc(docType)}
+                  onUploadSuccess={() => void refreshKycStatus()}
                 />
               ))}
             </div>
@@ -315,8 +385,9 @@ export function RegisterStepper() {
             <Button
               type="button"
               className="flex-1"
-              onClick={() => goToStep(3)}
-              disabled={!userId}
+              onClick={() => void handleStep2Continue()}
+              disabled={!userId || !kycComplete || kycChecking || loading}
+              loading={loading}
             >
               {t('continue')}
             </Button>
@@ -326,9 +397,19 @@ export function RegisterStepper() {
 
       {currentStep === 3 ? (
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             <h2 className="text-[18px] font-semibold text-ink">{t('complete.title')}</h2>
-            <p className="text-[15px] text-body">{t('complete.description')}</p>
+
+            {displayEmail ? (
+              <div className="rounded-card border border-border bg-bg-tint p-4">
+                <p className="text-[15px] font-semibold leading-relaxed text-ink">
+                  {t('complete.emailLead', { email: displayEmail })}
+                </p>
+              </div>
+            ) : (
+              <p className="text-[15px] font-semibold text-ink">{t('complete.emailLeadNoEmail')}</p>
+            )}
+
             <p className="text-[13px] text-muted">{t('complete.reviewNote')}</p>
           </div>
 
@@ -338,6 +419,7 @@ export function RegisterStepper() {
             onClick={() => {
               sessionStorage.removeItem(REGISTRATION_USER_KEY);
               sessionStorage.removeItem(REGISTRATION_ROLE_KEY);
+              void clearRegistrationSessionAction();
               router.push('/dashboard');
             }}
           >
