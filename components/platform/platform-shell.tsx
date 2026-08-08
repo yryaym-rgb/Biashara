@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
@@ -8,7 +8,7 @@ import { CommandPaletteProvider } from '@/components/platform/command-palette';
 import { PlatformNav } from '@/components/platform/platform-nav';
 import { PlatformTopBar } from '@/components/platform/platform-top-bar';
 import type { NotificationRow } from '@/lib/notifications/types';
-import type { PlatformNavItem } from '@/lib/platform/nav';
+import type { PlatformNavSection } from '@/lib/platform/nav';
 import type { Database } from '@/types/database.types';
 import logo from '@/design/reference-logo.jpeg';
 import { cn } from '@/lib/utils/cn';
@@ -20,7 +20,7 @@ export interface PlatformShellProps {
   email: string | null;
   role: Database['public']['Enums']['user_role'];
   locale: string;
-  navItems: PlatformNavItem[];
+  navSections: PlatformNavSection[];
   unreadMessagesCount?: number;
   recentNotifications?: NotificationRow[];
   unreadNotificationsCount?: number;
@@ -33,7 +33,7 @@ export function PlatformShell({
   email,
   role,
   locale,
-  navItems,
+  navSections,
   unreadMessagesCount = 0,
   recentNotifications = [],
   unreadNotificationsCount = 0,
@@ -64,11 +64,13 @@ export function PlatformShell({
             />
             <span className="text-[14px] font-bold tracking-[0.08em] text-ink">BIASHARA</span>
           </div>
-          <PlatformNav
-            items={navItems}
-            unreadMessagesCount={unreadMessagesCount}
-            onNavigate={() => setDrawerOpen(false)}
-          />
+          <Suspense fallback={null}>
+            <PlatformNav
+              sections={navSections}
+              unreadMessagesCount={unreadMessagesCount}
+              onNavigate={() => setDrawerOpen(false)}
+            />
+          </Suspense>
         </aside>
 
         {drawerOpen ? (

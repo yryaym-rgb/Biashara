@@ -8,6 +8,7 @@
     "cancel": "Cancel",
     "logout": "Sign out",
     "logoutConfirm": "Are you sure you want to sign out?",
+    "comingSoon": "Coming soon",
     "back": "Back",
     "next": "Next",
     "empty": "No data available at this time"
@@ -250,6 +251,12 @@
         "attribution": "Map data: geoBoundaries (CC BY 4.0)",
         "cobaltFact": "The DRC is one of the world's leading cobalt producers — a widely documented public fact from industry sources."
       },
+      "africanNetwork": {
+        "badge": "Coming soon",
+        "title": "African trade network — Coming soon",
+        "description": "We are building a pan-African network to connect producers, buyers, and logistics corridors across the continent.",
+        "illustrationLabel": "Upcoming African trade network illustration"
+      },
       "prices": {
         "eyebrow": "REAL-TIME MARKET DATA",
         "title": "Built for the future of mineral trade",
@@ -329,6 +336,27 @@
         "price": "Quote",
         "change": "Change",
         "updated": "Updated"
+      },
+      "currency": {
+        "usd": "USD",
+        "cdf": "CDF",
+        "zmw": "ZMW",
+        "tzs": "TZS",
+        "rwf": "RWF",
+        "kes": "KES",
+        "ghs": "GHS",
+        "ngn": "NGN",
+        "zar": "ZAR"
+      },
+      "markets": {
+        "drc": "DRC",
+        "zambia": "Zambia",
+        "tanzania": "Tanzania",
+        "ghana": "Ghana",
+        "southAfrica": "South Africa",
+        "nigeria": "Nigeria",
+        "zimbabwe": "Zimbabwe",
+        "rwanda": "Rwanda"
       },
       "guide": {
         "title": "How to read our quotes",
@@ -462,8 +490,14 @@
       "listings": "My listings",
       "orders": "My orders",
       "messages": "Messages",
+      "documents": "Documents",
       "messagesUnread": "{count, plural, one {# unread conversation} other {# unread conversations}}",
-      "settings": "Settings"
+      "settings": "Settings",
+      "sections": {
+        "main": "Main",
+        "supplyChain": "Supply chain",
+        "company": "Company"
+      }
     },
     "shell": {
       "sidebarLabel": "Platform navigation",
@@ -582,6 +616,55 @@
           "counterpart": "Counterparty",
           "status": "Status",
           "reference": "Reference"
+        }
+      },
+      "header": {
+        "greeting": {
+          "morning": "Good morning",
+          "afternoon": "Good afternoon",
+          "evening": "Good evening"
+        },
+        "kycVerified": "KYC verified"
+      },
+      "trustScore": {
+        "title": "Trust score",
+        "scoreValue": "{score}/100",
+        "signalsLabel": "Trust signals",
+        "signals": {
+          "kycApproved": {
+            "label": "KYC verification approved",
+            "yes": "Yes",
+            "no": "No"
+          },
+          "completedOrders": {
+            "label": "Completed orders",
+            "value": "{count, plural, one {# order} other {# orders}}"
+          },
+          "disputedOrders": {
+            "label": "Disputed orders",
+            "value": "{count, plural, one {# order} other {# orders}}"
+          },
+          "accountAge": {
+            "label": "Account age",
+            "value": "{days, plural, one {# day} other {# days}}"
+          }
+        }
+      },
+      "suggestions": {
+        "title": "Suggested for you",
+        "reason": "Suggested because you usually trade {mineral}."
+      },
+      "comingSoon": {
+        "escrow": {
+          "title": "Secure escrow payments",
+          "description": "Funds will be held in escrow until delivery is confirmed, protecting both buyers and sellers."
+        },
+        "compliance": {
+          "prose": "Compliance centre — Coming soon. We are building sanctions screening, AML/KYB compliance, and ESG documentation tools to strengthen trust on the platform."
+        },
+        "recommendations": {
+          "title": "Smart recommendations — Coming soon",
+          "description": "Personalised suggestions based on your trading history will appear here."
         }
       }
     },
@@ -845,6 +928,19 @@
     "reports": {
       "title": "Reports",
       "empty": "No reports available for the selected period"
+    },
+    "documents": {
+      "title": "Documents",
+      "eyebrow": "Supply chain",
+      "subtitle": "Your KYC documents and order contracts in one place.",
+      "emptyTitle": "No documents",
+      "emptyDescription": "Your KYC documents and order contracts will appear here once submitted or generated.",
+      "kycSection": "KYC documents",
+      "contractsSection": "Contracts",
+      "download": "Download",
+      "unavailable": "Link unavailable",
+      "contractTitle": "Contract — {title} ({mineral})",
+      "contractFallback": "Order contract"
     },
     "settings": {
       "title": "Settings",

@@ -8,6 +8,7 @@
     "cancel": "Annuler",
     "logout": "Se déconnecter",
     "logoutConfirm": "Voulez-vous vraiment vous déconnecter ?",
+    "comingSoon": "Bientôt disponible",
     "back": "Retour",
     "next": "Suivant",
     "empty": "Aucune donnée disponible pour le moment"
@@ -250,6 +251,12 @@
         "attribution": "Données cartographiques : geoBoundaries (CC BY 4.0)",
         "cobaltFact": "La RDC est l'un des principaux producteurs mondiaux de cobalt — une donnée publique largement documentée par les sources sectorielles."
       },
+      "africanNetwork": {
+        "badge": "Bientôt disponible",
+        "title": "Réseau commercial africain — Bientôt disponible",
+        "description": "Nous construisons un réseau panafricain pour connecter les producteurs, les acheteurs et les corridors logistiques à travers le continent.",
+        "illustrationLabel": "Illustration du réseau commercial africain à venir"
+      },
       "prices": {
         "eyebrow": "DONNÉES DE MARCHÉ EN TEMPS RÉEL",
         "title": "Conçu pour l'avenir du commerce des minerais",
@@ -329,6 +336,27 @@
         "price": "Cotation",
         "change": "Variation",
         "updated": "Mise à jour"
+      },
+      "currency": {
+        "usd": "USD",
+        "cdf": "CDF",
+        "zmw": "ZMW",
+        "tzs": "TZS",
+        "rwf": "RWF",
+        "kes": "KES",
+        "ghs": "GHS",
+        "ngn": "NGN",
+        "zar": "ZAR"
+      },
+      "markets": {
+        "drc": "RDC",
+        "zambia": "Zambie",
+        "tanzania": "Tanzanie",
+        "ghana": "Ghana",
+        "southAfrica": "Afrique du Sud",
+        "nigeria": "Nigeria",
+        "zimbabwe": "Zimbabwe",
+        "rwanda": "Rwanda"
       },
       "guide": {
         "title": "Comment lire nos cotations",
@@ -462,8 +490,14 @@
       "listings": "Mes annonces",
       "orders": "Mes commandes",
       "messages": "Messagerie",
+      "documents": "Documents",
       "messagesUnread": "{count, plural, one {# conversation non lue} other {# conversations non lues}}",
-      "settings": "Paramètres"
+      "settings": "Paramètres",
+      "sections": {
+        "main": "Principal",
+        "supplyChain": "Chaîne d'approvisionnement",
+        "company": "Entreprise"
+      }
     },
     "shell": {
       "sidebarLabel": "Navigation plateforme",
@@ -582,6 +616,55 @@
           "counterpart": "Contrepartie",
           "status": "Statut",
           "reference": "Référence"
+        }
+      },
+      "header": {
+        "greeting": {
+          "morning": "Bonjour",
+          "afternoon": "Bon après-midi",
+          "evening": "Bonsoir"
+        },
+        "kycVerified": "KYC vérifié"
+      },
+      "trustScore": {
+        "title": "Score de confiance",
+        "scoreValue": "{score}/100",
+        "signalsLabel": "Signaux de confiance",
+        "signals": {
+          "kycApproved": {
+            "label": "Vérification KYC approuvée",
+            "yes": "Oui",
+            "no": "Non"
+          },
+          "completedOrders": {
+            "label": "Commandes terminées",
+            "value": "{count, plural, one {# commande} other {# commandes}}"
+          },
+          "disputedOrders": {
+            "label": "Commandes en litige",
+            "value": "{count, plural, one {# commande} other {# commandes}}"
+          },
+          "accountAge": {
+            "label": "Ancienneté du compte",
+            "value": "{days, plural, one {# jour} other {# jours}}"
+          }
+        }
+      },
+      "suggestions": {
+        "title": "Suggéré pour vous",
+        "reason": "Suggéré car vous négociez habituellement du {mineral}."
+      },
+      "comingSoon": {
+        "escrow": {
+          "title": "Paiement sécurisé par séquestre",
+          "description": "Les fonds seront détenus en séquestre jusqu'à confirmation de la livraison, pour protéger acheteurs et vendeurs."
+        },
+        "compliance": {
+          "prose": "Centre de conformité — Bientôt disponible. Nous développons des outils de filtrage de sanctions, de conformité AML/KYB et de documentation ESG pour renforcer la confiance sur la plateforme."
+        },
+        "recommendations": {
+          "title": "Recommandations intelligentes — Bientôt disponible",
+          "description": "Des suggestions personnalisées basées sur votre historique de négoce apparaîtront ici."
         }
       }
     },
@@ -845,6 +928,19 @@
     "reports": {
       "title": "Rapports",
       "empty": "Aucun rapport disponible pour la période sélectionnée"
+    },
+    "documents": {
+      "title": "Documents",
+      "eyebrow": "Chaîne d'approvisionnement",
+      "subtitle": "Vos documents KYC et contrats de commande en un seul endroit.",
+      "emptyTitle": "Aucun document",
+      "emptyDescription": "Vos documents KYC et contrats de commande apparaîtront ici une fois soumis ou générés.",
+      "kycSection": "Documents KYC",
+      "contractsSection": "Contrats",
+      "download": "Télécharger",
+      "unavailable": "Lien indisponible",
+      "contractTitle": "Contrat — {title} ({mineral})",
+      "contractFallback": "Contrat de commande"
     },
     "settings": {
       "title": "Paramètres",
