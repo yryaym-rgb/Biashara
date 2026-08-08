@@ -129,6 +129,10 @@ vi.mock('next/cache', () => ({
   revalidatePath: (...args: unknown[]) => mockRevalidatePath(...args),
 }));
 
+vi.mock('@/lib/notifications/create', () => ({
+  createNotification: vi.fn().mockResolvedValue({ id: 'mock-notification-id' }),
+}));
+
 const sellerProfile = {
   id: 'seller-1',
   role: 'seller' as const,

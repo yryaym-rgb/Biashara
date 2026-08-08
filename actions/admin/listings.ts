@@ -7,6 +7,7 @@ import { requireRole } from '@/lib/rbac';
 import { listingApproveSchema, listingRejectSchema } from '@/lib/validators/admin';
 import { adminPath } from '@/lib/admin/path';
 import { sanitizeText } from '@/lib/sanitize';
+import { createNotification } from '@/lib/notifications/create';
 
 export async function approveListing(input: unknown) {
   requireRole(await getProfile(), ['admin']);
@@ -24,12 +25,18 @@ export async function approveListing(input: unknown) {
     })
     .eq('id', parsed.data.listingId)
     .eq('status', 'pending_review')
-    .select('id')
+    .select('id, seller_id, title')
     .single();
 
   if (error || !data) {
     return { error: 'listingNotFound' };
   }
+
+  await createNotification(data.seller_id, 'listing', {
+    action: 'approved',
+    listingId: data.id,
+    title: data.title,
+  });
 
   revalidatePath('/marketplace');
   revalidatePath(adminPath());
@@ -55,12 +62,19 @@ export async function rejectListing(input: unknown) {
     })
     .eq('id', parsed.data.listingId)
     .eq('status', 'pending_review')
-    .select('id, seller_id')
+    .select('id, seller_id, title')
     .single();
 
   if (error || !data) {
     return { error: 'listingNotFound' };
   }
+
+  await createNotification(data.seller_id, 'listing', {
+    action: 'rejected',
+    listingId: data.id,
+    title: data.title,
+    reason: sanitizeText(parsed.data.reason, 1000),
+  });
 
   revalidatePath(adminPath());
   revalidatePath(adminPath('listings-moderation'));

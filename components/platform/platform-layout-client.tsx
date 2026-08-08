@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from '@/lib/i18n/navigation';
 import { PlatformShell } from '@/components/platform/platform-shell';
 import { getPlatformNavItems, getPlatformPageTitleKey } from '@/lib/platform/nav';
+import type { NotificationRow } from '@/lib/notifications/types';
 import type { Database } from '@/types/database.types';
 
 export interface PlatformLayoutClientProps {
@@ -13,6 +14,8 @@ export interface PlatformLayoutClientProps {
   role: Database['public']['Enums']['user_role'];
   locale: string;
   unreadMessagesCount?: number;
+  recentNotifications?: NotificationRow[];
+  unreadNotificationsCount?: number;
 }
 
 export function PlatformLayoutClient({
@@ -22,6 +25,8 @@ export function PlatformLayoutClient({
   role,
   locale,
   unreadMessagesCount = 0,
+  recentNotifications = [],
+  unreadNotificationsCount = 0,
 }: PlatformLayoutClientProps) {
   const pathname = usePathname();
   const titleKey = getPlatformPageTitleKey(pathname);
@@ -38,6 +43,8 @@ export function PlatformLayoutClient({
       locale={locale}
       navItems={navItems}
       unreadMessagesCount={unreadMessagesCount}
+      recentNotifications={recentNotifications}
+      unreadNotificationsCount={unreadNotificationsCount}
     >
       {children}
     </PlatformShell>

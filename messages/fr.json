@@ -1057,15 +1057,36 @@
     "required": "Documents requis pour votre type de compte"
   },
   "notifications": {
-    "kycApproved": "Votre vérification KYC a été approuvée. Vous pouvez désormais publier des offres et négocier sur la plateforme.",
-    "kycRejected": "Votre vérification KYC a été refusée. Consultez les motifs dans vos paramètres et soumettez à nouveau vos documents.",
-    "newOffer": "Vous avez reçu une nouvelle offre sur votre annonce.",
-    "offerAccepted": "Votre offre a été acceptée. Un contrat est en cours de préparation.",
-    "offerDeclined": "Votre offre a été refusée.",
-    "orderConfirmed": "Votre commande a été confirmée.",
-    "orderStatusChanged": "Le statut de votre commande a été mis à jour.",
-    "newMessage": "Vous avez reçu un nouveau message.",
-    "shipmentUpdate": "Votre expédition a été mise à jour."
+    "title": "Notifications",
+    "panel": {
+      "viewAll": "Voir tout",
+      "empty": "Aucune notification pour le moment.",
+      "markAllRead": "Tout marquer comme lu"
+    },
+    "kycApproved": "Votre document {documentType} a été approuvé.",
+    "kycRejected": "Votre document {documentType} a été refusé.",
+    "listingApproved": "Votre annonce « {title} » a été approuvée.",
+    "listingRejected": "Votre annonce « {title} » a été refusée.",
+    "newOffer": "Nouvelle offre reçue sur « {title} ».",
+    "offerAccepted": "Votre offre sur « {title} » a été acceptée.",
+    "offerDeclined": "Votre offre sur « {title} » a été refusée.",
+    "offerCountered": "Contre-offre reçue sur « {title} ».",
+    "orderStatusChanged": "Le statut de votre commande est passé à {status}.",
+    "orderDisputed": "Un litige a été ouvert sur votre commande.",
+    "orderStatus": {
+      "confirmed": "Confirmée",
+      "processing": "En traitement",
+      "in_transit": "En transit",
+      "delivered": "Livrée",
+      "cancelled": "Annulée",
+      "disputed": "En litige"
+    },
+    "documentTypes": {
+      "id_card": "Pièce d'identité",
+      "business_registration": "Registre de commerce",
+      "mining_permit": "Permis minier",
+      "export_license": "Licence d'exportation"
+    }
   },
   "email": {
     "signupConfirmation": {

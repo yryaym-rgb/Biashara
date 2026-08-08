@@ -1057,15 +1057,36 @@
     "required": "Required documents for your account type"
   },
   "notifications": {
-    "kycApproved": "Your KYC verification has been approved. You can now post offers and trade on the platform.",
-    "kycRejected": "Your KYC verification was rejected. Review the reasons in settings and resubmit your documents.",
-    "newOffer": "You have received a new offer on your listing.",
-    "offerAccepted": "Your offer has been accepted. A contract is being prepared.",
-    "offerDeclined": "Your offer has been declined.",
-    "orderConfirmed": "Your order has been confirmed.",
-    "orderStatusChanged": "Your order status has been updated.",
-    "newMessage": "You have received a new message.",
-    "shipmentUpdate": "Your shipment has been updated."
+    "title": "Notifications",
+    "panel": {
+      "viewAll": "View all",
+      "empty": "No notifications yet.",
+      "markAllRead": "Mark all as read"
+    },
+    "kycApproved": "Your {documentType} document has been approved.",
+    "kycRejected": "Your {documentType} document was rejected.",
+    "listingApproved": "Your listing \"{title}\" has been approved.",
+    "listingRejected": "Your listing \"{title}\" was rejected.",
+    "newOffer": "New offer received on \"{title}\".",
+    "offerAccepted": "Your offer on \"{title}\" has been accepted.",
+    "offerDeclined": "Your offer on \"{title}\" was declined.",
+    "offerCountered": "Counter-offer received on \"{title}\".",
+    "orderStatusChanged": "Your order status changed to {status}.",
+    "orderDisputed": "A dispute has been opened on your order.",
+    "orderStatus": {
+      "confirmed": "Confirmed",
+      "processing": "Processing",
+      "in_transit": "In transit",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "disputed": "Disputed"
+    },
+    "documentTypes": {
+      "id_card": "ID card",
+      "business_registration": "Business registration",
+      "mining_permit": "Mining permit",
+      "export_license": "Export license"
+    }
   },
   "email": {
     "signupConfirmation": {

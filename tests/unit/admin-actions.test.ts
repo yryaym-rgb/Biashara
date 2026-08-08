@@ -21,6 +21,10 @@ vi.mock('@/lib/email', () => ({
   sendTransactionalEmail: vi.fn(),
 }));
 
+vi.mock('@/lib/notifications/create', () => ({
+  createNotification: vi.fn().mockResolvedValue({ id: 'mock-notification-id' }),
+}));
+
 const baseProfile = {
   id: '00000000-0000-0000-0000-000000000001',
   role: 'buyer' as const,
@@ -180,7 +184,7 @@ describe('admin listing approval', () => {
       data: { id: listingId },
       error: null,
     });
-    updateChain.single = vi.fn().mockResolvedValue({ data: { id: listingId }, error: null });
+    updateChain.single = vi.fn().mockResolvedValue({ data: { id: listingId, seller_id: 'seller-1', title: 'Cobalt' }, error: null });
 
     mockFrom.mockReturnValue(updateChain);
     mockCreateClient.mockResolvedValue({ from: mockFrom });
@@ -245,9 +249,12 @@ describe('admin mutating actions audit trail', () => {
   it('rejectListing performs audited listings update with rejection reason', async () => {
     const listingId = '00000000-0000-0000-0000-000000000020';
     const sellerId = '00000000-0000-0000-0000-000000000099';
-    const updateChain = createQueryChain({ data: { id: listingId, seller_id: sellerId }, error: null });
+    const updateChain = createQueryChain({
+      data: { id: listingId, seller_id: sellerId, title: 'Test listing' },
+      error: null,
+    });
     updateChain.single = vi.fn().mockResolvedValue({
-      data: { id: listingId, seller_id: sellerId },
+      data: { id: listingId, seller_id: sellerId, title: 'Test listing' },
       error: null,
     });
 

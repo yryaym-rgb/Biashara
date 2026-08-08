@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import { PlatformNav } from '@/components/platform/platform-nav';
 import { PlatformTopBar } from '@/components/platform/platform-top-bar';
+import type { NotificationRow } from '@/lib/notifications/types';
 import type { PlatformNavItem } from '@/lib/platform/nav';
 import type { Database } from '@/types/database.types';
 import logo from '@/design/reference-logo.jpeg';
@@ -20,6 +21,8 @@ export interface PlatformShellProps {
   locale: string;
   navItems: PlatformNavItem[];
   unreadMessagesCount?: number;
+  recentNotifications?: NotificationRow[];
+  unreadNotificationsCount?: number;
 }
 
 export function PlatformShell({
@@ -31,6 +34,8 @@ export function PlatformShell({
   locale,
   navItems,
   unreadMessagesCount = 0,
+  recentNotifications = [],
+  unreadNotificationsCount = 0,
 }: PlatformShellProps) {
   const t = useTranslations('platform.shell');
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -82,6 +87,8 @@ export function PlatformShell({
             locale={locale}
             onMenuClick={() => setDrawerOpen(true)}
             menuButtonLabel={t('openDrawer')}
+            recentNotifications={recentNotifications}
+            unreadNotificationsCount={unreadNotificationsCount}
           />
           <main className="flex-1 p-4 md:p-8">{children}</main>
         </div>
