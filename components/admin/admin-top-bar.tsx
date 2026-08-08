@@ -6,6 +6,7 @@ import { adminLogoutAction } from '@/actions/admin/auth';
 import { LogoutConfirmDialog } from '@/components/auth/logout-confirm-dialog';
 import { Button } from '@/components/ui/button';
 import { AdminMenuButton } from '@/components/admin/admin-shell';
+import { AdminCommandPaletteTrigger } from '@/components/admin/admin-command-palette';
 import type { Locale } from '@/lib/i18n/config';
 
 export interface AdminTopBarProps {
@@ -31,6 +32,7 @@ export function AdminTopBar({
       <header className="flex h-[72px] items-center justify-between border-b border-border bg-bg px-4 md:px-8">
       <AdminMenuButton onClick={onMenuClick} label={menuButtonLabel} />
       <div className="flex flex-1 items-center justify-end gap-4">
+        <AdminCommandPaletteTrigger />
         <div className="text-right">
           <p className="text-[15px] font-semibold text-ink">{adminName}</p>
           {adminEmail ? (
