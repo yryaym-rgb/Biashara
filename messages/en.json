@@ -6,6 +6,8 @@
     "retry": "Retry",
     "save": "Save",
     "cancel": "Cancel",
+    "logout": "Sign out",
+    "logoutConfirm": "Are you sure you want to sign out?",
     "back": "Back",
     "next": "Next",
     "empty": "No data available at this time"

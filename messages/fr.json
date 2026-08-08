@@ -6,6 +6,8 @@
     "retry": "Réessayer",
     "save": "Enregistrer",
     "cancel": "Annuler",
+    "logout": "Se déconnecter",
+    "logoutConfirm": "Voulez-vous vraiment vous déconnecter ?",
     "back": "Retour",
     "next": "Suivant",
     "empty": "Aucune donnée disponible pour le moment"

@@ -1,8 +1,9 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { logoutAction } from '@/actions/auth';
+import { LogoutConfirmDialog } from '@/components/auth/logout-confirm-dialog';
 import { AdminMenuButton } from '@/components/admin/admin-shell';
 import { CommandPaletteTrigger } from '@/components/platform/command-palette';
 import { NotificationBell } from '@/components/platform/notification-bell';
@@ -43,10 +44,11 @@ export function PlatformTopBar({
 }: PlatformTopBarProps) {
   const t = useTranslations('platform.shell');
   const tRoles = useTranslations('admin.roles');
-  const [isPending, startTransition] = useTransition();
+  const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 
   return (
-    <header className="flex h-[72px] items-center justify-between gap-4 border-b border-border bg-bg px-4 md:px-8">
+    <>
+      <header className="flex h-[72px] items-center justify-between gap-4 border-b border-border bg-bg px-4 md:px-8">
       <div className="flex min-w-0 flex-1 items-center gap-4">
         <AdminMenuButton onClick={onMenuClick} label={menuButtonLabel} />
         <h1 className="truncate text-[18px] font-semibold text-ink">{pageTitle}</h1>
@@ -78,16 +80,19 @@ export function PlatformTopBar({
         <Button
           variant="secondary"
           size="sm"
-          loading={isPending}
-          onClick={() => {
-            startTransition(async () => {
-              await logoutAction(locale as Locale);
-            });
-          }}
+          onClick={() => setLogoutDialogOpen(true)}
         >
           {t('logout')}
         </Button>
       </div>
-    </header>
+      </header>
+      <LogoutConfirmDialog
+        open={logoutDialogOpen}
+        onClose={() => setLogoutDialogOpen(false)}
+        onConfirm={async () => {
+          await logoutAction(locale as Locale);
+        }}
+      />
+    </>
   );
 }
