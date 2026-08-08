@@ -470,6 +470,26 @@
       "logout": "Log out",
       "notifications": "Notifications"
     },
+    "commandPalette": {
+      "title": "Search",
+      "open": "Open search",
+      "close": "Close search",
+      "placeholder": "Search listings, offers, orders, conversations…",
+      "hint": "Type to search your data",
+      "searching": "Searching…",
+      "noResults": "No results for this search.",
+      "groups": {
+        "listings": "Listings",
+        "offers": "Offers",
+        "orders": "Orders",
+        "conversations": "Conversations"
+      },
+      "keyboard": {
+        "navigate": "navigate",
+        "select": "select",
+        "close": "close"
+      }
+    },
     "dashboard": {
       "eyebrow": "User space",
       "title": "Dashboard",
@@ -521,6 +541,46 @@
         "amount": "Amount",
         "status": "Status",
         "date": "Date"
+      },
+      "actionCenter": {
+        "title": "Needs your attention",
+        "allClear": "Everything is up to date.",
+        "action": "View",
+        "items": {
+          "pending_offer": "Pending offer — {title}",
+          "disputed_order": "Disputed order — {title}",
+          "rejected_kyc": "Rejected KYC document — {type}",
+          "rejected_listing": "Rejected listing — {title}"
+        }
+      },
+      "marketInsight": {
+        "title": "Market trend",
+        "insight": "{mineral} price has {direction} by {change}% this week",
+        "up": "increased",
+        "down": "decreased",
+        "emptyTitle": "No market data yet",
+        "emptyDescription": "Your price trends will appear here once you have trading activity and sufficient price history.",
+        "sparklineLabel": "{mineral} price trend over 7 days"
+      },
+      "tradingMix": {
+        "title": "Trading mix",
+        "orders": "orders",
+        "chartLabel": "Breakdown of your orders by mineral",
+        "emptyTitle": "No orders yet",
+        "emptyDescription": "Your mineral breakdown will appear here after your first transactions."
+      },
+      "export": {
+        "button": "Export my transactions",
+        "columns": {
+          "date": "Date",
+          "mineral": "Mineral",
+          "quantity": "Quantity",
+          "price": "Unit price",
+          "total": "Total amount",
+          "counterpart": "Counterparty",
+          "status": "Status",
+          "reference": "Reference"
+        }
       }
     },
     "marketplace": {

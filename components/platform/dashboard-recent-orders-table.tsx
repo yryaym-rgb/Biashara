@@ -22,12 +22,14 @@ export interface DashboardRecentOrdersTableProps {
   rows: DashboardRecentRow[];
   locale: string;
   hasOrders: boolean;
+  hideHeader?: boolean;
 }
 
 export async function DashboardRecentOrdersTable({
   rows,
   locale,
   hasOrders,
+  hideHeader = false,
 }: DashboardRecentOrdersTableProps) {
   const t = await getTranslations({ locale, namespace: 'platform.dashboard' });
   const tOffers = await getTranslations({ locale, namespace: 'platform.offers' });
@@ -56,10 +58,12 @@ export async function DashboardRecentOrdersTable({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
+      {!hideHeader ? (
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+        </CardHeader>
+      ) : null}
+      <CardContent className={hideHeader ? 'pt-0' : undefined}>
         {rows.length === 0 ? (
           <p className="text-[15px] text-body">{t('recentOrdersEmpty')}</p>
         ) : (

@@ -23,6 +23,9 @@ import {
   getSellerDashboardStats,
   getSellerSalesVolumeByDay,
 } from '@/lib/platform/queries';
+import { getActionCenterItems } from '@/lib/platform/action-center';
+import { getMarketInsightForUser } from '@/lib/platform/market-insight';
+import { getTradingMixForUser } from '@/lib/platform/trading-mix';
 import {
   getDashboardPersona,
   getDashboardStatKeys,
@@ -35,6 +38,10 @@ import { DashboardStatCard } from '@/components/platform/dashboard-stat-card';
 import { DashboardWelcomePanel } from '@/components/platform/dashboard-welcome-panel';
 import { DashboardSalesChart } from '@/components/platform/dashboard-sales-chart';
 import { DashboardRecentOrdersTable } from '@/components/platform/dashboard-recent-orders-table';
+import { DashboardActionCenter } from '@/components/platform/dashboard-action-center';
+import { DashboardMarketInsight } from '@/components/platform/dashboard-market-insight';
+import { DashboardTradingMix } from '@/components/platform/dashboard-trading-mix';
+import { DashboardExportButton } from '@/components/platform/dashboard-export-button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Container } from '@/components/ui/container';
 import { formatCurrency, formatNumber } from '@/lib/utils/format';
@@ -74,6 +81,9 @@ export default async function DashboardPage({
     buyerStats,
     salesVolume,
     recentOrders,
+    actionCenterItems,
+    marketInsight,
+    tradingMix,
   ] = await Promise.all([
     getDashboardActivityCounts(profile.id),
     getDashboardRecentActivity(profile.id, 10),
@@ -82,6 +92,9 @@ export default async function DashboardPage({
     !isSeller ? getBuyerDashboardStats(profile.id) : Promise.resolve(null),
     isSeller ? getSellerSalesVolumeByDay(profile.id) : Promise.resolve([]),
     getDashboardRecentOrders(profile.id, 8),
+    getActionCenterItems(profile.id),
+    getMarketInsightForUser(profile.id),
+    getTradingMixForUser(profile.id),
   ]);
 
   const isNewAccount = isNewDashboardAccount(activityCounts);
@@ -129,7 +142,7 @@ export default async function DashboardPage({
 
   return (
     <Container>
-      <div className="space-y-8">
+      <div className="space-y-6">
         <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-muted">
           {t('eyebrow')}
         </p>
@@ -141,6 +154,8 @@ export default async function DashboardPage({
             rejectedDocumentTypes={rejectedDocumentTypes}
           />
         ) : null}
+
+        <DashboardActionCenter items={actionCenterItems} locale={locale} />
 
         {isNewAccount ? (
           <DashboardWelcomePanel
@@ -173,30 +188,44 @@ export default async function DashboardPage({
 
         {!isNewAccount ? (
           <>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <DashboardMarketInsight insight={marketInsight} />
+              <DashboardTradingMix segments={tradingMix} />
+            </div>
+
             {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
 
-            <DashboardRecentOrdersTable
-              rows={recentOrders}
-              locale={locale}
-              hasOrders={hasOrders}
-            />
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <h2 className="text-[18px] font-semibold text-ink">
+                  {hasOrders ? t('recentOrders') : t('recentOffersFallback')}
+                </h2>
+                <DashboardExportButton />
+              </div>
+              <DashboardRecentOrdersTable
+                rows={recentOrders}
+                locale={locale}
+                hasOrders={hasOrders}
+                hideHeader
+              />
+            </div>
           </>
         ) : null}
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
           <Card>
-            <CardHeader>
-              <CardTitle>{t('recentActivity')}</CardTitle>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-[18px]">{t('recentActivity')}</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0">
               {recentActivity.length === 0 ? (
                 <p className="text-[15px] text-body">{t('noActivity')}</p>
               ) : (
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {recentActivity.map((event) => (
                     <li
                       key={event.id}
-                      className="border-b border-border pb-4 last:border-b-0 last:pb-0"
+                      className="border-b border-border pb-3 last:border-b-0 last:pb-0"
                     >
                       <p className="text-[15px] text-ink">
                         {t(`activity.${event.kind}`, {
@@ -218,7 +247,7 @@ export default async function DashboardPage({
             {quickLinks.map((link) => (
               <Link key={`${link.href}-${link.title}`} href={link.href} className="block">
                 <Card hoverable className="h-full">
-                  <CardContent className="flex items-center gap-4 p-6">
+                  <CardContent className="flex items-center gap-4 p-5">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-bg-tint">
                       <link.icon
                         className="h-5 w-5 text-brand-blue"

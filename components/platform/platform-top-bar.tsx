@@ -4,6 +4,7 @@ import { useTransition } from 'react';
 import { useTranslations } from 'next-intl';
 import { logoutAction } from '@/actions/auth';
 import { AdminMenuButton } from '@/components/admin/admin-shell';
+import { CommandPaletteTrigger } from '@/components/platform/command-palette';
 import { NotificationBell } from '@/components/platform/notification-bell';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -51,7 +52,8 @@ export function PlatformTopBar({
         <h1 className="truncate text-[18px] font-semibold text-ink">{pageTitle}</h1>
       </div>
 
-      <div className="flex shrink-0 items-center gap-4">
+      <div className="flex shrink-0 items-center gap-3 md:gap-4">
+        <CommandPaletteTrigger />
         <NotificationBell
           notifications={recentNotifications}
           unreadCount={unreadNotificationsCount}
