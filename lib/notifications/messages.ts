@@ -10,7 +10,10 @@ export type NotificationMessageKey =
   | 'offerDeclined'
   | 'offerCountered'
   | 'orderStatusChanged'
-  | 'orderDisputed';
+  | 'orderDisputed'
+  | 'rfpBidReceived'
+  | 'rfpBidSelected'
+  | 'rfpBidRejected';
 
 export interface NotificationContent {
   messageKey: NotificationMessageKey;
@@ -68,6 +71,20 @@ export function getNotificationContent(
         messageKey: 'orderStatusChanged',
         values: { status: order.status ?? 'confirmed' },
         href: `/orders/${order.orderId}`,
+      };
+    }
+    case 'rfp': {
+      const rfp = payload as Extract<NotificationPayload, { rfpId: string; mineral: string }>;
+      const messageKey: NotificationMessageKey =
+        rfp.action === 'bid_received'
+          ? 'rfpBidReceived'
+          : rfp.action === 'bid_selected'
+            ? 'rfpBidSelected'
+            : 'rfpBidRejected';
+      return {
+        messageKey,
+        values: { mineral: rfp.mineral },
+        href: `/rfps/${rfp.rfpId}`,
       };
     }
     default:

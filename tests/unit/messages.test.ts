@@ -94,6 +94,7 @@ describe('message list helpers', () => {
       {
         id: '11111111-1111-4111-8111-111111111111',
         listing_id: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
+        rfp_id: null,
         buyer_id: USER_ID,
         seller_id: OTHER_ID,
         created_at: '2026-01-01T00:00:00.000Z',
@@ -104,10 +105,12 @@ describe('message list helpers', () => {
         },
         buyer: { company_name: 'Buyer Co' },
         seller: { company_name: 'Seller Co' },
+        rfp: null,
       },
       {
         id: '22222222-2222-4222-8222-222222222222',
         listing_id: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',
+        rfp_id: null,
         buyer_id: OTHER_ID,
         seller_id: USER_ID,
         created_at: '2026-01-01T00:00:00.000Z',
@@ -118,6 +121,7 @@ describe('message list helpers', () => {
         },
         buyer: { company_name: 'Buyer Two' },
         seller: { company_name: 'Seller Co' },
+        rfp: null,
       },
     ];
 

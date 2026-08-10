@@ -61,6 +61,7 @@ type RouteGroup = 'marketing' | 'auth' | 'platform' | 'admin';
 const PLATFORM_PREFIXES = [
   '/dashboard',
   '/marketplace',
+  '/rfps',
   '/offers',
   '/orders',
   '/messages',
@@ -149,6 +150,23 @@ export function isPublicMarketplaceRoute(pathname: string): boolean {
   return segment !== 'new' && !segment.endsWith('edit');
 }
 
+/** RFP list and detail are public; creation requires authentication. */
+export function isPublicRfpRoute(pathname: string): boolean {
+  const path = stripLocale(pathname);
+  if (path === '/rfps') {
+    return true;
+  }
+  const detailMatch = /^\/rfps\/([^/]+)$/.exec(path);
+  if (!detailMatch) {
+    return false;
+  }
+  const segment = detailMatch[1];
+  if (!segment) {
+    return false;
+  }
+  return segment !== 'new';
+}
+
 /** Lot custody timelines are public when RLS allows read (e.g. linked active listing). */
 export function isPublicLotDetailRoute(pathname: string): boolean {
   const path = stripLocale(pathname);
@@ -184,6 +202,10 @@ export function canAccessRoute(
   }
 
   if (group === 'platform' && isPublicMarketplaceRoute(pathname)) {
+    return { allowed: true };
+  }
+
+  if (group === 'platform' && isPublicRfpRoute(pathname)) {
     return { allowed: true };
   }
 

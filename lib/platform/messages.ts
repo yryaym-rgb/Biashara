@@ -14,7 +14,8 @@ export type { MessageRow };
 
 export interface ConversationListItem {
   id: string;
-  listingId: string;
+  listingId: string | null;
+  rfpId: string | null;
   listingTitle: string;
   mineral: MineralId;
   listingPhotoPath: string | null;
@@ -26,7 +27,8 @@ export interface ConversationListItem {
 
 export interface ConversationThreadContext {
   id: string;
-  listingId: string;
+  listingId: string | null;
+  rfpId: string | null;
   listingTitle: string;
   mineral: MineralId;
   counterpartyName: string;
@@ -95,7 +97,8 @@ function resolveListingPhotoPath(
 export function buildConversationListItems(
   conversations: Array<{
     id: string;
-    listing_id: string;
+    listing_id: string | null;
+    rfp_id: string | null;
     buyer_id: string;
     seller_id: string;
     created_at: string;
@@ -109,6 +112,16 @@ export function buildConversationListItems(
           title: string;
           mineral: MineralId;
           listing_photos: Array<{ storage_path: string; sort_order: number }> | null;
+        }>
+      | null;
+    rfp:
+      | {
+          mineral: MineralId;
+          description: string;
+        }
+      | Array<{
+          mineral: MineralId;
+          description: string;
         }>
       | null;
     buyer: { company_name: string | null } | Array<{ company_name: string | null }> | null;
@@ -130,6 +143,7 @@ export function buildConversationListItems(
     const listing = Array.isArray(conversation.listing)
       ? conversation.listing[0]
       : conversation.listing;
+    const rfp = Array.isArray(conversation.rfp) ? conversation.rfp[0] : conversation.rfp;
     const buyer = Array.isArray(conversation.buyer) ? conversation.buyer[0] : conversation.buyer;
     const seller = Array.isArray(conversation.seller)
       ? conversation.seller[0]
@@ -138,12 +152,15 @@ export function buildConversationListItems(
     const latestMessage = pickLatestMessage(conversationMessages);
     const counterparty =
       conversation.buyer_id === userId ? seller?.company_name : buyer?.company_name;
+    const mineral = (listing?.mineral ?? rfp?.mineral ?? 'cobalt') as MineralId;
+    const listingTitle = listing?.title ?? rfp?.description ?? '';
 
     return {
       id: conversation.id,
       listingId: conversation.listing_id,
-      listingTitle: listing?.title ?? '',
-      mineral: (listing?.mineral ?? 'cobalt') as MineralId,
+      rfpId: conversation.rfp_id,
+      listingTitle,
+      mineral,
       listingPhotoPath: resolveListingPhotoPath(listing?.listing_photos ?? null),
       counterpartyName: displayName(counterparty ?? null, counterpartyFallback),
       lastMessagePreview: latestMessage ? truncateMessagePreview(latestMessage.body) : null,
@@ -169,6 +186,7 @@ export async function getConversationsForUser(
       `
         id,
         listing_id,
+        rfp_id,
         buyer_id,
         seller_id,
         created_at,
@@ -177,6 +195,7 @@ export async function getConversationsForUser(
           mineral,
           listing_photos(storage_path, sort_order)
         ),
+        rfp:rfps(mineral, description),
         buyer:profiles!conversations_buyer_id_fkey(company_name),
         seller:profiles!conversations_seller_id_fkey(company_name)
       `,
@@ -235,9 +254,11 @@ export async function getConversationThreadContext(
       `
         id,
         listing_id,
+        rfp_id,
         buyer_id,
         seller_id,
         listing:listings(title, mineral),
+        rfp:rfps(mineral, description),
         buyer:profiles!conversations_buyer_id_fkey(company_name),
         seller:profiles!conversations_seller_id_fkey(company_name)
       `,
@@ -254,6 +275,7 @@ export async function getConversationThreadContext(
   }
 
   const listing = Array.isArray(data.listing) ? data.listing[0] : data.listing;
+  const rfp = Array.isArray(data.rfp) ? data.rfp[0] : data.rfp;
   const buyer = Array.isArray(data.buyer) ? data.buyer[0] : data.buyer;
   const seller = Array.isArray(data.seller) ? data.seller[0] : data.seller;
   const counterparty = data.buyer_id === userId ? seller?.company_name : buyer?.company_name;
@@ -261,8 +283,9 @@ export async function getConversationThreadContext(
   return {
     id: data.id,
     listingId: data.listing_id,
-    listingTitle: listing?.title ?? '',
-    mineral: (listing?.mineral ?? 'cobalt') as MineralId,
+    rfpId: data.rfp_id,
+    listingTitle: listing?.title ?? rfp?.description ?? '',
+    mineral: (listing?.mineral ?? rfp?.mineral ?? 'cobalt') as MineralId,
     counterpartyName: displayName(counterparty ?? null, counterpartyFallback),
   };
 }

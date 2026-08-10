@@ -28,10 +28,18 @@ export type OrderNotificationPayload = {
   reason?: string;
 };
 
+export type RfpNotificationPayload = {
+  action: 'bid_received' | 'bid_selected' | 'bid_rejected';
+  rfpId: string;
+  mineral: Database['public']['Enums']['mineral_type'];
+  bidId: string;
+};
+
 export type NotificationPayload =
   | KycNotificationPayload
   | ListingNotificationPayload
   | OfferNotificationPayload
-  | OrderNotificationPayload;
+  | OrderNotificationPayload
+  | RfpNotificationPayload;
 
 export type NotificationRow = Database['public']['Tables']['notifications']['Row'];

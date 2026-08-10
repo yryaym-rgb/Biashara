@@ -150,7 +150,9 @@ export async function getBuyerDashboardStats(userId: string): Promise<BuyerDashb
     recentListingIds.add(row.listing_id);
   }
   for (const row of conversationListingsRes.data ?? []) {
-    recentListingIds.add(row.listing_id);
+    if (row.listing_id) {
+      recentListingIds.add(row.listing_id);
+    }
   }
 
   return {

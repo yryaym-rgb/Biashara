@@ -145,21 +145,24 @@ export type Database = {
       conversations: {
         Row: {
           id: string;
-          listing_id: string;
+          listing_id: string | null;
+          rfp_id: string | null;
           buyer_id: string;
           seller_id: string;
           created_at: string;
         };
         Insert: {
           id?: string;
-          listing_id: string;
+          listing_id?: string | null;
+          rfp_id?: string | null;
           buyer_id: string;
           seller_id: string;
           created_at?: string;
         };
         Update: {
           id?: string;
-          listing_id?: string;
+          listing_id?: string | null;
+          rfp_id?: string | null;
           buyer_id?: string;
           seller_id?: string;
           created_at?: string;
@@ -177,6 +180,13 @@ export type Database = {
             columns: ['listing_id'];
             isOneToOne: false;
             referencedRelation: 'listings';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'conversations_rfp_id_fkey';
+            columns: ['rfp_id'];
+            isOneToOne: false;
+            referencedRelation: 'rfps';
             referencedColumns: ['id'];
           },
           {
@@ -789,6 +799,116 @@ export type Database = {
         };
         Relationships: [];
       };
+      rfp_bids: {
+        Row: {
+          id: string;
+          rfp_id: string;
+          seller_id: string;
+          offered_price: number;
+          quantity: number;
+          delivery_terms: string | null;
+          message: string | null;
+          status: Database['public']['Enums']['rfp_bid_status'];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          rfp_id: string;
+          seller_id: string;
+          offered_price: number;
+          quantity: number;
+          delivery_terms?: string | null;
+          message?: string | null;
+          status?: Database['public']['Enums']['rfp_bid_status'];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          rfp_id?: string;
+          seller_id?: string;
+          offered_price?: number;
+          quantity?: number;
+          delivery_terms?: string | null;
+          message?: string | null;
+          status?: Database['public']['Enums']['rfp_bid_status'];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'rfp_bids_rfp_id_fkey';
+            columns: ['rfp_id'];
+            isOneToOne: false;
+            referencedRelation: 'rfps';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'rfp_bids_seller_id_fkey';
+            columns: ['seller_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      rfps: {
+        Row: {
+          id: string;
+          buyer_id: string;
+          mineral: Database['public']['Enums']['mineral_type'];
+          quantity: number;
+          unit: Database['public']['Enums']['quantity_unit'];
+          target_price_min: number | null;
+          target_price_max: number | null;
+          delivery_terms: string | null;
+          deadline: string;
+          description: string;
+          status: Database['public']['Enums']['rfp_status'];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          buyer_id: string;
+          mineral: Database['public']['Enums']['mineral_type'];
+          quantity: number;
+          unit: Database['public']['Enums']['quantity_unit'];
+          target_price_min?: number | null;
+          target_price_max?: number | null;
+          delivery_terms?: string | null;
+          deadline: string;
+          description: string;
+          status?: Database['public']['Enums']['rfp_status'];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          buyer_id?: string;
+          mineral?: Database['public']['Enums']['mineral_type'];
+          quantity?: number;
+          unit?: Database['public']['Enums']['quantity_unit'];
+          target_price_min?: number | null;
+          target_price_max?: number | null;
+          delivery_terms?: string | null;
+          deadline?: string;
+          description?: string;
+          status?: Database['public']['Enums']['rfp_status'];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'rfps_buyer_id_fkey';
+            columns: ['buyer_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       shipments: {
         Row: {
           id: string;
@@ -873,7 +993,7 @@ export type Database = {
         | 'coltan'
         | 'lithium'
         | 'diamond';
-      notification_type: 'kyc' | 'offer' | 'order' | 'message' | 'system' | 'listing';
+      notification_type: 'kyc' | 'offer' | 'order' | 'message' | 'system' | 'listing' | 'rfp';
       offer_status:
         | 'pending'
         | 'countered'
@@ -889,6 +1009,8 @@ export type Database = {
         | 'disputed';
       price_type: 'fixed' | 'negotiable' | 'indicative';
       quantity_unit: 'MT' | 'oz' | 'kg' | 'carat';
+      rfp_bid_status: 'pending' | 'selected' | 'rejected';
+      rfp_status: 'open' | 'awarded' | 'cancelled';
       shipment_status:
         | 'pending'
         | 'picked_up'
