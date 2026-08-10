@@ -1,8 +1,8 @@
 'use client';
 
+import * as React from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from '@/lib/i18n/navigation';
-import { useSearchParamValues } from '@/lib/hooks/use-search-param-values';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { SettingsProfileForm } from '@/components/platform/settings-profile-form';
 import { SettingsPasswordForm } from '@/components/platform/settings-password-form';
@@ -68,18 +68,34 @@ export function SettingsPageContent({
   const t = useTranslations('platform.settings');
   const router = useRouter();
   const pathname = usePathname();
-  const { tab: tabParam } = useSearchParamValues(['tab']);
 
   const tabs: SettingsTab[] = showListingsTab
     ? ['profile', 'security', 'kyc', 'listings']
     : ['profile', 'security', 'kyc'];
 
-  const activeTab = resolveActiveTab(tabs, tabParam ?? null, initialTab);
+  // Server-resolved initialTab avoids useSearchParams during render (hydration mismatch / React #185).
+  const [activeTab, setActiveTab] = React.useState<SettingsTab>(() =>
+    resolveActiveTab(tabs, null, initialTab),
+  );
+
+  React.useEffect(() => {
+    const nextTabs: SettingsTab[] = showListingsTab
+      ? ['profile', 'security', 'kyc', 'listings']
+      : ['profile', 'security', 'kyc'];
+    setActiveTab(resolveActiveTab(nextTabs, null, initialTab));
+  }, [initialTab, showListingsTab]);
 
   function handleTabChange(value: string) {
+    const nextTab = value as SettingsTab;
+    if (!tabs.includes(nextTab)) {
+      return;
+    }
+
+    setActiveTab(nextTab);
+
     const params = new URLSearchParams();
-    if (value !== 'profile') {
-      params.set('tab', value);
+    if (nextTab !== 'profile') {
+      params.set('tab', nextTab);
     }
     const query = params.toString();
     router.replace(query ? `${pathname}?${query}` : pathname);

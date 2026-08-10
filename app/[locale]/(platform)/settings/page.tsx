@@ -1,11 +1,9 @@
-import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import { requireAuth, isSellerRole, isCooperativeRole } from '@/lib/rbac';
 import { getProfile, getUser } from '@/lib/auth/session';
 import { getUserKycDocuments, getUserListings } from '@/lib/admin/queries';
 import { getCooperativeSites } from '@/lib/platform/lots';
 import { Container } from '@/components/ui/container';
-import { Skeleton } from '@/components/ui/skeleton';
 import {
   SettingsPageContent,
   type SettingsTab,
@@ -13,16 +11,6 @@ import {
 import type { CooperativeSiteRow } from '@/lib/platform/lots.types';
 
 export const dynamic = 'force-dynamic';
-
-function SettingsPageFallback() {
-  return (
-    <div className="space-y-6">
-      <Skeleton className="h-10 w-48" />
-      <Skeleton className="h-10 w-full max-w-xl" />
-      <Skeleton className="h-64 w-full" />
-    </div>
-  );
-}
 
 const SETTINGS_TABS = ['profile', 'security', 'kyc', 'listings'] as const;
 
@@ -80,8 +68,7 @@ export default async function SettingsPage({
 
   return (
     <Container className="py-12 md:py-16">
-      <Suspense fallback={<SettingsPageFallback />}>
-        <SettingsPageContent
+      <SettingsPageContent
           locale={locale}
           email={user?.email ?? ''}
           role={profile.role}
@@ -96,8 +83,7 @@ export default async function SettingsPage({
           showCooperativeSites={showCooperativeSites}
           cooperativeSites={cooperativeSites}
           initialTab={initialTab}
-        />
-      </Suspense>
+      />
     </Container>
   );
 }

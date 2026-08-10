@@ -109,18 +109,35 @@ npm run build
 
 ### Tests end-to-end (Playwright)
 
-Les tests e2e visitent chaque route publique, chaque page d'authentification, l'espace plateforme (session utilisateur réelle) et l'administration (porte secrète + phrase de passe + connexion admin). Chaque test attend le rendu de la page, puis échoue si une `console.error` ou une exception non interceptée se produit — c'est le garde-fou principal contre les boucles de rendu React et les erreurs d'hydratation.
+La suite e2e couvre deux niveaux :
+
+1. **Smoke** (`marketing.spec.ts`, `auth-pages.spec.ts`, `platform.spec.ts`, `admin.spec.ts`) — visite chaque route et vérifie l'absence d'erreurs console.
+2. **Interactions** (`tests/e2e/interactions/`) — clique chaque bouton, onglet, filtre et formulaire pertinent ; vérifie zéro `console.error`, zéro exception et zéro réponse réseau 4xx/5xx **après chaque interaction**.
+
+Chaque rôle dispose de son propre compte de test : acheteur, vendeur, coopérative (KYC approuvé), coopérative (KYC en attente), administrateur.
 
 **Prérequis**
 
 1. Supabase local (ou projet de test) démarré avec les migrations appliquées (`supabase start` puis `supabase db reset`).
-2. Un utilisateur plateforme et un administrateur créés (voir `npx tsx scripts/create-admin.ts` pour l'admin).
+2. Comptes e2e créés :
+
+```bash
+npx tsx scripts/setup-e2e-fixtures.ts   # 4 comptes plateforme (tous rôles)
+npx tsx scripts/create-admin.ts          # compte admin
+```
+
 3. Variables dans `.env` (voir `.env.example`) :
 
 ```bash
 PLAYWRIGHT_BASE_URL=http://localhost:3000
-E2E_USER_EMAIL=test@example.com
-E2E_USER_PASSWORD=...
+E2E_BUYER_EMAIL=e2e-buyer@biashara.test
+E2E_BUYER_PASSWORD=...
+E2E_SELLER_EMAIL=e2e-seller@biashara.test
+E2E_SELLER_PASSWORD=...
+E2E_COOP_APPROVED_EMAIL=e2e-coop-approved@biashara.test
+E2E_COOP_APPROVED_PASSWORD=...
+E2E_COOP_PENDING_EMAIL=e2e-coop-pending@biashara.test
+E2E_COOP_PENDING_PASSWORD=...
 E2E_ADMIN_EMAIL=admin@biashara.cd
 E2E_ADMIN_PASSWORD=...
 ADMIN_GATE_SECRET=your-secret-gate-segment
@@ -130,18 +147,19 @@ ADMIN_PASSPHRASE=your-admin-passphrase
 **Exécution**
 
 ```bash
-# Build de production puis suite e2e (Playwright démarre `npm run start` automatiquement)
-npm run build
-npm run test:e2e
-```
+# Suite complète contre build de production (recommandé avant release)
+npm run test:e2e:prod
 
-Pour cibler uniquement les pages marketing sans authentification :
+# Suite complète contre serveur de développement (détecte les divergences dev/prod)
+npm run test:e2e:dev
 
-```bash
+# Smoke marketing uniquement (sans authentification)
 npx playwright test --project=guest
 ```
 
-**Checklist PR** : tout changement touchant l'interface (`components/`, `app/`, styles) doit passer `npm run test:e2e` en local avant merge.
+**Checklist release** : exécuter `npm run test:e2e:prod` (suite complète interactions + smoke, tous rôles) avant toute mise en production — pas seulement le smoke page-load.
+
+**Checklist PR** : tout changement touchant l'interface (`components/`, `app/`, styles) doit passer `npm run test:e2e:prod` en local avant merge.
 
 ## Architecture de sécurité
 
