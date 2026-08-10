@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { createClient } from '@/lib/supabase/server';
 import { getProfile } from '@/lib/auth/session';
 import { requireAuth, requireKycApproved, isSellerRole } from '@/lib/rbac';
-import { listingCreateSchema, listingUpdateSchema } from '@/lib/validators/listing';
+import { listingCreateSchema, listingSellerUpdateSchema } from '@/lib/validators/listing';
 import { linkLotToListingAction } from '@/actions/lots';
 import { sanitizeText } from '@/lib/sanitize';
 import { LISTING_PHOTOS_BUCKET } from '@/lib/marketplace/photos';
@@ -203,7 +203,7 @@ export async function createListingWithPhotos(formData: FormData) {
 
 export async function updateListing(listingId: string, input: unknown) {
   const profile = requireAuth(await getProfile());
-  const parsed = listingUpdateSchema.safeParse(input);
+  const parsed = listingSellerUpdateSchema.safeParse(input);
   if (!parsed.success) {
     return { error: 'validation', details: parsed.error.flatten() };
   }

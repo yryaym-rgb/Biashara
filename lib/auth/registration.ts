@@ -61,3 +61,28 @@ export async function getRegistrationContext(): Promise<RegistrationContext | nu
 
   return null;
 }
+
+/**
+ * KYC registration uploads may run before email confirmation. The requested
+ * userId must match the authenticated session or the server-set registration
+ * cookie — never a client-supplied value alone.
+ */
+export async function assertKycSubjectAuthorized(
+  requestedUserId: string,
+): Promise<{ ok: true } | { error: 'forbidden' }> {
+  const user = await getUser();
+  if (user) {
+    if (user.id !== requestedUserId) {
+      return { error: 'forbidden' };
+    }
+    return { ok: true };
+  }
+
+  const cookieStore = await cookies();
+  const registrationUserId = cookieStore.get(REGISTRATION_USER_COOKIE)?.value;
+  if (registrationUserId && registrationUserId === requestedUserId) {
+    return { ok: true };
+  }
+
+  return { error: 'forbidden' };
+}

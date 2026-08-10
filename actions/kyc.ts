@@ -11,8 +11,10 @@ import {
   hasSubmittedAllRequiredKycDocuments,
 } from '@/lib/constants/kyc-requirements';
 import {
+  assertKycSubjectAuthorized,
   getRegistrationContext,
 } from '@/lib/auth/registration';
+import { getUser } from '@/lib/auth/session';
 import { getRegistrationUserEmail } from '@/actions/auth';
 import { sendTransactionalEmail } from '@/lib/email';
 import type { Database } from '@/types/database.types';
@@ -24,18 +26,25 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 export async function getSubmittedKycDocumentTypesForUser(
   userId: string,
-): Promise<KycDocumentType[]> {
-  const profile = await getProfile();
-  if (profile?.id === userId) {
+): Promise<KycDocumentType[] | { error: 'forbidden' }> {
+  const auth = await assertKycSubjectAuthorized(userId);
+  if ('error' in auth) {
+    return { error: 'forbidden' };
+  }
+
+  const user = await getUser();
+  if (user) {
     const supabase = await createClient();
     const { data, error } = await supabase
       .from('kyc_documents')
       .select('type')
       .eq('user_id', userId);
 
-    if (!error && data) {
-      return data.map((row) => row.type as KycDocumentType);
+    if (error || !data) {
+      return [];
     }
+
+    return data.map((row) => row.type as KycDocumentType);
   }
 
   const admin = createAdminClient();
@@ -104,17 +113,12 @@ export async function uploadRegistrationKycDocument(formData: FormData) {
     return { error: 'fileTooLarge' };
   }
 
-  const profile = await getProfile();
-  const isOwnUpload = profile?.id === userId;
+  const auth = await assertKycSubjectAuthorized(userId);
+  if ('error' in auth) {
+    return { error: 'forbidden' };
+  }
 
   const admin = createAdminClient();
-
-  if (!isOwnUpload) {
-    const { data: authUser, error: userError } = await admin.auth.admin.getUserById(userId);
-    if (userError || !authUser.user) {
-      return { error: 'userNotFound' };
-    }
-  }
 
   const extension = file.name.split('.').pop() ?? 'bin';
   const storagePath = `${userId}/${type}/${Date.now()}.${extension}`;
@@ -237,7 +241,11 @@ export async function getRegistrationKycStatus() {
     return { error: 'noContext' as const };
   }
 
-  const submittedTypes = await getSubmittedKycDocumentTypesForUser(context.userId);
+  const submittedResult = await getSubmittedKycDocumentTypesForUser(context.userId);
+  if (!Array.isArray(submittedResult)) {
+    return { error: 'forbidden' as const };
+  }
+  const submittedTypes = submittedResult;
   const complete = hasSubmittedAllRequiredKycDocuments(context.role, submittedTypes);
   const email = await getRegistrationUserEmail(context.userId);
 

@@ -36,9 +36,10 @@ export default async function RegisterPage({
 
   if (requestedStep >= 2) {
     const context = await getRegistrationContext();
-    const submittedTypes = context
+    const submittedResult = context
       ? await getSubmittedKycDocumentTypesForUser(context.userId)
       : [];
+    const submittedTypes = Array.isArray(submittedResult) ? submittedResult : [];
     const gate = evaluateRegisterStepGate(requestedStep, context, submittedTypes);
 
     if (!gate.allowed) {
