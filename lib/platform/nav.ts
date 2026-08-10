@@ -4,6 +4,7 @@ import { isSellerRole, isCooperativeRole } from '@/lib/rbac';
 export type PlatformNavKey =
   | 'dashboard'
   | 'marketplace'
+  | 'rfps'
   | 'offers'
   | 'listings'
   | 'lots'
@@ -19,6 +20,7 @@ export interface PlatformNavItem {
   href:
     | '/dashboard'
     | '/marketplace'
+    | '/rfps'
     | '/offers'
     | '/settings'
     | '/orders'
@@ -38,6 +40,7 @@ export function getPlatformNavSections(
   const main: PlatformNavItem[] = [
     { key: 'dashboard', href: '/dashboard' },
     { key: 'marketplace', href: '/marketplace' },
+    { key: 'rfps', href: '/rfps' },
     { key: 'orders', href: '/orders' },
     { key: 'offers', href: '/offers' },
     { key: 'messages', href: '/messages' },
@@ -74,6 +77,7 @@ export function getPlatformNavItems(
 export type PlatformPageKey =
   | 'dashboard'
   | 'marketplace'
+  | 'rfps'
   | 'offers'
   | 'orders'
   | 'messages'
@@ -86,6 +90,8 @@ export type PlatformPageKey =
   | 'reports'
   | 'marketplaceNew'
   | 'marketplaceDetail'
+  | 'rfpsNew'
+  | 'rfpsDetail'
   | 'lots'
   | 'lotsNew'
   | 'lotsDetail';
@@ -93,6 +99,7 @@ export type PlatformPageKey =
 const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   dashboard: 'platform.dashboard.title',
   marketplace: 'platform.marketplace.title',
+  rfps: 'platform.rfps.title',
   offers: 'platform.offers.title',
   orders: 'platform.orders.title',
   messages: 'platform.messages.title',
@@ -105,6 +112,8 @@ const PAGE_TITLE_KEYS: Record<PlatformPageKey, string> = {
   reports: 'platform.reports.title',
   marketplaceNew: 'platform.marketplace.new.title',
   marketplaceDetail: 'platform.marketplace.title',
+  rfpsNew: 'platform.rfps.new.title',
+  rfpsDetail: 'platform.rfps.title',
   lots: 'platform.lots.title',
   lotsNew: 'platform.lots.new.title',
   lotsDetail: 'platform.lots.detail.title',
@@ -122,6 +131,15 @@ export function resolvePlatformPageKey(pathname: string): PlatformPageKey {
   }
   if (pathname === '/marketplace' || pathname.startsWith('/marketplace')) {
     return 'marketplace';
+  }
+  if (pathname === '/rfps/new') {
+    return 'rfpsNew';
+  }
+  if (pathname.startsWith('/rfps/')) {
+    return 'rfpsDetail';
+  }
+  if (pathname === '/rfps' || pathname.startsWith('/rfps')) {
+    return 'rfps';
   }
   if (pathname === '/offers' || pathname.startsWith('/offers/')) {
     return 'offers';

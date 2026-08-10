@@ -7,6 +7,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
+  ClipboardList,
   FileText,
   Handshake,
   Package,
@@ -42,6 +43,8 @@ function NotificationTypeIcon({ type }: { type: NotificationRow['type'] }) {
       return <Handshake className={className} strokeWidth={1.75} aria-hidden="true" />;
     case 'order':
       return <Package className={className} strokeWidth={1.75} aria-hidden="true" />;
+    case 'rfp':
+      return <ClipboardList className={className} strokeWidth={1.75} aria-hidden="true" />;
     default:
       return <ClipboardCheck className={className} strokeWidth={1.75} aria-hidden="true" />;
   }
@@ -51,6 +54,7 @@ function useNotificationMessage() {
   const t = useTranslations('notifications');
   const tDocs = useTranslations('notifications.documentTypes');
   const tStatus = useTranslations('notifications.orderStatus');
+  const tMinerals = useTranslations('minerals');
 
   return React.useCallback(
     (notification: NotificationRow) => {
@@ -66,9 +70,13 @@ function useNotificationMessage() {
         resolvedValues.status = tStatus(values.status);
       }
 
+      if (notification.type === 'rfp' && values.mineral) {
+        resolvedValues.mineral = tMinerals(values.mineral);
+      }
+
       return t(messageKey, resolvedValues);
     },
-    [t, tDocs, tStatus],
+    [t, tDocs, tStatus, tMinerals],
   );
 }
 
