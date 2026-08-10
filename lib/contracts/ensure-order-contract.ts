@@ -2,7 +2,6 @@ import 'server-only';
 
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/lib/supabase/server';
-import { createAdminClient } from '@/lib/supabase/admin';
 import { generateOrderSummaryPdf } from '@/lib/contracts/generate-order-summary-pdf';
 import { formatOrderReference } from '@/lib/platform/order-status';
 import type { PlatformOrderDetail } from '@/lib/platform/orders';
@@ -31,7 +30,6 @@ export async function ensureOrderContract(
   locale: string,
 ): Promise<OrderContractView | null> {
   const supabase = await createClient();
-  const admin = createAdminClient();
   const storagePath = contractStoragePath(order.id);
 
   const { data: existing } = await supabase
@@ -80,7 +78,7 @@ export async function ensureOrderContract(
     }
 
     if (existing) {
-      const { data: updated, error: updateError } = await admin
+      const { data: updated, error: updateError } = await supabase
         .from('contracts')
         .update({ storage_path: storagePath })
         .eq('order_id', order.id)
@@ -95,7 +93,7 @@ export async function ensureOrderContract(
       return { ...updated, storage_path: storagePath, pdfUrl };
     }
 
-    const { data: inserted, error: insertError } = await admin
+    const { data: inserted, error: insertError } = await supabase
       .from('contracts')
       .insert({
         order_id: order.id,

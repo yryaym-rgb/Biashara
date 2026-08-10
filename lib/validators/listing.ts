@@ -2,13 +2,11 @@ import { z } from 'zod';
 import { MINERAL_IDS, QUANTITY_UNITS } from '@/lib/constants/minerals';
 import type { Database } from '@/types/database.types';
 
-const listingStatuses = [
+/** Status values sellers/cooperatives may set via updateListing — never moderation outcomes. */
+export const SELLER_LISTING_STATUSES = [
   'draft',
   'pending_review',
-  'active',
   'paused',
-  'sold',
-  'rejected',
 ] as const satisfies readonly Database['public']['Enums']['listing_status'][];
 
 const priceTypes = [
@@ -33,9 +31,12 @@ export const listingCreateSchema = z.object({
   lotId: z.string().uuid().optional(),
 });
 
-export const listingUpdateSchema = listingCreateSchema.partial().extend({
-  status: z.enum(listingStatuses).optional(),
+export const listingSellerUpdateSchema = listingCreateSchema.partial().extend({
+  status: z.enum(SELLER_LISTING_STATUSES).optional(),
 });
+
+/** @deprecated Use listingSellerUpdateSchema for seller updates; admin uses dedicated actions. */
+export const listingUpdateSchema = listingSellerUpdateSchema;
 
 export const listingIdSchema = z.object({
   listingId: z.string().uuid(),
