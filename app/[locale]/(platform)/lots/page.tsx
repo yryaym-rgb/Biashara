@@ -10,6 +10,8 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { LotsListContent } from '@/components/platform/lots-list-content';
 import { ShieldAlert } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function LotsPage({
   params,
 }: {
@@ -54,7 +56,12 @@ export default async function LotsPage({
   requireAuth(profile);
   requireKycApproved(profile);
 
-  const lots = await getCooperativeLots(profile.id);
+  let lotsLoadError = false;
+  const lots = await getCooperativeLots(profile.id).catch((error: unknown) => {
+    console.error('[lots] Failed to load cooperative lots:', error);
+    lotsLoadError = true;
+    return [];
+  });
 
   return (
     <Container className="py-12 md:py-16">
@@ -68,7 +75,7 @@ export default async function LotsPage({
         </Button>
       </div>
 
-      <LotsListContent lots={lots} locale={locale} />
+      <LotsListContent lots={lots} locale={locale} loadError={lotsLoadError} />
     </Container>
   );
 }

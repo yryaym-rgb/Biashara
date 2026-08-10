@@ -3,19 +3,30 @@ import { Link } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { EmptyState } from '@/components/ui/empty-state';
-import { PackageSearch } from 'lucide-react';
+import { PackageSearch, AlertCircle } from 'lucide-react';
 import type { LotListItem } from '@/lib/platform/lots.types';
 import type { MineralId } from '@/lib/constants/minerals';
 
 export interface LotsListContentProps {
   lots: LotListItem[];
   locale: string;
+  loadError?: boolean;
 }
 
-export async function LotsListContent({ lots, locale }: LotsListContentProps) {
+export async function LotsListContent({ lots, locale, loadError = false }: LotsListContentProps) {
   const t = await getTranslations({ locale, namespace: 'platform.lots' });
   const tMinerals = await getTranslations({ locale, namespace: 'minerals' });
   const tStages = await getTranslations({ locale, namespace: 'platform.lots.custody.stages' });
+
+  if (loadError) {
+    return (
+      <EmptyState
+        icon={<AlertCircle className="h-5 w-5" strokeWidth={1.75} />}
+        title={t('loadErrorTitle')}
+        description={t('loadErrorDescription')}
+      />
+    );
+  }
 
   if (lots.length === 0) {
     return (
