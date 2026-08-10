@@ -341,6 +341,23 @@
     .price-ticker-marquee:hover .price-ticker-track {
       animation-play-state: paused;
     }
+
+    @keyframes activity-feed-marquee {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-50%);
+      }
+    }
+
+    .activity-feed-track {
+      animation: activity-feed-marquee 60s linear infinite;
+    }
+
+    .activity-feed-marquee:hover .activity-feed-track {
+      animation-play-state: paused;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

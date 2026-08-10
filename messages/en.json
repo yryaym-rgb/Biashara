@@ -1682,6 +1682,23 @@
       "export_license": "Export license"
     }
   },
+  "activityFeed": {
+    "ariaLabel": "Recent platform activity",
+    "empty": "Platform activity will appear here.",
+    "error": "Unable to load activity at this time.",
+    "listing_published": "New listing: {mineral}, {province}",
+    "rfp_posted": "New purchase request: {mineral}",
+    "order_completed": "Transaction completed: {mineral}",
+    "account_verified": "New verified participant: {role} — {province}",
+    "landing": {
+      "eyebrow": "LIVE",
+      "title": "Platform activity",
+      "subtitle": "The latest anonymized listings, requests, and transactions on BIASHARA."
+    },
+    "sidebar": {
+      "title": "Activity"
+    }
+  },
   "email": {
     "signupConfirmation": {
       "subject": "Confirm your BIASHARA account",

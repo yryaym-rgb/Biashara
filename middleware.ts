@@ -9,7 +9,7 @@ type Profile = Database['public']['Tables']['profiles']['Row'];
 
 const intlMiddleware = createMiddleware(routing);
 
-const PUBLIC_API_ROUTES = ['/api/health', '/api/prices'];
+const PUBLIC_API_ROUTES = ['/api/health', '/api/prices', '/api/activity-feed'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
