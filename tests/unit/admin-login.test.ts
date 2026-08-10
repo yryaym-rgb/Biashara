@@ -20,6 +20,20 @@ vi.mock('next/headers', () => ({
     }),
 }));
 
+vi.mock('@/lib/rate-limit', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/lib/rate-limit')>();
+  return {
+    ...actual,
+    checkRateLimit: vi.fn().mockResolvedValue({
+      success: true,
+      remaining: 4,
+      resetAt: Date.now() + 900_000,
+    }),
+    getClientIpFromHeaders: vi.fn().mockResolvedValue('127.0.0.1'),
+    withConstantTiming: async (_minMs: number, fn: () => Promise<unknown>) => fn(),
+  };
+});
+
 const adminProfile = {
   id: '00000000-0000-0000-0000-000000000001',
   role: 'admin' as const,

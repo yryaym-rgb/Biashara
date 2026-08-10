@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { MINERALS, type MineralId } from '@/lib/constants/minerals';
-import { rateLimit, PRICES_RATE_LIMIT } from '@/lib/rate-limit';
+import { checkRateLimit, PRICES_RATE_LIMIT } from '@/lib/rate-limit';
 import type { Database } from '@/types/database.types';
 
 const CACHE_TTL_MS = 15 * 60 * 1000;
@@ -216,7 +216,7 @@ function mapCachedRows(
 
 export async function GET(request: NextRequest) {
   const ip = getClientIp(request);
-  const limit = rateLimit(`prices:${ip}`, PRICES_RATE_LIMIT.limit, PRICES_RATE_LIMIT.windowMs);
+  const limit = await checkRateLimit(`prices:${ip}`, PRICES_RATE_LIMIT.limit, PRICES_RATE_LIMIT.windowMs);
 
   if (!limit.success) {
     return NextResponse.json(

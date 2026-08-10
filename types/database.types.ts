@@ -950,9 +950,39 @@ export type Database = {
           },
         ];
       };
+      rate_limit_buckets: {
+        Row: {
+          bucket_key: string;
+          action: string;
+          window_start: string;
+          count: number;
+        };
+        Insert: {
+          bucket_key: string;
+          action: string;
+          window_start: string;
+          count?: number;
+        };
+        Update: {
+          bucket_key?: string;
+          action?: string;
+          window_start?: string;
+          count?: number;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
+      check_rate_limit: {
+        Args: {
+          p_bucket_key: string;
+          p_action: string;
+          p_limit: number;
+          p_window_seconds: number;
+        };
+        Returns: Json;
+      };
       create_order_from_offer: {
         Args: { p_offer_id: string };
         Returns: string;
