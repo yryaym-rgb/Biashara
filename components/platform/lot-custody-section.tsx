@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input, Select, Textarea } from '@/components/ui/input';
 import { formatDateTime } from '@/lib/utils/dates';
-import type { CustodyEventRow } from '@/lib/platform/lots';
+import type { CustodyEventRow } from '@/lib/platform/lots.types';
 
 export interface LotCustodySectionProps {
   lotId: string;

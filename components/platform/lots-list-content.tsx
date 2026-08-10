@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { EmptyState } from '@/components/ui/empty-state';
 import { PackageSearch } from 'lucide-react';
-import type { LotListItem } from '@/lib/platform/lots';
+import type { LotListItem } from '@/lib/platform/lots.types';
 import type { MineralId } from '@/lib/constants/minerals';
 
 export interface LotsListContentProps {
