@@ -11,6 +11,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:smoke": "playwright test --project=guest --project=setup",
+    "test:e2e:prod": "npm run build && PLAYWRIGHT_SERVER_MODE=production playwright test",
+    "test:e2e:dev": "PLAYWRIGHT_SERVER_MODE=dev playwright test",
+    "setup:e2e-fixtures": "tsx scripts/setup-e2e-fixtures.ts",
     "types:gen": "supabase gen types typescript --local > types/database.types.ts && echo 'Regenerated types/database.types.ts from local Supabase. Review diff before committing.'",
     "create-admin": "tsx scripts/create-admin.ts",
     "map:generate": "tsx scripts/generate-drc-map-paths.ts"
