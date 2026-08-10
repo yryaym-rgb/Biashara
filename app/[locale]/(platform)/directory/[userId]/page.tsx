@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getProfile } from '@/lib/auth/session';
 import { DirectoryDetailContent } from '@/components/directory/directory-detail-content';
 import { getDirectoryProfileById } from '@/lib/directory/queries';
+import { safeQuery } from '@/lib/safe-query';
 
 export default async function DirectoryProfilePage({
   params,
@@ -12,7 +13,11 @@ export default async function DirectoryProfilePage({
   const { locale, userId } = await params;
   setRequestLocale(locale);
 
-  const detail = await getDirectoryProfileById(userId);
+  const detail = await safeQuery(
+    'directory/profile-detail',
+    () => getDirectoryProfileById(userId),
+    null,
+  );
   if (!detail) {
     notFound();
   }

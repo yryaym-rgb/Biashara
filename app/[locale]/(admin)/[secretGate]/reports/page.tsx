@@ -9,6 +9,7 @@ import {
   getPlatformTransactionVolume,
   getPlatformUserGrowth,
 } from '@/lib/admin/reports-queries';
+import { safeQuery } from '@/lib/safe-query';
 import { AdminAlertsCard } from '@/components/admin/admin-alerts-card';
 import { AdminExportCenter } from '@/components/admin/admin-export-center';
 import { AdminDisputeRateChart } from '@/components/admin/reports/dispute-rate-chart';
@@ -41,16 +42,16 @@ export default async function AdminReportsPage({
     dailyDisputeRate,
     weeklyDisputeRate,
   ] = await Promise.all([
-    getAdminAlerts(),
-    getPlatformTransactionVolume('daily'),
-    getPlatformTransactionVolume('weekly'),
-    getPlatformMineralDistribution(),
-    getPlatformUserGrowth('daily'),
-    getPlatformUserGrowth('weekly'),
-    getPlatformKycFunnel(),
-    getPlatformListingFunnel(),
-    getPlatformDisputeRateTrend('daily'),
-    getPlatformDisputeRateTrend('weekly'),
+    safeQuery('admin/reports/alerts', () => getAdminAlerts(), []),
+    safeQuery('admin/reports/transaction-volume-daily', () => getPlatformTransactionVolume('daily'), []),
+    safeQuery('admin/reports/transaction-volume-weekly', () => getPlatformTransactionVolume('weekly'), []),
+    safeQuery('admin/reports/mineral-distribution', () => getPlatformMineralDistribution(), []),
+    safeQuery('admin/reports/user-growth-daily', () => getPlatformUserGrowth('daily'), []),
+    safeQuery('admin/reports/user-growth-weekly', () => getPlatformUserGrowth('weekly'), []),
+    safeQuery('admin/reports/kyc-funnel', () => getPlatformKycFunnel(), []),
+    safeQuery('admin/reports/listing-funnel', () => getPlatformListingFunnel(), []),
+    safeQuery('admin/reports/dispute-rate-daily', () => getPlatformDisputeRateTrend('daily'), []),
+    safeQuery('admin/reports/dispute-rate-weekly', () => getPlatformDisputeRateTrend('weekly'), []),
   ]);
 
   return (

@@ -3,6 +3,7 @@ import { requireAuth, isSellerRole, isCooperativeRole } from '@/lib/rbac';
 import { getProfile, getUser } from '@/lib/auth/session';
 import { getUserKycDocuments, getUserListings } from '@/lib/admin/queries';
 import { getCooperativeSites } from '@/lib/platform/lots';
+import { safeQuery } from '@/lib/safe-query';
 import { Container } from '@/components/ui/container';
 import {
   SettingsPageContent,
@@ -47,15 +48,14 @@ export default async function SettingsPage({
     isCooperativeRole(profile.role) && profile.kyc_status === 'approved';
 
   const cooperativeSitesPromise: Promise<CooperativeSiteRow[]> = showCooperativeSites
-    ? getCooperativeSites(profile.id).catch((error: unknown) => {
-        console.error('[settings] Failed to load cooperative sites:', error);
-        return [];
-      })
+    ? safeQuery('settings/cooperative-sites', () => getCooperativeSites(profile.id), [])
     : Promise.resolve([]);
 
   const [kycDocuments, listings, cooperativeSites] = await Promise.all([
-    getUserKycDocuments(profile.id),
-    showListingsTab ? getUserListings(profile.id) : Promise.resolve([]),
+    safeQuery('settings/kyc-documents', () => getUserKycDocuments(profile.id), []),
+    showListingsTab
+      ? safeQuery('settings/listings', () => getUserListings(profile.id), [])
+      : Promise.resolve([]),
     cooperativeSitesPromise,
   ]);
 

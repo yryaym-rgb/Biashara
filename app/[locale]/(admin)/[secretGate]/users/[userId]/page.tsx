@@ -4,6 +4,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { requireAdminPage } from '@/lib/admin/session';
 import { getAdminUserDetail, getKycSignedUrl } from '@/lib/admin/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { adminUsersPath } from '@/lib/admin/path';
 import { displayName, kycStatusVariant, listingStatusVariant, roleVariant } from '@/lib/admin/display';
 import { Badge } from '@/components/ui/badge';
@@ -27,7 +28,7 @@ export default async function AdminUserDetailPage({
   const tListingStatus = await getTranslations({ locale, namespace: 'admin.listingStatus' });
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
 
-  const detail = await getAdminUserDetail(userId);
+  const detail = await safeQuery('admin/user-detail', () => getAdminUserDetail(userId), null);
   if (!detail) {
     notFound();
   }
@@ -37,7 +38,11 @@ export default async function AdminUserDetailPage({
   const kycUrls = await Promise.all(
     kyc_documents.map(async (doc) => ({
       id: doc.id,
-      url: await getKycSignedUrl(doc.storage_path),
+      url: await safeQuery(
+        `admin/user-detail/kyc-url/${doc.id}`,
+        () => getKycSignedUrl(doc.storage_path),
+        null,
+      ),
     })),
   );
   const urlByDocId = Object.fromEntries(kycUrls.map((item) => [item.id, item.url]));

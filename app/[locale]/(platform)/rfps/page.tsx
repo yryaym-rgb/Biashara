@@ -6,8 +6,9 @@ import { RfpRowCard } from '@/components/rfps/rfp-row';
 import { RfpSubheader } from '@/components/rfps/rfp-subheader';
 import { MarketplacePagination } from '@/components/marketplace/marketplace-pagination';
 import { getProfile } from '@/lib/auth/session';
-import { getOpenRfps, parseRfpSearchParams } from '@/lib/rfps/queries';
+import { getOpenRfps, parseRfpSearchParams, RFP_PAGE_SIZE } from '@/lib/rfps/queries';
 import { parseMineralParam } from '@/lib/marketplace/url';
+import { safeQuery } from '@/lib/safe-query';
 import type { MineralId } from '@/lib/constants/minerals';
 
 function buildRfpQueryString(
@@ -41,7 +42,16 @@ export default async function RfpsPage({
   const profile = await getProfile();
   const mineral = parseMineralParam(filters.mineral) as MineralId | undefined;
 
-  const { rfps, total, page, pageSize } = await getOpenRfps(filters);
+  const { rfps, total, page, pageSize } = await safeQuery(
+    'rfps/open',
+    () => getOpenRfps(filters),
+    {
+      rfps: [],
+      total: 0,
+      page: filters.page,
+      pageSize: RFP_PAGE_SIZE,
+    },
+  );
 
   return (
     <Container className="pb-16 md:pb-24">

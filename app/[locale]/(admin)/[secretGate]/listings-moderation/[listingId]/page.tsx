@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { getProfile } from '@/lib/auth/session';
 import { requireAdminPage } from '@/lib/admin/session';
 import { getListingById } from '@/lib/marketplace/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { ListingDetailContent } from '@/components/marketplace/listing-detail-content';
 import { ListingModerationActions } from '@/components/admin/listing-moderation-actions';
 import { adminListingsModerationPath } from '@/lib/admin/path';
@@ -19,7 +20,11 @@ export default async function AdminListingDetailPage({
   setRequestLocale(locale);
   await requireAdminPage();
 
-  const listing = await getListingById(listingId);
+  const listing = await safeQuery(
+    'admin/listing-detail',
+    () => getListingById(listingId),
+    null,
+  );
   if (!listing) {
     notFound();
   }

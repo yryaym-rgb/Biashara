@@ -2,8 +2,11 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { requireAuth } from '@/lib/rbac';
 import { getProfile } from '@/lib/auth/session';
 import { getUserDocuments } from '@/lib/platform/documents';
+import { safeQuery } from '@/lib/safe-query';
 import { DocumentsPageContent } from '@/components/platform/documents-page-content';
 import { Container } from '@/components/ui/container';
+
+export const dynamic = 'force-dynamic';
 
 export default async function DocumentsPage({
   params,
@@ -15,7 +18,11 @@ export default async function DocumentsPage({
 
   const profile = requireAuth(await getProfile());
   const t = await getTranslations({ locale, namespace: 'platform.documents' });
-  const documents = await getUserDocuments(profile.id);
+  const documents = await safeQuery(
+    'documents/list',
+    () => getUserDocuments(profile.id),
+    [],
+  );
 
   return (
     <Container>

@@ -4,6 +4,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { getProfile } from '@/lib/auth/session';
 import { isCooperativeRole } from '@/lib/rbac';
 import { getCooperativeSites } from '@/lib/platform/lots';
+import { safeQuery } from '@/lib/safe-query';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -53,10 +54,7 @@ export default async function LotNewPage({
     );
   }
 
-  const sites = await getCooperativeSites(profile.id).catch((error: unknown) => {
-    console.error('[lots/new] Failed to load cooperative sites:', error);
-    return [];
-  });
+  const sites = await safeQuery('lots/new/sites', () => getCooperativeSites(profile.id), []);
 
   return (
     <Container className="py-12 md:py-16">

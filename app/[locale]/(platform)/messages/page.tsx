@@ -8,6 +8,9 @@ import {
   getConversationsForUser,
   getMessagesForConversation,
 } from '@/lib/platform/messages';
+import { safeQuery } from '@/lib/safe-query';
+
+export const dynamic = 'force-dynamic';
 
 export default async function MessagesPage({
   params,
@@ -23,7 +26,11 @@ export default async function MessagesPage({
   const profile = requireAuth(await getProfile());
   const t = await getTranslations({ locale, namespace: 'platform.messages' });
 
-  const conversations = await getConversationsForUser(profile.id, t('counterpartyUnknown'));
+  const conversations = await safeQuery(
+    'messages/conversations',
+    () => getConversationsForUser(profile.id, t('counterpartyUnknown')),
+    [],
+  );
   const selectedConversationId =
     conversationId && conversations.some((conversation) => conversation.id === conversationId)
       ? conversationId
@@ -31,10 +38,23 @@ export default async function MessagesPage({
 
   const [selectedConversation, initialMessages] = await Promise.all([
     selectedConversationId
-      ? getConversationThreadContext(selectedConversationId, profile.id, t('counterpartyUnknown'))
+      ? safeQuery(
+          'messages/thread-context',
+          () =>
+            getConversationThreadContext(
+              selectedConversationId,
+              profile.id,
+              t('counterpartyUnknown'),
+            ),
+          null,
+        )
       : Promise.resolve(null),
     selectedConversationId
-      ? getMessagesForConversation(selectedConversationId)
+      ? safeQuery(
+          'messages/thread-messages',
+          () => getMessagesForConversation(selectedConversationId),
+          [],
+        )
       : Promise.resolve([]),
   ]);
 

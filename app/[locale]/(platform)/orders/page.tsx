@@ -3,7 +3,10 @@ import { requireAuth } from '@/lib/rbac';
 import { getProfile } from '@/lib/auth/session';
 import { Container } from '@/components/ui/container';
 import { OrdersPageContent } from '@/components/platform/orders-page-content';
-import { getOrdersForUser } from '@/lib/platform/orders';
+import { getOrdersForUser, ORDERS_PAGE_SIZE } from '@/lib/platform/orders';
+import { safeQuery } from '@/lib/safe-query';
+
+export const dynamic = 'force-dynamic';
 
 export default async function OrdersPage({
   params,
@@ -18,7 +21,11 @@ export default async function OrdersPage({
 
   const profile = requireAuth(await getProfile());
   const page = Math.max(1, Number.parseInt(pageParam ?? '1', 10) || 1);
-  const { orders, total, pageSize } = await getOrdersForUser(profile.id, page);
+  const { orders, total, pageSize } = await safeQuery(
+    'orders/list',
+    () => getOrdersForUser(profile.id, page),
+    { orders: [], total: 0, page, pageSize: ORDERS_PAGE_SIZE },
+  );
 
   return (
     <Container>

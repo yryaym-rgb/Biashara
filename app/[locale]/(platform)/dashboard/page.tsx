@@ -23,6 +23,8 @@ import {
   getDashboardRecentOrders,
   getSellerDashboardStats,
   getSellerSalesVolumeByDay,
+  type BuyerDashboardStats,
+  type SellerDashboardStats,
 } from '@/lib/platform/queries';
 import { getActionCenterItems } from '@/lib/platform/action-center';
 import { getMarketInsightForUser } from '@/lib/platform/market-insight';
@@ -34,8 +36,15 @@ import {
   getDashboardStatKeys,
   isNewDashboardAccount,
   shouldShowKycBanner,
+  type DashboardActivityCounts,
   type DashboardStatKey,
 } from '@/lib/platform/dashboard';
+import {
+  accountAgeDays,
+  computeTrustScore,
+  isKycApprovedForTrust,
+} from '@/lib/platform/trust-score';
+import { safeQuery } from '@/lib/safe-query';
 import { KycStatusBanner } from '@/components/platform/kyc-status-banner';
 import { DashboardStatCard } from '@/components/platform/dashboard-stat-card';
 import { DashboardWelcomePanel } from '@/components/platform/dashboard-welcome-panel';
@@ -59,6 +68,28 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Container } from '@/components/ui/container';
 import { formatCurrency, formatNumber } from '@/lib/utils/format';
 import { formatRelativeTime } from '@/lib/utils/dates';
+
+export const dynamic = 'force-dynamic';
+
+const EMPTY_ACTIVITY_COUNTS: DashboardActivityCounts = {
+  listings: 0,
+  offers: 0,
+  orders: 0,
+  conversations: 0,
+};
+
+const ZERO_SELLER_STATS: SellerDashboardStats = {
+  activeListings: 0,
+  pendingOffersReceived: 0,
+  ordersInProgress: 0,
+  monthlyRevenue: 0,
+};
+
+const ZERO_BUYER_STATS: BuyerDashboardStats = {
+  pendingOffersSent: 0,
+  ordersInProgress: 0,
+  recentlyViewedListings: 0,
+};
 
 const STAT_ICONS: Record<DashboardStatKey, typeof Package> = {
   activeListings: Package,
@@ -90,6 +121,13 @@ export default async function DashboardPage({
 
   const userDisplayName = displayName(profile.company_name, user?.email ?? tCommon('unknownUser'));
 
+  const trustScoreFallback = computeTrustScore({
+    kycApproved: isKycApprovedForTrust(profile.kyc_status),
+    completedOrderCount: 0,
+    disputedOrderCount: 0,
+    accountAgeDays: accountAgeDays(profile.created_at),
+  });
+
   const [
     activityCounts,
     recentActivity,
@@ -104,18 +142,30 @@ export default async function DashboardPage({
     trustScore,
     suggestions,
   ] = await Promise.all([
-    getDashboardActivityCounts(profile.id),
-    getDashboardRecentActivity(profile.id, 10),
-    shouldShowKycBanner(profile.kyc_status) ? getUserKycDocuments(profile.id) : Promise.resolve([]),
-    isSeller ? getSellerDashboardStats(profile.id) : Promise.resolve(null),
-    !isSeller ? getBuyerDashboardStats(profile.id) : Promise.resolve(null),
-    isSeller ? getSellerSalesVolumeByDay(profile.id) : Promise.resolve([]),
-    getDashboardRecentOrders(profile.id, 8),
-    getActionCenterItems(profile.id),
-    getMarketInsightForUser(profile.id),
-    getTradingMixForUser(profile.id),
-    getTrustScoreForUser(profile.id, profile.kyc_status, profile.created_at),
-    getSuggestedListingsForUser(profile.id),
+    safeQuery('dashboard/activity-counts', () => getDashboardActivityCounts(profile.id), EMPTY_ACTIVITY_COUNTS),
+    safeQuery('dashboard/recent-activity', () => getDashboardRecentActivity(profile.id, 10), []),
+    shouldShowKycBanner(profile.kyc_status)
+      ? safeQuery('dashboard/kyc-documents', () => getUserKycDocuments(profile.id), [])
+      : Promise.resolve([]),
+    isSeller
+      ? safeQuery('dashboard/seller-stats', () => getSellerDashboardStats(profile.id), ZERO_SELLER_STATS)
+      : Promise.resolve(null),
+    !isSeller
+      ? safeQuery('dashboard/buyer-stats', () => getBuyerDashboardStats(profile.id), ZERO_BUYER_STATS)
+      : Promise.resolve(null),
+    isSeller
+      ? safeQuery('dashboard/sales-volume', () => getSellerSalesVolumeByDay(profile.id), [])
+      : Promise.resolve([]),
+    safeQuery('dashboard/recent-orders', () => getDashboardRecentOrders(profile.id, 8), []),
+    safeQuery('dashboard/action-center', () => getActionCenterItems(profile.id), []),
+    safeQuery('dashboard/market-insight', () => getMarketInsightForUser(profile.id), null),
+    safeQuery('dashboard/trading-mix', () => getTradingMixForUser(profile.id), []),
+    safeQuery(
+      'dashboard/trust-score',
+      () => getTrustScoreForUser(profile.id, profile.kyc_status, profile.created_at),
+      trustScoreFallback,
+    ),
+    safeQuery('dashboard/suggestions', () => getSuggestedListingsForUser(profile.id), []),
   ]);
 
   const isNewAccount = isNewDashboardAccount(activityCounts);
