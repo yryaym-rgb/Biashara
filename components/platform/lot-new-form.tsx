@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter } from '@/lib/i18n/navigation';
+import { useRouter, Link } from '@/lib/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { createLotAction } from '@/actions/lots';
 import { MINERAL_IDS } from '@/lib/constants/minerals';
@@ -22,7 +22,7 @@ export function LotNewForm({ sites }: LotNewFormProps) {
 
   const [mineral, setMineral] = React.useState('');
   const [initialWeightKg, setInitialWeightKg] = React.useState('');
-  const [siteId, setSiteId] = React.useState(sites[0]?.id ?? '');
+  const [siteId, setSiteId] = React.useState(() => sites[0]?.id ?? '');
   const [extractionDate, setExtractionDate] = React.useState('');
   const [notes, setNotes] = React.useState('');
   const [fieldErrors, setFieldErrors] = React.useState<Record<string, string>>({});
@@ -79,9 +79,9 @@ export function LotNewForm({ sites }: LotNewFormProps) {
     return (
       <p className="text-[15px] text-body">
         {t('noSites')}{' '}
-        <a href="/settings" className="text-brand-blue underline-offset-2 hover:underline">
+        <Link href="/settings" className="text-brand-blue underline-offset-2 hover:underline">
           {t('noSitesCta')}
-        </a>
+        </Link>
       </p>
     );
   }

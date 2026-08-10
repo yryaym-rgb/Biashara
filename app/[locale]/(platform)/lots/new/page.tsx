@@ -10,6 +10,8 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { LotNewForm } from '@/components/platform/lot-new-form';
 import { ShieldAlert } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function LotNewPage({
   params,
 }: {
@@ -51,7 +53,10 @@ export default async function LotNewPage({
     );
   }
 
-  const sites = await getCooperativeSites(profile.id);
+  const sites = await getCooperativeSites(profile.id).catch((error: unknown) => {
+    console.error('[lots/new] Failed to load cooperative sites:', error);
+    return [];
+  });
 
   return (
     <Container className="py-12 md:py-16">

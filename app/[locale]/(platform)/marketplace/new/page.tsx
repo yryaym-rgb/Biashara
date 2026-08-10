@@ -75,10 +75,12 @@ export default async function MarketplaceNewPage({
     );
   }
 
-  const availableLots =
-    isCooperativeRole(profile.role)
-      ? await getUnlinkedLotsForCooperative(profile.id)
-      : [];
+  const availableLots = isCooperativeRole(profile.role)
+    ? await getUnlinkedLotsForCooperative(profile.id).catch((error: unknown) => {
+        console.error('[marketplace/new] Failed to load unlinked lots:', error);
+        return [];
+      })
+    : [];
 
   return (
     <Container className="py-12 md:py-16">

@@ -779,6 +779,9 @@
       "kycRequiredCta": "Compléter la vérification KYC",
       "emptyTitle": "Aucun lot pour le moment",
       "emptyDescription": "Créez votre premier lot pour commencer la traçabilité de votre production.",
+      "loadErrorTitle": "Impossible de charger les lots",
+      "loadErrorDescription": "Nous n'avons pas pu charger vos lots pour le moment. Réessayez dans quelques instants.",
+      "loadErrorCta": "Retour aux lots",
       "table": {
         "code": "Code lot",
         "mineral": "Minerai",

@@ -779,6 +779,9 @@
       "kycRequiredCta": "Complete KYC verification",
       "emptyTitle": "No lots yet",
       "emptyDescription": "Create your first lot to start traceability for your production.",
+      "loadErrorTitle": "Unable to load lots",
+      "loadErrorDescription": "We could not load your lots right now. Please try again in a few moments.",
+      "loadErrorCta": "Back to lots",
       "table": {
         "code": "Lot code",
         "mineral": "Mineral",
