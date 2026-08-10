@@ -6,6 +6,7 @@ import {
   canAccessRoute,
   classifyRoute,
   isPublicMarketplaceRoute,
+  isPublicDirectoryRoute,
   UnauthorizedError,
   ForbiddenError,
   KycRequiredError,
@@ -63,6 +64,14 @@ describe('rbac', () => {
       canAccessRoute('/marketplace/00000000-0000-0000-0000-000000000001', null, 'fr').allowed,
     ).toBe(true);
     expect(canAccessRoute('/en/marketplace', null, 'en').allowed).toBe(true);
+  });
+
+  it('allows public directory browsing', () => {
+    expect(canAccessRoute('/directory', null, 'fr').allowed).toBe(true);
+    expect(
+      canAccessRoute('/directory/00000000-0000-4000-8000-000000000001', null, 'fr').allowed,
+    ).toBe(true);
+    expect(isPublicDirectoryRoute('/directory')).toBe(true);
   });
 
   it('blocks unauthenticated marketplace new listing', () => {

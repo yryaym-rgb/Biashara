@@ -62,6 +62,7 @@ const PLATFORM_PREFIXES = [
   '/dashboard',
   '/marketplace',
   '/rfps',
+  '/directory',
   '/offers',
   '/orders',
   '/messages',
@@ -178,6 +179,20 @@ export function isPublicLotDetailRoute(pathname: string): boolean {
   return Boolean(segment && segment !== 'new');
 }
 
+/** Directory list and profile pages are public; contact requires authentication. */
+export function isPublicDirectoryRoute(pathname: string): boolean {
+  const path = stripLocale(pathname);
+  if (path === '/directory') {
+    return true;
+  }
+  const detailMatch = /^\/directory\/([^/]+)$/.exec(path);
+  if (!detailMatch) {
+    return false;
+  }
+  const segment = detailMatch[1];
+  return Boolean(segment);
+}
+
 /**
  * Single authorization surface for middleware route gating.
  * Returns redirect target when access is denied.
@@ -210,6 +225,10 @@ export function canAccessRoute(
   }
 
   if (group === 'platform' && isPublicLotDetailRoute(pathname)) {
+    return { allowed: true };
+  }
+
+  if (group === 'platform' && isPublicDirectoryRoute(pathname)) {
     return { allowed: true };
   }
 

@@ -11,6 +11,7 @@ export interface MarketplacePaginationProps {
   pageSize: number;
   buildHref: (page: number) => string;
   className?: string;
+  namespace?: 'platform.marketplace' | 'platform.directory';
 }
 
 export function MarketplacePagination({
@@ -19,8 +20,9 @@ export function MarketplacePagination({
   pageSize,
   buildHref,
   className,
+  namespace = 'platform.marketplace',
 }: MarketplacePaginationProps) {
-  const t = useTranslations('platform.marketplace');
+  const t = useTranslations(namespace);
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
   if (totalPages <= 1) {
