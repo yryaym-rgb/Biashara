@@ -10,6 +10,9 @@ import {
 } from '@/lib/contracts/ensure-order-contract';
 import { getOrderDetailForUser } from '@/lib/platform/orders';
 import { getShipmentForOrder } from '@/lib/platform/order-shipment';
+import { safeQuery } from '@/lib/safe-query';
+
+export const dynamic = 'force-dynamic';
 
 export default async function OrderDetailPage({
   params,
@@ -21,15 +24,19 @@ export default async function OrderDetailPage({
 
   const profile = requireAuth(await getProfile());
   const isAdmin = profile.role === 'admin';
-  const order = await getOrderDetailForUser(id, profile.id, isAdmin);
+  const order = await safeQuery(
+    'orders/detail',
+    () => getOrderDetailForUser(id, profile.id, isAdmin),
+    null,
+  );
 
   if (!order) {
     notFound();
   }
 
   const [contract, shipment] = await Promise.all([
-    ensureOrderContract(order, locale),
-    getShipmentForOrder(order.id),
+    safeQuery('orders/contract', () => ensureOrderContract(order, locale), null),
+    safeQuery('orders/shipment', () => getShipmentForOrder(order.id), null),
   ]);
 
   return (

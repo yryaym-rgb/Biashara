@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import { requireAdminPage } from '@/lib/admin/session';
 import { getKycDocumentsForReview, getKycSignedUrl } from '@/lib/admin/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { adminKycReviewPath } from '@/lib/admin/path';
 import { displayName } from '@/lib/admin/display';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -42,12 +43,20 @@ export default async function AdminKycReviewPage({
   const tKycDocs = await getTranslations({ locale, namespace: 'kyc' });
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
 
-  const documents = await getKycDocumentsForReview(activeTab);
+  const documents = await safeQuery(
+    'admin/kyc-review',
+    () => getKycDocumentsForReview(activeTab),
+    [],
+  );
 
   const signedUrls = await Promise.all(
     documents.map(async (doc) => ({
       id: doc.id,
-      url: await getKycSignedUrl(doc.storage_path),
+      url: await safeQuery(
+        `admin/kyc-review/signed-url/${doc.id}`,
+        () => getKycSignedUrl(doc.storage_path),
+        null,
+      ),
     })),
   );
   const urlById = Object.fromEntries(signedUrls.map((item) => [item.id, item.url]));

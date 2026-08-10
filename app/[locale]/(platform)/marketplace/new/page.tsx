@@ -4,6 +4,7 @@ import { Link } from '@/lib/i18n/navigation';
 import { getProfile } from '@/lib/auth/session';
 import { isSellerRole, isCooperativeRole } from '@/lib/rbac';
 import { getUnlinkedLotsForCooperative } from '@/lib/platform/lots';
+import { safeQuery } from '@/lib/safe-query';
 import { Container } from '@/components/ui/container';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -76,10 +77,11 @@ export default async function MarketplaceNewPage({
   }
 
   const availableLots = isCooperativeRole(profile.role)
-    ? await getUnlinkedLotsForCooperative(profile.id).catch((error: unknown) => {
-        console.error('[marketplace/new] Failed to load unlinked lots:', error);
-        return [];
-      })
+    ? await safeQuery(
+        'marketplace/new/unlinked-lots',
+        () => getUnlinkedLotsForCooperative(profile.id),
+        [],
+      )
     : [];
 
   return (

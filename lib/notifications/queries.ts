@@ -3,7 +3,7 @@ import 'server-only';
 import { createClient } from '@/lib/supabase/server';
 import type { NotificationRow } from '@/lib/notifications/types';
 
-const NOTIFICATIONS_PER_PAGE = 20;
+export const NOTIFICATIONS_PER_PAGE = 20;
 const RECENT_NOTIFICATIONS_LIMIT = 8;
 
 export async function getUnreadNotificationCount(userId: string): Promise<number> {

@@ -1,7 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import { requireAdminPage } from '@/lib/admin/session';
-import { getAdminUsers } from '@/lib/admin/queries';
+import { getAdminUsers, USERS_PAGE_SIZE } from '@/lib/admin/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { adminUsersPath } from '@/lib/admin/path';
 import { displayName, kycStatusVariant, roleVariant } from '@/lib/admin/display';
 import { Badge } from '@/components/ui/badge';
@@ -45,7 +46,11 @@ export default async function AdminUsersPage({
   const role = typeof sp.role === 'string' ? (sp.role as UserRole) : undefined;
   const kycStatus = typeof sp.kycStatus === 'string' ? (sp.kycStatus as KycStatus) : undefined;
 
-  const { users, total, pageSize } = await getAdminUsers({ page, q, role, kycStatus });
+  const { users, total, pageSize } = await safeQuery(
+    'admin/users',
+    () => getAdminUsers({ page, q, role, kycStatus }),
+    { users: [], total: 0, page, pageSize: USERS_PAGE_SIZE },
+  );
 
   const buildHref = (nextPage: number) => {
     const params = new URLSearchParams();

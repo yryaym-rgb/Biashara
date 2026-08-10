@@ -10,7 +10,9 @@ import { requireAdminPage } from '@/lib/admin/session';
 import {
   getDashboardStats,
   getRecentAuditActivity,
+  type DashboardStats,
 } from '@/lib/admin/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { StatCard } from '@/components/admin/stat-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -22,6 +24,14 @@ import {
 } from '@/lib/admin/path';
 import { formatRelativeTime } from '@/lib/utils/dates';
 import { displayName } from '@/lib/admin/display';
+
+const ZERO_DASHBOARD_STATS: DashboardStats = {
+  pendingKycDocuments: 0,
+  pendingListings: 0,
+  verifiedUsers: 0,
+  activeListings: 0,
+  pendingUsers: 0,
+};
 
 export default async function AdminDashboardPage({
   params,
@@ -37,8 +47,8 @@ export default async function AdminDashboardPage({
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
 
   const [stats, activity] = await Promise.all([
-    getDashboardStats(),
-    getRecentAuditActivity(10),
+    safeQuery('admin/dashboard/stats', () => getDashboardStats(), ZERO_DASHBOARD_STATS),
+    safeQuery('admin/dashboard/activity', () => getRecentAuditActivity(10), []),
   ]);
 
   const quickLinks = [

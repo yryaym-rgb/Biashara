@@ -9,6 +9,9 @@ import {
   getRecentNotifications,
   getUnreadNotificationCount,
 } from '@/lib/notifications/queries';
+import { safeQuery } from '@/lib/safe-query';
+
+export const dynamic = 'force-dynamic';
 
 export default async function PlatformLayout({
   children,
@@ -36,9 +39,9 @@ export default async function PlatformLayout({
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
   const name = displayName(profile.company_name, user?.email ?? tCommon('unknownUser'));
   const [unreadMessagesCount, unreadNotificationsCount, recentNotifications] = await Promise.all([
-    getUnreadConversationCount(profile.id),
-    getUnreadNotificationCount(profile.id),
-    getRecentNotifications(profile.id),
+    safeQuery('layout/unread-messages', () => getUnreadConversationCount(profile.id), 0),
+    safeQuery('layout/unread-notifications', () => getUnreadNotificationCount(profile.id), 0),
+    safeQuery('layout/recent-notifications', () => getRecentNotifications(profile.id), []),
   ]);
 
   return (

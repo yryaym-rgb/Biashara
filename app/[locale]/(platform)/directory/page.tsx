@@ -10,6 +10,8 @@ import {
   buildDirectoryQueryString,
   toDirectoryBaseSearchParams,
 } from '@/lib/directory/url';
+import { DIRECTORY_PAGE_SIZE } from '@/lib/directory/constants';
+import { safeQuery } from '@/lib/safe-query';
 
 export default async function DirectoryPage({
   params,
@@ -25,7 +27,16 @@ export default async function DirectoryPage({
   const filters = parseDirectorySearchParams(rawSearchParams);
   const baseSearchParams = toDirectoryBaseSearchParams(filters);
 
-  const { entries, total, page, pageSize } = await getDirectoryEntries(filters);
+  const { entries, total, page, pageSize } = await safeQuery(
+    'directory/entries',
+    () => getDirectoryEntries(filters),
+    {
+      entries: [],
+      total: 0,
+      page: filters.page,
+      pageSize: DIRECTORY_PAGE_SIZE,
+    },
+  );
   const filtered = Boolean(
     filters.q || filters.role || filters.mineral || filters.country,
   );

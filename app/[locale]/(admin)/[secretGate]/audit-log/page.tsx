@@ -1,7 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import { requireAdminPage } from '@/lib/admin/session';
-import { getAuditLog } from '@/lib/admin/queries';
+import { getAuditLog, AUDIT_PAGE_SIZE } from '@/lib/admin/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { adminAuditLogPath, adminUsersPath, adminListingsModerationPath } from '@/lib/admin/path';
 import { displayName } from '@/lib/admin/display';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -54,13 +55,11 @@ export default async function AdminAuditLogPage({
   const dateFrom = typeof sp.dateFrom === 'string' ? sp.dateFrom : undefined;
   const dateTo = typeof sp.dateTo === 'string' ? sp.dateTo : undefined;
 
-  const { entries, total, pageSize } = await getAuditLog({
-    page,
-    entity,
-    action,
-    dateFrom,
-    dateTo,
-  });
+  const { entries, total, pageSize } = await safeQuery(
+    'admin/audit-log',
+    () => getAuditLog({ page, entity, action, dateFrom, dateTo }),
+    { entries: [], total: 0, page, pageSize: AUDIT_PAGE_SIZE },
+  );
 
   const buildHref = (nextPage: number) => {
     const params = new URLSearchParams();

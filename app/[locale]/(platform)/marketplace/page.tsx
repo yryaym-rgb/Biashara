@@ -13,6 +13,8 @@ import {
   parseMineralParam,
   toBaseSearchParams,
 } from '@/lib/marketplace/url';
+import { MARKETPLACE_PAGE_SIZE } from '@/lib/marketplace/params';
+import { safeQuery } from '@/lib/safe-query';
 
 export default async function MarketplacePage({
   params,
@@ -30,7 +32,16 @@ export default async function MarketplacePage({
   const baseSearchParams = toBaseSearchParams(filters);
   const mineral = parseMineralParam(filters.mineral);
 
-  const { listings, total, page, pageSize } = await getActiveListings(filters);
+  const { listings, total, page, pageSize } = await safeQuery(
+    'marketplace/listings',
+    () => getActiveListings(filters),
+    {
+      listings: [],
+      total: 0,
+      page: filters.page,
+      pageSize: MARKETPLACE_PAGE_SIZE,
+    },
+  );
 
   return (
     <Container className="pb-16 md:pb-24">

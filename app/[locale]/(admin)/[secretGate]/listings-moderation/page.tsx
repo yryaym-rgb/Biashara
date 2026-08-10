@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import { requireAdminPage } from '@/lib/admin/session';
 import { getListingsForModeration } from '@/lib/admin/queries';
+import { safeQuery } from '@/lib/safe-query';
 import { adminListingsModerationPath } from '@/lib/admin/path';
 import { displayName, kycStatusVariant, listingStatusVariant } from '@/lib/admin/display';
 import { Badge } from '@/components/ui/badge';
@@ -46,7 +47,11 @@ export default async function ListingsModerationPage({
   const tKyc = await getTranslations({ locale, namespace: 'admin.kycStatus' });
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
 
-  const listings = await getListingsForModeration(activeTab);
+  const listings = await safeQuery(
+    'admin/listings-moderation',
+    () => getListingsForModeration(activeTab),
+    [],
+  );
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-6">
