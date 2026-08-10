@@ -1,9 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { assertPublicActivityFeedAnonymized } from '@/lib/activity/public-feed.logic';
 import { getPublicActivityFeed } from '@/lib/activity/public-feed.queries';
-import { rateLimit } from '@/lib/rate-limit';
-
-const ACTIVITY_FEED_RATE_LIMIT = { limit: 60, windowMs: 60_000 };
+import { checkRateLimit, ACTIVITY_FEED_RATE_LIMIT } from '@/lib/rate-limit';
 
 function getClientIp(request: NextRequest): string {
   return (
@@ -15,7 +13,7 @@ function getClientIp(request: NextRequest): string {
 
 export async function GET(request: NextRequest) {
   const ip = getClientIp(request);
-  const limit = rateLimit(
+  const limit = await checkRateLimit(
     `activity-feed:${ip}`,
     ACTIVITY_FEED_RATE_LIMIT.limit,
     ACTIVITY_FEED_RATE_LIMIT.windowMs,

@@ -36,6 +36,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.4",
     "@netlify/plugin-nextjs": "^5.9.2",
     "@playwright/test": "^1.49.1",
     "@testing-library/jest-dom": "^6.6.3",

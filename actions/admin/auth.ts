@@ -11,31 +11,21 @@ import {
   getAdminGateCookieValue,
   verifyAdminPassphrase,
 } from '@/lib/admin/gate';
-import { rateLimit } from '@/lib/rate-limit';
+import {
+  checkRateLimit,
+  ADMIN_GATE_RATE_LIMIT,
+  ADMIN_LOGIN_RATE_LIMIT,
+  AUTH_RESPONSE_MIN_MS,
+  getClientIpFromHeaders,
+  withConstantTiming,
+} from '@/lib/rate-limit';
 import { loginSchema } from '@/lib/validators/auth';
 import type { Locale } from '@/lib/i18n/config';
 
-const GATE_RESPONSE_MIN_MS = 400;
-const ADMIN_GATE_RATE_LIMIT = { limit: 5, windowMs: 15 * 60 * 1000 };
-const ADMIN_LOGIN_RATE_LIMIT = { limit: 5, windowMs: 15 * 60 * 1000 };
-
-async function withConstantTiming<T>(minMs: number, fn: () => Promise<T>): Promise<T> {
-  const start = Date.now();
-  try {
-    return await fn();
-  } finally {
-    const elapsed = Date.now() - start;
-    if (elapsed < minMs) {
-      await new Promise((resolve) => setTimeout(resolve, minMs - elapsed));
-    }
-  }
-}
-
 export async function verifyAdminGatePassphrase(passphrase: string) {
-  return withConstantTiming(GATE_RESPONSE_MIN_MS, async () => {
-    const headersList = await headers();
-    const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-    const limit = rateLimit(
+  return withConstantTiming(AUTH_RESPONSE_MIN_MS, async () => {
+    const ip = await getClientIpFromHeaders();
+    const limit = await checkRateLimit(
       `admin-gate:${ip}`,
       ADMIN_GATE_RATE_LIMIT.limit,
       ADMIN_GATE_RATE_LIMIT.windowMs,
@@ -53,10 +43,9 @@ export async function verifyAdminGatePassphrase(passphrase: string) {
 }
 
 export async function adminLoginAction(email: string, password: string) {
-  return withConstantTiming(GATE_RESPONSE_MIN_MS, async () => {
-    const headersList = await headers();
-    const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-    const limit = rateLimit(
+  return withConstantTiming(AUTH_RESPONSE_MIN_MS, async () => {
+    const ip = await getClientIpFromHeaders();
+    const limit = await checkRateLimit(
       `admin-login:${ip}`,
       ADMIN_LOGIN_RATE_LIMIT.limit,
       ADMIN_LOGIN_RATE_LIMIT.windowMs,

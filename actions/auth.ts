@@ -13,6 +13,16 @@ import {
 } from '@/lib/auth/actions';
 import { setRegistrationCookies, clearRegistrationCookies } from '@/lib/auth/registration';
 import { getUser } from '@/lib/auth/session';
+import {
+  checkRateLimit,
+  AUTH_LOGIN_RATE_LIMIT,
+  AUTH_REGISTER_RATE_LIMIT,
+  AUTH_FORGOT_PASSWORD_RATE_LIMIT,
+  AUTH_RESEND_VERIFICATION_RATE_LIMIT,
+  AUTH_RESPONSE_MIN_MS,
+  getClientIpFromHeaders,
+  withConstantTiming,
+} from '@/lib/rate-limit';
 import type { Locale } from '@/lib/i18n/config';
 import type { Database } from '@/types/database.types';
 
@@ -35,22 +45,54 @@ export async function loginAction(
   password: string,
   _locale: Locale,
 ) {
-  return signInWithPassword(email, password);
+  return withConstantTiming(AUTH_RESPONSE_MIN_MS, async () => {
+    const ip = await getClientIpFromHeaders();
+    const limit = await checkRateLimit(
+      `login:${ip}`,
+      AUTH_LOGIN_RATE_LIMIT.limit,
+      AUTH_LOGIN_RATE_LIMIT.windowMs,
+    );
+
+    if (!limit.success) {
+      return {
+        error: 'Invalid login credentials',
+        errorKey: 'invalidCredentials' as const,
+      };
+    }
+
+    return signInWithPassword(email, password);
+  });
 }
 
 export async function registerAction(input: unknown, locale: Locale) {
-  const result = await signUp(input, locale);
-
-  if (result.data?.user?.id && result.data.role) {
-    await updateRegistrationProfile(
-      result.data.user.id,
-      result.data.role,
-      result.data.locale ?? locale,
+  return withConstantTiming(AUTH_RESPONSE_MIN_MS, async () => {
+    const ip = await getClientIpFromHeaders();
+    const limit = await checkRateLimit(
+      `register:${ip}`,
+      AUTH_REGISTER_RATE_LIMIT.limit,
+      AUTH_REGISTER_RATE_LIMIT.windowMs,
     );
-    await setRegistrationCookies(result.data.user.id, result.data.role);
-  }
 
-  return result;
+    if (!limit.success) {
+      return {
+        error: 'Registration failed',
+        errorKey: 'unknown' as const,
+      };
+    }
+
+    const result = await signUp(input, locale);
+
+    if (result.data?.user?.id && result.data.role) {
+      await updateRegistrationProfile(
+        result.data.user.id,
+        result.data.role,
+        result.data.locale ?? locale,
+      );
+      await setRegistrationCookies(result.data.user.id, result.data.role);
+    }
+
+    return result;
+  });
 }
 
 export async function clearRegistrationSessionAction() {
@@ -78,11 +120,37 @@ export async function logoutAction(locale: Locale) {
 }
 
 export async function forgotPasswordAction(email: string, locale: Locale) {
-  return resetPassword(email, locale);
+  return withConstantTiming(AUTH_RESPONSE_MIN_MS, async () => {
+    const ip = await getClientIpFromHeaders();
+    const limit = await checkRateLimit(
+      `forgot-password:${ip}`,
+      AUTH_FORGOT_PASSWORD_RATE_LIMIT.limit,
+      AUTH_FORGOT_PASSWORD_RATE_LIMIT.windowMs,
+    );
+
+    if (!limit.success) {
+      return { success: true as const };
+    }
+
+    return resetPassword(email, locale);
+  });
 }
 
 export async function resendVerificationAction(email: string) {
-  return resendVerificationEmail(email);
+  return withConstantTiming(AUTH_RESPONSE_MIN_MS, async () => {
+    const ip = await getClientIpFromHeaders();
+    const limit = await checkRateLimit(
+      `resend-verification:${ip}`,
+      AUTH_RESEND_VERIFICATION_RATE_LIMIT.limit,
+      AUTH_RESEND_VERIFICATION_RATE_LIMIT.windowMs,
+    );
+
+    if (!limit.success) {
+      return { success: true as const };
+    }
+
+    return resendVerificationEmail(email);
+  });
 }
 
 export async function verifyEmailAction(tokenHash: string, type: 'signup' | 'email') {
