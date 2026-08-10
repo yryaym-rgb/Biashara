@@ -1,0 +1,10 @@
+{
+  "name": "Biashara",
+  "install": "bash scripts/cloud-agent-install.sh",
+  "ports": [
+    {
+      "name": "next",
+      "port": 3000
+    }
+  ]
+}
