@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Container } from '@/components/ui/container';
 import { HeroImage } from '@/components/marketing/hero-image';
+import { LandingActivitySection } from '@/components/marketing/landing-activity-section';
 import { LandingCredibilitySection } from '@/components/marketing/landing-credibility-section';
 import { LandingCtaBand } from '@/components/marketing/landing-cta-band';
 import { LandingHowItWorksSection } from '@/components/marketing/landing-how-it-works-section';
@@ -159,6 +160,7 @@ export default async function LandingPage({
 
       <LandingHowItWorksSection />
       <LandingPricesSection />
+      <LandingActivitySection />
       <LandingCredibilitySection />
       <LandingMapSection />
       <LandingCtaBand />

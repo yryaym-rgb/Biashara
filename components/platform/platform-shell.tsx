@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import { CommandPaletteProvider } from '@/components/platform/command-palette';
+import { PlatformActivityWidget } from '@/components/platform/platform-activity-widget';
 import { PlatformNav } from '@/components/platform/platform-nav';
 import { PlatformTopBar } from '@/components/platform/platform-top-bar';
 import type { NotificationRow } from '@/lib/notifications/types';
@@ -66,13 +67,18 @@ export function PlatformShell({
             />
             <span className="text-[14px] font-bold tracking-[0.08em] text-ink">BIASHARA</span>
           </div>
-          <Suspense fallback={null}>
-            <PlatformNav
-              sections={navSections}
-              unreadMessagesCount={unreadMessagesCount}
-              onNavigate={() => setDrawerOpen(false)}
-            />
-          </Suspense>
+          <div className="flex h-[calc(100vh-72px)] flex-col">
+            <Suspense fallback={null}>
+              <PlatformNav
+                sections={navSections}
+                unreadMessagesCount={unreadMessagesCount}
+                onNavigate={() => setDrawerOpen(false)}
+              />
+            </Suspense>
+            <div className="mt-auto hidden lg:block">
+              <PlatformActivityWidget />
+            </div>
+          </div>
         </aside>
 
         {drawerOpen ? (
