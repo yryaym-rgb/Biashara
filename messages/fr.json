@@ -28,6 +28,7 @@
     "home": "Accueil",
     "marketplace": "Place de marché",
     "prices": "Cotations",
+    "calendar": "Calendrier",
     "solutions": "Solutions",
     "resources": "Ressources",
     "about": "À propos",
@@ -451,6 +452,29 @@
           "p5": "La variation quotidienne affichée sur BIASHARA compare la cotation actuelle au dernier point d'historique enregistré. Si l'historique est insuffisant (moins de deux points de données), aucune variation n'est affichée. L'historique se construit progressivement, jour après jour.",
           "p6": "Avant de négocier, consultez la cotation de référence, puis ajustez votre offre en fonction des spécificités du lot : grade, pureté, volume disponible et province d'origine. La place de marché BIASHARA est conçue pour faciliter cette négociation informée."
         }
+      }
+    },
+    "calendar": {
+      "title": "Calendrier minier",
+      "eyebrow": "ACTUALITÉS DU SECTEUR",
+      "subtitle": "Enchères, conférences et annonces officielles du secteur minier en RDC — événements publiés par l'équipe BIASHARA.",
+      "tabAll": "Tous",
+      "upcoming": "À venir",
+      "past": "Passés",
+      "sourceLink": "Source officielle",
+      "categories": {
+        "auction": "Enchère",
+        "government": "Gouvernement",
+        "conference": "Conférence",
+        "other": "Autre"
+      },
+      "empty": {
+        "title": "Aucun événement pour le moment",
+        "description": "Aucun événement pour le moment — revenez bientôt."
+      },
+      "emptyFiltered": {
+        "title": "Aucun événement dans cette catégorie",
+        "description": "Aucun événement ne correspond à ce filtre pour le moment. Essayez une autre catégorie ou revenez bientôt."
       }
     },
     "about": {
@@ -1251,6 +1275,7 @@
       "users": "Utilisateurs",
       "kycReview": "Vérification KYC",
       "listingsModeration": "Modération des annonces",
+      "miningEvents": "Calendrier minier",
       "reports": "Rapports",
       "auditLog": "Journal d'audit"
     },
@@ -1424,6 +1449,40 @@
           "title": "Aucune annonce rejetée",
           "description": "Les annonces rejetées apparaîtront ici avec leur motif."
         }
+      }
+    },
+    "miningEvents": {
+      "title": "Calendrier minier",
+      "create": "Nouvel événement",
+      "createTitle": "Créer un événement",
+      "editTitle": "Modifier l'événement",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "deleteConfirm": "Supprimer définitivement cet événement ?",
+      "deleteError": "La suppression a échoué. Réessayez.",
+      "backToList": "Retour au calendrier",
+      "columns": {
+        "title": "Titre",
+        "date": "Date",
+        "category": "Catégorie",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "Aucun événement publié",
+        "description": "Créez le premier événement du calendrier minier — enchères, conférences ou annonces officielles."
+      },
+      "form": {
+        "title": "Titre",
+        "description": "Description",
+        "eventDate": "Date de l'événement",
+        "category": "Catégorie",
+        "categoryPlaceholder": "Sélectionnez une catégorie",
+        "sourceUrl": "Lien source",
+        "sourceUrlHint": "Optionnel — URL vers l'annonce ou la source officielle.",
+        "create": "Publier l'événement",
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "submitError": "L'enregistrement a échoué. Vérifiez les champs et réessayez."
       }
     },
     "reports": {
@@ -1637,6 +1696,7 @@
     "titleMax": "Le titre ne peut pas dépasser 200 caractères",
     "descriptionMin": "La description doit contenir au moins 10 caractères",
     "descriptionMax": "La description ne peut pas dépasser 5 000 caractères",
+    "invalidUrl": "Saisissez une URL valide",
     "mineralInvalid": "Sélectionnez un minerai pris en charge par la plateforme"
   },
   "kyc": {

@@ -31,3 +31,17 @@ export function adminAuditLogPath(): string {
 export function adminReportsPath(): string {
   return adminPath('reports');
 }
+
+export function adminMiningEventsPath(eventId?: string, action?: 'edit'): string {
+  if (eventId && action === 'edit') {
+    return adminPath('mining-events', eventId, 'edit');
+  }
+  if (eventId) {
+    return adminPath('mining-events', eventId);
+  }
+  return adminPath('mining-events');
+}
+
+export function adminMiningEventsNewPath(): string {
+  return adminPath('mining-events', 'new');
+}

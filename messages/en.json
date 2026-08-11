@@ -28,6 +28,7 @@
     "home": "Home",
     "marketplace": "Marketplace",
     "prices": "Prices",
+    "calendar": "Calendar",
     "solutions": "Solutions",
     "resources": "Resources",
     "about": "About Us",
@@ -451,6 +452,29 @@
           "p5": "The daily change shown on BIASHARA compares the current quote to the last recorded history point. If history is insufficient (fewer than two data points), no change is displayed. History builds progressively, day by day.",
           "p6": "Before negotiating, consult the reference quote, then adjust your offer based on lot specifics: grade, purity, available volume, and province of origin. The BIASHARA marketplace is designed to facilitate this informed negotiation."
         }
+      }
+    },
+    "calendar": {
+      "title": "Mining calendar",
+      "eyebrow": "SECTOR NEWS",
+      "subtitle": "Auctions, conferences, and official announcements in the DRC mining sector — events published by the BIASHARA team.",
+      "tabAll": "All",
+      "upcoming": "Upcoming",
+      "past": "Past",
+      "sourceLink": "Official source",
+      "categories": {
+        "auction": "Auction",
+        "government": "Government",
+        "conference": "Conference",
+        "other": "Other"
+      },
+      "empty": {
+        "title": "No events yet",
+        "description": "No events at this time — check back soon."
+      },
+      "emptyFiltered": {
+        "title": "No events in this category",
+        "description": "No events match this filter right now. Try another category or check back soon."
       }
     },
     "about": {
@@ -1251,6 +1275,7 @@
       "users": "Users",
       "kycReview": "KYC verification",
       "listingsModeration": "Listings moderation",
+      "miningEvents": "Mining calendar",
       "reports": "Reports",
       "auditLog": "Audit log"
     },
@@ -1424,6 +1449,40 @@
           "title": "No rejected listings",
           "description": "Rejected listings will appear here with their reason."
         }
+      }
+    },
+    "miningEvents": {
+      "title": "Mining calendar",
+      "create": "New event",
+      "createTitle": "Create event",
+      "editTitle": "Edit event",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Permanently delete this event?",
+      "deleteError": "Deletion failed. Please try again.",
+      "backToList": "Back to calendar",
+      "columns": {
+        "title": "Title",
+        "date": "Date",
+        "category": "Category",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "No events published",
+        "description": "Create the first mining calendar event — auctions, conferences, or official announcements."
+      },
+      "form": {
+        "title": "Title",
+        "description": "Description",
+        "eventDate": "Event date",
+        "category": "Category",
+        "categoryPlaceholder": "Select a category",
+        "sourceUrl": "Source link",
+        "sourceUrlHint": "Optional — URL to the announcement or official source.",
+        "create": "Publish event",
+        "save": "Save",
+        "cancel": "Cancel",
+        "submitError": "Save failed. Check the fields and try again."
       }
     },
     "reports": {
@@ -1637,6 +1696,7 @@
     "titleMax": "Title cannot exceed 200 characters",
     "descriptionMin": "Description must be at least 10 characters",
     "descriptionMax": "Description cannot exceed 5,000 characters",
+    "invalidUrl": "Enter a valid URL",
     "mineralInvalid": "Select a mineral supported by the platform"
   },
   "kyc": {

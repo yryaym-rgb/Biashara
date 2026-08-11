@@ -15,6 +15,7 @@ test.describe('marketing interactions', () => {
       const links = [
         { name: 'Place de marché', heading: 'Place de marché' },
         { name: 'Cotations', heading: 'Cotations des matières premières' },
+        { name: 'Calendrier', heading: 'Calendrier minier' },
         { name: 'Solutions', heading: /Une plateforme pensée pour chaque acteur/ },
         { name: 'Ressources', heading: 'Comprendre le commerce minier en RDC' },
         { name: 'À propos', heading: 'À propos de BIASHARA' },

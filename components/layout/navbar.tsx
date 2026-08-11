@@ -15,8 +15,8 @@ import { locales, type Locale } from '@/lib/i18n/config';
 import logo from '@/design/reference-logo.jpeg';
 
 interface NavItem {
-  href: '/' | '/marketplace' | '/prices' | '/solutions' | '/resources' | '/about';
-  labelKey: 'home' | 'marketplace' | 'prices' | 'solutions' | 'resources' | 'about';
+  href: '/' | '/marketplace' | '/prices' | '/calendar' | '/solutions' | '/resources' | '/about';
+  labelKey: 'home' | 'marketplace' | 'prices' | 'calendar' | 'solutions' | 'resources' | 'about';
   hasDropdown?: boolean;
 }
 
@@ -24,6 +24,7 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/', labelKey: 'home' },
   { href: '/marketplace', labelKey: 'marketplace' },
   { href: '/prices', labelKey: 'prices' },
+  { href: '/calendar', labelKey: 'calendar' },
   { href: '/solutions', labelKey: 'solutions', hasDropdown: true },
   { href: '/resources', labelKey: 'resources', hasDropdown: true },
   { href: '/about', labelKey: 'about' },
