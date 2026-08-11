@@ -3,6 +3,10 @@ import { requireAuth, isSellerRole, isCooperativeRole } from '@/lib/rbac';
 import { getProfile, getUser } from '@/lib/auth/session';
 import { getUserKycDocuments, getUserListings } from '@/lib/admin/queries';
 import { getCooperativeSites } from '@/lib/platform/lots';
+import {
+  getExportReadinessDocumentOptions,
+  getExportReadinessItems,
+} from '@/lib/platform/export-readiness';
 import { safeQuery } from '@/lib/safe-query';
 import { Container } from '@/components/ui/container';
 import {
@@ -13,17 +17,21 @@ import type { CooperativeSiteRow } from '@/lib/platform/lots.types';
 
 export const dynamic = 'force-dynamic';
 
-const SETTINGS_TABS = ['profile', 'security', 'kyc', 'listings'] as const;
+const SETTINGS_TABS = ['profile', 'security', 'kyc', 'listings', 'exportReadiness'] as const;
 
 function parseSettingsTab(
   value: string | string[] | undefined,
   showListingsTab: boolean,
+  showExportReadinessTab: boolean,
 ): SettingsTab {
   const raw = Array.isArray(value) ? value[0] : value;
   if (!raw || !SETTINGS_TABS.includes(raw as SettingsTab)) {
     return 'profile';
   }
   if (raw === 'listings' && !showListingsTab) {
+    return 'profile';
+  }
+  if (raw === 'exportReadiness' && !showExportReadinessTab) {
     return 'profile';
   }
   return raw as SettingsTab;
@@ -44,6 +52,7 @@ export default async function SettingsPage({
   const rawSearchParams = await searchParams;
 
   const showListingsTab = isSellerRole(profile.role);
+  const showExportReadinessTab = isSellerRole(profile.role);
   const showCooperativeSites =
     isCooperativeRole(profile.role) && profile.kyc_status === 'approved';
 
@@ -51,12 +60,27 @@ export default async function SettingsPage({
     ? safeQuery('settings/cooperative-sites', () => getCooperativeSites(profile.id), [])
     : Promise.resolve([]);
 
-  const [kycDocuments, listings, cooperativeSites] = await Promise.all([
+  const exportReadinessPromise = showExportReadinessTab
+    ? safeQuery('settings/export-readiness', () => getExportReadinessItems(profile.id), [])
+    : Promise.resolve([]);
+
+  const exportReadinessDocumentsPromise = showExportReadinessTab
+    ? safeQuery(
+        'settings/export-readiness-documents',
+        () => getExportReadinessDocumentOptions(profile.id),
+        [],
+      )
+    : Promise.resolve([]);
+
+  const [kycDocuments, listings, cooperativeSites, exportReadinessItems, exportReadinessDocuments] =
+    await Promise.all([
     safeQuery('settings/kyc-documents', () => getUserKycDocuments(profile.id), []),
     showListingsTab
       ? safeQuery('settings/listings', () => getUserListings(profile.id), [])
       : Promise.resolve([]),
     cooperativeSitesPromise,
+    exportReadinessPromise,
+    exportReadinessDocumentsPromise,
   ]);
 
   const rejectedDocuments = kycDocuments.filter((doc) => doc.status === 'rejected');
@@ -64,7 +88,11 @@ export default async function SettingsPage({
     ['pending_review', 'active', 'rejected', 'draft', 'paused', 'sold'].includes(listing.status),
   );
 
-  const initialTab = parseSettingsTab(rawSearchParams.tab, showListingsTab);
+  const initialTab = parseSettingsTab(
+    rawSearchParams.tab,
+    showListingsTab,
+    showExportReadinessTab,
+  );
 
   return (
     <Container className="py-12 md:py-16">
@@ -80,8 +108,11 @@ export default async function SettingsPage({
           rejectedDocuments={rejectedDocuments}
           sellerListings={sellerListings}
           showListingsTab={showListingsTab}
+          showExportReadinessTab={showExportReadinessTab}
           showCooperativeSites={showCooperativeSites}
           cooperativeSites={cooperativeSites}
+          exportReadinessItems={exportReadinessItems}
+          exportReadinessDocuments={exportReadinessDocuments}
           initialTab={initialTab}
       />
     </Container>

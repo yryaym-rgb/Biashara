@@ -1207,6 +1207,7 @@
         "profile": "Profile",
         "security": "Security",
         "kyc": "KYC verification",
+        "exportReadiness": "Export readiness",
         "listings": "My listings"
       },
       "profileForm": {
@@ -1266,6 +1267,45 @@
         "success": "Sites saved successfully.",
         "error": "Failed to save sites. Please try again.",
         "forbidden": "Only verified cooperatives can manage sites."
+      },
+      "exportReadiness": {
+        "title": "Export readiness",
+        "description": "Track the administrative steps you consider necessary before exporting. Each checkbox reflects your own self-reported status.",
+        "disclaimer": "This tool helps you track your own preparation. It is not a Biashara certification.",
+        "progress": "{completed} of {total} completed",
+        "progressAria": "{completed} items completed out of {total}",
+        "learnMore": "Learn more",
+        "notesLabel": "Personal notes",
+        "notesPlaceholder": "References, dates, or reminders for your internal use…",
+        "documentLabel": "Linked document",
+        "documentHint": "Select a document already uploaded in your document center.",
+        "documentNone": "No document",
+        "documentOption": "{type} — {date}",
+        "completedOn": "Marked complete on {date}",
+        "saveError": "Save failed. Please try again.",
+        "documentsLink": "Manage my documents",
+        "items": {
+          "ceec_certification": {
+            "title": "CEEC certification",
+            "description": "The Centre d'Expertise, d'Évaluation et de Certification (CEEC) issues certificates for certain minerals exported from the DRC. Check whether your product is covered and keep supporting records for your internal tracking."
+          },
+          "export_permit": {
+            "title": "Export permit or authorization",
+            "description": "Mineral exports are governed by authorizations issued by the relevant authorities. Note your permit or authorization reference here once you have obtained it."
+          },
+          "taxes_paid": {
+            "title": "Taxes and royalties paid",
+            "description": "Taxes, mining royalties, or duties may be required before export. Use this item to track payments you have made and the proof you keep on file."
+          },
+          "customs_forms": {
+            "title": "Customs forms",
+            "description": "Congolese customs requires declarations and paperwork for outbound shipments. Record here the forms you have prepared or filed for your own organization."
+          },
+          "quality_certificates": {
+            "title": "Quality or assay certificates",
+            "description": "Assay or quality certificates may be requested by buyers or authorities. Log here certificates you obtained from a laboratory or competent body."
+          }
+        }
       }
     }
   },

@@ -246,6 +246,57 @@ export type Database = {
           },
         ];
       };
+      export_readiness_items: {
+        Row: {
+          id: string;
+          user_id: string;
+          item_key: Database['public']['Enums']['export_readiness_item_key'];
+          is_complete: boolean;
+          completed_at: string | null;
+          notes: string | null;
+          document_id: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          item_key: Database['public']['Enums']['export_readiness_item_key'];
+          is_complete?: boolean;
+          completed_at?: string | null;
+          notes?: string | null;
+          document_id?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          item_key?: Database['public']['Enums']['export_readiness_item_key'];
+          is_complete?: boolean;
+          completed_at?: string | null;
+          notes?: string | null;
+          document_id?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'export_readiness_items_document_id_fkey';
+            columns: ['document_id'];
+            isOneToOne: false;
+            referencedRelation: 'kyc_documents';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'export_readiness_items_user_id_fkey';
+            columns: ['user_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       kyc_documents: {
         Row: {
           id: string;
@@ -1046,6 +1097,12 @@ export type Database = {
       };
     };
     Enums: {
+      export_readiness_item_key:
+        | 'ceec_certification'
+        | 'export_permit'
+        | 'taxes_paid'
+        | 'customs_forms'
+        | 'quality_certificates';
       kyc_document_status: 'pending' | 'approved' | 'rejected';
       kyc_document_type:
         | 'id_card'
