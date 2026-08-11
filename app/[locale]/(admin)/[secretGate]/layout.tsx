@@ -12,6 +12,7 @@ import {
   adminAuditLogPath,
   adminKycReviewPath,
   adminListingsModerationPath,
+  adminMiningEventsPath,
   adminPath,
   adminReportsPath,
   adminUsersPath,
@@ -54,6 +55,7 @@ export default async function SecretGateAdminLayout({
     { key: 'users', href: adminUsersPath() },
     { key: 'kycReview', href: adminKycReviewPath() },
     { key: 'listingsModeration', href: adminListingsModerationPath() },
+    { key: 'miningEvents', href: adminMiningEventsPath() },
     { key: 'reports', href: adminReportsPath() },
     { key: 'auditLog', href: adminAuditLogPath() },
   ];

@@ -110,6 +110,41 @@ describe('admin actions authorization', () => {
       }),
     ).rejects.toThrow('Forbidden');
   });
+
+  it('createMiningEvent rejects non-admin users', async () => {
+    mockGetProfile.mockResolvedValue(baseProfile);
+    const { createMiningEvent } = await import('@/actions/admin/mining-events');
+    await expect(
+      createMiningEvent({
+        title: 'Mining auction',
+        description: 'Official government auction announcement.',
+        eventDate: '2026-12-01',
+        category: 'auction',
+      }),
+    ).rejects.toThrow('Forbidden');
+  });
+
+  it('updateMiningEvent rejects non-admin users', async () => {
+    mockGetProfile.mockResolvedValue(baseProfile);
+    const { updateMiningEvent } = await import('@/actions/admin/mining-events');
+    await expect(
+      updateMiningEvent({
+        eventId: '00000000-0000-0000-0000-000000000030',
+        title: 'Mining auction',
+        description: 'Official government auction announcement.',
+        eventDate: '2026-12-01',
+        category: 'auction',
+      }),
+    ).rejects.toThrow('Forbidden');
+  });
+
+  it('deleteMiningEvent rejects non-admin users', async () => {
+    mockGetProfile.mockResolvedValue(baseProfile);
+    const { deleteMiningEvent } = await import('@/actions/admin/mining-events');
+    await expect(
+      deleteMiningEvent({ eventId: '00000000-0000-0000-0000-000000000030' }),
+    ).rejects.toThrow('Forbidden');
+  });
 });
 
 describe('admin KYC approval profile promotion', () => {

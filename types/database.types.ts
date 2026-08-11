@@ -518,6 +518,50 @@ export type Database = {
           },
         ];
       };
+      mining_events: {
+        Row: {
+          id: string;
+          title: string;
+          description: string;
+          event_date: string;
+          category: Database['public']['Enums']['mining_event_category'];
+          source_url: string | null;
+          created_by: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          description: string;
+          event_date: string;
+          category: Database['public']['Enums']['mining_event_category'];
+          source_url?: string | null;
+          created_by: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          title?: string;
+          description?: string;
+          event_date?: string;
+          category?: Database['public']['Enums']['mining_event_category'];
+          source_url?: string | null;
+          created_by?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'mining_events_created_by_fkey';
+            columns: ['created_by'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       notifications: {
         Row: {
           id: string;
@@ -1016,6 +1060,7 @@ export type Database = {
         | 'paused'
         | 'sold'
         | 'rejected';
+      mining_event_category: 'auction' | 'government' | 'conference' | 'other';
       mineral_type:
         | 'cobalt'
         | 'copper'

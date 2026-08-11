@@ -37,7 +37,7 @@ describe('locale middleware defaults', () => {
     expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('en');
   });
 
-  const marketingRoutes = ['/prices', '/solutions', '/resources', '/about'] as const;
+  const marketingRoutes = ['/prices', '/calendar', '/solutions', '/resources', '/about'] as const;
 
   it.each(marketingRoutes)(
     'serves French at %s without locale prefix',
