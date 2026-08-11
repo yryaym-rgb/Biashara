@@ -1207,6 +1207,7 @@
         "profile": "Profil",
         "security": "Sécurité",
         "kyc": "Vérification KYC",
+        "exportReadiness": "Préparation export",
         "listings": "Mes annonces"
       },
       "profileForm": {
@@ -1266,6 +1267,45 @@
         "success": "Sites enregistrés avec succès.",
         "error": "L'enregistrement des sites a échoué. Réessayez.",
         "forbidden": "Seules les coopératives vérifiées peuvent gérer des sites."
+      },
+      "exportReadiness": {
+        "title": "Préparation à l'export",
+        "description": "Suivez les étapes administratives que vous estimez nécessaires avant une exportation. Chaque case reflète votre propre déclaration.",
+        "disclaimer": "Cet outil vous aide à suivre votre propre préparation. Il ne constitue pas une certification Biashara.",
+        "progress": "{completed} sur {total} complétés",
+        "progressAria": "{completed} éléments complétés sur {total}",
+        "learnMore": "En savoir plus",
+        "notesLabel": "Notes personnelles",
+        "notesPlaceholder": "Références, dates ou rappels pour votre usage interne…",
+        "documentLabel": "Document associé",
+        "documentHint": "Sélectionnez un document déjà téléversé dans votre centre de documents.",
+        "documentNone": "Aucun document",
+        "documentOption": "{type} — {date}",
+        "completedOn": "Marqué complété le {date}",
+        "saveError": "L'enregistrement a échoué. Réessayez.",
+        "documentsLink": "Gérer mes documents",
+        "items": {
+          "ceec_certification": {
+            "title": "Certification CEEC",
+            "description": "Le Centre d'Expertise, d'Évaluation et de Certification (CEEC) délivre des certificats pour certains minerais exportés depuis la RDC. Vérifiez si votre produit est concerné et conservez vos justificatifs pour votre suivi interne."
+          },
+          "export_permit": {
+            "title": "Permis ou autorisation d'exportation",
+            "description": "Les exportations de minerais sont encadrées par des autorisations délivrées par les autorités compétentes. Notez ici la référence de votre permis ou autorisation lorsque vous l'avez obtenue."
+          },
+          "taxes_paid": {
+            "title": "Taxes et redevances réglées",
+            "description": "Des taxes, redevances minières ou droits peuvent être exigés avant l'exportation. Utilisez cette case pour suivre les paiements que vous avez effectués et les preuves que vous conservez."
+          },
+          "customs_forms": {
+            "title": "Formulaires douaniers",
+            "description": "La Douane congolaise exige des déclarations et documents pour les sorties de marchandises. Indiquez ici les formulaires que vous avez préparés ou déposés pour votre propre organisation."
+          },
+          "quality_certificates": {
+            "title": "Certificats de qualité ou d'analyse",
+            "description": "Des certificats d'analyse ou de qualité peuvent être demandés par l'acheteur ou les autorités. Enregistrez ici les certificats que vous avez obtenus auprès d'un laboratoire ou d'un organisme compétent."
+          }
+        }
       }
     }
   },

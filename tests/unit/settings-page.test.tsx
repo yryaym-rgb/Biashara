@@ -4,11 +4,19 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mockGetCooperativeSites = vi.fn();
 const mockGetUserKycDocuments = vi.fn();
 const mockGetUserListings = vi.fn();
+const mockGetExportReadinessItems = vi.fn();
+const mockGetExportReadinessDocumentOptions = vi.fn();
 const mockGetProfile = vi.fn();
 const mockGetUser = vi.fn();
 
 vi.mock('@/lib/platform/lots', () => ({
   getCooperativeSites: (...args: unknown[]) => mockGetCooperativeSites(...args),
+}));
+
+vi.mock('@/lib/platform/export-readiness', () => ({
+  getExportReadinessItems: (...args: unknown[]) => mockGetExportReadinessItems(...args),
+  getExportReadinessDocumentOptions: (...args: unknown[]) =>
+    mockGetExportReadinessDocumentOptions(...args),
 }));
 
 vi.mock('@/lib/admin/queries', () => ({
@@ -54,6 +62,8 @@ describe('settings page cooperative sites loading', () => {
     mockGetUser.mockResolvedValue({ email: 'coop@example.com' });
     mockGetUserKycDocuments.mockResolvedValue([]);
     mockGetUserListings.mockResolvedValue([]);
+    mockGetExportReadinessItems.mockResolvedValue([]);
+    mockGetExportReadinessDocumentOptions.mockResolvedValue([]);
   });
 
   it('renders settings when cooperative sites query fails instead of throwing', async () => {
