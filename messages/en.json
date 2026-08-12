@@ -204,6 +204,8 @@
         "ariaLabel": "Live mineral quotes",
         "liveLabel": "LIVE MARKET",
         "lastUpdated": "Last updated · {time}",
+        "indicativeShort": "Indicative",
+        "indicativeLegend": "Indicative price — negotiated",
         "viewQuote": "View quote →"
       },
       "features": {

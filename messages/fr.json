@@ -204,6 +204,8 @@
         "ariaLabel": "Cotations minérales en direct",
         "liveLabel": "MARCHÉ EN DIRECT",
         "lastUpdated": "Dernière mise à jour · {time}",
+        "indicativeShort": "Indicatif",
+        "indicativeLegend": "Prix indicatif — négocié",
         "viewQuote": "Voir la cotation →"
       },
       "features": {
