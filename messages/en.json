@@ -209,26 +209,85 @@
         "indicativeLegend": "Indicative price — negotiated",
         "viewQuote": "View quote →"
       },
-      "features": {
-        "priceTransparency": {
-          "title": "Transparent prices",
-          "description": "Real-time quotes and price history so you can negotiate with full clarity."
-        },
-        "blockchainTraceability": {
-          "title": "Lot traceability",
-          "description": "Cooperatives register each lot and custody step — manual self-reported entries, visible on linked listings."
-        },
-        "securePayments": {
-          "title": "Secure payments",
-          "description": "KYC-verified buyer and seller accounts, with lot traceability declared on listings."
-        },
-        "smartLogistics": {
-          "title": "Smart logistics",
-          "description": "Shipment tracking and optimized logistics corridors."
-        },
-        "aiMarketIntelligence": {
-          "title": "AI market intelligence",
-          "description": "Predictive analytics to anticipate trends in the mining market."
+      "infrastructure": {
+        "eyebrow": "INFRASTRUCTURE",
+        "title": "One infrastructure. Five pillars.",
+        "pillars": {
+          "prices": {
+            "number": "01",
+            "tag": "PRICES",
+            "title": "Transparent quotes.",
+            "description": "Public quotes refreshed regularly and browsable history on /prices — real data, not marketing estimates."
+          },
+          "traceability": {
+            "number": "02",
+            "tag": "TRACEABILITY",
+            "title": "Every lot tells its journey.",
+            "description": "Cooperatives create a lot code and manually record each step — visible on the linked listing.",
+            "selfReportedLabel": "Self-reported declarations by the cooperative — not GPS-verified or independently audited.",
+            "chain": {
+              "ariaLabel": "Lot traceability journey",
+              "mine": "Mine",
+              "cooperative": "Cooperative",
+              "control": "Control",
+              "transport": "Transport",
+              "buyer": "Buyer"
+            }
+          },
+          "trust": {
+            "number": "03",
+            "tag": "TRUST",
+            "title": "Verified buyers and sellers.",
+            "description": "Every account goes through identity verification before publishing or negotiating on the platform.",
+            "checks": {
+              "kyc": "KYC ✓",
+              "identity": "Verified identity ✓"
+            }
+          },
+          "logistics": {
+            "number": "04",
+            "tag": "LOGISTICS",
+            "title": "Track ore movement.",
+            "description": "The seller declares shipment status and adds manual checkpoints on each order.",
+            "caption": "Illustration of seller-reported shipment tracking — not automated corridor optimization.",
+            "statusAriaLabel": "Seller-reported shipment tracking steps",
+            "statuses": {
+              "pending": "Pending",
+              "picked_up": "Picked up",
+              "in_transit": "In transit",
+              "customs": "Customs",
+              "delivered": "Delivered"
+            }
+          },
+          "marketData": {
+            "number": "05",
+            "tag": "MARKET DATA",
+            "title": "Market data, not guesswork.",
+            "description": "Live quotes, historical trends, and transparent data sourcing — the same /prices infrastructure.",
+            "liveSnapshotLabel": "Live quotes",
+            "loadingPrices": "Loading quotes…",
+            "indicative": "Indicative",
+            "viewPricesCta": "View all quotes →",
+            "highlights": {
+              "livePricing": {
+                "title": "Live pricing",
+                "description": "Public spot prices refreshed regularly from market sources."
+              },
+              "historicalTrends": {
+                "title": "Historical trends",
+                "description": "Browsable history charts for each quoted mineral."
+              },
+              "transparentSourcing": {
+                "title": "Transparent sourcing",
+                "description": "Source and freshness shown on every quote."
+              }
+            },
+            "aiSoon": {
+              "badge": "Coming soon",
+              "title": "Predictive analytics",
+              "description": "Advanced analysis tools are in development — no fabricated accuracy scores or percentages."
+            }
+          }
         }
       },
       "howItWorks": {
