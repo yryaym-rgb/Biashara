@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { logoutAction } from '@/actions/auth';
 import { LogoutConfirmDialog } from '@/components/auth/logout-confirm-dialog';
+import { useTickerScrollVisibility } from '@/components/marketing/landing-price-ticker';
 import { UserAvatarMenu } from '@/components/platform/user-avatar-menu';
 import { Link, usePathname } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
@@ -16,13 +17,13 @@ import logo from '@/design/reference-logo.jpeg';
 
 interface NavItem {
   href: '/' | '/marketplace' | '/prices' | '/calendar' | '/solutions' | '/resources' | '/about';
-  labelKey: 'home' | 'marketplace' | 'prices' | 'calendar' | 'solutions' | 'resources' | 'about';
+  labelKey: 'home' | 'marketplaceNav' | 'prices' | 'calendar' | 'solutions' | 'resources' | 'about';
   hasDropdown?: boolean;
 }
 
 const NAV_ITEMS: NavItem[] = [
   { href: '/', labelKey: 'home' },
-  { href: '/marketplace', labelKey: 'marketplace' },
+  { href: '/marketplace', labelKey: 'marketplaceNav' },
   { href: '/prices', labelKey: 'prices' },
   { href: '/calendar', labelKey: 'calendar' },
   { href: '/solutions', labelKey: 'solutions', hasDropdown: true },
@@ -55,10 +56,14 @@ export function Navbar({
   const t = useTranslations('nav');
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const { tickerVisible } = useTickerScrollVisibility();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [langOpen, setLangOpen] = React.useState(false);
   const [logoutDialogOpen, setLogoutDialogOpen] = React.useState(false);
   const langMenuRef = React.useRef<HTMLDivElement>(null);
+
+  const effectiveStickyClass =
+    topBandHeight > 0 && tickerVisible ? stickyOffsetClass : 'top-0';
 
   React.useEffect(() => {
     setMobileOpen(false);
@@ -88,18 +93,26 @@ export function Navbar({
     };
   }, [mobileOpen]);
 
-  const mobileNavTopClass = topBandHeight > 0 ? 'top-[112px]' : 'top-[72px]';
+  const mobileNavTopClass =
+    topBandHeight > 0 && tickerVisible ? 'top-[112px]' : 'top-[72px]';
 
   return (
-    <header className={cn('sticky z-50 border-b border-border bg-bg', stickyOffsetClass)}>
+    <header
+      className={cn(
+        'sticky z-50 border-b',
+        'bg-[color:color-mix(in_srgb,var(--bg)_92%,transparent)] backdrop-blur-[12px]',
+        'border-[color:color-mix(in_srgb,var(--border)_70%,transparent)]',
+        effectiveStickyClass,
+      )}
+    >
       <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link href="/" className="flex shrink-0 items-center gap-3 focus-visible:outline-offset-4">
           <Image
             src={logo}
             alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-button object-cover"
+            width={46}
+            height={46}
+            className="h-[46px] w-[46px] rounded-button object-cover"
             priority
           />
           <span className="text-[14px] font-bold tracking-[0.08em] text-ink">
@@ -108,7 +121,7 @@ export function Navbar({
         </Link>
 
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-2 md:flex"
           aria-label={t('mainNavigation')}
         >
           {NAV_ITEMS.map((item) => {
@@ -118,21 +131,32 @@ export function Navbar({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'inline-flex items-center gap-1 text-[15px] font-semibold text-body',
-                  'hover:text-ink motion-safe:transition-colors motion-safe:duration-150',
-                  active && 'nav-link-active',
+                  'relative inline-flex items-center gap-1 rounded-button px-3 py-2',
+                  'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
+                  active ? 'text-brand-blue' : 'text-body hover:bg-bg-tint hover:text-ink',
                 )}
               >
                 {t(item.labelKey)}
                 {item.hasDropdown ? (
                   <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
                 ) : null}
+                {active ? (
+                  <span
+                    className="absolute bottom-0 left-1/2 h-[2px] w-5 -translate-x-1/2 bg-brand-gold"
+                    aria-hidden="true"
+                  />
+                ) : null}
               </Link>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
+          <span className="hidden items-center gap-1.5 text-[12px] font-semibold text-muted lg:inline-flex">
+            <span className="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" />
+            {t('drcMarketActive')}
+          </span>
+
           <div className="relative hidden md:block" ref={langMenuRef}>
             <button
               type="button"
@@ -173,15 +197,29 @@ export function Navbar({
           </div>
 
           {isAuthenticated ? (
-            <UserAvatarMenu
-              companyName={companyName}
-              email={email}
-              onLogoutRequest={() => setLogoutDialogOpen(true)}
-            />
+            <div className="inline-flex items-center gap-1">
+              <UserAvatarMenu
+                companyName={companyName}
+                email={email}
+                onLogoutRequest={() => setLogoutDialogOpen(true)}
+              />
+              <ChevronDown className="hidden h-3.5 w-3.5 text-muted md:block" aria-hidden="true" />
+            </div>
           ) : (
-            <Button asChild size="md" className="hidden md:inline-flex">
-              <Link href="/register">{t('getStarted')}</Link>
-            </Button>
+            <>
+              <Link
+                href="/login"
+                className={cn(
+                  'hidden text-[15px] font-semibold text-brand-blue md:inline-flex',
+                  'hover:text-brand-blue-dark motion-safe:transition-colors motion-safe:duration-150',
+                )}
+              >
+                {t('login')}
+              </Link>
+              <Button asChild size="md" className="hidden md:inline-flex">
+                <Link href="/marketplace">{t('accessMarket')}</Link>
+              </Button>
+            </>
           )}
 
           <button
@@ -259,9 +297,15 @@ export function Navbar({
             </div>
 
             {!isAuthenticated ? (
-              <div className="mt-auto px-4 pb-8">
+              <div className="mt-auto flex flex-col gap-3 px-4 pb-8">
+                <Link
+                  href="/login"
+                  className="text-center text-[15px] font-semibold text-brand-blue"
+                >
+                  {t('login')}
+                </Link>
                 <Button asChild className="w-full">
-                  <Link href="/register">{t('getStarted')}</Link>
+                  <Link href="/marketplace">{t('accessMarket')}</Link>
                 </Button>
               </div>
             ) : null}

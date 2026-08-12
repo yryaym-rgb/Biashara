@@ -27,6 +27,7 @@
     "language": "Langue",
     "home": "Accueil",
     "marketplace": "Place de marché",
+    "marketplaceNav": "Marché",
     "prices": "Cotations",
     "calendar": "Calendrier",
     "solutions": "Solutions",
@@ -43,7 +44,9 @@
     "login": "Se connecter",
     "register": "Créer un compte",
     "logout": "Se déconnecter",
-    "getStarted": "Commencer"
+    "getStarted": "Commencer",
+    "accessMarket": "Accéder au marché →",
+    "drcMarketActive": "RDC · Marché actif"
   },
   "auth": {
     "shell": {
@@ -198,7 +201,10 @@
         "submit": "Rechercher"
       },
       "ticker": {
-        "ariaLabel": "Cotations minérales en direct"
+        "ariaLabel": "Cotations minérales en direct",
+        "liveLabel": "MARCHÉ EN DIRECT",
+        "lastUpdated": "Dernière mise à jour · {time}",
+        "viewQuote": "Voir la cotation →"
       },
       "features": {
         "priceTransparency": {
