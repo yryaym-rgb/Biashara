@@ -27,6 +27,7 @@
     "language": "Language",
     "home": "Home",
     "marketplace": "Marketplace",
+    "marketplaceNav": "Market",
     "prices": "Prices",
     "calendar": "Calendar",
     "solutions": "Solutions",
@@ -43,7 +44,9 @@
     "login": "Sign in",
     "register": "Create account",
     "logout": "Sign out",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "accessMarket": "Access marketplace →",
+    "drcMarketActive": "DRC · Market active"
   },
   "auth": {
     "shell": {
@@ -198,7 +201,10 @@
         "submit": "Search"
       },
       "ticker": {
-        "ariaLabel": "Live mineral quotes"
+        "ariaLabel": "Live mineral quotes",
+        "liveLabel": "LIVE MARKET",
+        "lastUpdated": "Last updated · {time}",
+        "viewQuote": "View quote →"
       },
       "features": {
         "priceTransparency": {

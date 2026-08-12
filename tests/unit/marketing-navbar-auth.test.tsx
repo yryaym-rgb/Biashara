@@ -6,21 +6,31 @@ vi.mock('next/image', () => ({
   default: (props: { alt: string }) => <img alt={props.alt} />,
 }));
 
+vi.mock('@/components/marketing/landing-price-ticker', () => ({
+  useTickerScrollVisibility: () => ({
+    tickerVisible: true,
+    prefersReducedMotion: false,
+  }),
+}));
+
 vi.mock('next-intl', () => ({
   useTranslations: (namespace: string) => (key: string) => {
     const navLabels: Record<string, string> = {
       appName: 'BIASHARA',
       home: 'Accueil',
-      marketplace: 'Marketplace',
+      marketplaceNav: 'Marché',
       prices: 'Prix',
+      calendar: 'Calendrier',
       solutions: 'Solutions',
       resources: 'Ressources',
       about: 'À propos',
-      getStarted: 'Commencer',
+      accessMarket: 'Accéder au marché →',
+      login: 'Se connecter',
       mainNavigation: 'Navigation principale',
       language: 'Langue',
       openMenu: 'Ouvrir le menu',
       closeMenu: 'Fermer le menu',
+      drcMarketActive: 'RDC · Marché actif',
     };
     const shellLabels: Record<string, string> = {
       userMenu: 'Menu utilisateur',
@@ -65,10 +75,14 @@ describe('Navbar auth state', () => {
     cleanup();
   });
 
-  it('shows Commencer when logged out', () => {
+  it('shows login link and marketplace CTA when logged out', () => {
     render(<Navbar isAuthenticated={false} />);
 
-    expect(screen.getByRole('link', { name: 'Commencer' })).toHaveAttribute('href', '/register');
+    expect(screen.getByRole('link', { name: 'Se connecter' })).toHaveAttribute('href', '/login');
+    expect(screen.getByRole('link', { name: 'Accéder au marché →' })).toHaveAttribute(
+      'href',
+      '/marketplace',
+    );
     expect(screen.queryByLabelText('Menu utilisateur')).not.toBeInTheDocument();
   });
 
@@ -81,7 +95,7 @@ describe('Navbar auth state', () => {
       />,
     );
 
-    expect(screen.queryByRole('link', { name: 'Commencer' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: 'Accéder au marché →' })).not.toBeInTheDocument();
     expect(screen.getByLabelText('Menu utilisateur')).toHaveTextContent('AM');
   });
 
@@ -95,5 +109,11 @@ describe('Navbar auth state', () => {
     );
 
     expect(screen.getByLabelText('Menu utilisateur')).toHaveTextContent('U');
+  });
+
+  it('uses shortened marketplace nav label', () => {
+    render(<Navbar isAuthenticated={false} />);
+
+    expect(screen.getByRole('link', { name: 'Marché' })).toHaveAttribute('href', '/marketplace');
   });
 });

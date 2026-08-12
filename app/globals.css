@@ -338,8 +338,23 @@
       animation: price-ticker-marquee 45s linear infinite;
     }
 
-    .price-ticker-marquee:hover .price-ticker-track {
+    .price-ticker-marquee:hover .price-ticker-track,
+    .price-ticker-marquee:focus-within .price-ticker-track {
       animation-play-state: paused;
+    }
+
+    @keyframes ticker-live-dot-pulse {
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .ticker-live-dot {
+      animation: ticker-live-dot-pulse 2.5s ease-in-out infinite;
     }
 
     @keyframes activity-feed-marquee {
