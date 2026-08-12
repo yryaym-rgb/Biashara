@@ -362,12 +362,30 @@
       },
       "credibility": {
         "eyebrow": "WHY BIASHARA",
-        "title": "Built for the DRC mining ecosystem",
+        "title": "The problem is real. The solution must be too.",
         "subtitle": "Informal transactions, opaque pricing, difficult market access for artisanal producers — BIASHARA addresses the real challenges of Congolese mineral trade.",
+        "problems": {
+          "opaquePrices": {
+            "number": "01",
+            "tag": "OPAQUE PRICING",
+            "statement": "Producers do not always have a clear market reference."
+          },
+          "limitedTrust": {
+            "number": "02",
+            "tag": "LIMITED TRUST",
+            "statement": "Buyers and sellers need verified partners."
+          },
+          "complexChains": {
+            "number": "03",
+            "tag": "COMPLEX CHAINS",
+            "statement": "Ore passes through several stages before reaching the market."
+          }
+        },
+        "pivot": "BIASHARA connects these stages.",
         "items": {
           "kyc": {
-            "title": "KYC/AML compliance",
-            "description": "Rigorous verification of every buyer and seller before any transaction."
+            "title": "KYC verification",
+            "description": "Identity documents reviewed by an admin before an account can list or negotiate."
           },
           "traceability": {
             "title": "Lot-level traceability",

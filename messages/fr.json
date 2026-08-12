@@ -362,12 +362,30 @@
       },
       "credibility": {
         "eyebrow": "POURQUOI BIASHARA",
-        "title": "Conçue pour l'écosystème minier de la RDC",
+        "title": "Le problème est réel. La solution doit l'être aussi.",
         "subtitle": "Transactions informelles, prix opaques, accès difficile au marché pour les producteurs artisanaux — BIASHARA répond aux défis concrets du négoce minier congolais.",
+        "problems": {
+          "opaquePrices": {
+            "number": "01",
+            "tag": "PRIX OPAQUES",
+            "statement": "Les producteurs ne disposent pas toujours d'une référence claire du marché."
+          },
+          "limitedTrust": {
+            "number": "02",
+            "tag": "CONFIANCE LIMITÉE",
+            "statement": "Acheteurs et vendeurs ont besoin de partenaires vérifiés."
+          },
+          "complexChains": {
+            "number": "03",
+            "tag": "CHAÎNES COMPLEXES",
+            "statement": "Le minerai traverse plusieurs étapes avant d'atteindre le marché."
+          }
+        },
+        "pivot": "BIASHARA connecte ces étapes.",
         "items": {
           "kyc": {
-            "title": "Conformité KYC/AML",
-            "description": "Vérification rigoureuse de chaque acheteur et vendeur avant toute transaction."
+            "title": "Vérification KYC",
+            "description": "Documents d'identité examinés par un administrateur avant qu'un compte puisse publier une annonce ou négocier."
           },
           "traceability": {
             "title": "Traçabilité de chaque lot",
