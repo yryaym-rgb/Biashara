@@ -293,22 +293,29 @@
       "howItWorks": {
         "eyebrow": "COMMENT ÇA MARCHE",
         "title": "Du minerai à la transaction, en toute transparence",
+        "chainAriaLabel": "Parcours de la plateforme en six étapes",
         "steps": {
+          "ore": {
+            "title": "Minerai"
+          },
           "publish": {
-            "title": "Publiez ou explorez",
+            "title": "Publier",
             "description": "Parcourez les annonces actives ou publiez votre minerai sur la place de marché."
           },
           "kyc": {
-            "title": "Vérification KYC",
+            "title": "KYC",
             "description": "Soumettez vos documents d'identité pour être vérifié avant de publier ou négocier."
           },
           "negotiate": {
-            "title": "Négociez en toute confiance",
-            "description": "Faites une offre sur une annonce — quantité, prix et message envoyés au vendeur."
+            "title": "Négocier",
+            "description": "Faites une offre ou une contre-offre sur une annonce — quantité, prix et message envoyés à la contrepartie."
           },
           "traceability": {
-            "title": "Traçabilité garantie",
+            "title": "Traçabilité",
             "description": "Les coopératives créent un code de lot unique et enregistrent chaque étape — visible sur l'annonce liée, déclarations auto-déclarées."
+          },
+          "globalMarket": {
+            "title": "Marché mondial"
           }
         }
       },
