@@ -93,6 +93,7 @@ describe('Navbar polish', () => {
     const badge = screen.getByText('MARCHÉ ACTIF');
     expect(badge).toHaveClass('text-ink');
     expect(badge.parentElement?.className).toMatch(/market-live/);
+    expect(badge.parentElement?.className).toMatch(/cursor-default/);
   });
 
   it('applies scrolled styling when page is not at top', () => {
@@ -119,5 +120,25 @@ describe('Navbar polish', () => {
     const avatarButton = screen.getByLabelText('Menu utilisateur');
     const accountContainer = avatarButton.parentElement?.parentElement;
     expect(accountContainer?.className).toMatch(/border/);
+  });
+
+  it('opens account dropdown with single-line menu items inside navbar', () => {
+    render(
+      <Navbar
+        isAuthenticated
+        companyName="ABC Mining"
+        email="user@example.com"
+      />,
+    );
+
+    fireEvent.click(screen.getByLabelText('Menu utilisateur'));
+
+    const menu = screen.getByRole('menu');
+    expect(menu).toHaveClass('min-w-[200px]');
+    expect(menu.className).toMatch(/absolute/);
+
+    const dashboardItem = screen.getByRole('menuitem', { name: 'Tableau de bord' });
+    expect(dashboardItem).toHaveClass('whitespace-nowrap');
+    expect(dashboardItem.className).not.toMatch(/\bw-8\b/);
   });
 });

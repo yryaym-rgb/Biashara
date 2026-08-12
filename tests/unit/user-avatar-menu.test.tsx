@@ -54,6 +54,9 @@ describe('UserAvatarMenu', () => {
 
     fireEvent.click(screen.getByLabelText('Menu utilisateur'));
 
+    const menu = screen.getByRole('menu');
+    expect(menu).toHaveClass('min-w-[200px]');
+
     expect(screen.getByRole('menuitem', { name: 'Profil' })).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: 'Tableau de bord' })).toBeInTheDocument();
     expect(screen.getByRole('menuitem', { name: 'Déconnexion' })).toBeInTheDocument();

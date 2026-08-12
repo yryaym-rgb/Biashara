@@ -276,5 +276,12 @@ describe('LandingPriceTicker', () => {
     await waitFor(() => {
       expect(screen.getByText(/Dernière mise à jour · 11:30/)).toBeInTheDocument();
     });
+
+    const timestampOverlay = screen
+      .getByText(/Dernière mise à jour · 11:30/)
+      .closest('[class*="absolute"]');
+    expect(timestampOverlay).not.toBeNull();
+    expect(timestampOverlay?.className).toMatch(/absolute/);
+    expect(timestampOverlay?.closest('.price-ticker-marquee')).toBeNull();
   });
 });

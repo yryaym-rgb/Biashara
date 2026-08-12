@@ -168,7 +168,10 @@ export function Navbar({
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
-          <span className="hidden items-center gap-1.5 whitespace-nowrap rounded-[6px] bg-[color:color-mix(in_srgb,var(--market-live)_12%,transparent)] px-2 py-1 lg:inline-flex">
+          <span
+            className="hidden cursor-default select-none items-center gap-1.5 whitespace-nowrap rounded-[4px] bg-[color:color-mix(in_srgb,var(--market-live)_12%,transparent)] px-2 py-1 lg:inline-flex"
+            aria-label={t('drcMarketActive')}
+          >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-market-live" aria-hidden="true" />
             <span className="text-[11px] font-bold uppercase tracking-[0.04em] text-ink">
               {t('drcMarketActive')}
@@ -220,9 +223,8 @@ export function Navbar({
             {isAuthenticated ? (
               <div
                 className={cn(
-                  'inline-flex items-center gap-0.5 rounded-button border border-border bg-bg px-1.5 py-0.5',
-                  'hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
-                  '[&_button]:h-8 [&_button]:w-8 [&_button]:bg-transparent [&_button]:hover:bg-transparent',
+                  'relative inline-flex items-center gap-0.5 rounded-button border border-border bg-bg px-1.5 py-0.5',
+                  '[&>div>button]:h-8 [&>div>button]:w-8 [&>div>button]:bg-transparent [&>div>button]:hover:bg-transparent',
                 )}
               >
                 <UserAvatarMenu

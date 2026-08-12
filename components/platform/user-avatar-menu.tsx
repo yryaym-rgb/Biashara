@@ -142,7 +142,7 @@ export function UserAvatarMenu({ companyName, email, onLogoutRequest }: UserAvat
       {open ? (
         <div
           ref={panelRef}
-          className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(220px,calc(100vw-32px))] overflow-hidden rounded-card border border-border bg-bg shadow-[0_8px_24px_rgba(14,42,71,0.10)]"
+          className="absolute right-0 top-[calc(100%+8px)] z-[80] min-w-[200px] w-max max-w-[calc(100vw-32px)] overflow-hidden rounded-card border border-border bg-bg shadow-[0_8px_24px_rgba(14,42,71,0.10)]"
           role="menu"
           aria-label={t('userMenu')}
           onKeyDown={handleMenuKeyDown}
@@ -160,7 +160,7 @@ export function UserAvatarMenu({ companyName, email, onLogoutRequest }: UserAvat
                   type="button"
                   role="menuitem"
                   className={cn(
-                    'flex w-full px-4 py-3 text-left text-[14px] font-medium text-ink hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
+                    'flex w-full whitespace-nowrap px-4 py-3 text-left text-[14px] font-medium text-ink hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
                     'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px]',
                     item.id === 'logout' && 'text-body',
                   )}
