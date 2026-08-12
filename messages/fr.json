@@ -28,7 +28,6 @@
     "home": "Accueil",
     "marketplace": "Place de marché",
     "prices": "Cotations",
-    "directory": "Annuaire",
     "calendar": "Calendrier",
     "solutions": "Solutions",
     "resources": "Ressources",
@@ -184,13 +183,12 @@
   "marketing": {
     "landing": {
       "title": "BIASHARA — Commerce minier de confiance",
-      "eyebrow": "INTELLIGENCE MARCHÉ — AFRIQUE",
-      "heroLine1": "Le terminal des matières premières.",
-      "heroLine2": "Données en direct. Marchés réels.",
-      "heroLine3": "Autorité africaine.",
-      "subtitle": "BIASHARA centralise cotations, annonces et flux de transactions minérales — la densité de données et la rigueur d'un terminal professionnel, pensé pour l'Afrique.",
+      "eyebrow": "L'AVENIR DU COMMERCE DES MINERAIS",
+      "heroLine1": "Commercez avec audace.",
+      "heroLine2": "Échangez en confiance.",
+      "heroLine3": "Grandissez ensemble.",
+      "subtitle": "BIASHARA est la plateforme tout-en-un pour le négoce de minerais, la traçabilité et les transactions sécurisées de la RDC vers le monde.",
       "ctaMarketplace": "Explorer la place de marché →",
-      "ctaPrices": "Voir les cotations →",
       "ctaVideo": "Voir la vidéo",
       "heroImageAlt": "Échantillons de minerais bruts — cobalt, cuivre et or",
       "heroImagePlaceholder": "Image héro à ajouter",
@@ -200,31 +198,6 @@
       },
       "ticker": {
         "ariaLabel": "Cotations minérales en direct"
-      },
-      "heroLivePrices": {
-        "label": "Marché en direct",
-        "ariaLabel": "Cotations minérales en direct dans le héros",
-        "viewAll": "Toutes les cotations →",
-        "error": "Cotations momentanément indisponibles."
-      },
-      "growth": {
-        "eyebrow": "NOTRE CROISSANCE",
-        "title": "Des chiffres réels, aujourd'hui",
-        "subtitle": "Aucune projection ni statistique inventée — seulement l'état actuel de la plateforme BIASHARA.",
-        "stats": {
-          "verifiedUsers": {
-            "label": "Acteurs vérifiés"
-          },
-          "activeListings": {
-            "label": "Annonces actives"
-          },
-          "provincesRepresented": {
-            "label": "Provinces représentées"
-          },
-          "mineralsTraded": {
-            "label": "Minerais échangés"
-          }
-        }
       },
       "features": {
         "priceTransparency": {

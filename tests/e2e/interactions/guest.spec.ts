@@ -9,15 +9,17 @@ import {
 
 test.describe('marketing interactions', () => {
   test('navbar links navigate cleanly', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
 
     await withPageMonitor(page, async () => {
       const links = [
         { name: 'Place de marché', heading: 'Place de marché' },
         { name: 'Cotations', heading: 'Cotations des matières premières' },
-        { name: 'Annuaire', heading: 'Annuaire' },
+        { name: 'Calendrier', heading: 'Calendrier minier' },
+        { name: 'Solutions', heading: /Une plateforme pensée pour chaque acteur/ },
         { name: 'Ressources', heading: 'Comprendre le commerce minier en RDC' },
         { name: 'À propos', heading: 'À propos de BIASHARA' },
+        { name: 'Accueil', heading: 'Commercez avec audace.' },
       ];
 
       for (const link of links) {
@@ -28,19 +30,19 @@ test.describe('marketing interactions', () => {
   });
 
   test('language switcher toggles locale', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
 
     await withPageMonitor(page, async () => {
       await switchLanguage(page, 'EN');
-      await expect(page.getByRole('heading', { name: 'The commodities terminal.' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Trade with confidence.' })).toBeVisible();
 
       await switchLanguage(page, 'FR');
-      await expect(page.getByRole('heading', { name: 'Le terminal des matières premières.' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Commercez avec audace.' })).toBeVisible();
     });
   });
 
   test('mobile drawer opens and closes', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
 
     await withPageMonitor(page, async () => {
       await openMobileNav(page);
@@ -54,7 +56,7 @@ test.describe('marketing interactions', () => {
   });
 
   test('hero search submits to marketplace', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
 
     await withPageMonitor(page, async () => {
       await page.getByLabel('Rechercher un minerai, une région…').fill('cobalt');
@@ -65,7 +67,7 @@ test.describe('marketing interactions', () => {
   });
 
   test('DRC map province link navigates to marketplace', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
 
     await withPageMonitor(page, async () => {
       const provinceLink = page.getByRole('link', { name: /Voir les annonces de/ }).first();
@@ -76,14 +78,11 @@ test.describe('marketing interactions', () => {
     });
   });
 
-  test('hero live prices panel is visible', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+  test('price ticker region is visible', async ({ page }) => {
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
 
     await withPageMonitor(page, async () => {
-      await expect(
-        page.getByRole('region', { name: 'Cotations minérales en direct dans le héros' }),
-      ).toBeVisible();
-      await expect(page.getByText('Marché en direct')).toBeVisible();
+      await expect(page.getByRole('region', { name: 'Cotations minérales en direct' })).toBeVisible();
     });
   });
 });

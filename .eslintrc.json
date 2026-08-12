@@ -15,7 +15,7 @@
   },
   "overrides": [
     {
-      "files": ["lib/supabase/admin.ts", "lib/rate-limit.ts", "lib/admin/**/*.ts", "lib/activity/**/*.ts", "lib/directory/**/*.ts", "lib/marketing/**/*.ts", "lib/notifications/**/*.ts", "lib/contracts/**/*.ts", "lib/prices/**/*.ts", "scripts/**/*.ts", "actions/**/*.ts", "app/api/**/*.ts"],
+      "files": ["lib/supabase/admin.ts", "lib/rate-limit.ts", "lib/admin/**/*.ts", "lib/activity/**/*.ts", "lib/directory/**/*.ts", "lib/notifications/**/*.ts", "lib/contracts/**/*.ts", "lib/prices/**/*.ts", "scripts/**/*.ts", "actions/**/*.ts", "app/api/**/*.ts"],
       "rules": {
         "no-restricted-imports": "off"
       }

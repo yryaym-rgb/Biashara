@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
+import { LandingPriceTicker } from '@/components/marketing/landing-price-ticker';
 import { getProfile, getUser } from '@/lib/auth/session';
 
 export default async function MarketingLayout({
@@ -18,7 +19,10 @@ export default async function MarketingLayout({
 
   return (
     <>
+      <LandingPriceTicker />
       <Navbar
+        stickyOffsetClass="top-10"
+        topBandHeight={40}
         isAuthenticated={Boolean(user)}
         companyName={profile?.company_name ?? null}
         email={user?.email ?? null}

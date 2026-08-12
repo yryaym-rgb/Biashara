@@ -15,15 +15,17 @@ import { locales, type Locale } from '@/lib/i18n/config';
 import logo from '@/design/reference-logo.jpeg';
 
 interface NavItem {
-  href: '/marketplace' | '/prices' | '/directory' | '/resources' | '/about';
-  labelKey: 'marketplace' | 'prices' | 'directory' | 'resources' | 'about';
+  href: '/' | '/marketplace' | '/prices' | '/calendar' | '/solutions' | '/resources' | '/about';
+  labelKey: 'home' | 'marketplace' | 'prices' | 'calendar' | 'solutions' | 'resources' | 'about';
   hasDropdown?: boolean;
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { href: '/', labelKey: 'home' },
   { href: '/marketplace', labelKey: 'marketplace' },
   { href: '/prices', labelKey: 'prices' },
-  { href: '/directory', labelKey: 'directory' },
+  { href: '/calendar', labelKey: 'calendar' },
+  { href: '/solutions', labelKey: 'solutions', hasDropdown: true },
   { href: '/resources', labelKey: 'resources', hasDropdown: true },
   { href: '/about', labelKey: 'about' },
 ];
@@ -36,12 +38,16 @@ function isActivePath(pathname: string, href: string): boolean {
 }
 
 export interface NavbarProps {
+  stickyOffsetClass?: string;
+  topBandHeight?: number;
   isAuthenticated?: boolean;
   companyName?: string | null;
   email?: string | null;
 }
 
 export function Navbar({
+  stickyOffsetClass = 'top-0',
+  topBandHeight = 0,
   isAuthenticated = false,
   companyName = null,
   email = null,
@@ -82,8 +88,10 @@ export function Navbar({
     };
   }, [mobileOpen]);
 
+  const mobileNavTopClass = topBandHeight > 0 ? 'top-[112px]' : 'top-[72px]';
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg">
+    <header className={cn('sticky z-50 border-b border-border bg-bg', stickyOffsetClass)}>
       <Container className="flex h-[72px] items-center justify-between gap-4">
         <Link href="/" className="flex shrink-0 items-center gap-3 focus-visible:outline-offset-4">
           <Image
@@ -199,7 +207,7 @@ export function Navbar({
       {mobileOpen ? (
         <div
           id="mobile-nav"
-          className="fixed right-0 bottom-0 left-0 top-[72px] z-40 bg-bg md:hidden"
+          className={cn('fixed right-0 bottom-0 left-0 z-40 bg-bg md:hidden', mobileNavTopClass)}
           role="dialog"
           aria-modal="true"
           aria-label={t('mainNavigation')}
