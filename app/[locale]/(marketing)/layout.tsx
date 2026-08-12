@@ -21,8 +21,8 @@ export default async function MarketingLayout({
     <>
       <LandingPriceTicker />
       <Navbar
-        stickyOffsetClass="top-10"
-        topBandHeight={40}
+        stickyOffsetClass="top-11"
+        topBandHeight={44}
         isAuthenticated={Boolean(user)}
         companyName={profile?.company_name ?? null}
         email={user?.email ?? null}

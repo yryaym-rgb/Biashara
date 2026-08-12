@@ -94,7 +94,7 @@ export function Navbar({
   }, [mobileOpen]);
 
   const mobileNavTopClass =
-    topBandHeight > 0 && tickerVisible ? 'top-[112px]' : 'top-[72px]';
+    topBandHeight > 0 && tickerVisible ? 'top-[112px]' : 'top-[68px]';
 
   return (
     <header
@@ -105,127 +105,133 @@ export function Navbar({
         effectiveStickyClass,
       )}
     >
-      <Container className="flex h-[72px] items-center justify-between gap-4">
-        <Link href="/" className="flex shrink-0 items-center gap-3 focus-visible:outline-offset-4">
-          <Image
-            src={logo}
-            alt=""
-            width={46}
-            height={46}
-            className="h-[46px] w-[46px] rounded-button object-cover"
-            priority
-          />
-          <span className="text-[14px] font-bold tracking-[0.08em] text-ink">
-            {t('appName')}
-          </span>
-        </Link>
+      <Container className="flex h-[68px] items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-4 md:gap-5">
+          <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-offset-4">
+            <Image
+              src={logo}
+              alt=""
+              width={54}
+              height={54}
+              className="h-[54px] w-[54px] rounded-button object-cover"
+              priority
+            />
+            <span className="text-[14px] font-bold tracking-[0.08em] text-ink">
+              {t('appName')}
+            </span>
+          </Link>
 
-        <nav
-          className="hidden items-center gap-2 md:flex"
-          aria-label={t('mainNavigation')}
-        >
-          {NAV_ITEMS.map((item) => {
-            const active = isActivePath(pathname, item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'relative inline-flex items-center gap-1 rounded-button px-3 py-2',
-                  'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
-                  active ? 'text-brand-blue' : 'text-body hover:bg-bg-tint hover:text-ink',
-                )}
-              >
-                {t(item.labelKey)}
-                {item.hasDropdown ? (
-                  <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
-                ) : null}
-                {active ? (
-                  <span
-                    className="absolute bottom-0 left-1/2 h-[2px] w-5 -translate-x-1/2 bg-brand-gold"
-                    aria-hidden="true"
-                  />
-                ) : null}
-              </Link>
-            );
-          })}
-        </nav>
+          <nav
+            className="hidden items-center gap-0.5 md:flex"
+            aria-label={t('mainNavigation')}
+          >
+            {NAV_ITEMS.map((item) => {
+              const active = isActivePath(pathname, item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'relative inline-flex items-center gap-1 whitespace-nowrap rounded-button px-2.5 py-2',
+                    'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
+                    active ? 'text-brand-blue' : 'text-body hover:bg-bg-tint hover:text-ink',
+                  )}
+                >
+                  {t(item.labelKey)}
+                  {item.hasDropdown ? (
+                    <ChevronDown className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+                  ) : null}
+                  {active ? (
+                    <span
+                      className="absolute bottom-0 left-1/2 h-[2px] w-5 -translate-x-1/2 bg-brand-gold"
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
 
-        <div className="flex items-center gap-2 md:gap-3">
-          <span className="hidden items-center gap-1.5 text-[12px] font-semibold text-muted lg:inline-flex">
-            <span className="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" />
+        <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
+          <span className="hidden items-center gap-1.5 whitespace-nowrap rounded-[6px] bg-bg-tint px-2.5 py-1 text-[11px] font-semibold text-muted lg:inline-flex">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success" aria-hidden="true" />
             {t('drcMarketActive')}
           </span>
 
-          <div className="relative hidden md:block" ref={langMenuRef}>
-            <button
-              type="button"
-              className={cn(
-                'inline-flex h-11 items-center gap-1 rounded-button px-3',
-                'text-[15px] font-semibold text-ink',
-                'hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
-              )}
-              aria-expanded={langOpen}
-              aria-haspopup="listbox"
-              onClick={() => setLangOpen((open) => !open)}
-            >
-              {locale.toUpperCase()}
-              <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
-            </button>
-            {langOpen ? (
-              <ul
-                role="listbox"
-                className="absolute right-0 top-full z-50 mt-2 min-w-[120px] rounded-card border border-border bg-bg p-2 card-shadow"
-              >
-                {locales.map((item) => (
-                  <li key={item} role="option" aria-selected={item === locale}>
-                    <Link
-                      href={pathname}
-                      locale={item}
-                      className={cn(
-                        'block rounded-button px-3 py-2 text-[15px] font-semibold',
-                        item === locale ? 'text-brand-blue' : 'text-body hover:text-ink',
-                      )}
-                      onClick={() => setLangOpen(false)}
-                    >
-                      {item.toUpperCase()}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
+          <div className="hidden h-6 w-px bg-border lg:block" aria-hidden="true" />
 
-          {isAuthenticated ? (
-            <div className="inline-flex items-center gap-1">
-              <UserAvatarMenu
-                companyName={companyName}
-                email={email}
-                onLogoutRequest={() => setLogoutDialogOpen(true)}
-              />
-              <ChevronDown className="hidden h-3.5 w-3.5 text-muted md:block" aria-hidden="true" />
-            </div>
-          ) : (
-            <>
-              <Link
-                href="/login"
+          <div className="flex items-center gap-1">
+            <div className="relative hidden md:block" ref={langMenuRef}>
+              <button
+                type="button"
                 className={cn(
-                  'hidden text-[15px] font-semibold text-brand-blue md:inline-flex',
-                  'hover:text-brand-blue-dark motion-safe:transition-colors motion-safe:duration-150',
+                  'inline-flex h-10 items-center gap-1 rounded-button px-2.5',
+                  'text-[15px] font-semibold text-ink',
+                  'hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
                 )}
+                aria-expanded={langOpen}
+                aria-haspopup="listbox"
+                onClick={() => setLangOpen((open) => !open)}
               >
-                {t('login')}
-              </Link>
-              <Button asChild size="md" className="hidden md:inline-flex">
-                <Link href="/marketplace">{t('accessMarket')}</Link>
-              </Button>
-            </>
-          )}
+                {locale.toUpperCase()}
+                <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
+              </button>
+              {langOpen ? (
+                <ul
+                  role="listbox"
+                  className="absolute right-0 top-full z-50 mt-2 min-w-[120px] rounded-card border border-border bg-bg p-2 card-shadow"
+                >
+                  {locales.map((item) => (
+                    <li key={item} role="option" aria-selected={item === locale}>
+                      <Link
+                        href={pathname}
+                        locale={item}
+                        className={cn(
+                          'block rounded-button px-3 py-2 text-[15px] font-semibold',
+                          item === locale ? 'text-brand-blue' : 'text-body hover:text-ink',
+                        )}
+                        onClick={() => setLangOpen(false)}
+                      >
+                        {item.toUpperCase()}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+
+            {isAuthenticated ? (
+              <div className="inline-flex items-center rounded-button hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150">
+                <UserAvatarMenu
+                  companyName={companyName}
+                  email={email}
+                  onLogoutRequest={() => setLogoutDialogOpen(true)}
+                />
+                <ChevronDown className="hidden h-3.5 w-3.5 pr-1 text-muted md:block" aria-hidden="true" />
+              </div>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className={cn(
+                    'hidden text-[15px] font-semibold text-brand-blue md:inline-flex',
+                    'hover:text-brand-blue-dark motion-safe:transition-colors motion-safe:duration-150',
+                  )}
+                >
+                  {t('login')}
+                </Link>
+                <Button asChild size="md" className="hidden md:inline-flex">
+                  <Link href="/marketplace">{t('accessMarket')}</Link>
+                </Button>
+              </>
+            )}
+          </div>
 
           <button
             type="button"
             className={cn(
-              'inline-flex h-11 w-11 items-center justify-center rounded-button md:hidden',
+              'inline-flex h-10 w-10 items-center justify-center rounded-button md:hidden',
               'text-ink hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
             )}
             aria-expanded={mobileOpen}

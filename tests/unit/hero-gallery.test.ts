@@ -26,14 +26,10 @@ describe('hero gallery constants', () => {
       fs.existsSync(path.join(process.cwd(), 'public', imagePath.replace(/^\//, ''))),
     );
 
-    const expectedAvailable = ['/images/hero-minerals.jpg', '/images/auth-mining.jpg'].filter(
-      (imagePath) =>
-        fs.existsSync(path.join(process.cwd(), 'public', imagePath.replace(/^\//, ''))),
+    expect(available).toHaveLength(HERO_GALLERY_CANDIDATES.length);
+    expect(available.map((slide) => slide.imagePath)).toEqual(
+      HERO_GALLERY_CANDIDATES.map((slide) => slide.imagePath),
     );
-
-    expect(available.map((slide) => slide.imagePath)).toEqual(expectedAvailable);
-    expect(available.length).toBeGreaterThan(0);
-    expect(available.length).toBeLessThanOrEqual(HERO_GALLERY_CANDIDATES.length);
   });
 
   it('resolves captions by locale', () => {

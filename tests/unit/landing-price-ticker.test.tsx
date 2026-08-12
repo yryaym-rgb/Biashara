@@ -56,6 +56,7 @@ const { mockPricesResponse, fetchPricesClientMock } = vi.hoisted(() => ({
 
 import {
   LandingPriceTicker,
+  formatKinshasaTime,
   isIndicativeTickerMineral,
   shouldShowChange,
   shouldShowSparkline,
@@ -68,6 +69,8 @@ vi.mock('next-intl', () => ({
         ariaLabel: 'Cotations minérales en direct',
         liveLabel: 'MARCHÉ EN DIRECT',
         lastUpdated: `Dernière mise à jour · ${values?.time ?? ''}`,
+        indicativeShort: 'Indicatif',
+        indicativeLegend: 'Prix indicatif — négocié',
         viewQuote: 'Voir la cotation →',
       },
       'marketing.landing.prices': {
@@ -150,7 +153,15 @@ describe('landing price ticker helpers', () => {
   it('treats coltan and diamond as indicative when no feed exists', () => {
     expect(isIndicativeTickerMineral('coltan')).toBe(true);
     expect(isIndicativeTickerMineral('diamond')).toBe(true);
+    expect(isIndicativeTickerMineral('lithium', false)).toBe(false);
     expect(isIndicativeTickerMineral('copper', false)).toBe(false);
+  });
+
+  it('formats last-updated time in Africa/Kinshasa regardless of viewer timezone', () => {
+    // 10:30 UTC = 11:30 in Kinshasa (UTC+1)
+    expect(formatKinshasaTime('2026-08-12T10:30:00.000Z', 'fr')).toBe('11:30');
+    // 22:45 UTC = 23:45 in Kinshasa
+    expect(formatKinshasaTime('2026-08-12T22:45:00.000Z', 'en')).toBe('23:45');
   });
 });
 
@@ -194,16 +205,26 @@ describe('LandingPriceTicker', () => {
     expect(await screen.findByText('Coltan')).toBeInTheDocument();
     expect(await screen.findByText('Diamant')).toBeInTheDocument();
 
-    const indicativeMatches = screen.getAllByText('Prix indicatif — négocié');
+    const indicativeMatches = screen.getAllByText('Indicatif');
     expect(indicativeMatches.length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText('Prix indicatif — négocié')).toBeInTheDocument();
 
     const coltanLabel = screen.getByText('Coltan');
     const diamondLabel = screen.getByText('Diamant');
-    expect(coltanLabel.parentElement).toHaveTextContent('Prix indicatif — négocié');
-    expect(diamondLabel.parentElement).toHaveTextContent('Prix indicatif — négocié');
+    expect(coltanLabel.parentElement).toHaveTextContent('Indicatif');
+    expect(diamondLabel.parentElement).toHaveTextContent('Indicatif');
     expect(coltanLabel.parentElement).not.toHaveTextContent('▲');
     expect(coltanLabel.parentElement).not.toHaveTextContent('▼');
     expect(diamondLabel.parentElement).not.toHaveTextContent('▲');
     expect(diamondLabel.parentElement).not.toHaveTextContent('▼');
+  });
+
+  it('shows Kinshasa time in the last-updated label', async () => {
+    renderTicker();
+
+    expect(await screen.findByText('MARCHÉ EN DIRECT')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText(/Dernière mise à jour · 11:30/)).toBeInTheDocument();
+    });
   });
 });

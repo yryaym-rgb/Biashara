@@ -9,12 +9,13 @@ import { MINERAL_DOT_CLASS } from '@/lib/prices/mineral-dots';
 import { fetchPricesClient } from '@/lib/prices/fetch-client';
 import type { PriceHistoryResponse } from '@/lib/prices/types';
 import { Link } from '@/lib/i18n/navigation';
-import { formatPricePerUnit, resolveIntlLocale } from '@/lib/utils/format';
+import { formatPricePerUnit } from '@/lib/utils/format';
+import { formatKinshasaTime } from '@/lib/utils/dates';
 import { cn } from '@/lib/utils/cn';
 
 const STALE_TIME_MS = 15 * 60 * 1000;
 const REFETCH_INTERVAL_MS = 15 * 60 * 1000;
-const TICKER_BAND_HEIGHT_PX = 40;
+const TICKER_BAND_HEIGHT_PX = 44;
 const SCROLL_THRESHOLD_PX = 8;
 
 type TickerScrollState = {
@@ -95,14 +96,6 @@ function formatChangeLabel(change: number): string {
   return `${sign}${change.toFixed(1)}%`;
 }
 
-function formatUpdatedTime(iso: string, locale: string): string {
-  return new Intl.DateTimeFormat(resolveIntlLocale(locale), {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  }).format(new Date(iso));
-}
-
 async function fetchPriceHistory(mineral: MineralId): Promise<PriceHistoryResponse> {
   const response = await fetch(`/api/prices?history=1&mineral=${mineral}`);
   if (!response.ok) {
@@ -120,6 +113,9 @@ export function shouldShowChange(change: number | null | undefined): boolean {
 export function shouldShowSparkline(historyLength: number): boolean {
   return historyLength >= 2;
 }
+
+/** Exported for unit tests — formats HH:MM in Africa/Kinshasa regardless of viewer timezone. */
+export { formatKinshasaTime } from '@/lib/utils/dates';
 
 /** Exported for unit tests — coltan/diamond never receive fabricated spot prices. */
 export function isIndicativeTickerMineral(
@@ -261,7 +257,7 @@ function TickerItem({
   change,
   locale,
 }: TickerItemProps) {
-  const t = useTranslations('marketing.landing.prices');
+  const t = useTranslations('marketing.landing.ticker');
   const tMinerals = useTranslations('minerals');
   const showChange = shouldShowChange(change);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -269,7 +265,7 @@ function TickerItem({
   return (
     <span
       className={cn(
-        'group relative inline-flex shrink-0 items-center gap-2 px-4 text-[13px]',
+        'group relative inline-flex shrink-0 items-center gap-2 px-5 text-[13px]',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold',
       )}
       tabIndex={0}
@@ -293,21 +289,26 @@ function TickerItem({
         className={cn('h-2 w-2 shrink-0 rounded-full', MINERAL_DOT_CLASS[mineralId])}
         aria-hidden="true"
       />
-      <span className="font-semibold text-white">{tMinerals(mineralId)}</span>
+      <span className="font-semibold uppercase tracking-[0.04em] text-white">
+        {tMinerals(mineralId)}
+      </span>
 
       {isIndicative || price === null ? (
-        <span className="text-[color:color-mix(in_srgb,var(--white)_55%,transparent)]">
-          {t('indicative')}
+        <span
+          className="rounded-[6px] bg-[color:color-mix(in_srgb,var(--white)_12%,transparent)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] text-[color:color-mix(in_srgb,var(--white)_65%,transparent)]"
+          title={t('indicativeLegend')}
+        >
+          {t('indicativeShort')}
         </span>
       ) : (
         <>
-          <span className="font-semibold tabular-nums text-brand-gold">
+          <span className="text-[14px] font-semibold tabular-nums text-brand-gold">
             {formatPricePerUnit(price, currency, unitLabel, locale)}
           </span>
           {showChange ? (
             <span
               className={cn(
-                'font-semibold tabular-nums',
+                'text-[11px] font-medium tabular-nums',
                 (change as number) >= 0 ? 'text-success' : 'text-danger',
               )}
             >
@@ -390,11 +391,12 @@ export function LandingPriceTicker() {
 
   const lastUpdatedIso = data?.cachedAt ?? (dataUpdatedAt ? new Date(dataUpdatedAt).toISOString() : null);
   const lastUpdatedLabel =
-    lastUpdatedIso !== null ? formatUpdatedTime(lastUpdatedIso, locale) : null;
+    lastUpdatedIso !== null ? formatKinshasaTime(lastUpdatedIso, locale) : null;
+  const hasIndicativeItems = items.some((item) => item.isIndicative);
 
   return (
     <div
-      className="relative z-[60] h-10 shrink-0"
+      className="relative z-[60] shrink-0"
       style={{ height: TICKER_BAND_HEIGHT_PX }}
       aria-hidden={!tickerVisible}
     >
@@ -407,7 +409,10 @@ export function LandingPriceTicker() {
         role="region"
         aria-label={t('ariaLabel')}
       >
-        <div className="mx-auto flex h-10 max-w-content items-center gap-3 px-4 md:gap-4 md:px-6">
+        <div
+          className="mx-auto flex max-w-content items-center gap-3 px-4 md:gap-4 md:px-6"
+          style={{ height: TICKER_BAND_HEIGHT_PX }}
+        >
           <div className="flex shrink-0 items-center gap-2">
             <span
               className={cn(
@@ -416,7 +421,7 @@ export function LandingPriceTicker() {
               )}
               aria-hidden="true"
             />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:color-mix(in_srgb,var(--white)_75%,transparent)]">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:color-mix(in_srgb,var(--white)_75%,transparent)]">
               {t('liveLabel')}
             </span>
           </div>
@@ -431,11 +436,21 @@ export function LandingPriceTicker() {
             <TickerMarquee items={items} locale={locale} />
           )}
 
-          {lastUpdatedLabel ? (
-            <p className="hidden shrink-0 text-[11px] text-[color:color-mix(in_srgb,var(--white)_55%,transparent)] sm:block">
-              {t('lastUpdated', { time: lastUpdatedLabel })}
-            </p>
-          ) : null}
+          <div className="hidden shrink-0 flex-col items-end gap-0.5 sm:flex">
+            {lastUpdatedLabel ? (
+              <p className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_50%,transparent)]">
+                {t('lastUpdated', { time: lastUpdatedLabel })}
+              </p>
+            ) : null}
+            {hasIndicativeItems ? (
+              <p
+                className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_45%,transparent)]"
+                title={t('indicativeLegend')}
+              >
+                {t('indicativeLegend')}
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
