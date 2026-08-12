@@ -60,7 +60,7 @@ test.describe('marketing interactions', () => {
 
     await withPageMonitor(page, async () => {
       await page.getByLabel('Rechercher un minerai, une région…').fill('cobalt');
-      await page.getByRole('button', { name: 'Rechercher' }).click();
+      await page.getByRole('button', { name: 'Rechercher →' }).click();
       await page.waitForURL(/\/marketplace\?q=cobalt/);
       await page.getByRole('heading', { name: 'Place de marché' }).waitFor({ state: 'visible' });
     });
