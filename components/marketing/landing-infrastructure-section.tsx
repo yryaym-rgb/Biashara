@@ -10,6 +10,7 @@ import { getTranslations } from 'next-intl/server';
 import { Container } from '@/components/ui/container';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { LotCustodyChainVisual } from '@/components/marketing/lot-custody-chain-visual';
+import { ConnectedChainVisual } from '@/components/marketing/connected-chain-visual';
 import { PillarMarketDataPanel } from '@/components/marketing/pillar-market-data-panel';
 import { PillarMiniPriceChart } from '@/components/marketing/pillar-mini-price-chart';
 import { ScrollReveal } from '@/lib/motion/scroll-reveal';
@@ -202,48 +203,22 @@ export async function LandingInfrastructureSection() {
                 </div>
 
                 <div className="rounded-card border border-border bg-bg-tint p-4 sm:p-6">
-                  <ol
-                    className={cn(
-                      'grid gap-4',
-                      'min-[481px]:grid-cols-5 min-[481px]:gap-2',
-                    )}
-                    aria-label={t('pillars.logistics.statusAriaLabel')}
-                  >
-                    {LOGISTICS_STATUS_KEYS.map((statusKey, index) => {
-                      const isLast = index === LOGISTICS_STATUS_KEYS.length - 1;
-
-                      return (
-                        <li
-                          key={statusKey}
-                          className={cn(
-                            'relative flex flex-col items-center gap-2 text-center',
-                            !isLast &&
-                              'min-[481px]:after:absolute min-[481px]:after:left-[calc(50%+20px)] min-[481px]:after:right-0 min-[481px]:after:top-[18px] min-[481px]:after:h-px min-[481px]:after:bg-border',
-                          )}
-                        >
-                          <div
-                            className={cn(
-                              'relative z-[1] flex h-9 w-9 shrink-0 items-center justify-center rounded-button',
-                              'bg-[color-mix(in_srgb,var(--brand-gold)_12%,transparent)]',
-                              'min-[481px]:after:absolute min-[481px]:after:left-1/2 min-[481px]:after:top-full',
-                              'min-[481px]:after:z-[2] min-[481px]:after:h-2 min-[481px]:after:w-2',
-                              'min-[481px]:after:-translate-x-1/2 min-[481px]:after:translate-y-[calc(50%+4px)]',
-                              'min-[481px]:after:rounded-full min-[481px]:after:bg-brand-gold min-[481px]:after:content-[""]',
-                            )}
-                          >
-                            <MapPin
-                              className="h-4 w-4 text-brand-blue"
-                              strokeWidth={1.75}
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <p className="text-[12px] font-semibold leading-snug text-ink">
-                            {t(`pillars.logistics.statuses.${statusKey}`)}
-                          </p>
-                        </li>
-                      );
-                    })}
-                  </ol>
+                  <ConnectedChainVisual
+                    ariaLabel={t('pillars.logistics.statusAriaLabel')}
+                    columnCount={5}
+                    tint="gold"
+                    steps={LOGISTICS_STATUS_KEYS.map((statusKey) => ({
+                      id: statusKey,
+                      label: t(`pillars.logistics.statuses.${statusKey}`),
+                      node: (
+                        <MapPin
+                          className="h-4 w-4 text-brand-blue"
+                          strokeWidth={1.75}
+                          aria-hidden="true"
+                        />
+                      ),
+                    }))}
+                  />
                 </div>
 
                 <p className="text-[13px] text-muted">{t('pillars.logistics.caption')}</p>

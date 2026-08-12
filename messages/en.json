@@ -293,22 +293,29 @@
       "howItWorks": {
         "eyebrow": "HOW IT WORKS",
         "title": "From ore to transaction, with full transparency",
+        "chainAriaLabel": "Six-stage platform journey",
         "steps": {
+          "ore": {
+            "title": "Ore"
+          },
           "publish": {
-            "title": "Publish or explore",
+            "title": "Publish",
             "description": "Browse active listings or publish your mineral on the marketplace."
           },
           "kyc": {
-            "title": "KYC verification",
+            "title": "KYC",
             "description": "Submit identity documents to be verified before publishing or negotiating."
           },
           "negotiate": {
-            "title": "Negotiate with confidence",
-            "description": "Make an offer on a listing — quantity, price, and message sent to the seller."
+            "title": "Negotiate",
+            "description": "Make an offer or counter-offer on a listing — quantity, price, and message sent to the counterparty."
           },
           "traceability": {
-            "title": "Guaranteed traceability",
+            "title": "Traceability",
             "description": "Cooperatives create a unique lot code and record each custody step — visible on the linked listing, self-reported declarations."
+          },
+          "globalMarket": {
+            "title": "Global market"
           }
         }
       },
