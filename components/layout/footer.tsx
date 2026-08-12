@@ -12,15 +12,8 @@ export async function Footer() {
       links: [
         { href: '/marketplace' as const, label: t('platform.marketplace') },
         { href: '/prices' as const, label: t('platform.prices') },
-        { href: '/dashboard' as const, label: t('platform.dashboard') },
-      ],
-    },
-    {
-      title: t('solutions.title'),
-      links: [
-        { href: '/solutions' as const, label: t('solutions.traceability') },
-        { href: '/solutions' as const, label: t('solutions.marketplace') },
-        { href: '/solutions' as const, label: t('solutions.compliance') },
+        { href: '/resources/tracabilite-minerais' as const, label: t('platform.traceability') },
+        { href: '/calendar' as const, label: t('platform.calendar') },
       ],
     },
     {
@@ -28,15 +21,6 @@ export async function Footer() {
       links: [
         { href: '/about' as const, label: t('company.about') },
         { href: '/resources' as const, label: t('company.resources') },
-        { href: '/register' as const, label: t('company.getStarted') },
-      ],
-    },
-    {
-      title: t('legal.title'),
-      links: [
-        { href: '/about' as const, label: t('legal.terms') },
-        { href: '/about' as const, label: t('legal.privacy') },
-        { href: '/about' as const, label: t('legal.cookies') },
       ],
     },
   ];
@@ -46,7 +30,16 @@ export async function Footer() {
       <KitengeStrip />
       <footer className="bg-brand-blue-dark text-[color:var(--white)]">
         <Container className="py-16">
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-12 max-w-xl space-y-3">
+            <p className="text-[14px] font-bold tracking-[0.12em] text-[color:var(--white)]">
+              BIASHARA
+            </p>
+            <p className="text-[15px] text-[color:color-mix(in_srgb,var(--white)_75%,transparent)]">
+              {t('tagline')}
+            </p>
+          </div>
+
+          <div className="grid gap-12 sm:grid-cols-2 lg:max-w-2xl">
             {columns.map((column) => (
               <div key={column.title}>
                 <h3 className="mb-4 text-[15px] font-semibold text-[color:var(--white)]">
@@ -72,20 +65,7 @@ export async function Footer() {
             <p className="text-[13px] text-[color:color-mix(in_srgb,var(--white)_65%,transparent)]">
               {t('copyright', { year: new Date().getFullYear() })}
             </p>
-            <div className="flex flex-wrap gap-6">
-              <Link
-                href="/about"
-                className="text-[13px] text-[color:color-mix(in_srgb,var(--white)_65%,transparent)] hover:text-[color:var(--white)]"
-              >
-                {t('legal.terms')}
-              </Link>
-              <Link
-                href="/about"
-                className="text-[13px] text-[color:color-mix(in_srgb,var(--white)_65%,transparent)] hover:text-[color:var(--white)]"
-              >
-                {t('legal.privacy')}
-              </Link>
-            </div>
+            <p className="text-[13px] font-semibold text-brand-gold">{t('closingLine')}</p>
           </div>
         </Container>
       </footer>

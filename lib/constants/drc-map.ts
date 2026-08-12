@@ -20,6 +20,32 @@ export function isMiningProvince(province: DrcProvince): boolean {
   return province in MINING_PROVINCE_MINERALS;
 }
 
+/** Known DRC mining hubs — publicly documented geography, not platform statistics. */
+export interface DrcMiningHub {
+  id: 'lualaba' | 'kolwezi' | 'lubumbashi';
+  /** SVG viewBox X coordinate */
+  x: number;
+  /** SVG viewBox Y coordinate */
+  y: number;
+  province: DrcProvince;
+}
+
+export const DRC_MINING_HUBS: readonly DrcMiningHub[] = [
+  { id: 'lualaba', x: 245.51, y: 421.58, province: 'Lualaba' },
+  { id: 'kolwezi', x: 218, y: 398, province: 'Lualaba' },
+  { id: 'lubumbashi', x: 338, y: 448, province: 'Haut-Katanga' },
+] as const;
+
+/** Provinces that receive visible mineral tags on the showcase map. */
+export const SHOWCASE_MINERAL_PROVINCES = [
+  'Haut-Katanga',
+  'Lualaba',
+  'Kasaï-Oriental',
+  'Kasaï-Central',
+  'Nord-Kivu',
+  'Sud-Kivu',
+] as const satisfies readonly DrcProvince[];
+
 export interface DrcProvinceMapRegion {
   province: DrcProvince;
   /** SVG path in viewBox coordinates (from geoBoundaries ADM1 boundaries). */

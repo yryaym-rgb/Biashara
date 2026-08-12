@@ -1066,6 +1066,27 @@ export type Database = {
         };
         Relationships: [];
       };
+      waitlist_signups: {
+        Row: {
+          id: string;
+          email: string;
+          country_interest: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          email: string;
+          country_interest?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          email?: string;
+          country_interest?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {

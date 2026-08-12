@@ -157,29 +157,19 @@
     }
   },
   "footer": {
+    "tagline": "The trust infrastructure for African mineral trade.",
+    "closingLine": "From the DRC to the world.",
     "platform": {
       "title": "Platform",
       "marketplace": "Marketplace",
       "prices": "Prices",
-      "dashboard": "Dashboard"
-    },
-    "solutions": {
-      "title": "Solutions",
       "traceability": "Traceability",
-      "marketplace": "Secure marketplace",
-      "compliance": "KYC compliance"
+      "calendar": "Calendar"
     },
     "company": {
       "title": "Company",
       "about": "About Us",
-      "resources": "Resources",
-      "getStarted": "Get Started"
-    },
-    "legal": {
-      "title": "Legal",
-      "terms": "Terms of Service",
-      "privacy": "Privacy Policy",
-      "cookies": "Cookie Policy"
+      "resources": "Resources"
     },
     "copyright": "© {year} BIASHARA. All rights reserved."
   },
@@ -320,20 +310,51 @@
         }
       },
       "map": {
-        "eyebrow": "FROM THE DRC TO THE WORLD",
-        "title": "One country, exceptional mineral wealth",
+        "eyebrow": "FROM THE DRC TO THE WORLD.",
+        "title": "FROM THE DRC TO THE WORLD.",
+        "subtitle": "The DRC's mining provinces, their documented minerals, and active BIASHARA listings — a real map, not an illustration.",
         "mapAria": "Map of DRC provinces",
         "provinceLinkAria": "View listings from {province}",
         "activeListings": "{count, plural, one {# active listing from this region} other {# active listings from this region}}",
         "noListings": "No listings at the moment",
         "attribution": "Map data: geoBoundaries (CC BY 4.0)",
-        "cobaltFact": "The DRC is one of the world's leading cobalt producers — a widely documented public fact from industry sources."
+        "cobaltFact": "The DRC is one of the world's leading cobalt producers — a widely documented public fact from industry sources.",
+        "corridorStep1": "Corridors",
+        "corridorStep2": "Africa",
+        "corridorStep3": "World",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
       },
       "africanNetwork": {
-        "badge": "Coming soon",
-        "title": "African trade network — Coming soon",
-        "description": "We are building a pan-African network to connect producers, buyers, and logistics corridors across the continent.",
-        "illustrationLabel": "Upcoming African trade network illustration"
+        "brand": "BIASHARA AFRICA",
+        "title": "African trade network",
+        "today": "Today: DRC 🇨🇩",
+        "tomorrow": "Tomorrow: 🇿🇲 🇹🇿 🇷🇼 …",
+        "description": "Building the African mineral trade network.",
+        "emailLabel": "Email address",
+        "emailPlaceholder": "you@company.com",
+        "countryLabel": "Country of interest (optional)",
+        "countryHint": "Tell us which country you would like to see join the network.",
+        "countryPlaceholder": "Select a country",
+        "submit": "Join the waitlist",
+        "successNew": "Thank you — you are on the waitlist. We will contact you as the network expands.",
+        "successExisting": "This address is already on the waitlist. We will contact you as the network expands.",
+        "countries": {
+          "ZM": "Zambia",
+          "TZ": "Tanzania",
+          "RW": "Rwanda",
+          "KE": "Kenya",
+          "UG": "Uganda",
+          "OTHER": "Other African country"
+        },
+        "errors": {
+          "invalidEmail": "Please enter a valid email address.",
+          "rateLimited": "Too many attempts — please try again in a few moments.",
+          "unknown": "An error occurred. Please try again later."
+        }
       },
       "prices": {
         "eyebrow": "UPDATED MARKET QUOTES",
@@ -463,10 +484,28 @@
       }
     },
     "solutions": {
-      "title": "A platform built for every mining trade stakeholder",
+      "title": "One platform. Four ways to trade.",
       "eyebrow": "SOLUTIONS",
       "subtitle": "Whether you are a cooperative, trader, exporter, or international buyer — BIASHARA provides the tools available on the platform today.",
       "comingSoon": "Coming soon",
+      "panels": {
+        "cooperatives": {
+          "imageAlt": "Mineral collection point in the DRC",
+          "cta": "Create a cooperative account"
+        },
+        "traders": {
+          "imageAlt": "Mineral transport to market",
+          "cta": "Explore the marketplace"
+        },
+        "exporters": {
+          "imageAlt": "Mineral quality check before export",
+          "cta": "Access the marketplace"
+        },
+        "buyers": {
+          "imageAlt": "Copper and malachite samples",
+          "cta": "Browse listings"
+        }
+      },
       "audiences": {
         "cooperatives": {
           "title": "Mining cooperatives",
@@ -800,11 +839,17 @@
       "filters": "Filters",
       "postOffer": "Post an offer",
       "viewDetails": "View details",
-      "empty": "No listings published yet",
-      "emptyDescription": "BIASHARA is a new platform actively onboarding verified sellers. Be among the first to offer your minerals with confidence.",
+      "emptyEyebrow": "MARKETPLACE",
+      "empty": "THE MARKET IS BEING BUILT NOW",
+      "emptyDescription": "BIASHARA is a new platform actively onboarding verified sellers. Join us to offer or discover minerals with confidence.",
+      "emptyImageAlt": "Raw cobalt sample",
+      "emptyCategoriesTitle": "Mineral categories",
+      "emptyCategoryTag": "Category",
+      "emptyCategoryImageAlt": "Illustration — {mineral}",
+      "emptyBrowseAll": "Browse all listings",
       "emptyFiltered": "No listings match these criteria",
       "emptyFilteredDescription": "No active listings match your search or selected filters. Adjust your criteria or browse all listings.",
-      "emptyCtaPost": "Post the first offer",
+      "emptyCtaPost": "Post an offer",
       "emptyCtaRegister": "Create account",
       "emptyCtaKyc": "Complete KYC verification",
       "quantityAvailable": "{quantity} {unit} available",
