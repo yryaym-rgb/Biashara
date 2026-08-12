@@ -1861,6 +1861,7 @@
   },
   "activityFeed": {
     "ariaLabel": "Activité récente de la plateforme",
+    "liveHeading": "ACTIVITÉ EN DIRECT",
     "empty": "L'activité de la plateforme s'affichera ici.",
     "error": "Impossible de charger l'activité pour le moment.",
     "listing_published": "Nouvelle annonce : {mineral}, {province}",

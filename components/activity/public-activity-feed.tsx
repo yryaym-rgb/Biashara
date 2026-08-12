@@ -5,9 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   BadgeCheck,
-  ClipboardList,
+  Check,
   Package,
-  ShoppingBag,
+  Search,
   type LucideIcon,
 } from 'lucide-react';
 import { fetchPublicActivityFeedClient } from '@/lib/activity/fetch-client';
@@ -24,17 +24,56 @@ const REDUCED_CYCLE_MS = 4000;
 
 const EVENT_ICONS: Record<PublicActivityKind, LucideIcon> = {
   listing_published: Package,
-  rfp_posted: ClipboardList,
-  order_completed: ShoppingBag,
+  rfp_posted: Search,
+  order_completed: Check,
   account_verified: BadgeCheck,
 };
 
-function ActivityFeedIcon({ kind }: { kind: PublicActivityKind }) {
+const EVENT_DOT_CLASS: Record<PublicActivityKind, string> = {
+  listing_published: 'bg-brand-gold',
+  rfp_posted: 'bg-brand-blue',
+  order_completed: 'bg-market-live',
+  account_verified: 'bg-brand-blue-dark',
+};
+
+function ActivityFeedLiveHeading({
+  prefersReducedMotion,
+}: {
+  prefersReducedMotion: boolean;
+}) {
+  const t = useTranslations('activityFeed');
+
+  return (
+    <div className="mb-4 flex items-center gap-2.5">
+      <span
+        className={cn(
+          'h-2 w-2 shrink-0 rounded-full bg-market-live',
+          !prefersReducedMotion && 'ticker-live-dot',
+        )}
+        aria-hidden="true"
+      />
+      <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-ink">
+        {t('liveHeading')}
+      </p>
+    </div>
+  );
+}
+
+function ActivityFeedIcon({ kind, compact = false }: { kind: PublicActivityKind; compact?: boolean }) {
   const Icon = EVENT_ICONS[kind];
 
   return (
-    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-bg-tint">
-      <Icon className="h-5 w-5 text-brand-blue" strokeWidth={1.75} aria-hidden="true" />
+    <div
+      className={cn(
+        'flex shrink-0 items-center justify-center rounded-button bg-bg-tint',
+        compact ? 'h-9 w-9' : 'h-11 w-11',
+      )}
+    >
+      <Icon
+        className={cn('text-brand-blue', compact ? 'h-4 w-4' : 'h-5 w-5')}
+        strokeWidth={1.75}
+        aria-hidden="true"
+      />
     </div>
   );
 }
@@ -64,19 +103,34 @@ function ActivityFeedItem({
   return (
     <li
       className={cn(
-        'flex items-start gap-3',
-        compact ? 'py-2' : 'border-b border-border py-4 last:border-b-0',
+        'flex items-center gap-3 rounded-card border border-border bg-bg card-shadow',
+        'motion-safe:transition-[box-shadow,transform] motion-safe:duration-150 motion-safe:ease-out',
+        'hover:card-shadow-hover hover:-translate-y-0.5',
+        compact ? 'px-3 py-2.5' : 'px-4 py-3',
       )}
     >
-      <ActivityFeedIcon kind={event.kind} />
-      <div className="min-w-0 flex-1">
-        <p className={cn('text-ink', compact ? 'text-[13px] leading-snug' : 'text-[15px]')}>
-          {message}
-        </p>
-        <p className={cn('text-muted', compact ? 'mt-0.5 text-[11px]' : 'mt-1 text-[13px]')}>
-          <time dateTime={event.timestamp}>{formatRelativeTime(event.timestamp, locale)}</time>
-        </p>
-      </div>
+      <span
+        className={cn('h-2 w-2 shrink-0 rounded-full', EVENT_DOT_CLASS[event.kind])}
+        aria-hidden="true"
+      />
+      <ActivityFeedIcon kind={event.kind} compact={compact} />
+      <p
+        className={cn(
+          'min-w-0 flex-1 text-ink',
+          compact ? 'text-[13px] leading-snug' : 'text-[15px] leading-snug',
+        )}
+      >
+        {message}
+      </p>
+      <time
+        dateTime={event.timestamp}
+        className={cn(
+          'shrink-0 whitespace-nowrap text-muted',
+          compact ? 'text-[11px]' : 'text-[13px]',
+        )}
+      >
+        {formatRelativeTime(event.timestamp, locale)}
+      </time>
     </li>
   );
 }
@@ -84,12 +138,12 @@ function ActivityFeedItem({
 function ActivityFeedMarquee({ events }: { events: PublicActivityFeedEntry[] }) {
   return (
     <div className="activity-feed-marquee group flex overflow-hidden">
-      <ul className="activity-feed-track flex shrink-0 flex-col">
+      <ul className="activity-feed-track flex w-full shrink-0 flex-col gap-2">
         {events.map((event) => (
           <ActivityFeedItem key={event.id} event={event} compact />
         ))}
       </ul>
-      <ul className="activity-feed-track flex shrink-0 flex-col" aria-hidden="true">
+      <ul className="activity-feed-track flex w-full shrink-0 flex-col gap-2" aria-hidden="true">
         {events.map((event) => (
           <ActivityFeedItem key={`dup-${event.id}`} event={event} compact />
         ))}
@@ -115,9 +169,9 @@ function ActivityFeedReducedCycle({ events }: { events: PublicActivityFeedEntry[
   if (!event) return null;
 
   return (
-    <div className="px-1">
+    <ul className="space-y-2">
       <ActivityFeedItem event={event} compact />
-    </div>
+    </ul>
   );
 }
 
@@ -149,14 +203,19 @@ export function PublicActivityFeed({ variant = 'section', className }: PublicAct
   const showEmpty = !isLoading && !isError && (data?.isEmpty || (data?.events.length ?? 0) === 0);
   const events = data?.events ?? [];
   const useTicker = variant === 'section' && events.length >= 3 && !showEmpty;
+  const showLiveHeading = variant === 'section' && !isLoading && !isError;
 
   return (
     <div className={className}>
+      {showLiveHeading ? (
+        <ActivityFeedLiveHeading prefersReducedMotion={prefersReducedMotion} />
+      ) : null}
+
       {isLoading ? (
-        <div className="space-y-3" aria-hidden="true">
-          <div className="skeleton-shimmer h-12 rounded-card" />
-          <div className="skeleton-shimmer h-12 rounded-card" />
-          <div className="skeleton-shimmer h-12 rounded-card" />
+        <div className="space-y-2" aria-hidden="true">
+          <div className="skeleton-shimmer h-[52px] rounded-card" />
+          <div className="skeleton-shimmer h-[52px] rounded-card" />
+          <div className="skeleton-shimmer h-[52px] rounded-card" />
         </div>
       ) : isError ? (
         <p className="text-[15px] text-body">{t('error')}</p>
@@ -164,7 +223,7 @@ export function PublicActivityFeed({ variant = 'section', className }: PublicAct
         <p className="text-[15px] text-body">{t('empty')}</p>
       ) : useTicker ? (
         <div
-          className="max-h-[280px] overflow-hidden"
+          className="max-h-[320px] overflow-hidden"
           role="feed"
           aria-label={t('ariaLabel')}
           aria-live="polite"
@@ -178,8 +237,8 @@ export function PublicActivityFeed({ variant = 'section', className }: PublicAct
       ) : (
         <ul
           className={cn(
-            'space-y-0',
-            variant === 'sidebar' && 'max-h-[220px] overflow-y-auto',
+            'space-y-2',
+            variant === 'sidebar' && 'max-h-[280px] overflow-y-auto',
           )}
           role="feed"
           aria-label={t('ariaLabel')}
