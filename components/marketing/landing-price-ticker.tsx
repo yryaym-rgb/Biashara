@@ -17,8 +17,13 @@ const STALE_TIME_MS = 15 * 60 * 1000;
 const REFETCH_INTERVAL_MS = 15 * 60 * 1000;
 const TICKER_BAND_HEIGHT_PX = 44;
 const SCROLL_THRESHOLD_PX = 8;
-/** Reserved width for the fixed last-updated overlay (sm+). */
-const TICKER_TIMESTAMP_OVERLAY_MIN_PX = 252;
+/** Width of the left fade strip that masks marquee content before the timestamp panel. */
+export const TICKER_TIMESTAMP_FADE_PX = 112;
+/** Minimum width of the solid timestamp text panel (sm+). */
+export const TICKER_TIMESTAMP_PANEL_MIN_PX = 224;
+/** Reserved width for the fixed last-updated overlay (fade + panel). */
+export const TICKER_TIMESTAMP_OVERLAY_MIN_PX =
+  TICKER_TIMESTAMP_FADE_PX + TICKER_TIMESTAMP_PANEL_MIN_PX;
 
 /** One full marquee cycle — frozen at 40s (within the 35–45s spec). */
 export const TICKER_MARQUEE_CYCLE_SECONDS = 40;
@@ -464,17 +469,29 @@ export function LandingPriceTicker() {
 
           <div
             className={cn(
-              'absolute right-0 top-0 z-10 hidden h-full min-w-[var(--ticker-timestamp-overlay-min)] items-center sm:flex',
-              'bg-[linear-gradient(to_right,color-mix(in_srgb,var(--brand-blue-dark)_0%,transparent),var(--brand-blue-dark)_40px,var(--brand-blue-dark))]',
-              'pl-8 pr-4 md:pr-6',
+              'absolute right-0 top-0 z-10 hidden h-full items-center sm:flex',
             )}
-            style={
-              {
-                '--ticker-timestamp-overlay-min': `${TICKER_TIMESTAMP_OVERLAY_MIN_PX}px`,
-              } as React.CSSProperties
-            }
           >
-            <div className="flex flex-col items-end gap-0.5">
+            <div
+              className="h-full shrink-0"
+              style={{
+                width: TICKER_TIMESTAMP_FADE_PX,
+                background:
+                  'linear-gradient(to right, color-mix(in srgb, var(--brand-blue-dark) 0%, transparent), color-mix(in srgb, var(--brand-blue-dark) 70%, transparent) 40%, var(--brand-blue-dark))',
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className={cn(
+                'flex h-full min-w-[var(--ticker-timestamp-panel-min)] flex-col items-end justify-center gap-0.5',
+                'bg-brand-blue-dark pl-2 pr-4 md:pr-6',
+              )}
+              style={
+                {
+                  '--ticker-timestamp-panel-min': `${TICKER_TIMESTAMP_PANEL_MIN_PX}px`,
+                } as React.CSSProperties
+              }
+            >
               {lastUpdatedLabel ? (
                 <p className="whitespace-nowrap text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_45%,transparent)]">
                   {t('lastUpdated', { time: lastUpdatedLabel })}
