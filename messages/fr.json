@@ -157,29 +157,19 @@
     }
   },
   "footer": {
+    "tagline": "L'infrastructure de confiance pour le commerce des minerais africains.",
+    "closingLine": "De la RDC vers le monde.",
     "platform": {
       "title": "Plateforme",
-      "marketplace": "Place de marché",
+      "marketplace": "Marché",
       "prices": "Cotations",
-      "dashboard": "Tableau de bord"
-    },
-    "solutions": {
-      "title": "Solutions",
       "traceability": "Traçabilité",
-      "marketplace": "Place de marché sécurisée",
-      "compliance": "Conformité KYC"
+      "calendar": "Calendrier"
     },
     "company": {
       "title": "Entreprise",
       "about": "À propos",
-      "resources": "Ressources",
-      "getStarted": "Commencer"
-    },
-    "legal": {
-      "title": "Mentions légales",
-      "terms": "Conditions d'utilisation",
-      "privacy": "Politique de confidentialité",
-      "cookies": "Politique de cookies"
+      "resources": "Ressources"
     },
     "copyright": "© {year} BIASHARA. Tous droits réservés."
   },
@@ -320,20 +310,51 @@
         }
       },
       "map": {
-        "eyebrow": "DE LA RDC VERS LE MONDE",
-        "title": "Un pays, une richesse minérale exceptionnelle",
+        "eyebrow": "DE LA RDC AU MONDE.",
+        "title": "DE LA RDC AU MONDE.",
+        "subtitle": "Les provinces minières de la RDC, leurs minerais documentés et les annonces actives sur BIASHARA — une carte réelle, pas une illustration.",
         "mapAria": "Carte des provinces de la RDC",
         "provinceLinkAria": "Voir les annonces de {province}",
         "activeListings": "{count, plural, one {# annonce active de cette région} other {# annonces actives de cette région}}",
         "noListings": "Aucune annonce pour le moment",
         "attribution": "Données cartographiques : geoBoundaries (CC BY 4.0)",
-        "cobaltFact": "La RDC est l'un des principaux producteurs mondiaux de cobalt — une donnée publique largement documentée par les sources sectorielles."
+        "cobaltFact": "La RDC est l'un des principaux producteurs mondiaux de cobalt — une donnée publique largement documentée par les sources sectorielles.",
+        "corridorStep1": "Corridors",
+        "corridorStep2": "Afrique",
+        "corridorStep3": "Monde",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
       },
       "africanNetwork": {
-        "badge": "Bientôt disponible",
-        "title": "Réseau commercial africain — Bientôt disponible",
-        "description": "Nous construisons un réseau panafricain pour connecter les producteurs, les acheteurs et les corridors logistiques à travers le continent.",
-        "illustrationLabel": "Illustration du réseau commercial africain à venir"
+        "brand": "BIASHARA AFRICA",
+        "title": "Réseau commercial africain",
+        "today": "Aujourd'hui : RDC 🇨🇩",
+        "tomorrow": "Demain : 🇿🇲 🇹🇿 🇷🇼 …",
+        "description": "Construire le réseau commercial minier africain.",
+        "emailLabel": "Adresse e-mail",
+        "emailPlaceholder": "vous@entreprise.com",
+        "countryLabel": "Pays d'intérêt (facultatif)",
+        "countryHint": "Indiquez un pays que vous souhaitez voir rejoindre le réseau.",
+        "countryPlaceholder": "Sélectionner un pays",
+        "submit": "Rejoindre la liste d'attente",
+        "successNew": "Merci — vous êtes inscrit sur la liste d'attente. Nous vous contacterons lorsque le réseau s'étendra.",
+        "successExisting": "Cette adresse est déjà inscrite sur la liste d'attente. Nous vous contacterons lorsque le réseau s'étendra.",
+        "countries": {
+          "ZM": "Zambie",
+          "TZ": "Tanzanie",
+          "RW": "Rwanda",
+          "KE": "Kenya",
+          "UG": "Ouganda",
+          "OTHER": "Autre pays africain"
+        },
+        "errors": {
+          "invalidEmail": "Veuillez saisir une adresse e-mail valide.",
+          "rateLimited": "Trop de tentatives — réessayez dans quelques instants.",
+          "unknown": "Une erreur s'est produite. Réessayez plus tard."
+        }
       },
       "prices": {
         "eyebrow": "COTATIONS ACTUALISÉES",
@@ -463,10 +484,28 @@
       }
     },
     "solutions": {
-      "title": "Une plateforme pensée pour chaque acteur du commerce minier",
+      "title": "Une plateforme. Quatre façons de commercer.",
       "eyebrow": "SOLUTIONS",
       "subtitle": "Que vous soyez coopérative, négociant, exportateur ou acheteur international — BIASHARA met à disposition les outils disponibles aujourd'hui sur la plateforme.",
       "comingSoon": "Bientôt disponible",
+      "panels": {
+        "cooperatives": {
+          "imageAlt": "Point de collecte de minerais en RDC",
+          "cta": "Créer un compte coopérative"
+        },
+        "traders": {
+          "imageAlt": "Transport de minerais vers les marchés",
+          "cta": "Explorer le marché"
+        },
+        "exporters": {
+          "imageAlt": "Contrôle qualité des minerais avant export",
+          "cta": "Accéder à la place de marché"
+        },
+        "buyers": {
+          "imageAlt": "Échantillons de cuivre et malachite",
+          "cta": "Parcourir les annonces"
+        }
+      },
       "audiences": {
         "cooperatives": {
           "title": "Coopératives minières",
@@ -800,11 +839,17 @@
       "filters": "Filtres",
       "postOffer": "Publier une offre",
       "viewDetails": "Voir les détails",
-      "empty": "Aucune annonce publiée pour le moment",
-      "emptyDescription": "BIASHARA est une nouvelle plateforme qui accueille activement des vendeurs vérifiés. Soyez parmi les premiers à proposer vos minerais en toute confiance.",
+      "emptyEyebrow": "PLACE DE MARCHÉ",
+      "empty": "LE MARCHÉ SE CONSTRUIT MAINTENANT",
+      "emptyDescription": "BIASHARA est une plateforme nouvelle qui accueille activement des vendeurs vérifiés. Rejoignez-nous pour proposer ou découvrir des minerais en toute confiance.",
+      "emptyImageAlt": "Échantillon de cobalt brut",
+      "emptyCategoriesTitle": "Catégories de minerais",
+      "emptyCategoryTag": "Catégorie",
+      "emptyCategoryImageAlt": "Illustration — {mineral}",
+      "emptyBrowseAll": "Voir toutes les annonces",
       "emptyFiltered": "Aucune annonce pour ces critères",
       "emptyFilteredDescription": "Aucune annonce active correspond à votre recherche ou aux filtres sélectionnés. Modifiez vos critères ou parcourez toutes les annonces.",
-      "emptyCtaPost": "Publier la première offre",
+      "emptyCtaPost": "Publier une offre",
       "emptyCtaRegister": "Créer un compte",
       "emptyCtaKyc": "Compléter la vérification KYC",
       "quantityAvailable": "{quantity} {unit} disponibles",

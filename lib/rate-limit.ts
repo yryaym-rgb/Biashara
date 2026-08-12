@@ -17,6 +17,7 @@ export const AUTH_LOGIN_RATE_LIMIT = { limit: 10, windowMs: 15 * 60 * 1000 };
 export const AUTH_REGISTER_RATE_LIMIT = { limit: 5, windowMs: 60 * 60 * 1000 };
 export const AUTH_FORGOT_PASSWORD_RATE_LIMIT = { limit: 5, windowMs: 60 * 60 * 1000 };
 export const AUTH_RESEND_VERIFICATION_RATE_LIMIT = { limit: 5, windowMs: 60 * 60 * 1000 };
+export const WAITLIST_SIGNUP_RATE_LIMIT = { limit: 5, windowMs: 60 * 60 * 1000 };
 
 export const AUTH_RESPONSE_MIN_MS = 400;
 
