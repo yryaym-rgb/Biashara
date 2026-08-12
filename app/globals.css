@@ -351,7 +351,7 @@
     @keyframes ticker-live-dot-pulse {
       0%,
       100% {
-        opacity: 0.4;
+        opacity: 0.55;
       }
       50% {
         opacity: 1;
@@ -360,8 +360,8 @@
 
     .ticker-live-dot {
       background-color: var(--market-live);
-      box-shadow: 0 0 6px color-mix(in srgb, var(--market-live) 55%, transparent);
-      animation: ticker-live-dot-pulse 2.5s ease-in-out infinite;
+      box-shadow: 0 0 8px color-mix(in srgb, var(--market-live) 70%, transparent);
+      animation: ticker-live-dot-pulse 2s ease-in-out infinite;
     }
 
     @keyframes activity-feed-marquee {

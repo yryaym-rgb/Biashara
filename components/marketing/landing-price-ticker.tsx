@@ -17,6 +17,8 @@ const STALE_TIME_MS = 15 * 60 * 1000;
 const REFETCH_INTERVAL_MS = 15 * 60 * 1000;
 const TICKER_BAND_HEIGHT_PX = 44;
 const SCROLL_THRESHOLD_PX = 8;
+/** Reserved width for the fixed last-updated overlay (sm+). */
+const TICKER_TIMESTAMP_OVERLAY_MIN_PX = 252;
 
 /** One full marquee cycle — frozen at 40s (within the 35–45s spec). */
 export const TICKER_MARQUEE_CYCLE_SECONDS = 40;
@@ -277,6 +279,7 @@ function TickerItem({
       href={getTickerMineralHref(mineralId)}
       className={cn(
         'group relative inline-flex shrink-0 items-center gap-2 px-5 text-[13px] no-underline',
+        'min-w-[132px]',
         'text-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold',
       )}
       onMouseEnter={() => setIsOpen(true)}
@@ -305,7 +308,7 @@ function TickerItem({
 
       {isIndicative || price === null ? (
         <span
-          className="rounded-[4px] bg-[color:color-mix(in_srgb,var(--ink)_40%,transparent)] px-1 py-px text-[9px] font-semibold uppercase tracking-[0.04em] text-[color:color-mix(in_srgb,var(--white)_55%,transparent)]"
+          className="rounded-[4px] bg-[color:color-mix(in_srgb,var(--ink)_40%,transparent)] px-1 py-px text-[9px] font-medium uppercase tracking-[0.04em] text-[color:color-mix(in_srgb,var(--white)_50%,transparent)]"
           title={t('indicativeLegend')}
         >
           {t('indicativeShort')}
@@ -339,16 +342,18 @@ function TickerMarquee({
   locale: string;
 }) {
   return (
-    <div className="price-ticker-marquee group flex min-w-0 flex-1 overflow-hidden">
-      <div className="price-ticker-track flex shrink-0 items-center">
-        {items.map((item) => (
-          <TickerItem key={item.mineralId} {...item} locale={locale} />
-        ))}
-      </div>
-      <div className="price-ticker-track flex shrink-0 items-center" aria-hidden="true">
-        {items.map((item) => (
-          <TickerItem key={`dup-${item.mineralId}`} {...item} locale={locale} />
-        ))}
+    <div className="price-ticker-marquee group min-w-0 flex-1 overflow-hidden">
+      <div className="price-ticker-track flex w-max items-center">
+        <div className="flex shrink-0 items-center">
+          {items.map((item) => (
+            <TickerItem key={item.mineralId} {...item} locale={locale} />
+          ))}
+        </div>
+        <div className="flex shrink-0 items-center" aria-hidden="true">
+          {items.map((item) => (
+            <TickerItem key={`dup-${item.mineralId}`} {...item} locale={locale} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -419,52 +424,71 @@ export function LandingPriceTicker() {
         role="region"
         aria-label={t('ariaLabel')}
       >
-        <div
-          className="mx-auto flex max-w-content items-center gap-4 px-4 md:gap-5 md:px-6"
-          style={{ height: TICKER_BAND_HEIGHT_PX }}
-        >
-          <div className="flex shrink-0 items-center gap-2.5 pr-1">
-            <span
-              className={cn(
-                'h-2 w-2 rounded-full bg-market-live',
-                !prefersReducedMotion && 'ticker-live-dot',
-              )}
+        <div className="relative" style={{ height: TICKER_BAND_HEIGHT_PX }}>
+          <div
+            className="mx-auto flex h-full max-w-content items-center gap-4 px-4 md:gap-5 md:px-6 sm:pr-[var(--ticker-timestamp-overlay-min)]"
+            style={
+              {
+                '--ticker-timestamp-overlay-min': `${TICKER_TIMESTAMP_OVERLAY_MIN_PX}px`,
+              } as React.CSSProperties
+            }
+          >
+            <div className="flex shrink-0 items-center gap-2.5 pr-1">
+              <span
+                className={cn(
+                  'h-2 w-2 rounded-full bg-market-live',
+                  !prefersReducedMotion && 'ticker-live-dot',
+                )}
+                aria-hidden="true"
+              />
+              <span className="whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.14em] text-white">
+                {t('liveLabel')}
+              </span>
+            </div>
+
+            <div
+              className="hidden h-5 w-px shrink-0 bg-[color:color-mix(in_srgb,var(--white)_28%,transparent)] sm:block"
               aria-hidden="true"
             />
-            <span className="whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.14em] text-white">
-              {t('liveLabel')}
-            </span>
+
+            {isLoading ? (
+              <div className="flex min-w-0 flex-1 items-center justify-center">
+                <span className="skeleton-shimmer h-3 w-48 rounded" aria-hidden="true" />
+              </div>
+            ) : prefersReducedMotion ? (
+              <TickerStaticRow items={items} locale={locale} />
+            ) : (
+              <TickerMarquee items={items} locale={locale} />
+            )}
           </div>
 
           <div
-            className="hidden h-5 w-px shrink-0 bg-[color:color-mix(in_srgb,var(--white)_18%,transparent)] sm:block"
-            aria-hidden="true"
-          />
-
-          {isLoading ? (
-            <div className="flex min-w-0 flex-1 items-center justify-center">
-              <span className="skeleton-shimmer h-3 w-48 rounded" aria-hidden="true" />
+            className={cn(
+              'absolute right-0 top-0 z-10 hidden h-full min-w-[var(--ticker-timestamp-overlay-min)] items-center sm:flex',
+              'bg-[linear-gradient(to_right,color-mix(in_srgb,var(--brand-blue-dark)_0%,transparent),var(--brand-blue-dark)_40px,var(--brand-blue-dark))]',
+              'pl-8 pr-4 md:pr-6',
+            )}
+            style={
+              {
+                '--ticker-timestamp-overlay-min': `${TICKER_TIMESTAMP_OVERLAY_MIN_PX}px`,
+              } as React.CSSProperties
+            }
+          >
+            <div className="flex flex-col items-end gap-0.5">
+              {lastUpdatedLabel ? (
+                <p className="whitespace-nowrap text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_45%,transparent)]">
+                  {t('lastUpdated', { time: lastUpdatedLabel })}
+                </p>
+              ) : null}
+              {hasIndicativeItems ? (
+                <p
+                  className="whitespace-nowrap text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_40%,transparent)]"
+                  title={t('indicativeLegend')}
+                >
+                  {t('indicativeLegend')}
+                </p>
+              ) : null}
             </div>
-          ) : prefersReducedMotion ? (
-            <TickerStaticRow items={items} locale={locale} />
-          ) : (
-            <TickerMarquee items={items} locale={locale} />
-          )}
-
-          <div className="hidden shrink-0 flex-col items-end gap-0.5 sm:flex">
-            {lastUpdatedLabel ? (
-              <p className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_45%,transparent)]">
-                {t('lastUpdated', { time: lastUpdatedLabel })}
-              </p>
-            ) : null}
-            {hasIndicativeItems ? (
-              <p
-                className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_40%,transparent)]"
-                title={t('indicativeLegend')}
-              >
-                {t('indicativeLegend')}
-              </p>
-            ) : null}
           </div>
         </div>
       </div>
