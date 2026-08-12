@@ -45,12 +45,20 @@ const webServer =
         url: 'http://localhost:3000/api/health',
         reuseExistingServer: !process.env.CI,
         timeout: 120_000,
+        env: {
+          ...process.env,
+          ALLOW_NAVBAR_FIXTURE: '1',
+        },
       }
     : {
         command: webServerCommand,
         url: 'http://localhost:3000/api/health',
         reuseExistingServer: !process.env.CI,
         timeout: 120_000,
+        env: {
+          ...process.env,
+          ALLOW_NAVBAR_FIXTURE: '1',
+        },
       };
 
 export default defineConfig({
@@ -73,7 +81,7 @@ export default defineConfig({
     },
     {
       name: 'guest',
-      testMatch: /(marketing|auth-pages|console-guard)\.spec\.ts/,
+      testMatch: /(marketing|auth-pages|console-guard|navbar-overlap)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
     {
