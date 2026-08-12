@@ -16,7 +16,12 @@
   --border: #e7ecf2;
   --success: #1e9e5a;
   --danger: #d64545;
+  /* Semantic live/growth — market-live indicator & positive price deltas only */
+  --market-live: #22c55e;
   --white: #ffffff;
+
+  /* Ticker marquee — one full cycle (35–45s range, frozen at 40s) */
+  --ticker-marquee-duration: 40s;
 
   /* Gradients */
   --gradient-gold: linear-gradient(180deg, #f6c453, #e9a319);
@@ -335,7 +340,7 @@
     }
 
     .price-ticker-track {
-      animation: price-ticker-marquee 45s linear infinite;
+      animation: price-ticker-marquee var(--ticker-marquee-duration) linear infinite;
     }
 
     .price-ticker-marquee:hover .price-ticker-track,
@@ -354,6 +359,8 @@
     }
 
     .ticker-live-dot {
+      background-color: var(--market-live);
+      box-shadow: 0 0 6px color-mix(in srgb, var(--market-live) 55%, transparent);
       animation: ticker-live-dot-pulse 2.5s ease-in-out infinite;
     }
 
