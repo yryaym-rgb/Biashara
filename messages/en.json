@@ -1861,6 +1861,7 @@
   },
   "activityFeed": {
     "ariaLabel": "Recent platform activity",
+    "liveHeading": "LIVE ACTIVITY",
     "empty": "Platform activity will appear here.",
     "error": "Unable to load activity at this time.",
     "listing_published": "New listing: {mineral}, {province}",
