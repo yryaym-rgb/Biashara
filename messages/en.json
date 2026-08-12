@@ -192,6 +192,7 @@
       "ctaVideo": "Watch the video",
       "heroImageAlt": "Raw mineral samples — cobalt, copper, and gold",
       "heroImagePlaceholder": "Hero image to be added",
+      "heroGalleryDotLabel": "Go to image {index} of {total}",
       "heroSearch": {
         "placeholder": "Search for a mineral, region…",
         "submit": "Search"

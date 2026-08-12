@@ -192,6 +192,7 @@
       "ctaVideo": "Voir la vidéo",
       "heroImageAlt": "Échantillons de minerais bruts — cobalt, cuivre et or",
       "heroImagePlaceholder": "Image héro à ajouter",
+      "heroGalleryDotLabel": "Aller à l'image {index} sur {total}",
       "heroSearch": {
         "placeholder": "Rechercher un minerai, une région…",
         "submit": "Rechercher"
