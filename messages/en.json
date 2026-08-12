@@ -198,7 +198,8 @@
       "heroGalleryDotLabel": "Go to image {index} of {total}",
       "heroSearch": {
         "placeholder": "Search for a mineral, region…",
-        "submit": "Search"
+        "submit": "Search →",
+        "popularSearches": "Popular searches"
       },
       "ticker": {
         "ariaLabel": "Live mineral quotes",
@@ -219,7 +220,7 @@
         },
         "securePayments": {
           "title": "Secure payments",
-          "description": "Protected transactions aligned with international standards."
+          "description": "KYC-verified buyer and seller accounts, with lot traceability declared on listings."
         },
         "smartLogistics": {
           "title": "Smart logistics",
@@ -271,7 +272,7 @@
       "prices": {
         "eyebrow": "REAL-TIME MARKET DATA",
         "title": "Built for the future of mineral trade",
-        "description": "Every price on BIASHARA comes from real market data, refreshed continuously — no delays, no guesswork.",
+        "description": "Every price on BIASHARA comes from real market data, refreshed on a regular basis.",
         "ctaSolutions": "Discover our solutions",
         "liveCardTitle": "Live quotes",
         "trendCardTitle": "Market trend",

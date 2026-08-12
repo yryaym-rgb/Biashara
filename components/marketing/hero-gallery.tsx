@@ -200,30 +200,39 @@ export function HeroGallery({ slides, placeholderLabel }: HeroGalleryProps) {
           aria-hidden="true"
         />
 
-        <p className="absolute bottom-12 left-0 right-0 z-[3] px-4 text-center text-[13px] text-white">
-          {activeSlide.caption}
-        </p>
-
         {slideCount > 1 ? (
-          <div className="absolute bottom-4 left-0 right-0 z-[3] flex justify-center gap-2">
-            {slides.map((slide, index) => (
-              <button
-                key={slide.imagePath}
-                type="button"
-                onClick={() => goToSlide(index)}
-                aria-label={t('heroGalleryDotLabel', {
-                  index: index + 1,
-                  total: slideCount,
-                })}
-                aria-current={index === activeIndex ? 'true' : undefined}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring-color)]',
-                  index === activeIndex ? 'bg-brand-gold' : 'bg-white/50',
-                )}
-              />
-            ))}
+          <div className="absolute bottom-4 left-0 right-0 z-[3] flex flex-col items-center gap-2 px-4">
+            <p
+              className="text-center text-[13px] font-semibold tabular-nums text-white"
+              aria-live="polite"
+            >
+              {String(activeIndex + 1).padStart(2, '0')} / {String(slideCount).padStart(2, '0')} ·{' '}
+              {activeSlide.caption}
+            </p>
+            <div className="flex justify-center gap-2">
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.imagePath}
+                  type="button"
+                  onClick={() => goToSlide(index)}
+                  aria-label={t('heroGalleryDotLabel', {
+                    index: index + 1,
+                    total: slideCount,
+                  })}
+                  aria-current={index === activeIndex ? 'true' : undefined}
+                  className={cn(
+                    'h-2 w-2 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus-ring-color)]',
+                    index === activeIndex ? 'bg-brand-gold' : 'bg-white/50',
+                  )}
+                />
+              ))}
+            </div>
           </div>
-        ) : null}
+        ) : (
+          <p className="absolute bottom-4 left-0 right-0 z-[3] px-4 text-center text-[13px] text-white">
+            {activeSlide.caption}
+          </p>
+        )}
       </div>
     </div>
   );

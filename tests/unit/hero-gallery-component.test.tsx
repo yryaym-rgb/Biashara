@@ -62,11 +62,12 @@ describe('HeroGallery', () => {
     expect(screen.queryByAltText('/images/gallery/cobalt-closeup.jpg')).not.toBeInTheDocument();
   });
 
-  it('shows pagination dots for multiple slides', () => {
+  it('shows pagination dots and progress indicator for multiple slides', () => {
     render(<HeroGallery slides={slides} placeholderLabel="Hero image to be added" />);
 
     expect(screen.getByRole('button', { name: 'Go to image 1 of 2' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Go to image 2 of 2' })).toBeInTheDocument();
+    expect(screen.getByText('01 / 02 · Raw minerals from Katanga')).toBeInTheDocument();
   });
 
   it('hides pagination dots for a single slide', () => {

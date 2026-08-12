@@ -198,7 +198,8 @@
       "heroGalleryDotLabel": "Aller à l'image {index} sur {total}",
       "heroSearch": {
         "placeholder": "Rechercher un minerai, une région…",
-        "submit": "Rechercher"
+        "submit": "Rechercher →",
+        "popularSearches": "Recherches populaires"
       },
       "ticker": {
         "ariaLabel": "Cotations minérales en direct",
@@ -219,7 +220,7 @@
         },
         "securePayments": {
           "title": "Paiements sécurisés",
-          "description": "Transactions protégées et conformes aux normes internationales."
+          "description": "Comptes acheteurs et vendeurs vérifiés par KYC, avec traçabilité des lots déclarée sur les annonces."
         },
         "smartLogistics": {
           "title": "Logistique intelligente",
@@ -271,7 +272,7 @@
       "prices": {
         "eyebrow": "DONNÉES DE MARCHÉ EN TEMPS RÉEL",
         "title": "Conçu pour l'avenir du commerce des minerais",
-        "description": "Chaque cotation sur BIASHARA provient de données de marché réelles, actualisées en continu — sans délai ni approximation.",
+        "description": "Chaque cotation sur BIASHARA provient de données de marché réelles, actualisées régulièrement.",
         "ctaSolutions": "Découvrir nos solutions",
         "liveCardTitle": "Cotations en direct",
         "trendCardTitle": "Tendance du marché",
