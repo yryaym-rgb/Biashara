@@ -4,7 +4,8 @@ import { Link } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Container } from '@/components/ui/container';
-import { HeroImage } from '@/components/marketing/hero-image';
+import { HeroGallery } from '@/components/marketing/hero-gallery';
+import { getAvailableHeroGallerySlides } from '@/lib/marketing/hero-gallery-slides';
 import { LandingActivitySection } from '@/components/marketing/landing-activity-section';
 import { LandingCredibilitySection } from '@/components/marketing/landing-credibility-section';
 import { LandingCtaBand } from '@/components/marketing/landing-cta-band';
@@ -68,6 +69,7 @@ export default async function LandingPage({
   setRequestLocale(locale);
 
   const t = await getTranslations('marketing.landing');
+  const heroGallerySlides = getAvailableHeroGallerySlides(locale);
 
   return (
     <>
@@ -114,8 +116,8 @@ export default async function LandingPage({
               <HeroQuickSearch />
             </div>
 
-            <HeroImage
-              imageAlt={t('heroImageAlt')}
+            <HeroGallery
+              slides={heroGallerySlides}
               placeholderLabel={t('heroImagePlaceholder')}
             />
           </div>
