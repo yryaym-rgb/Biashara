@@ -256,6 +256,10 @@
       animation: hero-ken-burns 19s ease-in-out infinite;
     }
 
+    .landing-hero-image {
+      will-change: transform;
+    }
+
     .hero-live-dot {
       animation: hero-live-pulse 2s ease-in-out infinite;
     }
@@ -367,6 +371,10 @@
 
     .scroll-reveal-visible {
       opacity: 1;
+    }
+
+    .landing-hero-image {
+      transform: none !important;
     }
 
     .price-pulse {
