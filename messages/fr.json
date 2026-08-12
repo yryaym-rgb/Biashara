@@ -209,26 +209,85 @@
         "indicativeLegend": "Prix indicatif — négocié",
         "viewQuote": "Voir la cotation →"
       },
-      "features": {
-        "priceTransparency": {
-          "title": "Transparence des prix",
-          "description": "Cotations en temps réel et historique des prix pour négocier en toute clarté."
-        },
-        "blockchainTraceability": {
-          "title": "Traçabilité des lots",
-          "description": "Les coopératives enregistrent chaque lot et ses étapes de garde — déclarations manuelles, visibles sur les annonces liées."
-        },
-        "securePayments": {
-          "title": "Paiements sécurisés",
-          "description": "Comptes acheteurs et vendeurs vérifiés par KYC, avec traçabilité des lots déclarée sur les annonces."
-        },
-        "smartLogistics": {
-          "title": "Logistique intelligente",
-          "description": "Suivi des expéditions et optimisation des corridors logistiques."
-        },
-        "aiMarketIntelligence": {
-          "title": "Intelligence de marché IA",
-          "description": "Analyses prédictives pour anticiper les tendances du marché minier."
+      "infrastructure": {
+        "eyebrow": "INFRASTRUCTURE",
+        "title": "Une infrastructure. Cinq piliers.",
+        "pillars": {
+          "prices": {
+            "number": "01",
+            "tag": "PRIX",
+            "title": "Cotations transparentes.",
+            "description": "Cotations publiques actualisées et historique consultable sur /prices — données réelles, pas des estimations marketing."
+          },
+          "traceability": {
+            "number": "02",
+            "tag": "TRAÇABILITÉ",
+            "title": "Chaque lot raconte son parcours.",
+            "description": "Les coopératives créent un code de lot et enregistrent manuellement chaque étape — visible sur l'annonce liée.",
+            "selfReportedLabel": "Déclarations auto-déclarées par la coopérative — non vérifiées par GPS ni par un tiers.",
+            "chain": {
+              "ariaLabel": "Parcours de traçabilité du lot",
+              "mine": "Mine",
+              "cooperative": "Coopérative",
+              "control": "Contrôle",
+              "transport": "Transport",
+              "buyer": "Acheteur"
+            }
+          },
+          "trust": {
+            "number": "03",
+            "tag": "CONFIANCE",
+            "title": "Acheteurs et vendeurs vérifiés.",
+            "description": "Chaque compte passe par une vérification d'identité avant de publier ou négocier sur la plateforme.",
+            "checks": {
+              "kyc": "KYC ✓",
+              "identity": "Identité vérifiée ✓"
+            }
+          },
+          "logistics": {
+            "number": "04",
+            "tag": "LOGISTIQUE",
+            "title": "Suivez le mouvement du minerai.",
+            "description": "Le vendeur déclare le statut d'expédition et ajoute des points de contrôle manuels sur chaque commande.",
+            "caption": "Illustration du suivi d'expédition déclaré par le vendeur — pas d'optimisation de corridor automatisée.",
+            "statusAriaLabel": "Étapes de suivi d'expédition déclarées par le vendeur",
+            "statuses": {
+              "pending": "En attente",
+              "picked_up": "Collecté",
+              "in_transit": "En transit",
+              "customs": "Douanes",
+              "delivered": "Livré"
+            }
+          },
+          "marketData": {
+            "number": "05",
+            "tag": "DONNÉES DE MARCHÉ",
+            "title": "Des données de marché, pas des suppositions.",
+            "description": "Cotations en direct, tendances historiques et transparence sur l'origine des données — la même infrastructure que /prices.",
+            "liveSnapshotLabel": "Cotations en direct",
+            "loadingPrices": "Chargement des cotations…",
+            "indicative": "Indicatif",
+            "viewPricesCta": "Voir toutes les cotations →",
+            "highlights": {
+              "livePricing": {
+                "title": "Cotations en direct",
+                "description": "Prix spot publics actualisés régulièrement depuis des sources de marché."
+              },
+              "historicalTrends": {
+                "title": "Tendances historiques",
+                "description": "Graphiques d'historique consultables pour chaque minerai coté."
+              },
+              "transparentSourcing": {
+                "title": "Sourcing transparent",
+                "description": "Source et fraîcheur des données affichées sur chaque cotation."
+              }
+            },
+            "aiSoon": {
+              "badge": "Bientôt disponible",
+              "title": "Analyses prédictives",
+              "description": "Des outils d'analyse avancés sont en préparation — sans promesses de précision ni pourcentages fictifs."
+            }
+          }
         }
       },
       "howItWorks": {
