@@ -28,7 +28,6 @@
     "home": "Home",
     "marketplace": "Marketplace",
     "prices": "Prices",
-    "directory": "Directory",
     "calendar": "Calendar",
     "solutions": "Solutions",
     "resources": "Resources",
@@ -184,13 +183,12 @@
   "marketing": {
     "landing": {
       "title": "BIASHARA — Trusted mineral trading",
-      "eyebrow": "MARKET INTELLIGENCE — AFRICA",
-      "heroLine1": "The commodities terminal.",
-      "heroLine2": "Live data. Real markets.",
-      "heroLine3": "African authority.",
-      "subtitle": "BIASHARA centralizes quotes, listings, and mineral transaction flows — the data density and rigor of a professional terminal, built for Africa.",
+      "eyebrow": "THE FUTURE OF MINERAL TRADE",
+      "heroLine1": "Trade boldly.",
+      "heroLine2": "Exchange with confidence.",
+      "heroLine3": "Grow together.",
+      "subtitle": "BIASHARA is the all-in-one platform for mineral trading, traceability, and secure transactions from the DRC to the world.",
       "ctaMarketplace": "Explore the marketplace →",
-      "ctaPrices": "View quotes →",
       "ctaVideo": "Watch the video",
       "heroImageAlt": "Raw mineral samples — cobalt, copper, and gold",
       "heroImagePlaceholder": "Hero image to be added",
@@ -200,31 +198,6 @@
       },
       "ticker": {
         "ariaLabel": "Live mineral quotes"
-      },
-      "heroLivePrices": {
-        "label": "Live market",
-        "ariaLabel": "Live mineral quotes in the hero",
-        "viewAll": "All quotes →",
-        "error": "Quotes temporarily unavailable."
-      },
-      "growth": {
-        "eyebrow": "OUR GROWTH",
-        "title": "Real numbers, today",
-        "subtitle": "No projections or invented statistics — only the current state of the BIASHARA platform.",
-        "stats": {
-          "verifiedUsers": {
-            "label": "Verified actors"
-          },
-          "activeListings": {
-            "label": "Active listings"
-          },
-          "provincesRepresented": {
-            "label": "Provinces represented"
-          },
-          "mineralsTraded": {
-            "label": "Minerals traded"
-          }
-        }
       },
       "features": {
         "priceTransparency": {

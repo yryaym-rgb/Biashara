@@ -3,7 +3,7 @@ import { visitAndAssertClean } from './helpers/console-monitor';
 
 test.describe('marketing smoke', () => {
   test('home', async ({ page }) => {
-    await visitAndAssertClean(page, '/', 'Le terminal des matières premières.');
+    await visitAndAssertClean(page, '/', 'Commercez avec audace.');
   });
 
   test('marketplace', async ({ page }) => {
