@@ -18,6 +18,9 @@ const REFETCH_INTERVAL_MS = 15 * 60 * 1000;
 const TICKER_BAND_HEIGHT_PX = 44;
 const SCROLL_THRESHOLD_PX = 8;
 
+/** One full marquee cycle — frozen at 40s (within the 35–45s spec). */
+export const TICKER_MARQUEE_CYCLE_SECONDS = 40;
+
 type TickerScrollState = {
   tickerVisible: boolean;
   prefersReducedMotion: boolean;
@@ -112,6 +115,16 @@ export function shouldShowChange(change: number | null | undefined): boolean {
 /** Exported for unit tests — sparkline needs at least two real history points. */
 export function shouldShowSparkline(historyLength: number): boolean {
   return historyLength >= 2;
+}
+
+/** Exported for unit tests — positive deltas use market-live, negative use danger. */
+export function getDeltaColorClass(change: number): string {
+  return change >= 0 ? 'text-market-live' : 'text-danger';
+}
+
+/** Exported for unit tests — deep-link href for each commodity block. */
+export function getTickerMineralHref(mineralId: MineralId): `/prices?mineral=${MineralId}` {
+  return `/prices?mineral=${mineralId}`;
 }
 
 /** Exported for unit tests — formats HH:MM in Africa/Kinshasa regardless of viewer timezone. */
@@ -218,7 +231,7 @@ function TickerHoverCard({
   return (
     <div
       className={cn(
-        'pointer-events-auto absolute bottom-full left-1/2 z-[70] mb-2 hidden w-56 -translate-x-1/2 md:block',
+        'pointer-events-none absolute bottom-full left-1/2 z-[70] mb-2 hidden w-56 -translate-x-1/2 md:block',
         'rounded-card border border-border bg-bg p-4 card-shadow',
       )}
     >
@@ -230,7 +243,7 @@ function TickerHoverCard({
         <p
           className={cn(
             'mt-1 text-[13px] font-semibold tabular-nums',
-            (change as number) >= 0 ? 'text-success' : 'text-danger',
+            getDeltaColorClass(change as number),
           )}
         >
           {formatChangeLabel(change as number)}{' '}
@@ -238,12 +251,9 @@ function TickerHoverCard({
         </p>
       ) : null}
       <TickerSparkline mineralId={mineralId} enabled />
-      <Link
-        href="/prices"
-        className="mt-3 inline-block text-[13px] font-semibold text-brand-blue hover:text-brand-blue-dark motion-safe:transition-colors motion-safe:duration-150"
-      >
+      <span className="mt-3 inline-block text-[13px] font-semibold text-brand-blue">
         {t('viewQuote')}
-      </Link>
+      </span>
     </div>
   );
 }
@@ -263,12 +273,12 @@ function TickerItem({
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <span
+    <Link
+      href={getTickerMineralHref(mineralId)}
       className={cn(
-        'group relative inline-flex shrink-0 items-center gap-2 px-5 text-[13px]',
-        'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold',
+        'group relative inline-flex shrink-0 items-center gap-2 px-5 text-[13px] no-underline',
+        'text-white hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold',
       )}
-      tabIndex={0}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
       onFocus={() => setIsOpen(true)}
@@ -289,13 +299,13 @@ function TickerItem({
         className={cn('h-2 w-2 shrink-0 rounded-full', MINERAL_DOT_CLASS[mineralId])}
         aria-hidden="true"
       />
-      <span className="font-semibold uppercase tracking-[0.04em] text-white">
+      <span className="font-semibold uppercase tracking-[0.04em]">
         {tMinerals(mineralId)}
       </span>
 
       {isIndicative || price === null ? (
         <span
-          className="rounded-[6px] bg-[color:color-mix(in_srgb,var(--white)_12%,transparent)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] text-[color:color-mix(in_srgb,var(--white)_65%,transparent)]"
+          className="rounded-[4px] bg-[color:color-mix(in_srgb,var(--ink)_40%,transparent)] px-1 py-px text-[9px] font-semibold uppercase tracking-[0.04em] text-[color:color-mix(in_srgb,var(--white)_55%,transparent)]"
           title={t('indicativeLegend')}
         >
           {t('indicativeShort')}
@@ -309,7 +319,7 @@ function TickerItem({
             <span
               className={cn(
                 'text-[11px] font-medium tabular-nums',
-                (change as number) >= 0 ? 'text-success' : 'text-danger',
+                getDeltaColorClass(change as number),
               )}
             >
               {formatChangeLabel(change as number)} {(change as number) >= 0 ? '▲' : '▼'}
@@ -317,7 +327,7 @@ function TickerItem({
           ) : null}
         </>
       )}
-    </span>
+    </Link>
   );
 }
 
@@ -410,21 +420,26 @@ export function LandingPriceTicker() {
         aria-label={t('ariaLabel')}
       >
         <div
-          className="mx-auto flex max-w-content items-center gap-3 px-4 md:gap-4 md:px-6"
+          className="mx-auto flex max-w-content items-center gap-4 px-4 md:gap-5 md:px-6"
           style={{ height: TICKER_BAND_HEIGHT_PX }}
         >
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2.5 pr-1">
             <span
               className={cn(
-                'h-1.5 w-1.5 rounded-full bg-brand-gold',
+                'h-2 w-2 rounded-full bg-market-live',
                 !prefersReducedMotion && 'ticker-live-dot',
               )}
               aria-hidden="true"
             />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:color-mix(in_srgb,var(--white)_75%,transparent)]">
+            <span className="whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.14em] text-white">
               {t('liveLabel')}
             </span>
           </div>
+
+          <div
+            className="hidden h-5 w-px shrink-0 bg-[color:color-mix(in_srgb,var(--white)_18%,transparent)] sm:block"
+            aria-hidden="true"
+          />
 
           {isLoading ? (
             <div className="flex min-w-0 flex-1 items-center justify-center">
@@ -438,13 +453,13 @@ export function LandingPriceTicker() {
 
           <div className="hidden shrink-0 flex-col items-end gap-0.5 sm:flex">
             {lastUpdatedLabel ? (
-              <p className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_50%,transparent)]">
+              <p className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_45%,transparent)]">
                 {t('lastUpdated', { time: lastUpdatedLabel })}
               </p>
             ) : null}
             {hasIndicativeItems ? (
               <p
-                className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_45%,transparent)]"
+                className="text-[10px] leading-none text-[color:color-mix(in_srgb,var(--white)_40%,transparent)]"
                 title={t('indicativeLegend')}
               >
                 {t('indicativeLegend')}

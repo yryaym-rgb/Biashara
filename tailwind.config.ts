@@ -22,6 +22,7 @@ const config: Config = {
         border: 'var(--border)',
         success: 'var(--success)',
         danger: 'var(--danger)',
+        'market-live': 'var(--market-live)',
       },
       fontFamily: {
         sans: ['var(--font-plus-jakarta)', 'system-ui', 'sans-serif'],

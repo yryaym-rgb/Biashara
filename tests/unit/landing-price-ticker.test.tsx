@@ -26,6 +26,7 @@ const { mockPricesResponse, fetchPricesClientMock } = vi.hoisted(() => ({
         source: 'metals.dev',
         fetchedAt: '2026-08-12T10:30:00.000Z',
         isIndicative: false,
+        change: -0.8,
       },
       {
         mineral: 'coltan',
@@ -57,9 +58,12 @@ const { mockPricesResponse, fetchPricesClientMock } = vi.hoisted(() => ({
 import {
   LandingPriceTicker,
   formatKinshasaTime,
+  getDeltaColorClass,
+  getTickerMineralHref,
   isIndicativeTickerMineral,
   shouldShowChange,
   shouldShowSparkline,
+  TICKER_MARQUEE_CYCLE_SECONDS,
 } from '@/components/marketing/landing-price-ticker';
 
 vi.mock('next-intl', () => ({
@@ -163,6 +167,23 @@ describe('landing price ticker helpers', () => {
     // 22:45 UTC = 23:45 in Kinshasa
     expect(formatKinshasaTime('2026-08-12T22:45:00.000Z', 'en')).toBe('23:45');
   });
+
+  it('colors positive deltas with market-live and negative with danger', () => {
+    expect(getDeltaColorClass(1.2)).toBe('text-market-live');
+    expect(getDeltaColorClass(0)).toBe('text-market-live');
+    expect(getDeltaColorClass(-0.8)).toBe('text-danger');
+  });
+
+  it('builds deep-link hrefs to the prices page per mineral', () => {
+    expect(getTickerMineralHref('gold')).toBe('/prices?mineral=gold');
+    expect(getTickerMineralHref('coltan')).toBe('/prices?mineral=coltan');
+  });
+
+  it('freezes marquee cycle at 40 seconds', () => {
+    expect(TICKER_MARQUEE_CYCLE_SECONDS).toBeGreaterThanOrEqual(35);
+    expect(TICKER_MARQUEE_CYCLE_SECONDS).toBeLessThanOrEqual(45);
+    expect(TICKER_MARQUEE_CYCLE_SECONDS).toBe(40);
+  });
 });
 
 describe('LandingPriceTicker', () => {
@@ -192,11 +213,14 @@ describe('LandingPriceTicker', () => {
       expect(screen.getByText(/\+1\.2%/)).toBeInTheDocument();
     });
 
-    const goldLabel = screen.getByText('Or');
-    expect(goldLabel.parentElement).toHaveTextContent('▲');
+    const goldDelta = screen.getByText(/\+1\.2%/);
+    expect(goldDelta).toHaveClass('text-market-live');
 
-    const copperLabel = screen.getByText('Cuivre');
-    expect(copperLabel.parentElement).not.toHaveTextContent('%');
+    const copperDelta = screen.getByText(/-0\.8%/);
+    expect(copperDelta).toHaveClass('text-danger');
+
+    const coltanLabel = screen.getByText('Coltan');
+    expect(coltanLabel.closest('a')).not.toHaveTextContent('%');
   });
 
   it('never renders fabricated prices or deltas for coltan and diamond', async () => {
@@ -211,12 +235,38 @@ describe('LandingPriceTicker', () => {
 
     const coltanLabel = screen.getByText('Coltan');
     const diamondLabel = screen.getByText('Diamant');
-    expect(coltanLabel.parentElement).toHaveTextContent('Indicatif');
-    expect(diamondLabel.parentElement).toHaveTextContent('Indicatif');
-    expect(coltanLabel.parentElement).not.toHaveTextContent('▲');
-    expect(coltanLabel.parentElement).not.toHaveTextContent('▼');
-    expect(diamondLabel.parentElement).not.toHaveTextContent('▲');
-    expect(diamondLabel.parentElement).not.toHaveTextContent('▼');
+    expect(coltanLabel.closest('a')).toHaveTextContent('Indicatif');
+    expect(diamondLabel.closest('a')).toHaveTextContent('Indicatif');
+    expect(coltanLabel.closest('a')).not.toHaveTextContent('▲');
+    expect(coltanLabel.closest('a')).not.toHaveTextContent('▼');
+    expect(diamondLabel.closest('a')).not.toHaveTextContent('▲');
+    expect(diamondLabel.closest('a')).not.toHaveTextContent('▼');
+  });
+
+  it('links every commodity block to /prices with mineral query param', async () => {
+    renderTicker();
+
+    expect(await screen.findByText('MARCHÉ EN DIRECT')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByRole('link', { name: /Or/i })).toHaveAttribute(
+        'href',
+        '/prices?mineral=gold',
+      );
+    });
+
+    expect(screen.getByRole('link', { name: /Cuivre/i })).toHaveAttribute(
+      'href',
+      '/prices?mineral=copper',
+    );
+    expect(screen.getByRole('link', { name: /Coltan/i })).toHaveAttribute(
+      'href',
+      '/prices?mineral=coltan',
+    );
+    expect(screen.getByRole('link', { name: /Diamant/i })).toHaveAttribute(
+      'href',
+      '/prices?mineral=diamond',
+    );
   });
 
   it('shows Kinshasa time in the last-updated label', async () => {

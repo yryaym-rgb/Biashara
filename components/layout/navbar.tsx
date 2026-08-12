@@ -60,10 +60,21 @@ export function Navbar({
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [langOpen, setLangOpen] = React.useState(false);
   const [logoutDialogOpen, setLogoutDialogOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
   const langMenuRef = React.useRef<HTMLDivElement>(null);
 
   const effectiveStickyClass =
     topBandHeight > 0 && tickerVisible ? stickyOffsetClass : 'top-0';
+
+  React.useEffect(() => {
+    function onScroll() {
+      setIsScrolled(window.scrollY > 0);
+    }
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   React.useEffect(() => {
     setMobileOpen(false);
@@ -99,9 +110,10 @@ export function Navbar({
   return (
     <header
       className={cn(
-        'sticky z-50 border-b',
-        'bg-[color:color-mix(in_srgb,var(--bg)_92%,transparent)] backdrop-blur-[12px]',
-        'border-[color:color-mix(in_srgb,var(--border)_70%,transparent)]',
+        'sticky z-50 border-b motion-safe:transition-[background-color,box-shadow,border-color] motion-safe:duration-200',
+        isScrolled
+          ? 'border-[color:color-mix(in_srgb,var(--border)_85%,transparent)] bg-[color:color-mix(in_srgb,var(--bg)_97%,transparent)] shadow-[0_2px_12px_rgba(14,42,71,0.08)] backdrop-blur-[16px]'
+          : 'border-[color:color-mix(in_srgb,var(--border)_70%,transparent)] bg-[color:color-mix(in_srgb,var(--bg)_92%,transparent)] backdrop-blur-[12px]',
         effectiveStickyClass,
       )}
     >
@@ -122,7 +134,7 @@ export function Navbar({
           </Link>
 
           <nav
-            className="hidden items-center gap-0.5 md:flex"
+            className="hidden items-center gap-0 md:flex"
             aria-label={t('mainNavigation')}
           >
             {NAV_ITEMS.map((item) => {
@@ -132,21 +144,23 @@ export function Navbar({
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'relative inline-flex items-center gap-1 whitespace-nowrap rounded-button px-2.5 py-2',
+                    'group relative inline-flex items-center gap-1 whitespace-nowrap px-2 py-2',
                     'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
-                    active ? 'text-brand-blue' : 'text-body hover:bg-bg-tint hover:text-ink',
+                    active ? 'text-ink' : 'text-body hover:text-ink',
                   )}
                 >
                   {t(item.labelKey)}
                   {item.hasDropdown ? (
                     <ChevronDown className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
                   ) : null}
-                  {active ? (
-                    <span
-                      className="absolute bottom-0 left-1/2 h-[2px] w-5 -translate-x-1/2 bg-brand-gold"
-                      aria-hidden="true"
-                    />
-                  ) : null}
+                  <span
+                    className={cn(
+                      'absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 bg-brand-gold',
+                      'motion-safe:transition-all motion-safe:duration-150',
+                      active ? 'w-5 opacity-100' : 'w-0 opacity-0 group-hover:w-5 group-hover:opacity-100',
+                    )}
+                    aria-hidden="true"
+                  />
                 </Link>
               );
             })}
@@ -154,9 +168,11 @@ export function Navbar({
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
-          <span className="hidden items-center gap-1.5 whitespace-nowrap rounded-[6px] bg-bg-tint px-2.5 py-1 text-[11px] font-semibold text-muted lg:inline-flex">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success" aria-hidden="true" />
-            {t('drcMarketActive')}
+          <span className="hidden items-center gap-1.5 whitespace-nowrap rounded-[6px] bg-[color:color-mix(in_srgb,var(--market-live)_12%,transparent)] px-2 py-1 lg:inline-flex">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-market-live" aria-hidden="true" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.04em] text-ink">
+              {t('drcMarketActive')}
+            </span>
           </span>
 
           <div className="hidden h-6 w-px bg-border lg:block" aria-hidden="true" />
@@ -202,13 +218,19 @@ export function Navbar({
             </div>
 
             {isAuthenticated ? (
-              <div className="inline-flex items-center rounded-button hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150">
+              <div
+                className={cn(
+                  'inline-flex items-center gap-0.5 rounded-button border border-border bg-bg px-1.5 py-0.5',
+                  'hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
+                  '[&_button]:h-8 [&_button]:w-8 [&_button]:bg-transparent [&_button]:hover:bg-transparent',
+                )}
+              >
                 <UserAvatarMenu
                   companyName={companyName}
                   email={email}
                   onLogoutRequest={() => setLogoutDialogOpen(true)}
                 />
-                <ChevronDown className="hidden h-3.5 w-3.5 pr-1 text-muted md:block" aria-hidden="true" />
+                <ChevronDown className="hidden h-3.5 w-3.5 pr-0.5 text-muted md:block" aria-hidden="true" />
               </div>
             ) : (
               <>
@@ -267,7 +289,7 @@ export function Navbar({
                     className={cn(
                       'flex items-center justify-between rounded-button px-4 py-3',
                       'text-[15px] font-semibold text-body',
-                      active ? 'bg-bg-tint text-brand-blue' : 'hover:bg-bg-tint',
+                      active ? 'bg-bg-tint text-ink' : 'hover:bg-bg-tint',
                     )}
                   >
                     <span>{t(item.labelKey)}</span>

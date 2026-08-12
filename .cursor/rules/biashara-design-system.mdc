@@ -19,11 +19,18 @@ on colors, fonts, spacing, or layout. If something is not specified, ask — nev
 --bg:              #FFFFFF;  /* page background */
 --bg-tint:         #F7F9FC;  /* alternating sections, table headers, dashboard bg */
 --border:          #E7ECF2;  /* all card/input borders, dividers */
---success:         #1E9E5A;  --danger: #D64545;  /* price up/down, status only */
+--success:         #1E9E5A;  --danger: #D64545;  /* legacy status; negative deltas use --danger */
+--market-live:     #22C55E;  /* live/active/growth — market-live dot & positive price deltas ONLY */
+
+## Finalized 3-color semantic system
+- **Navy** (`--brand-blue`, `--brand-blue-dark`, `--ink`) = trust / brand
+- **Green** (`--market-live`) = live / growth — ONLY for market-live indicator and real positive price deltas
+- **Gold** (`--brand-gold`) = value / action — CTAs, prices, accents
 
 FORBIDDEN: purple, violet, teal, pink, black backgrounds, dark mode, neon,
 any gradient except: (a) gold CTA gradient linear-gradient(180deg,#F6C453,#E9A319)
-and (b) the hero sky-tint. No glassmorphism. No colored glows.
+and (b) the hero sky-tint. No glassmorphism. No colored glows except the
+subtle `--market-live` glow on the ticker live-dot.
 
 ## 2. TYPOGRAPHY
 Font: "Plus Jakarta Sans" (Google Fonts) for EVERYTHING. No second font. No serif.
