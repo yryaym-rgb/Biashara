@@ -187,9 +187,14 @@
       "heroImagePlaceholder": "Image héro à ajouter",
       "heroGalleryDotLabel": "Aller à l'image {index} sur {total}",
       "heroSearch": {
+        "heading": "RECHERCHER SUR LE MARCHÉ",
         "placeholder": "Rechercher un minerai, une région…",
         "submit": "Rechercher →",
-        "popularSearches": "Recherches populaires"
+        "popularSearches": "Recherches populaires",
+        "suggestionsLabel": "Suggestions de minerais",
+        "suggestionCounts": "{mineral} — {activeCount, plural, one {# annonce active} other {# annonces actives}} · {supplierCount, plural, one {# fournisseur vérifié} other {# fournisseurs vérifiés}}",
+        "suggestionActiveOnly": "{mineral} — {activeCount, plural, one {# annonce active} other {# annonces actives}}",
+        "loading": "Recherche en cours…"
       },
       "ticker": {
         "ariaLabel": "Cotations minérales en direct",

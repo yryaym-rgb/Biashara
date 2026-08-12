@@ -187,9 +187,14 @@
       "heroImagePlaceholder": "Hero image to be added",
       "heroGalleryDotLabel": "Go to image {index} of {total}",
       "heroSearch": {
+        "heading": "SEARCH THE MARKET",
         "placeholder": "Search for a mineral, region…",
         "submit": "Search →",
-        "popularSearches": "Popular searches"
+        "popularSearches": "Popular searches",
+        "suggestionsLabel": "Mineral suggestions",
+        "suggestionCounts": "{mineral} — {activeCount, plural, one {# active listing} other {# active listings}} · {supplierCount, plural, one {# verified supplier} other {# verified suppliers}}",
+        "suggestionActiveOnly": "{mineral} — {activeCount, plural, one {# active listing} other {# active listings}}",
+        "loading": "Searching…"
       },
       "ticker": {
         "ariaLabel": "Live mineral quotes",
