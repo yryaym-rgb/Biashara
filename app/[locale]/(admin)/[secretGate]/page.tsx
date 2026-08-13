@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import {
-  ClipboardCheck,
+  ClipboardList,
   FileCheck,
   ShieldCheck,
   Users,
@@ -12,14 +12,21 @@ import {
   getRecentAuditActivity,
   type DashboardStats,
 } from '@/lib/admin/queries';
+import {
+  getAdminDashboardKpiMetrics,
+  type AdminDashboardKpiKey,
+  type AdminDashboardKpiMetric,
+} from '@/lib/admin/dashboard-kpis';
 import { safeQuery } from '@/lib/safe-query';
-import { StatCard } from '@/components/admin/stat-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { AdminMarketPulse } from '@/components/admin/admin-market-pulse';
+import { AdminKpiGrid, type AdminKpiGridItem } from '@/components/admin/admin-kpi-grid';
 import {
   adminAuditLogPath,
   adminKycReviewPath,
   adminListingsModerationPath,
+  adminReportsPath,
   adminUsersPath,
 } from '@/lib/admin/path';
 import { formatRelativeTime } from '@/lib/utils/dates';
@@ -31,6 +38,27 @@ const ZERO_DASHBOARD_STATS: DashboardStats = {
   verifiedUsers: 0,
   activeListings: 0,
   pendingUsers: 0,
+};
+
+const ZERO_KPI_METRICS: AdminDashboardKpiMetric[] = [
+  { key: 'users', value: 0, trendPercent: null, sparkline: [], hasSparkline: false },
+  { key: 'activeListings', value: 0, trendPercent: null, sparkline: [], hasSparkline: false },
+  { key: 'pendingKyc', value: 0, trendPercent: null, sparkline: [], hasSparkline: false },
+  { key: 'purchaseRequests', value: 0, trendPercent: null, sparkline: [], hasSparkline: false },
+];
+
+const KPI_ICONS: Record<AdminDashboardKpiKey, typeof Users> = {
+  users: Users,
+  activeListings: FileCheck,
+  pendingKyc: ShieldCheck,
+  purchaseRequests: ClipboardList,
+};
+
+const KPI_HREFS: Record<AdminDashboardKpiKey, string> = {
+  users: adminUsersPath(),
+  activeListings: adminListingsModerationPath(),
+  pendingKyc: adminKycReviewPath(),
+  purchaseRequests: adminReportsPath(),
 };
 
 export default async function AdminDashboardPage({
@@ -46,9 +74,12 @@ export default async function AdminDashboardPage({
   const tActivity = await getTranslations({ locale, namespace: 'admin.auditLog' });
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
 
-  const [stats, activity] = await Promise.all([
+  const [stats, activity, kpiBundle] = await Promise.all([
     safeQuery('admin/dashboard/stats', () => getDashboardStats(), ZERO_DASHBOARD_STATS),
     safeQuery('admin/dashboard/activity', () => getRecentAuditActivity(10), []),
+    safeQuery('admin/dashboard/kpis', () => getAdminDashboardKpiMetrics(), {
+      metrics: ZERO_KPI_METRICS,
+    }),
   ]);
 
   const quickLinks = [
@@ -74,6 +105,25 @@ export default async function AdminDashboardPage({
     },
   ];
 
+  const kpiItems: AdminKpiGridItem[] = kpiBundle.metrics.map((metric) => ({
+    key: metric.key,
+    label: t(`stats.${metric.key}`),
+    value: metric.value,
+    icon: KPI_ICONS[metric.key],
+    href: KPI_HREFS[metric.key],
+    trendPercent: metric.trendPercent,
+    sparkline: metric.sparkline,
+    hasSparkline: metric.hasSparkline,
+    sparklineAriaLabel: t('sparklineAria', { label: t(`stats.${metric.key}`) }),
+    trendAriaLabel:
+      metric.trendPercent !== null
+        ? t('trendAria', {
+            label: t(`stats.${metric.key}`),
+            value: `${metric.trendPercent > 0 ? '+' : ''}${metric.trendPercent.toFixed(1)}%`,
+          })
+        : undefined,
+  }));
+
   return (
     <div className="mx-auto max-w-[1200px] space-y-8">
       <div>
@@ -83,28 +133,9 @@ export default async function AdminDashboardPage({
         <h1 className="mt-2">{t('title')}</h1>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          label={t('stats.pendingKyc')}
-          value={stats.pendingKycDocuments}
-          icon={ShieldCheck}
-        />
-        <StatCard
-          label={t('stats.pendingListings')}
-          value={stats.pendingListings}
-          icon={FileCheck}
-        />
-        <StatCard
-          label={t('stats.verifiedUsers')}
-          value={stats.verifiedUsers}
-          icon={Users}
-        />
-        <StatCard
-          label={t('stats.activeListings')}
-          value={stats.activeListings}
-          icon={ClipboardCheck}
-        />
-      </div>
+      <AdminMarketPulse reportsHref={adminReportsPath()} />
+
+      <AdminKpiGrid items={kpiItems} locale={locale} />
 
       <div className="grid gap-8 lg:grid-cols-2">
         <Card>
@@ -117,7 +148,10 @@ export default async function AdminDashboardPage({
             ) : (
               <ul className="space-y-4">
                 {activity.map((entry) => (
-                  <li key={entry.id} className="border-b border-border pb-4 last:border-b-0 last:pb-0">
+                  <li
+                    key={entry.id}
+                    className="border-b border-border pb-4 last:border-b-0 last:pb-0"
+                  >
                     <p className="text-[15px] text-ink">
                       <span className="font-semibold">
                         {displayName(entry.actor_name, tCommon('unknownActor'))}
