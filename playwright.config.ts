@@ -81,7 +81,7 @@ export default defineConfig({
     },
     {
       name: 'guest',
-      testMatch: /(marketing|auth-pages|console-guard|navbar-overlap)\.spec\.ts/,
+      testMatch: /(marketing|auth-pages|console-guard|navbar-overlap|mobile-drawer-audit)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
     {

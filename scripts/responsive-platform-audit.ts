@@ -20,6 +20,8 @@ import {
 import { RESPONSIVE_AUDIT_INIT_SCRIPT } from '../tests/e2e/helpers/responsive-audit.browser';
 import {
   AUDIT_VIEWPORTS,
+  MOBILE_DRAWER_VIEWPORTS,
+  auditOpenMobileDrawer,
   auditPageLayout,
   discoverFirstLink,
   formatAuditReportMarkdown,
@@ -96,6 +98,24 @@ async function auditRouteAtViewport(
     reached: true,
     issues,
   });
+
+  const isMobileDrawerViewport = MOBILE_DRAWER_VIEWPORTS.some((v) => v.label === viewportLabel);
+  if (isMobileDrawerViewport) {
+    const drawerAudit = await auditOpenMobileDrawer(page, {
+      path: `${path} (drawer open)`,
+      viewport: viewportLabel,
+      role: role === 'guest' ? undefined : role,
+    });
+    if (drawerAudit.drawerResult.opened) {
+      results.push({
+        path: `${path} (drawer open)`,
+        viewport: viewportLabel,
+        role: role === 'guest' ? undefined : role,
+        reached: true,
+        issues: drawerAudit.issues,
+      });
+    }
+  }
 }
 
 async function auditGuestRoutes(page: Page, results: PageAuditResult[]): Promise<void> {
