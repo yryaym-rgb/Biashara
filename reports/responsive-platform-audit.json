@@ -1,0 +1,1181 @@
+{
+  "results": [
+    {
+      "path": "/",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .text-[36px].font-bold \"Commercez avec audace.Échangez en confiance.Gran\""
+        }
+      ]
+    },
+    {
+      "path": "/prices",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/solutions",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/solutions",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
+        }
+      ]
+    },
+    {
+      "path": "/resources",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/resources",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/about",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
+        }
+      ]
+    },
+    {
+      "path": "/calendar",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+        }
+      ]
+    },
+    {
+      "path": "/login",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/login",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+        }
+      ]
+    },
+    {
+      "path": "/register",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=2",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=3",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/forgot-password",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/marketplace",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/marketplace",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace → marketplace-detail",
+      "viewport": "1440px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .text-[36px].font-bold \"Commercez avec audace.Échangez en confiance.Gran\""
+        }
+      ]
+    },
+    {
+      "path": "/prices",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/solutions",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/solutions",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
+        }
+      ]
+    },
+    {
+      "path": "/resources",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/resources",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/about",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
+        }
+      ]
+    },
+    {
+      "path": "/calendar",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+        }
+      ]
+    },
+    {
+      "path": "/login",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/login",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+        }
+      ]
+    },
+    {
+      "path": "/register",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=2",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=3",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/forgot-password",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/marketplace",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/marketplace",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace → marketplace-detail",
+      "viewport": "1024px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .text-[36px].font-bold \"Commercez avec audace.Échangez en confiance.Gran\""
+        }
+      ]
+    },
+    {
+      "path": "/prices",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/solutions",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/solutions",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/solutions",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/solutions",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/solutions",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/solutions",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/solutions",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
+        }
+      ]
+    },
+    {
+      "path": "/resources",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/resources",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/resources",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/resources",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/resources",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/resources",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/resources",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/about",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/about",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/about",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/about",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/about",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/about",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
+        }
+      ]
+    },
+    {
+      "path": "/calendar",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+        }
+      ]
+    },
+    {
+      "path": "/login",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/login",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+        }
+      ]
+    },
+    {
+      "path": "/register",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=2",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=3",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/forgot-password",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/marketplace",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/marketplace",
+          "viewport": "768px",
+          "description": "Elements overlap (2893px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/marketplace",
+          "viewport": "768px",
+          "description": "Elements overlap (20px² intersection)",
+          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/marketplace",
+          "viewport": "768px",
+          "description": "Elements overlap (1640px² intersection)",
+          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/marketplace",
+          "viewport": "768px",
+          "description": "Elements overlap (2360px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
+        },
+        {
+          "severity": "medium",
+          "category": "overlap",
+          "page": "/marketplace",
+          "viewport": "768px",
+          "description": "Elements overlap (210px² intersection)",
+          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/marketplace",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace → marketplace-detail",
+      "viewport": "768px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/prices",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/prices",
+          "viewport": "390px",
+          "description": "undersized tap target (33×40px): button [role=tab] .relative.min-h-10 \"RDC\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/solutions",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/solutions",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
+        }
+      ]
+    },
+    {
+      "path": "/resources",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/resources",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/about",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
+        }
+      ]
+    },
+    {
+      "path": "/calendar",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/calendar",
+          "viewport": "390px",
+          "description": "undersized tap target (36×40px): button [role=tab] .relative.min-h-10 \"Tous\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+        }
+      ]
+    },
+    {
+      "path": "/login",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/login",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+        }
+      ]
+    },
+    {
+      "path": "/register",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=2",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=3",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/forgot-password",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/forgot-password",
+          "viewport": "390px",
+          "description": "undersized tap target (161×19px): a .font-semibold.text-brand-blue \"Retour à la connexion\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/forgot-password",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.items-center \"Envoyer le lien de réinitialisation\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/marketplace",
+          "viewport": "390px",
+          "description": "undersized tap target (20×40px): button [role=tab] .relative.min-h-10 \"Or\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/marketplace",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace → marketplace-detail",
+      "viewport": "390px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/prices",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/prices",
+          "viewport": "360px",
+          "description": "undersized tap target (33×40px): button [role=tab] .relative.min-h-10 \"RDC\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/solutions",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/solutions",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
+        }
+      ]
+    },
+    {
+      "path": "/resources",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/resources",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/about",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
+        }
+      ]
+    },
+    {
+      "path": "/calendar",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/calendar",
+          "viewport": "360px",
+          "description": "undersized tap target (36×40px): button [role=tab] .relative.min-h-10 \"Tous\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+        }
+      ]
+    },
+    {
+      "path": "/login",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/login",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+        }
+      ]
+    },
+    {
+      "path": "/register",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=2",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/register?step=3",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/forgot-password",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/forgot-password",
+          "viewport": "360px",
+          "description": "undersized tap target (161×19px): a .font-semibold.text-brand-blue \"Retour à la connexion\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/forgot-password",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.items-center \"Envoyer le lien de réinitialisation\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "high",
+          "category": "tap-target",
+          "page": "/marketplace",
+          "viewport": "360px",
+          "description": "undersized tap target (20×40px): button [role=tab] .relative.min-h-10 \"Or\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/marketplace",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+        }
+      ]
+    },
+    {
+      "path": "/marketplace → marketplace-detail",
+      "viewport": "360px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    }
+  ],
+  "coverageNotes": [
+    "Platform authenticated routes skipped: E2E credentials not configured (missing env vars). Guest-accessible routes still audited.",
+    "Missing vars sample: E2E_BUYER_EMAIL, E2E_BUYER_PASSWORD, E2E_SELLER_EMAIL, E2E_SELLER_PASSWORD, E2E_COOP_APPROVED_EMAIL, E2E_COOP_APPROVED_PASSWORD…",
+    "Admin routes skipped: ADMIN_GATE_SECRET, ADMIN_PASSPHRASE, or E2E admin credentials not configured.",
+    "Institution role not audited: no E2E fixture account exists (institution treated like buyer in code; add fixture to extend coverage)."
+  ]
+}

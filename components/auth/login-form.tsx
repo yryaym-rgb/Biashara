@@ -109,7 +109,7 @@ export function LoginForm() {
               <div className="flex justify-end">
                 <Link
                   href="/forgot-password"
-                  className="text-[13px] font-semibold text-brand-blue hover:text-brand-blue-dark"
+                  className="inline-flex min-h-10 items-center py-0 text-[13px] font-semibold text-brand-blue hover:text-brand-blue-dark"
                 >
                   {t('forgotPassword')}
                 </Link>

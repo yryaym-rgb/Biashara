@@ -59,6 +59,7 @@ const mockPricesResponse: PricesResponse = {
     },
   ],
   cachedAt: '2026-08-12T10:30:00.000Z',
+  fromCache: false,
 };
 
 vi.mock('next-intl', () => ({
@@ -181,6 +182,7 @@ describe('dashboard client components avoid render loops', () => {
         insight={{
           mineral: 'cobalt',
           percentChange: 2.4,
+          currency: 'USD',
           sparkline: [
             { date: '2026-08-01', price: 100 },
             { date: '2026-08-08', price: 110 },

@@ -314,24 +314,42 @@ export function RegisterStepper({ registrationEmail = null }: RegisterStepperPro
             disabled={loading}
           />
 
-          <label className="flex items-start gap-3">
-            <input
-              type="checkbox"
-              checked={acceptTerms}
-              onChange={(e) => setAcceptTerms(e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-border text-brand-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-              disabled={loading}
-              aria-invalid={fieldErrors.acceptTerms ? true : undefined}
-            />
-            <span className="text-[13px] text-body">
+          <label className="flex min-h-10 cursor-pointer items-center gap-3 rounded-button py-1">
+            <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-button focus-within:outline focus-within:outline-2 focus-within:outline-offset-2">
+              <input
+                type="checkbox"
+                checked={acceptTerms}
+                onChange={(e) => setAcceptTerms(e.target.checked)}
+                className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+                disabled={loading}
+                aria-invalid={fieldErrors.acceptTerms ? true : undefined}
+              />
+              <span
+                className="flex h-4 w-4 items-center justify-center rounded border border-border bg-bg text-brand-blue"
+                aria-hidden="true"
+              >
+                {acceptTerms ? (
+                  <svg viewBox="0 0 12 12" className="h-3 w-3" fill="currentColor" aria-hidden="true">
+                    <path d="M10.3 3.3a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4 0l-2.5-2.5a1 1 0 1 1 1.4-1.4L4.6 7.6l4.3-4.3a1 1 0 0 1 1.4 0Z" />
+                  </svg>
+                ) : null}
+              </span>
+            </span>
+            <span className="text-[13px] leading-snug text-body">
               {t.rich('terms', {
                 termsLink: (chunks) => (
-                  <Link href="/about" className="font-semibold text-brand-blue hover:text-brand-blue-dark">
+                  <Link
+                    href="/about"
+                    className="inline-flex min-h-10 items-center py-0 font-semibold text-brand-blue hover:text-brand-blue-dark"
+                  >
                     {chunks}
                   </Link>
                 ),
                 privacyLink: (chunks) => (
-                  <Link href="/about" className="font-semibold text-brand-blue hover:text-brand-blue-dark">
+                  <Link
+                    href="/about"
+                    className="inline-flex min-h-10 items-center py-0 font-semibold text-brand-blue hover:text-brand-blue-dark"
+                  >
                     {chunks}
                   </Link>
                 ),

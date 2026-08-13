@@ -17,10 +17,10 @@ export function SectionHeading({
   as: HeadingTag = 'h2',
 }: SectionHeadingProps) {
   return (
-    <div className={cn('flex max-w-3xl flex-col gap-4', className)}>
+    <div className={cn('flex min-w-0 max-w-3xl flex-col gap-4', className)}>
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-      <HeadingTag>{title}</HeadingTag>
-      {subtitle ? <p className="text-base text-body">{subtitle}</p> : null}
+      <HeadingTag className="min-w-0 break-words">{title}</HeadingTag>
+      {subtitle ? <p className="min-w-0 break-words text-base text-body">{subtitle}</p> : null}
     </div>
   );
 }
