@@ -23,6 +23,7 @@ export interface DashboardRecentOrdersTableProps {
   locale: string;
   hasOrders: boolean;
   hideHeader?: boolean;
+  bare?: boolean;
 }
 
 export async function DashboardRecentOrdersTable({
@@ -30,6 +31,7 @@ export async function DashboardRecentOrdersTable({
   locale,
   hasOrders,
   hideHeader = false,
+  bare = false,
 }: DashboardRecentOrdersTableProps) {
   const t = await getTranslations({ locale, namespace: 'platform.dashboard' });
   const tOffers = await getTranslations({ locale, namespace: 'platform.offers' });
@@ -56,6 +58,51 @@ export async function DashboardRecentOrdersTable({
 
   const title = hasOrders ? t('recentOrders') : t('recentOffersFallback');
 
+  const tableContent =
+    rows.length === 0 ? (
+      <p className="text-[15px] text-body">{t('recentOrdersEmpty')}</p>
+    ) : (
+      <DataTable>
+        <DataTableHead>
+          <DataTableHeaderCell>{t('table.mineral')}</DataTableHeaderCell>
+          <DataTableHeaderCell>{t('table.counterpart')}</DataTableHeaderCell>
+          <DataTableHeaderCell>{t('table.amount')}</DataTableHeaderCell>
+          <DataTableHeaderCell>{t('table.status')}</DataTableHeaderCell>
+          <DataTableHeaderCell className="text-right">{t('table.date')}</DataTableHeaderCell>
+        </DataTableHead>
+        <DataTableBody>
+          {rows.map((row) => (
+            <DataTableRow key={`${row.kind}-${row.id}`}>
+              <DataTableCell>
+                <p className="font-semibold text-ink">
+                  {row.mineral ? tMinerals(row.mineral as 'cobalt') : row.listingTitle}
+                </p>
+                {row.mineral ? (
+                  <p className="mt-1 text-[13px] text-muted">{row.listingTitle}</p>
+                ) : null}
+              </DataTableCell>
+              <DataTableCell>
+                {row.counterpartName || tCommon('counterpartyUnknown')}
+              </DataTableCell>
+              <DataTableCell className="tabular-nums font-semibold text-ink">
+                {formatCurrency(row.amount, row.currency, locale)}
+              </DataTableCell>
+              <DataTableCell>
+                <Badge variant={statusVariant(row)}>{formatStatus(row)}</Badge>
+              </DataTableCell>
+              <DataTableCell className="text-right text-[13px] text-muted">
+                {formatRelativeTime(row.timestamp, locale)}
+              </DataTableCell>
+            </DataTableRow>
+          ))}
+        </DataTableBody>
+      </DataTable>
+    );
+
+  if (bare) {
+    return tableContent;
+  }
+
   return (
     <Card>
       {!hideHeader ? (
@@ -63,47 +110,7 @@ export async function DashboardRecentOrdersTable({
           <CardTitle>{title}</CardTitle>
         </CardHeader>
       ) : null}
-      <CardContent className={hideHeader ? 'pt-0' : undefined}>
-        {rows.length === 0 ? (
-          <p className="text-[15px] text-body">{t('recentOrdersEmpty')}</p>
-        ) : (
-          <DataTable>
-            <DataTableHead>
-              <DataTableHeaderCell>{t('table.mineral')}</DataTableHeaderCell>
-              <DataTableHeaderCell>{t('table.counterpart')}</DataTableHeaderCell>
-              <DataTableHeaderCell>{t('table.amount')}</DataTableHeaderCell>
-              <DataTableHeaderCell>{t('table.status')}</DataTableHeaderCell>
-              <DataTableHeaderCell className="text-right">{t('table.date')}</DataTableHeaderCell>
-            </DataTableHead>
-            <DataTableBody>
-              {rows.map((row) => (
-                <DataTableRow key={`${row.kind}-${row.id}`}>
-                  <DataTableCell>
-                    <p className="font-semibold text-ink">
-                      {row.mineral ? tMinerals(row.mineral as 'cobalt') : row.listingTitle}
-                    </p>
-                    {row.mineral ? (
-                      <p className="mt-1 text-[13px] text-muted">{row.listingTitle}</p>
-                    ) : null}
-                  </DataTableCell>
-                  <DataTableCell>
-                    {row.counterpartName || tCommon('counterpartyUnknown')}
-                  </DataTableCell>
-                  <DataTableCell className="tabular-nums font-semibold text-ink">
-                    {formatCurrency(row.amount, row.currency, locale)}
-                  </DataTableCell>
-                  <DataTableCell>
-                    <Badge variant={statusVariant(row)}>{formatStatus(row)}</Badge>
-                  </DataTableCell>
-                  <DataTableCell className="text-right text-[13px] text-muted">
-                    {formatRelativeTime(row.timestamp, locale)}
-                  </DataTableCell>
-                </DataTableRow>
-              ))}
-            </DataTableBody>
-          </DataTable>
-        )}
-      </CardContent>
+      <CardContent className={hideHeader ? 'pt-0' : undefined}>{tableContent}</CardContent>
     </Card>
   );
 }
