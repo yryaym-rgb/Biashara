@@ -9,6 +9,11 @@ import { hasAdminGateAccess, isValidAdminGateSegment } from '@/lib/admin/gate';
 import { getProfile } from '@/lib/auth/session';
 import { displayName } from '@/lib/admin/display';
 import {
+  getRecentNotifications,
+  getUnreadNotificationCount,
+} from '@/lib/notifications/queries';
+import { safeQuery } from '@/lib/safe-query';
+import {
   adminAuditLogPath,
   adminKycReviewPath,
   adminListingsModerationPath,
@@ -17,6 +22,7 @@ import {
   adminReportsPath,
   adminUsersPath,
 } from '@/lib/admin/path';
+import type { AdminNavGroup } from '@/components/admin/admin-nav';
 import { AdminCommandPaletteProvider } from '@/components/admin/admin-command-palette';
 
 export const metadata: Metadata = {
@@ -50,14 +56,43 @@ export default async function SecretGateAdminLayout({
   const { profile: adminProfile, email } = await getAdminSessionInfo();
   const adminName = displayName(adminProfile.company_name, email ?? 'Admin');
 
-  const navItems = [
-    { key: 'dashboard', href: adminPath() },
-    { key: 'users', href: adminUsersPath() },
-    { key: 'kycReview', href: adminKycReviewPath() },
-    { key: 'listingsModeration', href: adminListingsModerationPath() },
-    { key: 'miningEvents', href: adminMiningEventsPath() },
-    { key: 'reports', href: adminReportsPath() },
-    { key: 'auditLog', href: adminAuditLogPath() },
+  const [unreadNotificationsCount, recentNotifications] = await Promise.all([
+    safeQuery('admin/layout/unread-notifications', () => getUnreadNotificationCount(adminProfile.id), 0),
+    safeQuery('admin/layout/recent-notifications', () => getRecentNotifications(adminProfile.id), []),
+  ]);
+
+  const navGroups: AdminNavGroup[] = [
+    {
+      key: 'pilotage',
+      items: [{ key: 'dashboard', href: adminPath() }],
+    },
+    {
+      key: 'utilisateurs',
+      items: [
+        { key: 'users', href: adminUsersPath() },
+        { key: 'kycReview', href: adminKycReviewPath() },
+      ],
+    },
+    {
+      key: 'marche',
+      items: [
+        {
+          key: 'listings',
+          href: `${adminListingsModerationPath()}?tab=active`,
+          tab: 'active',
+        },
+        { key: 'listingsModeration', href: adminListingsModerationPath() },
+        { key: 'miningEvents', href: adminMiningEventsPath() },
+      ],
+    },
+    {
+      key: 'intelligence',
+      items: [{ key: 'reports', href: adminReportsPath() }],
+    },
+    {
+      key: 'securite',
+      items: [{ key: 'auditLog', href: adminAuditLogPath() }],
+    },
   ];
 
   return (
@@ -66,7 +101,9 @@ export default async function SecretGateAdminLayout({
         adminName={adminName}
         adminEmail={email}
         locale={locale}
-        navItems={navItems}
+        navGroups={navGroups}
+        recentNotifications={recentNotifications}
+        unreadNotificationsCount={unreadNotificationsCount}
       >
         {children}
       </AdminShell>

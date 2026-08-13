@@ -9,6 +9,7 @@ import { linkLotToListingAction } from '@/actions/lots';
 import { sanitizeText } from '@/lib/sanitize';
 import { LISTING_PHOTOS_BUCKET } from '@/lib/marketplace/photos';
 import { LISTING_CREATE_STATUS } from '@/lib/marketplace/constants';
+import { notifyAdminsPendingListing } from '@/lib/notifications/admin';
 import type { Database } from '@/types/database.types';
 
 const ALLOWED_PHOTO_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp'] as const;
@@ -152,6 +153,11 @@ export async function createListing(input: unknown) {
     }
   }
 
+  void notifyAdminsPendingListing({
+    listingId: data.id,
+    listingTitle: data.title,
+  });
+
   return { data };
 }
 
@@ -256,6 +262,11 @@ export async function submitListingForReview(listingId: string) {
   if (error) {
     return { error: error.message };
   }
+
+  void notifyAdminsPendingListing({
+    listingId: data.id,
+    listingTitle: data.title,
+  });
 
   return { data };
 }

@@ -7,6 +7,8 @@ import { LogoutConfirmDialog } from '@/components/auth/logout-confirm-dialog';
 import { Button } from '@/components/ui/button';
 import { AdminMenuButton } from '@/components/admin/admin-shell';
 import { AdminCommandPaletteTrigger } from '@/components/admin/admin-command-palette';
+import { NotificationBell } from '@/components/platform/notification-bell';
+import type { NotificationRow } from '@/lib/notifications/types';
 import type { Locale } from '@/lib/i18n/config';
 
 export interface AdminTopBarProps {
@@ -15,6 +17,8 @@ export interface AdminTopBarProps {
   locale: string;
   onMenuClick: () => void;
   menuButtonLabel: string;
+  recentNotifications: NotificationRow[];
+  unreadNotificationsCount: number;
 }
 
 export function AdminTopBar({
@@ -23,6 +27,8 @@ export function AdminTopBar({
   locale,
   onMenuClick,
   menuButtonLabel,
+  recentNotifications,
+  unreadNotificationsCount,
 }: AdminTopBarProps) {
   const t = useTranslations('admin.shell');
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
@@ -33,6 +39,11 @@ export function AdminTopBar({
       <AdminMenuButton onClick={onMenuClick} label={menuButtonLabel} />
       <div className="flex flex-1 items-center justify-end gap-4">
         <AdminCommandPaletteTrigger />
+        <NotificationBell
+          notifications={recentNotifications}
+          unreadCount={unreadNotificationsCount}
+          locale={locale}
+        />
         <div className="text-right">
           <p className="text-[15px] font-semibold text-ink">{adminName}</p>
           {adminEmail ? (

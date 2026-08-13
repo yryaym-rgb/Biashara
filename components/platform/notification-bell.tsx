@@ -10,6 +10,7 @@ import {
   Handshake,
   Package,
   ShieldCheck,
+  BellRing,
 } from 'lucide-react';
 import { markNotificationRead } from '@/actions/notifications';
 import { Link, useRouter } from '@/lib/i18n/navigation';
@@ -39,6 +40,8 @@ function NotificationTypeIcon({ type }: { type: NotificationRow['type'] }) {
       return <Package className={className} strokeWidth={1.75} aria-hidden="true" />;
     case 'rfp':
       return <ClipboardList className={className} strokeWidth={1.75} aria-hidden="true" />;
+    case 'system':
+      return <BellRing className={className} strokeWidth={1.75} aria-hidden="true" />;
     default:
       return <ClipboardCheck className={className} strokeWidth={1.75} aria-hidden="true" />;
   }
@@ -66,6 +69,10 @@ function useNotificationMessage() {
 
       if (notification.type === 'rfp' && values.mineral) {
         resolvedValues.mineral = tMinerals(values.mineral);
+      }
+
+      if (notification.type === 'system' && values.documentType) {
+        resolvedValues.documentType = tDocs(values.documentType);
       }
 
       return t(messageKey, resolvedValues);

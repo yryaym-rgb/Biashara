@@ -22,11 +22,20 @@ const VIEWBOX_HEIGHT = VIEWBOX_PARTS[3] ?? 600;
 
 export interface DrcMiningMapProps {
   listingCounts: Record<string, number>;
+  cooperativeCounts?: Record<string, number>;
   variant?: 'light' | 'dark';
+  mode?: 'marketplace' | 'admin';
 }
 
-export function DrcMiningMap({ listingCounts, variant = 'light' }: DrcMiningMapProps) {
-  const t = useTranslations('marketing.landing.map');
+export function DrcMiningMap({
+  listingCounts,
+  cooperativeCounts,
+  variant = 'light',
+  mode = 'marketplace',
+}: DrcMiningMapProps) {
+  const t = useTranslations(
+    mode === 'admin' ? 'admin.dashboard.drcMap' : 'marketing.landing.map',
+  );
   const tMinerals = useTranslations('minerals');
   const router = useRouter();
   const [activeProvince, setActiveProvince] = React.useState<DrcProvince | null>(null);
@@ -60,6 +69,12 @@ export function DrcMiningMap({ listingCounts, variant = 'light' }: DrcMiningMapP
   }
 
   function handleProvinceClick(province: DrcProvince) {
+    if (mode === 'admin') {
+      setActiveProvince(province);
+      setTooltipFromCentroid(province);
+      return;
+    }
+
     router.push(`/marketplace?province=${encodeURIComponent(province)}`);
   }
 
@@ -76,7 +91,11 @@ export function DrcMiningMap({ listingCounts, variant = 'light' }: DrcMiningMapP
   const activeMinerals = activeProvince
     ? MINING_PROVINCE_MINERALS[activeProvince]
     : undefined;
-  const activeCount = activeProvince ? listingCounts[activeProvince] ?? 0 : 0;
+  const activeListingCount = activeProvince ? listingCounts[activeProvince] ?? 0 : 0;
+  const activeCooperativeCount = activeProvince
+    ? cooperativeCounts?.[activeProvince] ?? 0
+    : 0;
+  const isAdminMode = mode === 'admin';
 
   const showcaseRegions = DRC_MAP_REGIONS.filter((region) =>
     (SHOWCASE_MINERAL_PROVINCES as readonly string[]).includes(region.province),
@@ -124,9 +143,13 @@ export function DrcMiningMap({ listingCounts, variant = 'light' }: DrcMiningMapP
             <path
               key={province}
               d={path}
-              role="link"
+              role={isAdminMode ? 'button' : 'link'}
               tabIndex={0}
-              aria-label={t('provinceLinkAria', { province })}
+              aria-label={
+                isAdminMode
+                  ? t('provinceStatsAria', { province })
+                  : t('provinceLinkAria', { province })
+              }
               className={cn(
                 'cursor-pointer stroke-[1] motion-safe:transition-[fill] motion-safe:duration-150',
                 isDark
@@ -275,7 +298,30 @@ export function DrcMiningMap({ listingCounts, variant = 'light' }: DrcMiningMapP
               {activeMinerals.map((id) => tMinerals(id)).join(', ')}
             </p>
           ) : null}
-          {activeCount > 0 ? (
+          {isAdminMode ? (
+            <div className="mt-2 space-y-1">
+              <p
+                className={cn(
+                  'text-[12px]',
+                  isDark
+                    ? 'text-[color:color-mix(in_srgb,var(--white)_60%,transparent)]'
+                    : 'text-muted',
+                )}
+              >
+                {t('activeListings', { count: activeListingCount })}
+              </p>
+              <p
+                className={cn(
+                  'text-[12px]',
+                  isDark
+                    ? 'text-[color:color-mix(in_srgb,var(--white)_60%,transparent)]'
+                    : 'text-muted',
+                )}
+              >
+                {t('cooperatives', { count: activeCooperativeCount })}
+              </p>
+            </div>
+          ) : activeListingCount > 0 ? (
             <p
               className={cn(
                 'mt-2 text-[12px]',
@@ -284,7 +330,7 @@ export function DrcMiningMap({ listingCounts, variant = 'light' }: DrcMiningMapP
                   : 'text-muted',
               )}
             >
-              {t('activeListings', { count: activeCount })}
+              {t('activeListings', { count: activeListingCount })}
             </p>
           ) : (
             <p

@@ -17,6 +17,7 @@ import {
 import { getUser } from '@/lib/auth/session';
 import { getRegistrationUserEmail } from '@/actions/auth';
 import { sendTransactionalEmail } from '@/lib/email';
+import { notifyAdminsPendingKyc } from '@/lib/notifications/admin';
 import type { Database } from '@/types/database.types';
 
 type KycDocumentType = Database['public']['Enums']['kyc_document_type'];
@@ -88,6 +89,11 @@ export async function uploadKycDocument(input: unknown) {
     .update({ kyc_status: 'pending' })
     .eq('id', profile.id);
 
+  void notifyAdminsPendingKyc({
+    documentType: parsed.data.type,
+    applicantName: profile.company_name ?? profile.id,
+  });
+
   return { data };
 }
 
@@ -155,6 +161,17 @@ export async function uploadRegistrationKycDocument(formData: FormData) {
     .from('profiles')
     .update({ kyc_status: 'pending' })
     .eq('id', userId);
+
+  const { data: applicantProfile } = await admin
+    .from('profiles')
+    .select('company_name')
+    .eq('id', userId)
+    .maybeSingle();
+
+  void notifyAdminsPendingKyc({
+    documentType: parsed.data.type,
+    applicantName: applicantProfile?.company_name ?? userId,
+  });
 
   return { data };
 }

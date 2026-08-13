@@ -1,21 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Menu, X } from 'lucide-react';
-import { AdminNav, type AdminNavItem } from '@/components/admin/admin-nav';
+import { AdminNav, type AdminNavGroup } from '@/components/admin/admin-nav';
 import { AdminTopBar } from '@/components/admin/admin-top-bar';
 import { cn } from '@/lib/utils/cn';
+import type { NotificationRow } from '@/lib/notifications/types';
 
 export interface AdminShellProps {
   children: React.ReactNode;
   adminName: string;
   adminEmail: string | null;
   locale: string;
-  navItems: AdminNavItem[];
+  navGroups: AdminNavGroup[];
+  recentNotifications: NotificationRow[];
+  unreadNotificationsCount: number;
 }
 
-export function AdminShell({ children, adminName, adminEmail, locale, navItems }: AdminShellProps) {
+export function AdminShell({
+  children,
+  adminName,
+  adminEmail,
+  locale,
+  navGroups,
+  recentNotifications,
+  unreadNotificationsCount,
+}: AdminShellProps) {
   const t = useTranslations('admin.shell');
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -34,7 +45,9 @@ export function AdminShell({ children, adminName, adminEmail, locale, navItems }
           <div className="flex h-[72px] items-center border-b border-border px-6">
             <span className="text-[14px] font-bold tracking-[0.08em] text-ink">BIASHARA</span>
           </div>
-          <AdminNav items={navItems} onNavigate={() => setDrawerOpen(false)} />
+          <Suspense fallback={null}>
+            <AdminNav groups={navGroups} onNavigate={() => setDrawerOpen(false)} />
+          </Suspense>
         </aside>
 
         {drawerOpen ? (
@@ -53,6 +66,8 @@ export function AdminShell({ children, adminName, adminEmail, locale, navItems }
             locale={locale}
             onMenuClick={() => setDrawerOpen(true)}
             menuButtonLabel={t('openDrawer')}
+            recentNotifications={recentNotifications}
+            unreadNotificationsCount={unreadNotificationsCount}
           />
           <main className="flex-1 p-4 md:p-8">{children}</main>
         </div>

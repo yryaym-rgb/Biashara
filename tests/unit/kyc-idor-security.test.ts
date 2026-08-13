@@ -42,6 +42,10 @@ vi.mock('@/lib/supabase/admin', () => ({
   createAdminClient: () => mockCreateAdminClient(),
 }));
 
+vi.mock('@/lib/notifications/admin', () => ({
+  notifyAdminsPendingKyc: vi.fn().mockResolvedValue(undefined),
+}));
+
 function mockRegistrationCookies(userId: string | null) {
   mockCookies.mockResolvedValue({
     get: (name: string) =>
@@ -131,8 +135,18 @@ describe('KYC registration IDOR protections', () => {
     };
     const profilesChain = {
       update: vi.fn().mockReturnThis(),
-      eq: vi.fn().mockResolvedValue({ error: null }),
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      maybeSingle: vi.fn().mockResolvedValue({
+        data: { company_name: 'Registration Co' },
+        error: null,
+      }),
     };
+    profilesChain.eq.mockImplementation(function (this: typeof profilesChain) {
+      return this;
+    });
+    const profilesUpdateEq = vi.fn().mockResolvedValue({ error: null });
+    profilesChain.update.mockReturnValue({ eq: profilesUpdateEq });
 
     mockFrom.mockImplementation((table: string) => {
       if (table === 'kyc_documents') {

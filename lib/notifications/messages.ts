@@ -13,7 +13,9 @@ export type NotificationMessageKey =
   | 'orderDisputed'
   | 'rfpBidReceived'
   | 'rfpBidSelected'
-  | 'rfpBidRejected';
+  | 'rfpBidRejected'
+  | 'adminPendingKyc'
+  | 'adminPendingListing';
 
 export interface NotificationContent {
   messageKey: NotificationMessageKey;
@@ -85,6 +87,31 @@ export function getNotificationContent(
         messageKey,
         values: { mineral: rfp.mineral },
         href: `/rfps/${rfp.rfpId}`,
+      };
+    }
+    case 'system': {
+      const system = payload as Extract<NotificationPayload, { action: string; href: string }>;
+      if (system.action === 'pending_kyc') {
+        return {
+          messageKey: 'adminPendingKyc',
+          values: {
+            applicantName: system.applicantName ?? '',
+            documentType: system.documentType ?? '',
+          },
+          href: system.href,
+        };
+      }
+      if (system.action === 'pending_listing') {
+        return {
+          messageKey: 'adminPendingListing',
+          values: { title: system.listingTitle ?? '' },
+          href: system.href,
+        };
+      }
+      return {
+        messageKey: 'orderStatusChanged',
+        values: {},
+        href: system.href || '/dashboard',
       };
     }
     default:

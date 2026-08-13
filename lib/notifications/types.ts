@@ -35,11 +35,21 @@ export type RfpNotificationPayload = {
   bidId: string;
 };
 
+export type SystemNotificationPayload = {
+  action: 'pending_kyc' | 'pending_listing';
+  href: string;
+  documentType?: string;
+  applicantName?: string;
+  listingId?: string;
+  listingTitle?: string;
+};
+
 export type NotificationPayload =
   | KycNotificationPayload
   | ListingNotificationPayload
   | OfferNotificationPayload
   | OrderNotificationPayload
-  | RfpNotificationPayload;
+  | RfpNotificationPayload
+  | SystemNotificationPayload;
 
 export type NotificationRow = Database['public']['Tables']['notifications']['Row'];

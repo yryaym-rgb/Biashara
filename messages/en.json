@@ -1518,11 +1518,19 @@
   },
   "admin": {
     "nav": {
+      "groups": {
+        "pilotage": "Operations",
+        "utilisateurs": "Users",
+        "marche": "Market",
+        "intelligence": "Intelligence",
+        "securite": "Security"
+      },
       "dashboard": "Dashboard",
       "users": "Users",
       "kycReview": "KYC verification",
-      "listingsModeration": "Listings moderation",
-      "miningEvents": "Mining calendar",
+      "listings": "Listings",
+      "listingsModeration": "Moderation",
+      "miningEvents": "Calendar",
       "reports": "Reports",
       "auditLog": "Audit log"
     },
@@ -1530,7 +1538,8 @@
       "sidebarLabel": "Admin navigation",
       "openDrawer": "Open menu",
       "closeDrawer": "Close menu",
-      "logout": "Sign out"
+      "logout": "Sign out",
+      "notifications": "Notifications"
     },
     "gate": {
       "title": "Admin access",
@@ -1645,6 +1654,44 @@
         "kycReview": "KYC verification",
         "listingsModeration": "Listings moderation",
         "auditLog": "Audit log"
+      },
+      "drcMap": {
+        "eyebrow": "Territorial activity",
+        "title": "DRC activity map",
+        "subtitle": "Active listings and cooperative sites by province — live data.",
+        "mapAria": "Interactive map of the Democratic Republic of the Congo",
+        "provinceStatsAria": "Statistics for {province}",
+        "provinceLinkAria": "View listings for {province}",
+        "activeListings": "{count, plural, one {# active listing} other {# active listings}}",
+        "cooperatives": "{count, plural, one {# cooperative site} other {# cooperative sites}}",
+        "noListings": "No active listings",
+        "attribution": "Boundary data: geoBoundaries (WGS84)"
+      },
+      "ecosystem": {
+        "eyebrow": "Ecosystem",
+        "title": "Biashara ecosystem",
+        "roles": {
+          "cooperative": "Cooperatives",
+          "seller": "Sellers",
+          "buyer": "Buyers",
+          "institution": "Institutions"
+        }
+      },
+      "platformHealth": {
+        "eyebrow": "Infrastructure",
+        "title": "Platform health",
+        "systems": {
+          "api": "API",
+          "database": "Database",
+          "auth": "Authentication",
+          "storage": "Storage"
+        },
+        "status": {
+          "operational": "Operational",
+          "unavailable": "Unavailable"
+        },
+        "monitoringNote": "Monitoring not configured",
+        "checkedAt": "Checked at {time} (Kinshasa)"
       }
     },
     "users": {
@@ -2003,7 +2050,7 @@
   "notifications": {
     "title": "Notifications",
     "panel": {
-      "viewAll": "View all",
+      "viewAll": "View all →",
       "empty": "No notifications yet.",
       "markAllRead": "Mark all as read"
     },
@@ -2020,6 +2067,8 @@
     "rfpBidReceived": "New offer received on your purchase request ({mineral}).",
     "rfpBidSelected": "Your offer was selected for the purchase request ({mineral}).",
     "rfpBidRejected": "Your offer was not selected for the purchase request ({mineral}).",
+    "adminPendingKyc": "New pending KYC submission — {applicantName} ({documentType}).",
+    "adminPendingListing": "New listing awaiting moderation — \"{title}\".",
     "orderStatus": {
       "confirmed": "Confirmed",
       "processing": "Processing",
