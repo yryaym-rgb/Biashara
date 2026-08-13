@@ -1,11 +1,13 @@
 'use client';
 
+import * as React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { PieChart as PieChartIcon } from 'lucide-react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import type { TradingMixSegment } from '@/lib/platform/trading-mix';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
+import { useChartReady } from '@/lib/hooks/use-chart-ready';
 import { formatNumber } from '@/lib/utils/format';
 
 const SEGMENT_COLORS = [
@@ -54,6 +56,7 @@ export function DashboardTradingMix({ segments }: DashboardTradingMixProps) {
   const t = useTranslations('platform.dashboard.tradingMix');
   const tMinerals = useTranslations('minerals');
   const locale = useLocale();
+  const chartReady = useChartReady();
 
   const chartData = segments.map((segment, index) => ({
     mineral: segment.mineral,
@@ -91,31 +94,33 @@ export function DashboardTradingMix({ segments }: DashboardTradingMixProps) {
         ) : (
           <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
             <div
-              className="shrink-0"
+              className="shrink-0 min-w-0"
               style={{ width: CHART_SIZE, height: CHART_SIZE }}
               role="img"
               aria-label={t('chartLabel')}
             >
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={chartData}
-                    dataKey="count"
-                    nameKey="mineralLabel"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={48}
-                    outerRadius={72}
-                    paddingAngle={2}
-                    strokeWidth={0}
-                  >
-                    {chartData.map((entry) => (
-                      <Cell key={entry.mineral} fill={entry.fill} />
-                    ))}
-                  </Pie>
-                  <Tooltip content={<MixTooltip locale={locale} ordersLabel={t('orders')} />} />
-                </PieChart>
-              </ResponsiveContainer>
+              {chartReady ? (
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={chartData}
+                      dataKey="count"
+                      nameKey="mineralLabel"
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={48}
+                      outerRadius={72}
+                      paddingAngle={2}
+                      strokeWidth={0}
+                    >
+                      {chartData.map((entry) => (
+                        <Cell key={entry.mineral} fill={entry.fill} />
+                      ))}
+                    </Pie>
+                    <Tooltip content={<MixTooltip locale={locale} ordersLabel={t('orders')} />} />
+                  </PieChart>
+                </ResponsiveContainer>
+              ) : null}
             </div>
 
             <ul className="flex-1 space-y-2">

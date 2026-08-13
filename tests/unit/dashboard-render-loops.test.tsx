@@ -6,6 +6,8 @@ import { DashboardMarketPulse } from '@/components/platform/dashboard/dashboard-
 import { AdminMarketPulse } from '@/components/admin/admin-market-pulse';
 import { AdminKpiSparkline } from '@/components/admin/admin-kpi-sparkline';
 import { DashboardMarketInsight } from '@/components/platform/dashboard-market-insight';
+import { DashboardTradingMix } from '@/components/platform/dashboard-trading-mix';
+import { DashboardSalesChart } from '@/components/platform/dashboard-sales-chart';
 import { DrcMiningMap } from '@/components/marketing/drc-mining-map';
 import type { PricesResponse } from '@/lib/prices/types';
 
@@ -83,15 +85,23 @@ vi.mock('@/lib/prices/fetch-client', () => ({
 
 vi.mock('recharts', async () => {
   const React = await import('react');
+  const ChartShell = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+  const Noop = () => null;
   return {
     ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (
       <div data-testid="responsive-container">{children}</div>
     ),
-    LineChart: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-    Line: () => null,
-    AreaChart: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-    Area: () => null,
-    YAxis: () => null,
+    LineChart: ChartShell,
+    Line: Noop,
+    AreaChart: ChartShell,
+    Area: Noop,
+    PieChart: ChartShell,
+    Pie: ChartShell,
+    Cell: Noop,
+    CartesianGrid: Noop,
+    XAxis: Noop,
+    YAxis: Noop,
+    Tooltip: Noop,
   };
 });
 
@@ -188,6 +198,32 @@ describe('dashboard client components avoid render loops', () => {
         listingCounts={{ Lualaba: 3 }}
         cooperativeCounts={{ Lualaba: 1 }}
         mode="admin"
+      />,
+    );
+    await waitFor(() => undefined, { timeout: 500 });
+    assertNoUpdateDepthError();
+  });
+
+  it('DashboardTradingMix mounts without update-depth errors', async () => {
+    render(
+      <DashboardTradingMix
+        segments={[
+          { mineral: 'cobalt', count: 3 },
+          { mineral: 'copper', count: 2 },
+        ]}
+      />,
+    );
+    await waitFor(() => undefined, { timeout: 500 });
+    assertNoUpdateDepthError();
+  });
+
+  it('DashboardSalesChart mounts without update-depth errors', async () => {
+    render(
+      <DashboardSalesChart
+        data={[
+          { date: '2026-08-01', volume: 1000 },
+          { date: '2026-08-08', volume: 1500 },
+        ]}
       />,
     );
     await waitFor(() => undefined, { timeout: 500 });

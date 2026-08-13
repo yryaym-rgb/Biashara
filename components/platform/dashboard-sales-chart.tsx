@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   Area,
@@ -12,6 +13,7 @@ import {
 } from 'recharts';
 import { LineChart as LineChartIcon } from 'lucide-react';
 import type { SalesVolumePoint } from '@/lib/platform/queries';
+import { useChartReady } from '@/lib/hooks/use-chart-ready';
 import { formatCurrency, resolveIntlLocale } from '@/lib/utils/format';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -53,6 +55,7 @@ const CHART_HEIGHT = 200;
 export function DashboardSalesChart({ data }: DashboardSalesChartProps) {
   const t = useTranslations('platform.dashboard');
   const locale = useLocale();
+  const chartReady = useChartReady();
   const showChart = data.length >= 2;
 
   const chartData = data.map((point) => ({
@@ -79,51 +82,53 @@ export function DashboardSalesChart({ data }: DashboardSalesChartProps) {
           </div>
         ) : (
           <div
-            className="w-full"
+            className="w-full min-w-0"
             style={{ height: CHART_HEIGHT }}
             role="img"
             aria-label={t('salesOverview')}
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="dashboardSalesFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--brand-gold)" stopOpacity={0.2} />
-                    <stop offset="100%" stopColor="var(--brand-gold)" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="4 4" stroke="var(--border)" vertical={false} />
-                <XAxis
-                  dataKey="label"
-                  tick={{ fill: 'var(--muted)', fontSize: 12 }}
-                  axisLine={false}
-                  tickLine={false}
-                  interval="preserveStartEnd"
-                />
-                <YAxis
-                  tick={{ fill: 'var(--muted)', fontSize: 12 }}
-                  axisLine={false}
-                  tickLine={false}
-                  width={56}
-                  tickFormatter={(value: number) =>
-                    new Intl.NumberFormat(resolveIntlLocale(locale), {
-                      notation: 'compact',
-                      maximumFractionDigits: 1,
-                    }).format(value)
-                  }
-                />
-                <Tooltip content={<ChartTooltip locale={locale} />} />
-                <Area
-                  type="monotone"
-                  dataKey="volume"
-                  stroke="var(--brand-gold)"
-                  strokeWidth={2}
-                  fill="url(#dashboardSalesFill)"
-                  dot={false}
-                  activeDot={{ r: 4, fill: 'var(--brand-gold)', strokeWidth: 0 }}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+            {chartReady ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={chartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="dashboardSalesFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="var(--brand-gold)" stopOpacity={0.2} />
+                      <stop offset="100%" stopColor="var(--brand-gold)" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="4 4" stroke="var(--border)" vertical={false} />
+                  <XAxis
+                    dataKey="label"
+                    tick={{ fill: 'var(--muted)', fontSize: 12 }}
+                    axisLine={false}
+                    tickLine={false}
+                    interval="preserveStartEnd"
+                  />
+                  <YAxis
+                    tick={{ fill: 'var(--muted)', fontSize: 12 }}
+                    axisLine={false}
+                    tickLine={false}
+                    width={56}
+                    tickFormatter={(value: number) =>
+                      new Intl.NumberFormat(resolveIntlLocale(locale), {
+                        notation: 'compact',
+                        maximumFractionDigits: 1,
+                      }).format(value)
+                    }
+                  />
+                  <Tooltip content={<ChartTooltip locale={locale} />} />
+                  <Area
+                    type="monotone"
+                    dataKey="volume"
+                    stroke="var(--brand-gold)"
+                    strokeWidth={2}
+                    fill="url(#dashboardSalesFill)"
+                    dot={false}
+                    activeDot={{ r: 4, fill: 'var(--brand-gold)', strokeWidth: 0 }}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : null}
           </div>
         )}
       </CardContent>
