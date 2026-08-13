@@ -50,7 +50,7 @@ export async function AdminAlertsCard({ items, locale }: AdminAlertsCardProps) {
               const Icon = ITEM_ICONS[item.type];
               const label =
                 item.type === 'aging_kyc'
-                  ? t('items.agingKyc', {
+                  ? t('items.aging_kyc', {
                       company: item.title,
                       type: tKyc(item.subtitle as 'id_card'),
                     })

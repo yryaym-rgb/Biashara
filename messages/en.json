@@ -202,6 +202,7 @@
         "lastUpdated": "Last updated · {time}",
         "indicativeShort": "Indicative",
         "indicativeLegend": "Indicative price — negotiated",
+        "indicative": "Indicative price — negotiable",
         "viewQuote": "View quote →"
       },
       "infrastructure": {
@@ -1665,7 +1666,12 @@
         "activeListings": "{count, plural, one {# active listing} other {# active listings}}",
         "cooperatives": "{count, plural, one {# cooperative site} other {# cooperative sites}}",
         "noListings": "No active listings",
-        "attribution": "Boundary data: geoBoundaries (WGS84)"
+        "attribution": "Boundary data: geoBoundaries (WGS84)",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
       },
       "ecosystem": {
         "eyebrow": "Ecosystem",
