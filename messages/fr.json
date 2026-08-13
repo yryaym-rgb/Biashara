@@ -1518,11 +1518,19 @@
   },
   "admin": {
     "nav": {
+      "groups": {
+        "pilotage": "Pilotage",
+        "utilisateurs": "Utilisateurs",
+        "marche": "Marché",
+        "intelligence": "Intelligence",
+        "securite": "Sécurité"
+      },
       "dashboard": "Tableau de bord",
       "users": "Utilisateurs",
       "kycReview": "Vérification KYC",
-      "listingsModeration": "Modération des annonces",
-      "miningEvents": "Calendrier minier",
+      "listings": "Annonces",
+      "listingsModeration": "Modération",
+      "miningEvents": "Calendrier",
       "reports": "Rapports",
       "auditLog": "Journal d'audit"
     },
@@ -1530,7 +1538,8 @@
       "sidebarLabel": "Navigation administration",
       "openDrawer": "Ouvrir le menu",
       "closeDrawer": "Fermer le menu",
-      "logout": "Se déconnecter"
+      "logout": "Se déconnecter",
+      "notifications": "Notifications"
     },
     "gate": {
       "title": "Accès administration",
@@ -1645,6 +1654,44 @@
         "kycReview": "Vérification KYC",
         "listingsModeration": "Modération des annonces",
         "auditLog": "Journal d'audit"
+      },
+      "drcMap": {
+        "eyebrow": "Activité territoriale",
+        "title": "Carte d'activité RDC",
+        "subtitle": "Annonces actives et sites coopératifs par province — données en temps réel.",
+        "mapAria": "Carte interactive de la République démocratique du Congo",
+        "provinceStatsAria": "Statistiques pour {province}",
+        "provinceLinkAria": "Voir les annonces pour {province}",
+        "activeListings": "{count, plural, one {# annonce active} other {# annonces actives}}",
+        "cooperatives": "{count, plural, one {# site coopératif} other {# sites coopératifs}}",
+        "noListings": "Aucune annonce active",
+        "attribution": "Données frontières : geoBoundaries (WGS84)"
+      },
+      "ecosystem": {
+        "eyebrow": "Écosystème",
+        "title": "Écosystème Biashara",
+        "roles": {
+          "cooperative": "Coopératives",
+          "seller": "Vendeurs",
+          "buyer": "Acheteurs",
+          "institution": "Institutions"
+        }
+      },
+      "platformHealth": {
+        "eyebrow": "Infrastructure",
+        "title": "Santé de la plateforme",
+        "systems": {
+          "api": "API",
+          "database": "Base de données",
+          "auth": "Authentification",
+          "storage": "Storage"
+        },
+        "status": {
+          "operational": "Opérationnel",
+          "unavailable": "Indisponible"
+        },
+        "monitoringNote": "Surveillance non configurée",
+        "checkedAt": "Vérifié le {time} (Kinshasa)"
       }
     },
     "users": {
@@ -2003,7 +2050,7 @@
   "notifications": {
     "title": "Notifications",
     "panel": {
-      "viewAll": "Voir tout",
+      "viewAll": "Voir toutes →",
       "empty": "Aucune notification pour le moment.",
       "markAllRead": "Tout marquer comme lu"
     },
@@ -2020,6 +2067,8 @@
     "rfpBidReceived": "Nouvelle offre reçue sur votre demande d'achat ({mineral}).",
     "rfpBidSelected": "Votre offre a été retenue pour la demande d'achat ({mineral}).",
     "rfpBidRejected": "Votre offre n'a pas été retenue pour la demande d'achat ({mineral}).",
+    "adminPendingKyc": "Nouveau dossier KYC en attente — {applicantName} ({documentType}).",
+    "adminPendingListing": "Nouvelle annonce en attente de modération — « {title} ».",
     "orderStatus": {
       "confirmed": "Confirmée",
       "processing": "En traitement",

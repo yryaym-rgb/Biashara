@@ -25,6 +25,14 @@ import { AdminLiveActivityPanel } from '@/components/admin/admin-live-activity-p
 import { AdminKycIntelligencePanel } from '@/components/admin/admin-kyc-intelligence-panel';
 import { AdminModerationPreviewPanel } from '@/components/admin/admin-moderation-preview-panel';
 import {
+  AdminDrcActivityPanel,
+  fetchAdminDrcMapData,
+} from '@/components/admin/admin-drc-activity-panel';
+import { AdminEcosystemPanel } from '@/components/admin/admin-ecosystem-panel';
+import { AdminPlatformHealthPanel } from '@/components/admin/admin-platform-health-panel';
+import { getEcosystemCounts } from '@/lib/admin/dashboard-ecosystem';
+import { checkPlatformHealth } from '@/lib/admin/platform-health';
+import {
   adminAuditLogPath,
   adminKycReviewPath,
   adminListingsModerationPath,
@@ -38,6 +46,23 @@ const ZERO_DASHBOARD_STATS: DashboardStats = {
   verifiedUsers: 0,
   activeListings: 0,
   pendingUsers: 0,
+};
+
+const ZERO_ECOSYSTEM_COUNTS = {
+  cooperative: 0,
+  seller: 0,
+  buyer: 0,
+  institution: 0,
+};
+
+const ZERO_PLATFORM_HEALTH = {
+  systems: [
+    { key: 'api' as const, status: 'unavailable' as const },
+    { key: 'database' as const, status: 'unavailable' as const },
+    { key: 'auth' as const, status: 'unavailable' as const },
+    { key: 'storage' as const, status: 'unavailable' as const },
+  ],
+  checkedAt: new Date(0).toISOString(),
 };
 
 const ZERO_KPI_METRICS: AdminDashboardKpiMetric[] = [
@@ -72,7 +97,8 @@ export default async function AdminDashboardPage({
 
   const t = await getTranslations({ locale, namespace: 'admin.dashboard' });
 
-  const [stats, liveActivity, kycIntelligence, moderationPreview, kpiBundle] = await Promise.all([
+  const [stats, liveActivity, kycIntelligence, moderationPreview, kpiBundle, drcMapData, ecosystemCounts, platformHealth] =
+    await Promise.all([
     safeQuery('admin/dashboard/stats', () => getDashboardStats(), ZERO_DASHBOARD_STATS),
     safeQuery('admin/dashboard/live-activity', () => getAdminLiveActivityFeed(), []),
     safeQuery('admin/dashboard/kyc-intelligence', () => getAdminKycIntelligence(), {
@@ -93,6 +119,12 @@ export default async function AdminDashboardPage({
     safeQuery('admin/dashboard/kpis', () => getAdminDashboardKpiMetrics(), {
       metrics: ZERO_KPI_METRICS,
     }),
+    safeQuery('admin/dashboard/drc-map', () => fetchAdminDrcMapData(), {
+      listingCounts: {},
+      cooperativeCounts: {},
+    }),
+    safeQuery('admin/dashboard/ecosystem', () => getEcosystemCounts(), ZERO_ECOSYSTEM_COUNTS),
+    safeQuery('admin/dashboard/platform-health', () => checkPlatformHealth(), ZERO_PLATFORM_HEALTH),
   ]);
 
   const quickLinks = [
@@ -159,6 +191,17 @@ export default async function AdminDashboardPage({
           locale={locale}
         />
         <AdminModerationPreviewPanel preview={moderationPreview} locale={locale} />
+      </div>
+
+      <AdminDrcActivityPanel
+        listingCounts={drcMapData.listingCounts}
+        cooperativeCounts={drcMapData.cooperativeCounts}
+        locale={locale}
+      />
+
+      <div className="grid gap-8 lg:grid-cols-2">
+        <AdminEcosystemPanel counts={ecosystemCounts} locale={locale} />
+        <AdminPlatformHealthPanel health={platformHealth} locale={locale} />
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
