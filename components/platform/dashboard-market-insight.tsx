@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { LineChart, TrendingDown, TrendingUp } from 'lucide-react';
 import { Area, AreaChart, ResponsiveContainer, YAxis } from 'recharts';
@@ -19,6 +20,11 @@ export function DashboardMarketInsight({ insight }: DashboardMarketInsightProps)
   const t = useTranslations('platform.dashboard.marketInsight');
   const tMinerals = useTranslations('minerals');
   const locale = useLocale();
+  const [chartReady, setChartReady] = React.useState(false);
+
+  React.useEffect(() => {
+    setChartReady(true);
+  }, []);
 
   return (
     <Card className="h-full">
@@ -62,30 +68,33 @@ export function DashboardMarketInsight({ insight }: DashboardMarketInsightProps)
               })}
             </p>
             <div
-              className="w-full"
+              className="w-full min-w-0"
               style={{ height: SPARKLINE_HEIGHT }}
               role="img"
               aria-label={t('sparklineLabel', { mineral: tMinerals(insight.mineral) })}
             >
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={insight.sparkline} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="insightSparkFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="var(--brand-gold)" stopOpacity={0.2} />
-                      <stop offset="100%" stopColor="var(--brand-gold)" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <YAxis hide domain={['dataMin', 'dataMax']} />
-                  <Area
-                    type="monotone"
-                    dataKey="price"
-                    stroke="var(--brand-gold)"
-                    strokeWidth={2}
-                    fill="url(#insightSparkFill)"
-                    dot={false}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              {chartReady ? (
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={insight.sparkline} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="insightSparkFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="var(--brand-gold)" stopOpacity={0.2} />
+                        <stop offset="100%" stopColor="var(--brand-gold)" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <YAxis hide domain={['dataMin', 'dataMax']} />
+                    <Area
+                      type="monotone"
+                      dataKey="price"
+                      stroke="var(--brand-gold)"
+                      strokeWidth={2}
+                      fill="url(#insightSparkFill)"
+                      dot={false}
+                      isAnimationActive={false}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              ) : null}
             </div>
             <p
               className={cn(

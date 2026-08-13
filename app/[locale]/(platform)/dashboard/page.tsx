@@ -19,6 +19,7 @@ import {
 } from '@/lib/platform/queries';
 import { getCooperativeDashboardStats } from '@/lib/platform/dashboard/cooperative-stats';
 import { getDashboardGreetingName } from '@/lib/platform/dashboard/greeting';
+import { getGreetingPeriod } from '@/lib/platform/greeting';
 import { getActionCenterItems } from '@/lib/platform/action-center';
 import { getMarketInsightForUser } from '@/lib/platform/market-insight';
 import { getTradingMixForUser } from '@/lib/platform/trading-mix';
@@ -123,6 +124,7 @@ export default async function DashboardPage({
     user?.email ?? null,
     tCommon('unknownUser'),
   );
+  const greetingPeriod = getGreetingPeriod();
 
   const trustScoreFallback = computeTrustScore({
     kycApproved: isKycApprovedForTrust(profile.kyc_status),
@@ -224,6 +226,7 @@ export default async function DashboardPage({
         displayName={greetingName}
         role={profile.role}
         kycStatus={profile.kyc_status}
+        greetingPeriod={greetingPeriod}
       />
 
       {shouldShowKycBanner(profile.kyc_status) ? (

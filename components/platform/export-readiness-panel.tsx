@@ -58,7 +58,20 @@ export function ExportReadinessPanel({ items, documents, locale }: ExportReadine
   const [errorKey, setErrorKey] = React.useState<ExportReadinessItemKey | null>(null);
 
   React.useEffect(() => {
-    setItemState(buildItemState(items));
+    setItemState((current) => {
+      const next = buildItemState(items);
+      const unchanged = EXPORT_READINESS_ITEM_KEYS.every((key) => {
+        const currentItem = current[key];
+        const nextItem = next[key];
+        return (
+          currentItem?.isComplete === nextItem?.isComplete &&
+          currentItem?.notes === nextItem?.notes &&
+          currentItem?.documentId === nextItem?.documentId &&
+          currentItem?.completedAt === nextItem?.completedAt
+        );
+      });
+      return unchanged ? current : next;
+    });
   }, [items]);
 
   const completedCount = EXPORT_READINESS_ITEM_KEYS.filter(

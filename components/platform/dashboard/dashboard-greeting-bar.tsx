@@ -3,19 +3,26 @@
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { roleVariant } from '@/lib/admin/display';
-import { getGreetingPeriod } from '@/lib/platform/greeting';
+import type { GreetingPeriod } from '@/lib/platform/greeting';
 import type { Database } from '@/types/database.types';
 
 export interface DashboardGreetingBarProps {
   displayName: string;
   role: Database['public']['Enums']['user_role'];
   kycStatus: Database['public']['Enums']['kyc_status'];
+  /** Resolved on the server so SSR and hydration share the same time-of-day label. */
+  greetingPeriod: GreetingPeriod;
 }
 
-export function DashboardGreetingBar({ displayName, role, kycStatus }: DashboardGreetingBarProps) {
+export function DashboardGreetingBar({
+  displayName,
+  role,
+  kycStatus,
+  greetingPeriod,
+}: DashboardGreetingBarProps) {
   const t = useTranslations('platform.dashboard.header');
   const tRoles = useTranslations('admin.roles');
-  const period = getGreetingPeriod();
+  const period = greetingPeriod;
 
   return (
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
