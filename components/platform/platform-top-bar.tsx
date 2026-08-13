@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { logoutAction } from '@/actions/auth';
 import { LogoutConfirmDialog } from '@/components/auth/logout-confirm-dialog';
@@ -10,13 +11,13 @@ import { NotificationBell } from '@/components/platform/notification-bell';
 import { UserAvatarMenu } from '@/components/platform/user-avatar-menu';
 import { Badge } from '@/components/ui/badge';
 import { roleVariant } from '@/lib/admin/display';
+import { cn } from '@/lib/utils/cn';
 import type { NotificationRow } from '@/lib/notifications/types';
 import type { Database } from '@/types/database.types';
 import type { Locale } from '@/lib/i18n/config';
 
 export interface PlatformTopBarProps {
   pageTitle: string;
-  displayName: string;
   companyName: string | null;
   email: string | null;
   role: Database['public']['Enums']['user_role'];
@@ -29,7 +30,6 @@ export interface PlatformTopBarProps {
 
 export function PlatformTopBar({
   pageTitle,
-  displayName,
   companyName,
   email,
   role,
@@ -50,7 +50,7 @@ export function PlatformTopBar({
           <h1 className="truncate text-[18px] font-semibold text-ink">{pageTitle}</h1>
         </div>
 
-        <div className="flex shrink-0 items-center gap-3 md:gap-4">
+        <div className="flex shrink-0 items-center gap-2 md:gap-3">
           <CommandPaletteTrigger />
           <NotificationBell
             notifications={recentNotifications}
@@ -58,20 +58,24 @@ export function PlatformTopBar({
             locale={locale}
           />
 
-          <div className="hidden items-center gap-3 sm:flex">
-            <div className="text-right">
-              <p className="text-[15px] font-semibold text-ink">{displayName}</p>
-              <Badge variant={roleVariant(role)} className="mt-1">
-                {tRoles(role)}
-              </Badge>
-            </div>
-          </div>
+          <Badge variant={roleVariant(role)} className="shrink-0">
+            <span aria-hidden="true">● </span>
+            {tRoles(role)}
+          </Badge>
 
-          <UserAvatarMenu
-            companyName={companyName}
-            email={email}
-            onLogoutRequest={() => setLogoutDialogOpen(true)}
-          />
+          <div
+            className={cn(
+              'relative inline-flex items-center gap-0.5 rounded-button border border-border bg-bg px-1.5 py-0.5',
+              '[&>div>button]:h-8 [&>div>button]:w-8 [&>div>button]:bg-transparent [&>div>button]:hover:bg-transparent',
+            )}
+          >
+            <UserAvatarMenu
+              companyName={companyName}
+              email={email}
+              onLogoutRequest={() => setLogoutDialogOpen(true)}
+            />
+            <ChevronDown className="h-3.5 w-3.5 pr-0.5 text-muted" aria-hidden="true" />
+          </div>
         </div>
       </header>
       <LogoutConfirmDialog
