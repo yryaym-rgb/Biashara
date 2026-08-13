@@ -25,16 +25,42 @@ async function assertNoHorizontalOverlap(left: Locator, right: Locator, label: s
   ).toBeLessThanOrEqual(rightBox.x + 0.5);
 }
 
+async function assertMinimumGap(
+  left: Locator,
+  right: Locator,
+  minGapPx: number,
+  label: string,
+) {
+  const leftBox = await left.boundingBox();
+  const rightBox = await right.boundingBox();
+
+  expect(leftBox, `${label}: left element missing layout box`).not.toBeNull();
+  expect(rightBox, `${label}: right element missing layout box`).not.toBeNull();
+
+  if (!leftBox || !rightBox) {
+    return;
+  }
+
+  const gap = rightBox.x - (leftBox.x + leftBox.width);
+  expect(gap, `${label}: expected at least ${minGapPx}px between logo and Accueil`).toBeGreaterThanOrEqual(
+    minGapPx - 0.5,
+  );
+}
+
 async function assertNavbarLayout(
   page: Page,
-  viewportLabel: string,
+  viewport: { width: number; label: string },
   auth: 'guest' | 'member',
 ) {
   await page.goto(`${FIXTURE_PATH}?auth=${auth}`);
   await page.locator(`header[data-nav-auth="${auth}"]`).waitFor();
 
   const resources = page.getByRole('link', { name: 'Ressources' }).first();
-  await expect(resources).toBeVisible();
+  if (auth === 'guest' && viewport.width < 1536) {
+    await expect(resources).toBeHidden();
+  } else {
+    await expect(resources).toBeVisible();
+  }
 
   const lastNavLink = page.locator('header nav a').and(page.locator(':visible')).last();
   await expect(lastNavLink).toBeVisible();
@@ -42,10 +68,24 @@ async function assertNavbarLayout(
   const actions = page.locator('[data-navbar-actions]');
   await expect(actions).toBeVisible();
 
+  const homeLink = page.locator('header nav').getByRole('link', { name: 'Accueil' });
+  const logoLink = page.locator('header [data-navbar-logo]');
+  await expect(homeLink).toBeVisible();
+  await expect(logoLink).toBeVisible();
+
+  if (auth === 'guest') {
+    await assertMinimumGap(
+      logoLink,
+      homeLink,
+      12,
+      `${viewport.label} logged-out logo→Accueil`,
+    );
+  }
+
   await assertNoHorizontalOverlap(
     lastNavLink,
     actions,
-    `${viewportLabel} logged-${auth === 'guest' ? 'out' : 'in'}`,
+    `${viewport.label} logged-${auth === 'guest' ? 'out' : 'in'}`,
   );
 
   if (auth === 'guest') {
@@ -65,7 +105,7 @@ test.describe('navbar overlap guard — logged out', () => {
   for (const viewport of VIEWPORTS) {
     test(`no overlap at ${viewport.label}`, async ({ page }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      await assertNavbarLayout(page, viewport.label, 'guest');
+      await assertNavbarLayout(page, viewport, 'guest');
     });
   }
 });
@@ -78,7 +118,7 @@ test.describe('navbar overlap guard — logged in', () => {
   for (const viewport of VIEWPORTS) {
     test(`no overlap at ${viewport.label}`, async ({ page }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      await assertNavbarLayout(page, viewport.label, 'member');
+      await assertNavbarLayout(page, viewport, 'member');
     });
   }
 });

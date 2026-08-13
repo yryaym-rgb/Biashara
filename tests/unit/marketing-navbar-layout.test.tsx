@@ -77,13 +77,17 @@ describe('Navbar desktop layout by auth state', () => {
     cleanup();
   });
 
-  it('uses a bounded three-column grid so nav cannot bleed into the actions cluster', () => {
+  it('uses a bounded flex row so nav stays between logo and actions', () => {
     const { container } = render(<Navbar isAuthenticated={false} />);
-    const grid = container.querySelector('header > div');
+    const headerRow = container.querySelector('header > div');
 
-    expect(grid?.className).toMatch(/grid-cols-\[auto_minmax\(0,1fr\)_auto\]/);
+    expect(headerRow?.className).toMatch(/\bflex\b/);
+    expect(headerRow?.querySelector('[data-navbar-logo]')).toBeTruthy();
+    expect(headerRow?.querySelector('[data-navbar-actions]')?.className).toMatch(/shrink-0/);
+
+    const navRegion = headerRow?.querySelector('.flex-1');
+    expect(navRegion?.className).toMatch(/overflow-hidden/);
     expect(container.querySelector('header nav')?.className).toMatch(/min-w-0/);
-    expect(container.querySelector('header nav')?.className).toMatch(/overflow-hidden/);
     expect(container.querySelector('[data-navbar-actions]')).toBeTruthy();
   });
 
@@ -92,7 +96,7 @@ describe('Navbar desktop layout by auth state', () => {
 
     expect(screen.getByRole('link', { name: 'Calendrier' }).className).toMatch(/\bhidden\b/);
     expect(screen.getByRole('link', { name: 'À propos' }).className).toMatch(/\bhidden\b/);
-    expect(screen.getByRole('link', { name: 'Ressources' }).className).not.toMatch(/\bhidden\b/);
+    expect(screen.getByRole('link', { name: 'Ressources' }).className).toMatch(/hidden 2xl:inline-flex/);
 
     const badge = screen.getByLabelText('RDC · Marché actif');
     expect(badge.className).toMatch(/xl:inline-flex/);
@@ -113,12 +117,30 @@ describe('Navbar desktop layout by auth state', () => {
     );
 
     expect(screen.getByRole('link', { name: 'Calendrier' }).className).toMatch(/hidden xl:inline-flex/);
-    expect(screen.getByRole('link', { name: 'À propos' }).className).not.toMatch(/\bhidden\b/);
+    expect(screen.getByRole('link', { name: 'À propos' }).className).toMatch(/hidden xl:inline-flex/);
 
     const badge = screen.getByLabelText('RDC · Marché actif');
     expect(badge.className).toMatch(/lg:inline-flex/);
 
     expect(screen.queryByRole('link', { name: 'Accéder au marché →' })).not.toBeInTheDocument();
+  });
+
+  it('centers desktop nav inside the bounded middle region', () => {
+    const { container } = render(<Navbar isAuthenticated={false} />);
+    const nav = container.querySelector('header nav');
+
+    expect(nav?.className).toMatch(/justify-center/);
+
+    cleanup();
+
+    const loggedIn = render(
+      <Navbar
+        isAuthenticated
+        companyName="ABC Mining"
+        email="user@example.com"
+      />,
+    );
+    expect(loggedIn.container.querySelector('header nav')?.className).toMatch(/justify-center/);
   });
 
   it('tags the header with the active auth state for layout tests', () => {

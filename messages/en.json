@@ -337,7 +337,7 @@
         "brand": "BIASHARA AFRICA",
         "title": "African trade network",
         "today": "Today: DRC 🇨🇩",
-        "tomorrow": "Tomorrow: 🇿🇲 🇹🇿 🇷🇼 …",
+        "tomorrow": "Tomorrow: 🇿🇲 🇹🇿 …",
         "description": "Building the African mineral trade network.",
         "emailLabel": "Email address",
         "emailPlaceholder": "you@company.com",
@@ -350,7 +350,6 @@
         "countries": {
           "ZM": "Zambia",
           "TZ": "Tanzania",
-          "RW": "Rwanda",
           "KE": "Kenya",
           "UG": "Uganda",
           "OTHER": "Other African country"
