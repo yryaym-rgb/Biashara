@@ -1,6 +1,7 @@
 /**
- * One-off responsive layout audit for dashboard components (Parts 8–10).
- * Uses representative markup with the same Tailwind classes as production components.
+ * Static Tailwind grid audit for dashboard component classes (Parts 8–10).
+ * For full platform-wide responsive + interaction audit, run:
+ *   npm run audit:responsive
  */
 import { chromium } from '@playwright/test';
 
