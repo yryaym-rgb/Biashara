@@ -38,6 +38,19 @@ function isActivePath(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+/** Secondary links that hide earlier when horizontal space is tight. */
+function getDesktopNavItemClass(item: NavItem, isAuthenticated: boolean): string {
+  if (item.labelKey === 'calendar') {
+    return isAuthenticated ? 'hidden xl:inline-flex' : 'hidden';
+  }
+
+  if (!isAuthenticated && item.labelKey === 'about') {
+    return 'hidden';
+  }
+
+  return '';
+}
+
 export interface NavbarProps {
   stickyOffsetClass?: string;
   topBandHeight?: number;
@@ -109,6 +122,7 @@ export function Navbar({
 
   return (
     <header
+      data-nav-auth={isAuthenticated ? 'member' : 'guest'}
       className={cn(
         'sticky z-50 border-b motion-safe:transition-[background-color,box-shadow,border-color] motion-safe:duration-200',
         isScrolled
@@ -117,59 +131,64 @@ export function Navbar({
         effectiveStickyClass,
       )}
     >
-      <Container className="flex h-[68px] items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-4 md:gap-5">
-          <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-offset-4">
-            <Image
-              src={logo}
-              alt=""
-              width={54}
-              height={54}
-              className="h-[54px] w-[54px] rounded-button object-cover"
-              priority
-            />
-            <span className="text-[14px] font-bold tracking-[0.08em] text-ink">
-              {t('appName')}
-            </span>
-          </Link>
+      <Container className="grid h-[68px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 lg:gap-x-3">
+        <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-offset-4">
+          <Image
+            src={logo}
+            alt=""
+            width={54}
+            height={54}
+            className="h-[54px] w-[54px] rounded-button object-cover"
+            priority
+          />
+          <span className="text-[14px] font-bold tracking-[0.08em] text-ink">
+            {t('appName')}
+          </span>
+        </Link>
 
-          <nav
-            className="hidden items-center gap-0 md:flex"
-            aria-label={t('mainNavigation')}
-          >
-            {NAV_ITEMS.map((item) => {
-              const active = isActivePath(pathname, item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
+        <nav
+          className="hidden min-w-0 items-center justify-end gap-0 overflow-hidden md:flex"
+          aria-label={t('mainNavigation')}
+        >
+          {NAV_ITEMS.map((item) => {
+            const active = isActivePath(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  'group relative inline-flex items-center gap-1 whitespace-nowrap px-2 py-2 lg:px-1.5 xl:px-2',
+                  'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
+                  active ? 'text-ink' : 'text-body hover:text-ink',
+                  getDesktopNavItemClass(item, isAuthenticated),
+                )}
+              >
+                {t(item.labelKey)}
+                {item.hasDropdown ? (
+                  <ChevronDown className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+                ) : null}
+                <span
                   className={cn(
-                    'group relative inline-flex items-center gap-1 whitespace-nowrap px-2 py-2',
-                    'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
-                    active ? 'text-ink' : 'text-body hover:text-ink',
+                    'absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 bg-brand-gold',
+                    'motion-safe:transition-all motion-safe:duration-150',
+                    active ? 'w-5 opacity-100' : 'w-0 opacity-0 group-hover:w-5 group-hover:opacity-100',
                   )}
-                >
-                  {t(item.labelKey)}
-                  {item.hasDropdown ? (
-                    <ChevronDown className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
-                  ) : null}
-                  <span
-                    className={cn(
-                      'absolute bottom-0 left-1/2 h-[2px] -translate-x-1/2 bg-brand-gold',
-                      'motion-safe:transition-all motion-safe:duration-150',
-                      active ? 'w-5 opacity-100' : 'w-0 opacity-0 group-hover:w-5 group-hover:opacity-100',
-                    )}
-                    aria-hidden="true"
-                  />
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
+                  aria-hidden="true"
+                />
+              </Link>
+            );
+          })}
+        </nav>
 
-        <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
+        <div
+          data-navbar-actions
+          className="relative z-[1] flex shrink-0 items-center justify-end gap-1.5 md:gap-2"
+        >
           <span
-            className="hidden cursor-default select-none items-center gap-1.5 whitespace-nowrap rounded-[4px] bg-[color:color-mix(in_srgb,var(--market-live)_12%,transparent)] px-2 py-1 lg:inline-flex"
+            className={cn(
+              'hidden cursor-default select-none items-center gap-1.5 whitespace-nowrap rounded-[4px] bg-[color:color-mix(in_srgb,var(--market-live)_12%,transparent)] px-2 py-1',
+              isAuthenticated ? 'lg:inline-flex' : 'xl:inline-flex',
+            )}
             aria-label={t('drcMarketActive')}
           >
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-market-live" aria-hidden="true" />
@@ -178,7 +197,13 @@ export function Navbar({
             </span>
           </span>
 
-          <div className="hidden h-6 w-px bg-border lg:block" aria-hidden="true" />
+          <div
+            className={cn(
+              'hidden h-6 w-px bg-border',
+              isAuthenticated ? 'lg:block' : 'xl:block',
+            )}
+            aria-hidden="true"
+          />
 
           <div className="flex items-center gap-1">
             <div className="relative hidden md:block" ref={langMenuRef}>
@@ -245,7 +270,13 @@ export function Navbar({
                 >
                   {t('login')}
                 </Link>
-                <Button asChild size="md" className="hidden md:inline-flex">
+                <Button
+                  asChild
+                  size="md"
+                  className={cn(
+                    'hidden md:inline-flex lg:h-9 lg:px-4 xl:h-11 xl:px-[22px]',
+                  )}
+                >
                   <Link href="/marketplace">{t('accessMarket')}</Link>
                 </Button>
               </>
