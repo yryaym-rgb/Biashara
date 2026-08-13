@@ -7,21 +7,23 @@ import {
 } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
 import { requireAdminPage } from '@/lib/admin/session';
-import {
-  getDashboardStats,
-  getRecentAuditActivity,
-  type DashboardStats,
-} from '@/lib/admin/queries';
+import { getDashboardStats, type DashboardStats } from '@/lib/admin/queries';
+import { getAdminLiveActivityFeed } from '@/lib/admin/dashboard-activity';
+import { getAdminKycIntelligence } from '@/lib/admin/dashboard-kyc-intelligence';
+import { getAdminModerationPreview } from '@/lib/admin/dashboard-moderation-preview';
 import {
   getAdminDashboardKpiMetrics,
   type AdminDashboardKpiKey,
   type AdminDashboardKpiMetric,
 } from '@/lib/admin/dashboard-kpis';
 import { safeQuery } from '@/lib/safe-query';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AdminMarketPulse } from '@/components/admin/admin-market-pulse';
 import { AdminKpiGrid, type AdminKpiGridItem } from '@/components/admin/admin-kpi-grid';
+import { AdminLiveActivityPanel } from '@/components/admin/admin-live-activity-panel';
+import { AdminKycIntelligencePanel } from '@/components/admin/admin-kyc-intelligence-panel';
+import { AdminModerationPreviewPanel } from '@/components/admin/admin-moderation-preview-panel';
 import {
   adminAuditLogPath,
   adminKycReviewPath,
@@ -29,8 +31,6 @@ import {
   adminReportsPath,
   adminUsersPath,
 } from '@/lib/admin/path';
-import { formatRelativeTime } from '@/lib/utils/dates';
-import { displayName } from '@/lib/admin/display';
 
 const ZERO_DASHBOARD_STATS: DashboardStats = {
   pendingKycDocuments: 0,
@@ -71,12 +71,25 @@ export default async function AdminDashboardPage({
   await requireAdminPage();
 
   const t = await getTranslations({ locale, namespace: 'admin.dashboard' });
-  const tActivity = await getTranslations({ locale, namespace: 'admin.auditLog' });
-  const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
 
-  const [stats, activity, kpiBundle] = await Promise.all([
+  const [stats, liveActivity, kycIntelligence, moderationPreview, kpiBundle] = await Promise.all([
     safeQuery('admin/dashboard/stats', () => getDashboardStats(), ZERO_DASHBOARD_STATS),
-    safeQuery('admin/dashboard/activity', () => getRecentAuditActivity(10), []),
+    safeQuery('admin/dashboard/live-activity', () => getAdminLiveActivityFeed(), []),
+    safeQuery('admin/dashboard/kyc-intelligence', () => getAdminKycIntelligence(), {
+      funnel: {
+        pending: 0,
+        needsReview: 0,
+        verified: 0,
+        rejected: 0,
+        total: 0,
+        verifiedPercent: 0,
+      },
+      oldestPending: [],
+    }),
+    safeQuery('admin/dashboard/moderation-preview', () => getAdminModerationPreview(), {
+      pendingCount: 0,
+      recentPending: [],
+    }),
     safeQuery('admin/dashboard/kpis', () => getAdminDashboardKpiMetrics(), {
       metrics: ZERO_KPI_METRICS,
     }),
@@ -137,54 +150,30 @@ export default async function AdminDashboardPage({
 
       <AdminKpiGrid items={kpiItems} locale={locale} />
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('recentActivity')}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {activity.length === 0 ? (
-              <p className="text-[15px] text-body">{t('noActivity')}</p>
-            ) : (
-              <ul className="space-y-4">
-                {activity.map((entry) => (
-                  <li
-                    key={entry.id}
-                    className="border-b border-border pb-4 last:border-b-0 last:pb-0"
-                  >
-                    <p className="text-[15px] text-ink">
-                      <span className="font-semibold">
-                        {displayName(entry.actor_name, tCommon('unknownActor'))}
-                      </span>{' '}
-                      {tActivity(`actions.${entry.action}` as 'actions.insert')}{' '}
-                      <span className="text-body">
-                        {tActivity(`entities.${entry.entity}` as 'entities.listings')}
-                      </span>
-                    </p>
-                    <p className="mt-1 text-[13px] text-muted">
-                      {formatRelativeTime(entry.created_at, locale)}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </CardContent>
-        </Card>
+      <AdminLiveActivityPanel events={liveActivity} locale={locale} />
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          {quickLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="block">
-              <Card hoverable className="h-full">
-                <CardContent className="flex items-center justify-between p-6">
-                  <span className="text-[18px] font-semibold text-ink">{link.title}</span>
-                  {link.pending > 0 ? (
-                    <Badge variant="warning">{link.pending}</Badge>
-                  ) : null}
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+      <div className="grid gap-8 lg:grid-cols-2">
+        <AdminKycIntelligencePanel
+          funnel={kycIntelligence.funnel}
+          oldestPending={kycIntelligence.oldestPending}
+          locale={locale}
+        />
+        <AdminModerationPreviewPanel preview={moderationPreview} locale={locale} />
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {quickLinks.map((link) => (
+          <Link key={link.href} href={link.href} className="block">
+            <Card hoverable className="h-full">
+              <CardContent className="flex items-center justify-between p-6">
+                <span className="text-[18px] font-semibold text-ink">{link.title}</span>
+                {link.pending > 0 ? (
+                  <Badge variant="warning">{link.pending}</Badge>
+                ) : null}
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
       </div>
     </div>
   );
