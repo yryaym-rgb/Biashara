@@ -1,7 +1,8 @@
-import { ArrowRight, Package, Search, Send, ShoppingBag, Truck } from 'lucide-react';
+import { ArrowRight, ClipboardList, Package, Search, Send, ShoppingBag, Truck } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/navigation';
 import { isCooperativeRole, isSellerRole } from '@/lib/rbac';
+import { getDashboardPrimaryQuickActionKeys } from '@/lib/platform/dashboard';
 import { Card, CardContent } from '@/components/ui/card';
 import type { Database } from '@/types/database.types';
 
@@ -20,6 +21,7 @@ export async function DashboardQuickActions({
 
   const isCooperative = isCooperativeRole(role);
   const isSeller = isSellerRole(role);
+  const primaryActionKeys = getDashboardPrimaryQuickActionKeys(role);
 
   const publishHref = isCooperative
     ? '/lots/new'
@@ -27,58 +29,37 @@ export async function DashboardQuickActions({
       ? '/marketplace/new'
       : '/marketplace';
 
-  const PublishIcon = isCooperative ? Package : isSeller ? ShoppingBag : Search;
+  const actionCatalog = {
+    'publish-lot': {
+      href: publishHref,
+      title: t('publishLot.title'),
+      description: t('publishLot.description'),
+      icon: Package,
+    },
+    'publish-listing': {
+      href: publishHref,
+      title: t('publishListing.title'),
+      description: t('publishListing.description'),
+      icon: ShoppingBag,
+    },
+    explore: {
+      href: '/marketplace' as const,
+      title: t('exploreMarket.title'),
+      description: t('exploreMarket.description'),
+      icon: Search,
+    },
+    'publish-rfp': {
+      href: '/rfps/new' as const,
+      title: t('publishRfp.title'),
+      description: t('publishRfp.description'),
+      icon: ClipboardList,
+    },
+  } as const;
 
-  const primaryActions = isCooperative
-    ? [
-        {
-          key: 'publish-lot',
-          href: publishHref,
-          title: t('publishLot.title'),
-          description: t('publishLot.description'),
-          icon: Package,
-        },
-        {
-          key: 'explore',
-          href: '/marketplace' as const,
-          title: t('exploreMarket.title'),
-          description: t('exploreMarket.description'),
-          icon: Search,
-        },
-      ]
-    : isSeller
-      ? [
-          {
-            key: 'publish-listing',
-            href: publishHref,
-            title: t('publishListing.title'),
-            description: t('publishListing.description'),
-            icon: ShoppingBag,
-          },
-          {
-            key: 'explore',
-            href: '/marketplace' as const,
-            title: t('exploreMarket.title'),
-            description: t('exploreMarket.description'),
-            icon: Search,
-          },
-        ]
-      : [
-          {
-            key: 'explore',
-            href: '/marketplace' as const,
-            title: t('exploreMarket.title'),
-            description: t('exploreMarket.description'),
-            icon: Search,
-          },
-          {
-            key: 'post-offer',
-            href: '/marketplace' as const,
-            title: t('postOffer.title'),
-            description: t('postOffer.description'),
-            icon: Send,
-          },
-        ];
+  const primaryActions = primaryActionKeys.map((key) => ({
+    key,
+    ...actionCatalog[key],
+  }));
 
   const secondaryLinks = [
     { key: 'offers', href: '/offers' as const, title: t('myOffers'), icon: Send },

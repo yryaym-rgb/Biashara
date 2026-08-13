@@ -1,7 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import {
   ClipboardList,
-  Eye,
   Inbox,
   Package,
   Send,
@@ -27,9 +26,9 @@ import { getTrustScoreForUser } from '@/lib/platform/trust-score-queries';
 import { getSuggestedListingsForUser } from '@/lib/platform/suggestions';
 import {
   getDashboardStatKeys,
+  getDashboardKpiHref,
   isNewDashboardAccount,
   shouldShowKycBanner,
-  type CooperativeStatKey,
   type DashboardActivityCounts,
   type DashboardStatKey,
 } from '@/lib/platform/dashboard';
@@ -80,8 +79,8 @@ const ZERO_SELLER_STATS: SellerDashboardStats = {
 
 const ZERO_BUYER_STATS: BuyerDashboardStats = {
   pendingOffersSent: 0,
+  activePurchaseRequests: 0,
   ordersInProgress: 0,
-  recentlyViewedListings: 0,
 };
 
 const ZERO_COOPERATIVE_STATS = {
@@ -97,18 +96,11 @@ const STAT_ICONS = {
   ordersInProgress: Truck,
   monthlyRevenue: Wallet,
   pendingOffersSent: Send,
-  recentlyViewedListings: Eye,
+  activePurchaseRequests: ClipboardList,
   lots: Package,
   offers: Tag,
   openPurchaseRequests: ClipboardList,
 } as const satisfies Record<DashboardStatKey, typeof Package>;
-
-const COOPERATIVE_KPI_HREFS: Record<CooperativeStatKey, '/lots' | '/offers' | '/rfps' | '/orders'> = {
-  lots: '/lots',
-  offers: '/offers',
-  openPurchaseRequests: '/rfps',
-  ordersInProgress: '/orders',
-};
 
 export default async function DashboardPage({
   params,
@@ -205,7 +197,7 @@ export default async function DashboardPage({
       ? formatCurrency(sellerStats.monthlyRevenue, 'USD', locale)
       : formatCurrency(0, 'USD', locale),
     pendingOffersSent: buyerStats?.pendingOffersSent ?? 0,
-    recentlyViewedListings: buyerStats?.recentlyViewedListings ?? 0,
+    activePurchaseRequests: buyerStats?.activePurchaseRequests ?? 0,
     lots: cooperativeStats?.lots ?? 0,
     offers: cooperativeStats?.offers ?? 0,
     openPurchaseRequests: cooperativeStats?.openPurchaseRequests ?? 0,
@@ -222,7 +214,7 @@ export default async function DashboardPage({
       value,
       icon: STAT_ICONS[key as keyof typeof STAT_ICONS],
       zeroSubLabel: t(`stats.zero.${key}`),
-      href: isCooperative ? COOPERATIVE_KPI_HREFS[key as CooperativeStatKey] : undefined,
+      href: getDashboardKpiHref(profile.role, key),
     };
   });
 

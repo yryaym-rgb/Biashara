@@ -710,20 +710,20 @@
       "stats": {
         "activeListings": "Mes annonces actives",
         "pendingOffersReceived": "Offres reçues en attente",
-        "ordersInProgress": "Mes commandes",
+        "ordersInProgress": "Commandes en cours",
         "monthlyRevenue": "Chiffre d'affaires ce mois",
         "pendingOffersSent": "Offres envoyées en attente",
-        "recentlyViewedListings": "Annonces consultées récemment",
+        "activePurchaseRequests": "Demandes d'achat actives",
         "lots": "Mes lots",
         "offers": "Mes offres",
         "openPurchaseRequests": "Demandes d'achat",
         "zero": {
           "activeListings": "0 · Aucune annonce active",
           "pendingOffersReceived": "0 · Aucune offre reçue",
-          "ordersInProgress": "0 · Aucune commande",
+          "ordersInProgress": "0 · Aucune commande en cours",
           "monthlyRevenue": "0 · Aucun chiffre d'affaires",
           "pendingOffersSent": "0 · Aucune offre envoyée",
-          "recentlyViewedListings": "0 · Aucune annonce consultée",
+          "activePurchaseRequests": "0 · Aucune demande active",
           "lots": "0 · Aucun lot",
           "offers": "0 · Aucune offre",
           "openPurchaseRequests": "0 · Aucune demande"
@@ -742,11 +742,12 @@
         "cooperativeKyc": "Complétez votre vérification KYC, puis publiez votre premier lot.",
         "sellerApproved": "Publiez votre première annonce pour rejoindre la place de marché.",
         "sellerKyc": "Complétez votre vérification KYC, puis publiez votre première annonce.",
-        "buyerApproved": "Explorez la place de marché pour découvrir des minerais vérifiés.",
-        "buyerKyc": "Explorez la place de marché pendant que votre vérification KYC est en cours.",
+        "buyerApproved": "Explorez les annonces vérifiées pour trouver votre premier fournisseur.",
+        "buyerKyc": "Explorez les annonces vérifiées pendant que votre vérification KYC est en cours.",
         "ctaPublishLot": "Publier un lot",
         "ctaPostListing": "Publier une annonce",
-        "ctaExplore": "Explorer la place de marché"
+        "ctaPublishRfp": "Publier une demande d'achat",
+        "ctaExplore": "Explorer le marché"
       },
       "activity": {
         "offer": "Offre sur « {title} » — {status}",
@@ -802,6 +803,10 @@
         "exploreMarket": {
           "title": "Explorer le marché",
           "description": "Découvrez des minerais vérifiés de la RDC."
+        },
+        "publishRfp": {
+          "title": "Publier une demande d'achat",
+          "description": "Recevez des offres de fournisseurs qualifiés."
         },
         "postOffer": {
           "title": "Publier une offre",

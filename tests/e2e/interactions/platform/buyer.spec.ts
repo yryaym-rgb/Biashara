@@ -3,6 +3,19 @@ import { visitAndAssertClean } from '../../helpers/console-monitor';
 import { withPageMonitor } from '../../helpers/interactions';
 
 test.describe('buyer-specific interactions', () => {
+  test('buyer dashboard shows buyer KPIs and quick actions', async ({ page }) => {
+    await visitAndAssertClean(page, '/dashboard', 'Tableau de bord');
+
+    await expect(page.getByText('Offres envoyées en attente')).toBeVisible();
+    await expect(page.getByText('Demandes d\'achat actives')).toBeVisible();
+    await expect(page.getByText('Commandes en cours')).toBeVisible();
+    await expect(page.getByText('Mes annonces actives')).not.toBeVisible();
+    await expect(page.getByText('Mes lots')).not.toBeVisible();
+
+    await expect(page.getByRole('link', { name: /Explorer le marché/ })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Publier une demande d'achat/ })).toBeVisible();
+  });
+
   test('buyer cannot access lots creation', async ({ page }) => {
     await visitAndAssertClean(page, '/lots', /Mes lots|Accès refusé/);
     await visitAndAssertClean(page, '/lots/new', /Créer un lot|Accès refusé/);

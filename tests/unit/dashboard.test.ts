@@ -1,8 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import {
   getCooperativeStatKeys,
+  getDashboardKpiHref,
+  getDashboardPrimaryQuickActionKeys,
   getDashboardStatKeys,
   getKycBannerTone,
+  isBuyerDashboardRole,
   isNewDashboardAccount,
   shouldAlwaysShowDashboardKpis,
   shouldShowOnboardingBanner,
@@ -58,14 +61,50 @@ describe('dashboard role-based stat cards', () => {
   it('returns three buyer stat keys for buyer and institution roles', () => {
     expect(getDashboardStatKeys('buyer')).toEqual([
       'pendingOffersSent',
+      'activePurchaseRequests',
       'ordersInProgress',
-      'recentlyViewedListings',
     ]);
     expect(getDashboardStatKeys('institution')).toEqual([
       'pendingOffersSent',
+      'activePurchaseRequests',
       'ordersInProgress',
-      'recentlyViewedListings',
     ]);
+  });
+
+  it('treats institution as a buyer-dashboard role', () => {
+    expect(isBuyerDashboardRole('buyer')).toBe(true);
+    expect(isBuyerDashboardRole('institution')).toBe(true);
+    expect(isBuyerDashboardRole('seller')).toBe(false);
+    expect(isBuyerDashboardRole('cooperative')).toBe(false);
+  });
+
+  it('returns role-appropriate KPI deep links', () => {
+    expect(getDashboardKpiHref('buyer', 'activePurchaseRequests')).toBe('/rfps');
+    expect(getDashboardKpiHref('institution', 'pendingOffersSent')).toBe('/offers');
+    expect(getDashboardKpiHref('seller', 'activeListings')).toBe('/settings?tab=listings');
+    expect(getDashboardKpiHref('seller', 'monthlyRevenue')).toBe('/orders');
+    expect(getDashboardKpiHref('cooperative', 'lots')).toBe('/lots');
+    expect(getDashboardKpiHref('cooperative', 'monthlyRevenue')).toBeUndefined();
+  });
+
+  it('returns role-appropriate primary quick action keys', () => {
+    expect(getDashboardPrimaryQuickActionKeys('buyer')).toEqual(['explore', 'publish-rfp']);
+    expect(getDashboardPrimaryQuickActionKeys('institution')).toEqual(['explore', 'publish-rfp']);
+    expect(getDashboardPrimaryQuickActionKeys('seller')).toEqual(['publish-listing', 'explore']);
+    expect(getDashboardPrimaryQuickActionKeys('cooperative')).toEqual(['publish-lot', 'explore']);
+  });
+
+  it('keeps seller and cooperative dashboards distinct from buyer KPI sets', () => {
+    const sellerKeys = getDashboardStatKeys('seller');
+    const buyerKeys = getDashboardStatKeys('buyer');
+    const cooperativeKeys = getDashboardStatKeys('cooperative');
+
+    expect(sellerKeys).not.toContain('lots');
+    expect(sellerKeys).not.toContain('activePurchaseRequests');
+    expect(buyerKeys).not.toContain('activeListings');
+    expect(buyerKeys).not.toContain('monthlyRevenue');
+    expect(cooperativeKeys).toContain('lots');
+    expect(cooperativeKeys).not.toContain('monthlyRevenue');
   });
 });
 
