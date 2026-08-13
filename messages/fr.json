@@ -337,7 +337,7 @@
         "brand": "BIASHARA AFRICA",
         "title": "Réseau commercial africain",
         "today": "Aujourd'hui : RDC 🇨🇩",
-        "tomorrow": "Demain : 🇿🇲 🇹🇿 🇷🇼 …",
+        "tomorrow": "Demain : 🇿🇲 🇹🇿 …",
         "description": "Construire le réseau commercial minier africain.",
         "emailLabel": "Adresse e-mail",
         "emailPlaceholder": "vous@entreprise.com",
@@ -350,7 +350,6 @@
         "countries": {
           "ZM": "Zambie",
           "TZ": "Tanzanie",
-          "RW": "Rwanda",
           "KE": "Kenya",
           "UG": "Ouganda",
           "OTHER": "Autre pays africain"

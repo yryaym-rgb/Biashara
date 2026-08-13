@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const WAITLIST_COUNTRY_CODES = ['ZM', 'TZ', 'RW', 'KE', 'UG', 'OTHER'] as const;
+export const WAITLIST_COUNTRY_CODES = ['ZM', 'TZ', 'KE', 'UG', 'OTHER'] as const;
 
 export const waitlistSignupSchema = z.object({
   email: z.string().trim().email().max(320),

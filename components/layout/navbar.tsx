@@ -48,6 +48,14 @@ function getDesktopNavItemClass(item: NavItem, isAuthenticated: boolean): string
     return 'hidden';
   }
 
+  if (isAuthenticated && item.labelKey === 'about') {
+    return 'hidden xl:inline-flex';
+  }
+
+  if (!isAuthenticated && item.labelKey === 'resources') {
+    return 'hidden 2xl:inline-flex';
+  }
+
   return '';
 }
 
@@ -131,8 +139,17 @@ export function Navbar({
         effectiveStickyClass,
       )}
     >
-      <Container className="grid h-[68px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 lg:gap-x-3">
-        <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-offset-4">
+      <Container
+        className={cn(
+          'flex h-[68px] items-center',
+          isAuthenticated ? 'gap-2 lg:gap-3' : 'gap-3 lg:gap-4',
+        )}
+      >
+        <Link
+          href="/"
+          data-navbar-logo
+          className="relative z-[2] flex shrink-0 items-center gap-2 focus-visible:outline-offset-4"
+        >
           <Image
             src={logo}
             alt=""
@@ -146,10 +163,13 @@ export function Navbar({
           </span>
         </Link>
 
-        <nav
-          className="hidden min-w-0 items-center justify-end gap-0 overflow-hidden md:flex"
-          aria-label={t('mainNavigation')}
-        >
+        <div className="hidden min-w-0 flex-1 overflow-hidden md:block">
+          <nav
+            className={cn(
+              'flex min-w-0 items-center justify-center gap-0',
+            )}
+            aria-label={t('mainNavigation')}
+          >
           {NAV_ITEMS.map((item) => {
             const active = isActivePath(pathname, item.href);
             return (
@@ -178,7 +198,8 @@ export function Navbar({
               </Link>
             );
           })}
-        </nav>
+          </nav>
+        </div>
 
         <div
           data-navbar-actions

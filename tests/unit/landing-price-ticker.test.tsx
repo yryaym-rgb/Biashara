@@ -64,6 +64,9 @@ import {
   shouldShowChange,
   shouldShowSparkline,
   TICKER_MARQUEE_CYCLE_SECONDS,
+  TICKER_TIMESTAMP_FADE_PX,
+  TICKER_TIMESTAMP_OVERLAY_MIN_PX,
+  TICKER_TIMESTAMP_PANEL_MIN_PX,
 } from '@/components/marketing/landing-price-ticker';
 
 vi.mock('next-intl', () => ({
@@ -184,6 +187,14 @@ describe('landing price ticker helpers', () => {
     expect(TICKER_MARQUEE_CYCLE_SECONDS).toBeLessThanOrEqual(45);
     expect(TICKER_MARQUEE_CYCLE_SECONDS).toBe(40);
   });
+
+  it('reserves enough overlay width and fade strip to mask marquee content', () => {
+    expect(TICKER_TIMESTAMP_FADE_PX).toBeGreaterThanOrEqual(96);
+    expect(TICKER_TIMESTAMP_PANEL_MIN_PX).toBeGreaterThanOrEqual(200);
+    expect(TICKER_TIMESTAMP_OVERLAY_MIN_PX).toBe(
+      TICKER_TIMESTAMP_FADE_PX + TICKER_TIMESTAMP_PANEL_MIN_PX,
+    );
+  });
 });
 
 describe('LandingPriceTicker', () => {
@@ -279,9 +290,15 @@ describe('LandingPriceTicker', () => {
 
     const timestampOverlay = screen
       .getByText(/Dernière mise à jour · 11:30/)
-      .closest('[class*="absolute"]');
+      .closest('[class*="bg-brand-blue-dark"]');
     expect(timestampOverlay).not.toBeNull();
-    expect(timestampOverlay?.className).toMatch(/absolute/);
+    expect(timestampOverlay?.className).toMatch(/bg-brand-blue-dark/);
     expect(timestampOverlay?.closest('.price-ticker-marquee')).toBeNull();
+
+    const overlayRoot = timestampOverlay?.parentElement;
+    expect(overlayRoot?.className).toMatch(/absolute/);
+    expect(overlayRoot?.previousElementSibling?.className).toMatch(
+      new RegExp(`pr-\\[var\\(--ticker-timestamp-overlay-min\\)\\]`),
+    );
   });
 });
