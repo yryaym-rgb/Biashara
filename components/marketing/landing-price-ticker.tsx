@@ -11,6 +11,7 @@ import type { PriceHistoryResponse } from '@/lib/prices/types';
 import { Link } from '@/lib/i18n/navigation';
 import { formatPricePerUnit } from '@/lib/utils/format';
 import { formatKinshasaTime } from '@/lib/utils/dates';
+import { useChartReady } from '@/lib/hooks/use-chart-ready';
 import { cn } from '@/lib/utils/cn';
 
 const STALE_TIME_MS = 15 * 60 * 1000;
@@ -187,6 +188,7 @@ function TickerSparkline({
   mineralId: MineralId;
   enabled: boolean;
 }) {
+  const chartReady = useChartReady();
   const { data } = useQuery({
     queryKey: ['prices', 'history', mineralId, 'ticker'],
     queryFn: () => fetchPriceHistory(mineralId),
@@ -200,19 +202,21 @@ function TickerSparkline({
   }
 
   return (
-    <div className="mt-3 h-12 w-full" aria-hidden="true">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={history}>
-          <Line
-            type="monotone"
-            dataKey="price"
-            stroke="var(--brand-gold)"
-            strokeWidth={2}
-            dot={false}
-            isAnimationActive={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+    <div className="mt-3 h-12 w-full min-w-0" aria-hidden="true">
+      {chartReady ? (
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={history}>
+            <Line
+              type="monotone"
+              dataKey="price"
+              stroke="var(--brand-gold)"
+              strokeWidth={2}
+              dot={false}
+              isAnimationActive={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      ) : null}
     </div>
   );
 }

@@ -20,6 +20,7 @@ import { PRICE_TIMEFRAME_DAYS } from '@/lib/prices/types';
 import { formatPricePerUnit, resolveIntlLocale } from '@/lib/utils/format';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useChartReady } from '@/lib/hooks/use-chart-ready';
 
 const STALE_TIME_MS = 15 * 60 * 1000;
 const CHART_HEIGHT = 120;
@@ -74,6 +75,7 @@ export function PillarMiniPriceChart() {
   const t = useTranslations('marketing.landing.prices');
   const tUnits = useTranslations('units');
   const locale = useLocale();
+  const chartReady = useChartReady();
   const mineral = getMineralById(DEFAULT_MINERAL);
   const unitLabel = tUnits(mineral.defaultUnit);
 
@@ -133,13 +135,14 @@ export function PillarMiniPriceChart() {
 
   return (
     <div
-      className="w-full rounded-card border border-border bg-bg px-2 py-3"
+      className="w-full min-w-0 rounded-card border border-border bg-bg px-2 py-3"
       style={{ height: CHART_HEIGHT + 24 }}
       role="img"
       aria-label={t('chartAria', { mineral: DEFAULT_MINERAL })}
     >
-      <ResponsiveContainer width="100%" height={CHART_HEIGHT}>
-        <AreaChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
+      {chartReady ? (
+        <ResponsiveContainer width="100%" height={CHART_HEIGHT}>
+          <AreaChart data={chartData} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="var(--brand-gold)" stopOpacity={0.2} />
@@ -178,6 +181,7 @@ export function PillarMiniPriceChart() {
           />
         </AreaChart>
       </ResponsiveContainer>
+      ) : null}
     </div>
   );
 }
