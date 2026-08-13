@@ -91,15 +91,24 @@ window.__biasharaResponsiveAudit = {
       minSize,
       minGap,
       isMobile,
+      rootSelector,
+      skipCtaChecks,
     } = params;
 
+    const root = rootSelector ? document.querySelector(rootSelector) : null;
+    const withinRoot = (el) => !root || root.contains(el);
+
     const seen = new Set();
-    const elements = [
-      ...document.querySelectorAll(interactiveSelector),
-      ...document.querySelectorAll(textSelector),
-    ];
+    const interactiveNodes = root
+      ? [...root.querySelectorAll(interactiveSelector)]
+      : [...document.querySelectorAll(interactiveSelector)];
+    const textNodes = root
+      ? [...root.querySelectorAll(textSelector)]
+      : [...document.querySelectorAll(textSelector)];
+    const elements = [...interactiveNodes, ...textNodes];
     const boxes = [];
     for (const el of elements) {
+      if (!withinRoot(el)) continue;
       if (!audit.isElementVisible(el)) continue;
       const rect = el.getBoundingClientRect();
       if (rect.width < 4 || rect.height < 4) continue;
@@ -125,7 +134,9 @@ window.__biasharaResponsiveAudit = {
 
     const tapIssues = [];
     if (isMobile) {
-      const interactive = [...document.querySelectorAll(interactiveSelector)].filter(audit.isElementVisible);
+      const interactive = interactiveNodes.filter(
+        (el) => withinRoot(el) && audit.isElementVisible(el),
+      );
       const rects = interactive.map((el) => ({
         rect: el.getBoundingClientRect(),
         desc: audit.describeElement(el),
@@ -174,7 +185,11 @@ window.__biasharaResponsiveAudit = {
     }
 
     const truncationIssues = [];
-    for (const el of document.querySelectorAll('button, a, label, h1, h2, h3, [role="tab"]')) {
+    const truncationNodes = root
+      ? [...root.querySelectorAll('button, a, label, h1, h2, h3, [role="tab"]')]
+      : [...document.querySelectorAll('button, a, label, h1, h2, h3, [role="tab"]')];
+    for (const el of truncationNodes) {
+      if (!withinRoot(el)) continue;
       if (!audit.isElementVisible(el)) continue;
       const style = window.getComputedStyle(el);
       const rect = el.getBoundingClientRect();
@@ -192,6 +207,7 @@ window.__biasharaResponsiveAudit = {
     }
 
     const ctaIssues = [];
+    if (!skipCtaChecks) {
     for (const cta of document.querySelectorAll('.gold-gradient, [class*="gold-gradient"]')) {
       if (!audit.isElementVisible(cta)) continue;
       const rect = cta.getBoundingClientRect();
@@ -222,6 +238,7 @@ window.__biasharaResponsiveAudit = {
         }
         parent = parent.parentElement;
       }
+    }
     }
 
     return {

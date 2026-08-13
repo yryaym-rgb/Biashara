@@ -129,6 +129,7 @@ export function Navbar({
     topBandHeight > 0 && tickerVisible ? 'top-[112px]' : 'top-[68px]';
 
   return (
+    <>
     <header
       data-nav-auth={isAuthenticated ? 'member' : 'guest'}
       className={cn(
@@ -323,84 +324,89 @@ export function Navbar({
           </button>
         </div>
       </Container>
-
-      {mobileOpen ? (
-        <div
-          id="mobile-nav"
-          className={cn('fixed right-0 bottom-0 left-0 z-40 bg-bg md:hidden', mobileNavTopClass)}
-          role="dialog"
-          aria-modal="true"
-          aria-label={t('mainNavigation')}
-        >
-          <Container className="flex h-full flex-col gap-2 py-6">
-            <nav className="flex flex-col gap-1">
-              {NAV_ITEMS.map((item) => {
-                const active = isActivePath(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      'flex items-center justify-between rounded-button px-4 py-3',
-                      'text-[15px] font-semibold text-body',
-                      active ? 'bg-bg-tint text-ink' : 'hover:bg-bg-tint',
-                    )}
-                  >
-                    <span>{t(item.labelKey)}</span>
-                    {item.hasDropdown ? (
-                      <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
-                    ) : null}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            <div className="mt-4 border-t border-border pt-4">
-              <p className="mb-2 px-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">
-                {t('language')}
-              </p>
-              <div className="flex gap-2 px-4">
-                {locales.map((item) => (
-                  <Link
-                    key={item}
-                    href={pathname}
-                    locale={item}
-                    className={cn(
-                      'rounded-button px-4 py-2 text-[15px] font-semibold',
-                      item === locale
-                        ? 'bg-bg-tint text-brand-blue'
-                        : 'text-body hover:bg-bg-tint',
-                    )}
-                  >
-                    {item.toUpperCase()}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {!isAuthenticated ? (
-              <div className="mt-auto flex flex-col gap-3 px-4 pb-8">
-                <Link
-                  href="/login"
-                  className="text-center text-[15px] font-semibold text-brand-blue"
-                >
-                  {t('login')}
-                </Link>
-                <Button asChild className="w-full">
-                  <Link href="/marketplace">{t('accessMarket')}</Link>
-                </Button>
-              </div>
-            ) : null}
-          </Container>
-        </div>
-      ) : null}
-      <LogoutConfirmDialog
-        open={logoutDialogOpen}
-        onClose={() => setLogoutDialogOpen(false)}
-        onConfirm={async () => {
-          await logoutAction(locale);
-        }}
-      />
     </header>
+
+    {mobileOpen ? (
+      <div
+        id="mobile-nav"
+        className={cn(
+          'fixed right-0 bottom-0 left-0 z-40 overflow-y-auto overscroll-contain bg-bg md:hidden',
+          mobileNavTopClass,
+        )}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('mainNavigation')}
+      >
+        <Container className="flex min-h-full flex-col gap-2 py-6">
+          <nav className="flex flex-col gap-1">
+            {NAV_ITEMS.map((item) => {
+              const active = isActivePath(pathname, item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'flex min-h-[44px] items-center justify-between rounded-button px-4 py-3',
+                    'text-[15px] font-semibold text-body',
+                    active ? 'bg-bg-tint text-ink' : 'hover:bg-bg-tint',
+                  )}
+                >
+                  <span>{t(item.labelKey)}</span>
+                  {item.hasDropdown ? (
+                    <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
+                  ) : null}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="mt-4 border-t border-border pt-4">
+            <p className="mb-2 px-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-muted">
+              {t('language')}
+            </p>
+            <div className="flex gap-2 px-4">
+              {locales.map((item) => (
+                <Link
+                  key={item}
+                  href={pathname}
+                  locale={item}
+                  className={cn(
+                    'inline-flex min-h-[44px] items-center rounded-button px-4 py-2 text-[15px] font-semibold',
+                    item === locale
+                      ? 'bg-bg-tint text-brand-blue'
+                      : 'text-body hover:bg-bg-tint',
+                  )}
+                >
+                  {item.toUpperCase()}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {!isAuthenticated ? (
+            <div className="mt-auto flex flex-col gap-3 px-4 pb-8">
+              <Link
+                href="/login"
+                className="inline-flex min-h-[44px] items-center justify-center text-[15px] font-semibold text-brand-blue"
+              >
+                {t('login')}
+              </Link>
+              <Button asChild className="w-full">
+                <Link href="/marketplace">{t('accessMarket')}</Link>
+              </Button>
+            </div>
+          ) : null}
+        </Container>
+      </div>
+    ) : null}
+
+    <LogoutConfirmDialog
+      open={logoutDialogOpen}
+      onClose={() => setLogoutDialogOpen(false)}
+      onConfirm={async () => {
+        await logoutAction(locale);
+      }}
+    />
+    </>
   );
 }
