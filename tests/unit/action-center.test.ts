@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { buildActionCenterItems } from '@/lib/platform/action-center.logic';
+import {
+  buildActionCenterItems,
+  summarizeActionCenterItems,
+  hasActionCenterAlerts,
+} from '@/lib/platform/action-center.logic';
 
 const USER_A = '00000000-0000-0000-0000-000000000001';
 const USER_B = '00000000-0000-0000-0000-000000000002';
@@ -78,5 +82,38 @@ describe('buildActionCenterItems', () => {
     expect(items.every((item) => !item.href.includes(USER_B))).toBe(true);
     expect(items[0]?.href).toBe(`/orders/${USER_A}`);
     expect(items[1]?.href).toBe('/settings');
+  });
+});
+
+describe('summarizeActionCenterItems', () => {
+  it('aggregates item counts by type', () => {
+    const items = buildActionCenterItems({
+      pendingOffers: [
+        { offerId: 'o1', listingTitle: 'A', counterpartName: 'B' },
+        { offerId: 'o2', listingTitle: 'C', counterpartName: 'D' },
+      ],
+      disputedOrders: [{ orderId: 'ord-1', listingTitle: 'E', counterpartName: 'F' }],
+      rejectedKycDocuments: ['id_card'],
+      rejectedListings: [],
+    });
+
+    expect(summarizeActionCenterItems(items)).toEqual({
+      pendingOffersCount: 2,
+      disputedOrdersCount: 1,
+      rejectedKycCount: 1,
+      rejectedListingsCount: 0,
+    });
+    expect(hasActionCenterAlerts(summarizeActionCenterItems(items))).toBe(true);
+  });
+
+  it('reports no alerts when summary counts are zero', () => {
+    const summary = summarizeActionCenterItems([]);
+    expect(summary).toEqual({
+      pendingOffersCount: 0,
+      disputedOrdersCount: 0,
+      rejectedKycCount: 0,
+      rejectedListingsCount: 0,
+    });
+    expect(hasActionCenterAlerts(summary)).toBe(false);
   });
 });

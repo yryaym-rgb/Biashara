@@ -89,3 +89,28 @@ export function buildActionCenterItems(input: {
 
   return items.sort((a, b) => a.priority - b.priority);
 }
+
+export interface ActionCenterSummary {
+  pendingOffersCount: number;
+  disputedOrdersCount: number;
+  rejectedKycCount: number;
+  rejectedListingsCount: number;
+}
+
+export function summarizeActionCenterItems(items: ActionCenterItem[]): ActionCenterSummary {
+  return {
+    pendingOffersCount: items.filter((item) => item.type === 'pending_offer').length,
+    disputedOrdersCount: items.filter((item) => item.type === 'disputed_order').length,
+    rejectedKycCount: items.filter((item) => item.type === 'rejected_kyc').length,
+    rejectedListingsCount: items.filter((item) => item.type === 'rejected_listing').length,
+  };
+}
+
+export function hasActionCenterAlerts(summary: ActionCenterSummary): boolean {
+  return (
+    summary.pendingOffersCount > 0 ||
+    summary.disputedOrdersCount > 0 ||
+    summary.rejectedKycCount > 0 ||
+    summary.rejectedListingsCount > 0
+  );
+}

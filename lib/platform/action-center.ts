@@ -13,8 +13,12 @@ import {
   type ActionCenterItem,
 } from '@/lib/platform/action-center.logic';
 
-export type { ActionCenterItem, ActionCenterItemType } from '@/lib/platform/action-center.logic';
-export { buildActionCenterItems } from '@/lib/platform/action-center.logic';
+export type { ActionCenterItem, ActionCenterItemType, ActionCenterSummary } from '@/lib/platform/action-center.logic';
+export {
+  buildActionCenterItems,
+  summarizeActionCenterItems,
+  hasActionCenterAlerts,
+} from '@/lib/platform/action-center.logic';
 
 function normalizeOfferForAction(raw: Record<string, unknown>): PlatformOfferRow {
   const listing = Array.isArray(raw.listing) ? raw.listing[0] : raw.listing;

@@ -768,12 +768,45 @@
         "title": "Nécessite votre attention",
         "allClear": "Tout est à jour.",
         "action": "Voir",
+        "summary": {
+          "pendingOffers": "{count, plural, one {⚠ # demande de bid/offre attend votre réponse} other {⚠ # demandes de bid/offre attendent votre réponse}}",
+          "disputedOrders": "{count, plural, one {⚠ # commande en litige} other {⚠ # commandes en litige}}",
+          "rejectedKyc": "{count, plural, one {⚠ # document KYC rejeté} other {⚠ # documents KYC rejetés}}",
+          "rejectedListings": "{count, plural, one {⚠ # annonce rejetée} other {⚠ # annonces rejetées}}",
+          "kycVerified": "✓ KYC vérifié"
+        },
         "items": {
           "pending_offer": "Offre en attente — {title}",
           "disputed_order": "Commande en litige — {title}",
           "rejected_kyc": "Document KYC refusé — {type}",
           "rejected_listing": "Annonce refusée — {title}"
         }
+      },
+      "recentActivitySection": {
+        "title": "Activité récente",
+        "viewAll": "Voir tout →",
+        "empty": "Votre activité apparaîtra ici.",
+        "exploreCta": "Explorer le marché"
+      },
+      "quickActions": {
+        "publishLot": {
+          "title": "Publier un lot",
+          "description": "Démarrez la traçabilité de votre production."
+        },
+        "publishListing": {
+          "title": "Publier une annonce",
+          "description": "Rejoignez la place de marché avec votre minerai."
+        },
+        "exploreMarket": {
+          "title": "Explorer le marché",
+          "description": "Découvrez des minerais vérifiés de la RDC."
+        },
+        "postOffer": {
+          "title": "Publier une offre",
+          "description": "Soumettez une offre sur une annonce active."
+        },
+        "myOffers": "Mes offres",
+        "myOrders": "Mes commandes"
       },
       "marketInsight": {
         "title": "Tendance de marché",

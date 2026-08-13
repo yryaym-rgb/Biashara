@@ -768,12 +768,45 @@
         "title": "Needs your attention",
         "allClear": "Everything is up to date.",
         "action": "View",
+        "summary": {
+          "pendingOffers": "{count, plural, one {⚠ # bid/offer awaiting your response} other {⚠ # bids/offers awaiting your response}}",
+          "disputedOrders": "{count, plural, one {⚠ # disputed order} other {⚠ # disputed orders}}",
+          "rejectedKyc": "{count, plural, one {⚠ # rejected KYC document} other {⚠ # rejected KYC documents}}",
+          "rejectedListings": "{count, plural, one {⚠ # rejected listing} other {⚠ # rejected listings}}",
+          "kycVerified": "✓ KYC verified"
+        },
         "items": {
           "pending_offer": "Pending offer — {title}",
           "disputed_order": "Disputed order — {title}",
           "rejected_kyc": "Rejected KYC document — {type}",
           "rejected_listing": "Rejected listing — {title}"
         }
+      },
+      "recentActivitySection": {
+        "title": "Recent activity",
+        "viewAll": "View all →",
+        "empty": "Your activity will appear here.",
+        "exploreCta": "Explore the marketplace"
+      },
+      "quickActions": {
+        "publishLot": {
+          "title": "Publish a lot",
+          "description": "Start traceability for your production."
+        },
+        "publishListing": {
+          "title": "Post a listing",
+          "description": "Join the marketplace with your mineral."
+        },
+        "exploreMarket": {
+          "title": "Explore the marketplace",
+          "description": "Discover verified minerals from the DRC."
+        },
+        "postOffer": {
+          "title": "Submit an offer",
+          "description": "Place an offer on an active listing."
+        },
+        "myOffers": "My offers",
+        "myOrders": "My orders"
       },
       "marketInsight": {
         "title": "Market trend",

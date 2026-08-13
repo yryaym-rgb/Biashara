@@ -5,21 +5,13 @@ import {
   Inbox,
   Package,
   Send,
-  Settings,
-  ShoppingBag,
-  Store,
   Tag,
   Truck,
   Wallet,
 } from 'lucide-react';
-import { Link } from '@/lib/i18n/navigation';
-import { requireAuth, isCooperativeRole, isSellerRole } from '@/lib/rbac';
-import { getProfile, getUser } from '@/lib/auth/session';
-import { getUserKycDocuments } from '@/lib/admin/queries';
 import {
   getBuyerDashboardStats,
   getDashboardActivityCounts,
-  getDashboardRecentActivity,
   getDashboardRecentOrders,
   getSellerDashboardStats,
   getSellerSalesVolumeByDay,
@@ -34,7 +26,6 @@ import { getTradingMixForUser } from '@/lib/platform/trading-mix';
 import { getTrustScoreForUser } from '@/lib/platform/trust-score-queries';
 import { getSuggestedListingsForUser } from '@/lib/platform/suggestions';
 import {
-  getDashboardPersona,
   getDashboardStatKeys,
   isNewDashboardAccount,
   shouldShowKycBanner,
@@ -42,6 +33,9 @@ import {
   type DashboardActivityCounts,
   type DashboardStatKey,
 } from '@/lib/platform/dashboard';
+import { requireAuth, isCooperativeRole, isSellerRole } from '@/lib/rbac';
+import { getProfile, getUser } from '@/lib/auth/session';
+import { getUserKycDocuments } from '@/lib/admin/queries';
 import {
   accountAgeDays,
   computeTrustScore,
@@ -50,11 +44,9 @@ import {
 import { safeQuery } from '@/lib/safe-query';
 import { KycStatusBanner } from '@/components/platform/kyc-status-banner';
 import { DashboardSalesChart } from '@/components/platform/dashboard-sales-chart';
-import { DashboardRecentOrdersTable } from '@/components/platform/dashboard-recent-orders-table';
 import { DashboardActionCenter } from '@/components/platform/dashboard-action-center';
 import { DashboardMarketInsight } from '@/components/platform/dashboard-market-insight';
 import { DashboardTradingMix } from '@/components/platform/dashboard-trading-mix';
-import { DashboardExportButton } from '@/components/platform/dashboard-export-button';
 import { DashboardTrustScore } from '@/components/platform/dashboard-header';
 import { DashboardSuggestions } from '@/components/platform/dashboard-suggestions';
 import {
@@ -66,9 +58,9 @@ import { DashboardGreetingBar } from '@/components/platform/dashboard/dashboard-
 import { DashboardKpiGrid, type DashboardKpiItem } from '@/components/platform/dashboard/dashboard-kpi-grid';
 import { DashboardOnboardingBanner } from '@/components/platform/dashboard/dashboard-onboarding-banner';
 import { DashboardMarketPulse } from '@/components/platform/dashboard/dashboard-market-pulse';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { DashboardRecentActivitySection } from '@/components/platform/dashboard/dashboard-recent-activity-section';
+import { DashboardQuickActions } from '@/components/platform/dashboard/dashboard-quick-actions';
 import { formatCurrency, formatNumber } from '@/lib/utils/format';
-import { formatRelativeTime } from '@/lib/utils/dates';
 
 export const dynamic = 'force-dynamic';
 
@@ -133,9 +125,6 @@ export default async function DashboardPage({
 
   const t = await getTranslations({ locale, namespace: 'platform.dashboard' });
   const tCommon = await getTranslations({ locale, namespace: 'admin.common' });
-  const tOffers = await getTranslations({ locale, namespace: 'platform.offers' });
-  const tOrders = await getTranslations({ locale, namespace: 'platform.orders' });
-  const tListingStatus = await getTranslations({ locale, namespace: 'admin.listingStatus' });
 
   const greetingName = getDashboardGreetingName(
     profile.company_name,
@@ -152,7 +141,6 @@ export default async function DashboardPage({
 
   const [
     activityCounts,
-    recentActivity,
     kycDocuments,
     sellerStats,
     buyerStats,
@@ -166,7 +154,6 @@ export default async function DashboardPage({
     suggestions,
   ] = await Promise.all([
     safeQuery('dashboard/activity-counts', () => getDashboardActivityCounts(profile.id), EMPTY_ACTIVITY_COUNTS),
-    safeQuery('dashboard/recent-activity', () => getDashboardRecentActivity(profile.id, 10), []),
     shouldShowKycBanner(profile.kyc_status)
       ? safeQuery('dashboard/kyc-documents', () => getUserKycDocuments(profile.id), [])
       : Promise.resolve([]),
@@ -239,34 +226,6 @@ export default async function DashboardPage({
     };
   });
 
-  const quickLinks = [
-    { href: '/marketplace' as const, title: t('quickLinks.marketplace'), icon: Store },
-    { href: '/offers' as const, title: t('quickLinks.offers'), icon: Tag },
-    ...(isSeller
-      ? [
-          {
-            href: (isCooperative ? '/lots' : '/settings') as '/lots' | '/settings',
-            title: isCooperative ? t('quickLinks.lots') : t('quickLinks.listings'),
-            icon: isCooperative ? Package : ShoppingBag,
-          },
-        ]
-      : []),
-    { href: '/settings' as const, title: t('quickLinks.settings'), icon: Settings },
-  ];
-
-  function formatActivityStatus(kind: string, status: string): string {
-    if (kind === 'offer') {
-      return tOffers(status as 'pending');
-    }
-    if (kind === 'order') {
-      if (status === 'in_transit') {
-        return tOrders('inTransit');
-      }
-      return tOrders(status as 'confirmed');
-    }
-    return tListingStatus(status as 'active');
-  }
-
   return (
     <div className="w-full space-y-6">
       <DashboardGreetingBar
@@ -283,7 +242,11 @@ export default async function DashboardPage({
         />
       ) : null}
 
-      <DashboardActionCenter items={actionCenterItems} locale={locale} />
+      <DashboardActionCenter
+        items={actionCenterItems}
+        kycApproved={profile.kyc_status === 'approved'}
+        locale={locale}
+      />
 
       <DashboardKpiGrid items={kpiItems} />
 
@@ -318,70 +281,19 @@ export default async function DashboardPage({
 
       {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
 
-      <div className="space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <h2 className="text-[18px] font-semibold text-ink">
-            {hasOrders ? t('recentOrders') : t('recentOffersFallback')}
-          </h2>
-          <DashboardExportButton />
+      <div className="grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <DashboardRecentActivitySection
+            rows={recentOrders}
+            hasOrders={hasOrders}
+            locale={locale}
+          />
         </div>
-        <DashboardRecentOrdersTable
-          rows={recentOrders}
+        <DashboardQuickActions
           locale={locale}
-          hasOrders={hasOrders}
-          hideHeader
+          role={profile.role}
+          kycApproved={profile.kyc_status === 'approved'}
         />
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        <Card>
-          <CardHeader className="pb-4">
-            <CardTitle className="text-[18px]">{t('recentActivity')}</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-0">
-            {recentActivity.length === 0 ? (
-              <p className="text-[15px] text-body">{t('noActivity')}</p>
-            ) : (
-              <ul className="space-y-3">
-                {recentActivity.map((event) => (
-                  <li
-                    key={event.id}
-                    className="border-b border-border pb-3 last:border-b-0 last:pb-0"
-                  >
-                    <p className="text-[15px] text-ink">
-                      {t(`activity.${event.kind}`, {
-                        title: event.listingTitle || t('activity.untitled'),
-                        status: formatActivityStatus(event.kind, event.status),
-                      })}
-                    </p>
-                    <p className="mt-1 text-[13px] text-muted">
-                      {formatRelativeTime(event.timestamp, locale)}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </CardContent>
-        </Card>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {quickLinks.map((link) => (
-            <Link key={`${link.href}-${link.title}`} href={link.href} className="block">
-              <Card hoverable className="h-full">
-                <CardContent className="flex items-center gap-4 p-5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-bg-tint">
-                    <link.icon
-                      className="h-5 w-5 text-brand-blue"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <span className="text-[18px] font-semibold text-ink">{link.title}</span>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
       </div>
     </div>
   );
