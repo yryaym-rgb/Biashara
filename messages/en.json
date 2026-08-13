@@ -710,20 +710,20 @@
       "stats": {
         "activeListings": "My active listings",
         "pendingOffersReceived": "Pending offers received",
-        "ordersInProgress": "My orders",
+        "ordersInProgress": "Orders in progress",
         "monthlyRevenue": "Revenue this month",
         "pendingOffersSent": "Pending offers sent",
-        "recentlyViewedListings": "Recently viewed listings",
+        "activePurchaseRequests": "Active purchase requests",
         "lots": "My lots",
         "offers": "My offers",
         "openPurchaseRequests": "Purchase requests",
         "zero": {
           "activeListings": "0 · No active listings",
           "pendingOffersReceived": "0 · No offers received",
-          "ordersInProgress": "0 · No orders",
+          "ordersInProgress": "0 · No orders in progress",
           "monthlyRevenue": "0 · No revenue",
           "pendingOffersSent": "0 · No offers sent",
-          "recentlyViewedListings": "0 · No listings viewed",
+          "activePurchaseRequests": "0 · No active requests",
           "lots": "0 · No lots",
           "offers": "0 · No offers",
           "openPurchaseRequests": "0 · No requests"
@@ -742,10 +742,11 @@
         "cooperativeKyc": "Complete your KYC verification, then publish your first lot.",
         "sellerApproved": "Post your first listing to join the marketplace.",
         "sellerKyc": "Complete your KYC verification, then post your first listing.",
-        "buyerApproved": "Explore the marketplace to discover verified minerals.",
-        "buyerKyc": "Explore the marketplace while your KYC verification is in progress.",
+        "buyerApproved": "Browse verified listings to find your first supplier.",
+        "buyerKyc": "Browse verified listings while your KYC verification is in progress.",
         "ctaPublishLot": "Publish a lot",
         "ctaPostListing": "Post a listing",
+        "ctaPublishRfp": "Publish a purchase request",
         "ctaExplore": "Explore marketplace"
       },
       "activity": {
@@ -802,6 +803,10 @@
         "exploreMarket": {
           "title": "Explore the marketplace",
           "description": "Discover verified minerals from the DRC."
+        },
+        "publishRfp": {
+          "title": "Publish a purchase request",
+          "description": "Receive bids from qualified suppliers."
         },
         "postOffer": {
           "title": "Submit an offer",

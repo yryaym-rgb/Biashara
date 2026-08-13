@@ -3,6 +3,20 @@ import { visitAndAssertClean } from '../../helpers/console-monitor';
 import { visitSettingsTab, withPageMonitor } from '../../helpers/interactions';
 
 test.describe('seller-specific interactions', () => {
+  test('seller dashboard shows seller KPIs and quick actions', async ({ page }) => {
+    await visitAndAssertClean(page, '/dashboard', 'Tableau de bord');
+
+    await expect(page.getByText('Mes annonces actives')).toBeVisible();
+    await expect(page.getByText('Offres reçues en attente')).toBeVisible();
+    await expect(page.getByText('Commandes en cours')).toBeVisible();
+    await expect(page.getByText('Chiffre d\'affaires ce mois')).toBeVisible();
+    await expect(page.getByText('Demandes d\'achat actives')).not.toBeVisible();
+    await expect(page.getByText('Mes lots')).not.toBeVisible();
+
+    await expect(page.getByRole('link', { name: /Publier une annonce/ })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Explorer le marché/ })).toBeVisible();
+  });
+
   test('seller can access new listing form', async ({ page }) => {
     await visitAndAssertClean(page, '/marketplace/new', 'Publier une annonce');
 

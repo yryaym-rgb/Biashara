@@ -15,8 +15,8 @@ export type SellerStatKey =
 
 export type BuyerStatKey =
   | 'pendingOffersSent'
-  | 'ordersInProgress'
-  | 'recentlyViewedListings';
+  | 'activePurchaseRequests'
+  | 'ordersInProgress';
 
 export type CooperativeStatKey =
   | 'lots'
@@ -63,7 +63,74 @@ export function getDashboardStatKeys(role: string): DashboardStatKey[] {
     ];
   }
 
-  return ['pendingOffersSent', 'ordersInProgress', 'recentlyViewedListings'];
+  return ['pendingOffersSent', 'activePurchaseRequests', 'ordersInProgress'];
+}
+
+export function isBuyerDashboardRole(role: string): boolean {
+  return role === 'buyer' || role === 'institution';
+}
+
+export const COOPERATIVE_KPI_HREFS: Record<
+  CooperativeStatKey,
+  '/lots' | '/offers' | '/rfps' | '/orders'
+> = {
+  lots: '/lots',
+  offers: '/offers',
+  openPurchaseRequests: '/rfps',
+  ordersInProgress: '/orders',
+};
+
+export const SELLER_KPI_HREFS: Record<
+  SellerStatKey,
+  '/settings?tab=listings' | '/offers' | '/orders'
+> = {
+  activeListings: '/settings?tab=listings',
+  pendingOffersReceived: '/offers',
+  ordersInProgress: '/orders',
+  monthlyRevenue: '/orders',
+};
+
+export const BUYER_KPI_HREFS: Record<BuyerStatKey, '/offers' | '/rfps' | '/orders'> = {
+  pendingOffersSent: '/offers',
+  activePurchaseRequests: '/rfps',
+  ordersInProgress: '/orders',
+};
+
+export function getDashboardKpiHref(
+  role: string,
+  key: DashboardStatKey,
+): string | undefined {
+  if (isCooperativeRole(role)) {
+    return COOPERATIVE_KPI_HREFS[key as CooperativeStatKey];
+  }
+
+  if (isSellerRole(role)) {
+    return SELLER_KPI_HREFS[key as SellerStatKey];
+  }
+
+  if (isBuyerDashboardRole(role)) {
+    return BUYER_KPI_HREFS[key as BuyerStatKey];
+  }
+
+  return undefined;
+}
+
+export type DashboardQuickActionKey =
+  | 'publish-lot'
+  | 'publish-listing'
+  | 'explore'
+  | 'publish-rfp';
+
+export function getDashboardPrimaryQuickActionKeys(role: string): DashboardQuickActionKey[] {
+  if (isCooperativeRole(role)) {
+    return ['publish-lot', 'explore'];
+  }
+
+  if (isSellerRole(role)) {
+    return ['publish-listing', 'explore'];
+  }
+
+  return ['explore', 'publish-rfp'];
 }
 
 export interface DashboardActivityCounts {

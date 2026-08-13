@@ -10,8 +10,6 @@ const IN_PROGRESS_ORDER_STATUSES: Database['public']['Enums']['order_status'][] 
   'in_transit',
 ];
 
-const RECENT_LISTING_WINDOW_DAYS = 30;
-
 type OfferStatus = Database['public']['Enums']['offer_status'];
 type OrderStatus = Database['public']['Enums']['order_status'];
 type ListingStatus = Database['public']['Enums']['listing_status'];
@@ -25,8 +23,8 @@ export interface SellerDashboardStats {
 
 export interface BuyerDashboardStats {
   pendingOffersSent: number;
+  activePurchaseRequests: number;
   ordersInProgress: number;
-  recentlyViewedListings: number;
 }
 
 export interface DashboardActivityEvent {
@@ -41,12 +39,6 @@ export interface DashboardActivityEvent {
 function startOfCurrentMonth(): string {
   const now = new Date();
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1)).toISOString();
-}
-
-function recentListingCutoff(): string {
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - RECENT_LISTING_WINDOW_DAYS);
-  return cutoff.toISOString();
 }
 
 export async function getSellerDashboardStats(userId: string): Promise<SellerDashboardStats> {
@@ -106,59 +98,39 @@ export async function getSellerDashboardStats(userId: string): Promise<SellerDas
 
 export async function getBuyerDashboardStats(userId: string): Promise<BuyerDashboardStats> {
   const supabase = await createClient();
-  const recentCutoff = recentListingCutoff();
 
-  const [pendingOffersRes, ordersInProgressRes, offerListingsRes, conversationListingsRes] =
-    await Promise.all([
-      supabase
-        .from('offers')
-        .select('id', { count: 'exact', head: true })
-        .eq('buyer_id', userId)
-        .eq('status', 'pending'),
-      supabase
-        .from('orders')
-        .select('id', { count: 'exact', head: true })
-        .eq('buyer_id', userId)
-        .in('status', IN_PROGRESS_ORDER_STATUSES),
-      supabase
-        .from('offers')
-        .select('listing_id')
-        .eq('buyer_id', userId)
-        .gte('created_at', recentCutoff),
-      supabase
-        .from('conversations')
-        .select('listing_id')
-        .eq('buyer_id', userId)
-        .gte('created_at', recentCutoff),
-    ]);
+  const [pendingOffersRes, activeRfpsRes, ordersInProgressRes] = await Promise.all([
+    supabase
+      .from('offers')
+      .select('id', { count: 'exact', head: true })
+      .eq('buyer_id', userId)
+      .eq('status', 'pending'),
+    supabase
+      .from('rfps')
+      .select('id', { count: 'exact', head: true })
+      .eq('buyer_id', userId)
+      .eq('status', 'open'),
+    supabase
+      .from('orders')
+      .select('id', { count: 'exact', head: true })
+      .eq('buyer_id', userId)
+      .in('status', IN_PROGRESS_ORDER_STATUSES),
+  ]);
 
   if (pendingOffersRes.error) {
     throw new Error(pendingOffersRes.error.message);
   }
+  if (activeRfpsRes.error) {
+    throw new Error(activeRfpsRes.error.message);
+  }
   if (ordersInProgressRes.error) {
     throw new Error(ordersInProgressRes.error.message);
-  }
-  if (offerListingsRes.error) {
-    throw new Error(offerListingsRes.error.message);
-  }
-  if (conversationListingsRes.error) {
-    throw new Error(conversationListingsRes.error.message);
-  }
-
-  const recentListingIds = new Set<string>();
-  for (const row of offerListingsRes.data ?? []) {
-    recentListingIds.add(row.listing_id);
-  }
-  for (const row of conversationListingsRes.data ?? []) {
-    if (row.listing_id) {
-      recentListingIds.add(row.listing_id);
-    }
   }
 
   return {
     pendingOffersSent: pendingOffersRes.count ?? 0,
+    activePurchaseRequests: activeRfpsRes.count ?? 0,
     ordersInProgress: ordersInProgressRes.count ?? 0,
-    recentlyViewedListings: recentListingIds.size,
   };
 }
 
