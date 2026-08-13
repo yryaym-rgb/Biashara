@@ -101,7 +101,10 @@ export function SettingsPageContent({
       ...(showExportReadinessTab ? (['exportReadiness'] as const) : []),
       ...(showListingsTab ? (['listings'] as const) : []),
     ];
-    setActiveTab(resolveActiveTab(nextTabs, null, initialTab));
+    setActiveTab((current) => {
+      const next = resolveActiveTab(nextTabs, null, initialTab);
+      return current === next ? current : next;
+    });
   }, [initialTab, showExportReadinessTab, showListingsTab]);
 
   function handleTabChange(value: string) {
