@@ -1604,6 +1604,42 @@
       },
       "recentActivity": "Activité récente",
       "noActivity": "Aucune activité enregistrée pour le moment.",
+      "liveActivity": {
+        "title": "Activité en direct",
+        "viewFullLog": "Voir le journal complet →",
+        "empty": "Aucune activité significative récente.",
+        "events": {
+          "account_verified": "{actor} — compte vérifié ({role})",
+          "kyc_submitted": "{actor} — dossier KYC soumis",
+          "listing_submitted": "{actor} — annonce soumise ({mineral}, {province})",
+          "listing_published": "{actor} — annonce publiée ({mineral}, {province})",
+          "rfp_created": "{actor} — demande d'achat créée ({mineral})",
+          "offer_accepted": "{actor} — offre acceptée ({mineral})",
+          "order_disputed": "Litige ouvert — {actor}"
+        }
+      },
+      "kycIntelligence": {
+        "title": "Intelligence KYC",
+        "openQueue": "Ouvrir la file KYC →",
+        "funnel": {
+          "pending": "En attente",
+          "needsReview": "À revoir",
+          "verified": "Vérifiés",
+          "rejected": "Rejetés"
+        },
+        "verifiedBarLabel": "Taux de vérification",
+        "verifiedPercent": "{value} %",
+        "verifiedBarAria": "Taux de vérification : {value} %",
+        "noDocuments": "Aucun document KYC enregistré.",
+        "oldestPendingTitle": "Dossiers les plus anciens",
+        "oldestPendingEmpty": "Aucun dossier en attente."
+      },
+      "moderationPreview": {
+        "title": "Modération des annonces",
+        "openQueue": "Voir la file complète →",
+        "empty": "Aucune annonce en attente de modération.",
+        "reviewAction": "Vérifier →"
+      },
       "quickLinks": {
         "users": "Utilisateurs",
         "kycReview": "Vérification KYC",

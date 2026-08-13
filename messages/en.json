@@ -1604,6 +1604,42 @@
       },
       "recentActivity": "Recent activity",
       "noActivity": "No activity recorded yet.",
+      "liveActivity": {
+        "title": "Live activity",
+        "viewFullLog": "View full audit log →",
+        "empty": "No meaningful recent activity.",
+        "events": {
+          "account_verified": "{actor} — account verified ({role})",
+          "kyc_submitted": "{actor} — KYC dossier submitted",
+          "listing_submitted": "{actor} — listing submitted ({mineral}, {province})",
+          "listing_published": "{actor} — listing published ({mineral}, {province})",
+          "rfp_created": "{actor} — purchase request created ({mineral})",
+          "offer_accepted": "{actor} — offer accepted ({mineral})",
+          "order_disputed": "Dispute opened — {actor}"
+        }
+      },
+      "kycIntelligence": {
+        "title": "KYC intelligence",
+        "openQueue": "Open KYC queue →",
+        "funnel": {
+          "pending": "Pending",
+          "needsReview": "Needs review",
+          "verified": "Verified",
+          "rejected": "Rejected"
+        },
+        "verifiedBarLabel": "Verification rate",
+        "verifiedPercent": "{value}%",
+        "verifiedBarAria": "Verification rate: {value}%",
+        "noDocuments": "No KYC documents recorded.",
+        "oldestPendingTitle": "Oldest pending dossiers",
+        "oldestPendingEmpty": "No pending dossiers."
+      },
+      "moderationPreview": {
+        "title": "Listings moderation",
+        "openQueue": "View full queue →",
+        "empty": "No listings awaiting moderation.",
+        "reviewAction": "Review →"
+      },
       "quickLinks": {
         "users": "Users",
         "kycReview": "KYC verification",
