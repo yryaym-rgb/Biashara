@@ -1586,11 +1586,21 @@
     "dashboard": {
       "title": "Tableau de bord",
       "eyebrow": "Administration",
+      "dataUnavailable": "Donnée indisponible",
       "stats": {
+        "users": "Utilisateurs",
+        "activeListings": "Annonces actives",
         "pendingKyc": "KYC en attente",
-        "pendingListings": "Annonces en attente",
-        "verifiedUsers": "Utilisateurs vérifiés",
-        "activeListings": "Annonces actives"
+        "purchaseRequests": "Demandes d'achat"
+      },
+      "trendAria": "Variation {label} : {value}",
+      "sparklineAria": "Historique {label}",
+      "marketPulse": {
+        "eyebrow": "MARCHÉ NATIONAL",
+        "lastUpdated": "Dernière mise à jour : {time} (Kinshasa)",
+        "viewPrices": "Voir les cotations →",
+        "viewReports": "Voir les rapports →",
+        "unavailable": "Donnée indisponible"
       },
       "recentActivity": "Activité récente",
       "noActivity": "Aucune activité enregistrée pour le moment.",

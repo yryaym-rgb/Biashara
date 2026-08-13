@@ -1586,11 +1586,21 @@
     "dashboard": {
       "title": "Dashboard",
       "eyebrow": "Administration",
+      "dataUnavailable": "Data unavailable",
       "stats": {
+        "users": "Users",
+        "activeListings": "Active listings",
         "pendingKyc": "Pending KYC",
-        "pendingListings": "Pending listings",
-        "verifiedUsers": "Verified users",
-        "activeListings": "Active listings"
+        "purchaseRequests": "Purchase requests"
+      },
+      "trendAria": "{label} change: {value}",
+      "sparklineAria": "{label} history",
+      "marketPulse": {
+        "eyebrow": "NATIONAL MARKET",
+        "lastUpdated": "Last updated: {time} (Kinshasa)",
+        "viewPrices": "View prices →",
+        "viewReports": "View reports →",
+        "unavailable": "Data unavailable"
       },
       "recentActivity": "Recent activity",
       "noActivity": "No activity recorded yet.",
