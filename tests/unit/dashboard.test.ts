@@ -1,11 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import {
-  getDashboardPersona,
+  getCooperativeStatKeys,
   getDashboardStatKeys,
   getKycBannerTone,
   isNewDashboardAccount,
+  shouldAlwaysShowDashboardKpis,
+  shouldShowOnboardingBanner,
   shouldShowKycBanner,
 } from '@/lib/platform/dashboard';
+import { getDashboardGreetingName } from '@/lib/platform/dashboard/greeting';
+import { isMarketPulsePriceAvailable } from '@/lib/platform/dashboard/market-pulse';
 
 describe('dashboard KYC banner visibility', () => {
   it('hides the banner when KYC is approved', () => {
@@ -27,21 +31,28 @@ describe('dashboard KYC banner visibility', () => {
 });
 
 describe('dashboard role-based stat cards', () => {
-  it('returns four seller stat keys for seller and cooperative roles', () => {
+  it('returns four cooperative stat keys for cooperative role', () => {
+    expect(getCooperativeStatKeys()).toEqual([
+      'lots',
+      'offers',
+      'openPurchaseRequests',
+      'ordersInProgress',
+    ]);
+    expect(getDashboardStatKeys('cooperative')).toEqual([
+      'lots',
+      'offers',
+      'openPurchaseRequests',
+      'ordersInProgress',
+    ]);
+  });
+
+  it('returns four seller stat keys for seller role', () => {
     expect(getDashboardStatKeys('seller')).toEqual([
       'activeListings',
       'pendingOffersReceived',
       'ordersInProgress',
       'monthlyRevenue',
     ]);
-    expect(getDashboardStatKeys('cooperative')).toEqual([
-      'activeListings',
-      'pendingOffersReceived',
-      'ordersInProgress',
-      'monthlyRevenue',
-    ]);
-    expect(getDashboardPersona('seller')).toBe('seller');
-    expect(getDashboardPersona('cooperative')).toBe('seller');
   });
 
   it('returns three buyer stat keys for buyer and institution roles', () => {
@@ -55,8 +66,6 @@ describe('dashboard role-based stat cards', () => {
       'ordersInProgress',
       'recentlyViewedListings',
     ]);
-    expect(getDashboardPersona('buyer')).toBe('buyer');
-    expect(getDashboardPersona('institution')).toBe('buyer');
   });
 });
 
@@ -70,9 +79,17 @@ describe('dashboard new account detection', () => {
         conversations: 0,
       }),
     ).toBe(true);
+    expect(
+      shouldShowOnboardingBanner({
+        listings: 0,
+        offers: 0,
+        orders: 0,
+        conversations: 0,
+      }),
+    ).toBe(true);
   });
 
-  it('treats any real activity as an established account', () => {
+  it('treats any real activity as an established account for onboarding banner', () => {
     expect(
       isNewDashboardAccount({
         listings: 0,
@@ -89,5 +106,43 @@ describe('dashboard new account detection', () => {
         conversations: 1,
       }),
     ).toBe(false);
+  });
+});
+
+describe('dashboard always-show KPIs behavior', () => {
+  it('always renders KPI cards regardless of account age', () => {
+    expect(shouldAlwaysShowDashboardKpis()).toBe(true);
+  });
+
+  it('does not use new-account detection to hide KPIs', () => {
+    const newAccount = {
+      listings: 0,
+      offers: 0,
+      orders: 0,
+      conversations: 0,
+    };
+    expect(isNewDashboardAccount(newAccount)).toBe(true);
+    expect(shouldAlwaysShowDashboardKpis()).toBe(true);
+  });
+});
+
+describe('dashboard greeting name', () => {
+  it('prefers company name when set', () => {
+    expect(getDashboardGreetingName('Coop Minière du Katanga', 'user@example.com', 'Inconnu')).toBe(
+      'Coop Minière du Katanga',
+    );
+  });
+
+  it('falls back to email local-part when company name is empty', () => {
+    expect(getDashboardGreetingName(null, 'cooperative@biashara.cd', 'Inconnu')).toBe('cooperative');
+    expect(getDashboardGreetingName('  ', 'cooperative@biashara.cd', 'Inconnu')).toBe('cooperative');
+  });
+});
+
+describe('dashboard market pulse helpers', () => {
+  it('treats null and undefined prices as unavailable', () => {
+    expect(isMarketPulsePriceAvailable(null)).toBe(false);
+    expect(isMarketPulsePriceAvailable(undefined)).toBe(false);
+    expect(isMarketPulsePriceAvailable(42.5)).toBe(true);
   });
 });

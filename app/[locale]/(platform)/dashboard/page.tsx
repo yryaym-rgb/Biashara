@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import {
+  ClipboardList,
   Eye,
   Inbox,
   Package,
@@ -12,9 +13,8 @@ import {
   Wallet,
 } from 'lucide-react';
 import { Link } from '@/lib/i18n/navigation';
-import { requireAuth, isSellerRole } from '@/lib/rbac';
+import { requireAuth, isCooperativeRole, isSellerRole } from '@/lib/rbac';
 import { getProfile, getUser } from '@/lib/auth/session';
-import { displayName } from '@/lib/admin/display';
 import { getUserKycDocuments } from '@/lib/admin/queries';
 import {
   getBuyerDashboardStats,
@@ -26,6 +26,8 @@ import {
   type BuyerDashboardStats,
   type SellerDashboardStats,
 } from '@/lib/platform/queries';
+import { getCooperativeDashboardStats } from '@/lib/platform/dashboard/cooperative-stats';
+import { getDashboardGreetingName } from '@/lib/platform/dashboard/greeting';
 import { getActionCenterItems } from '@/lib/platform/action-center';
 import { getMarketInsightForUser } from '@/lib/platform/market-insight';
 import { getTradingMixForUser } from '@/lib/platform/trading-mix';
@@ -36,6 +38,7 @@ import {
   getDashboardStatKeys,
   isNewDashboardAccount,
   shouldShowKycBanner,
+  type CooperativeStatKey,
   type DashboardActivityCounts,
   type DashboardStatKey,
 } from '@/lib/platform/dashboard';
@@ -46,26 +49,24 @@ import {
 } from '@/lib/platform/trust-score';
 import { safeQuery } from '@/lib/safe-query';
 import { KycStatusBanner } from '@/components/platform/kyc-status-banner';
-import { DashboardStatCard } from '@/components/platform/dashboard-stat-card';
-import { DashboardWelcomePanel } from '@/components/platform/dashboard-welcome-panel';
 import { DashboardSalesChart } from '@/components/platform/dashboard-sales-chart';
 import { DashboardRecentOrdersTable } from '@/components/platform/dashboard-recent-orders-table';
 import { DashboardActionCenter } from '@/components/platform/dashboard-action-center';
 import { DashboardMarketInsight } from '@/components/platform/dashboard-market-insight';
 import { DashboardTradingMix } from '@/components/platform/dashboard-trading-mix';
 import { DashboardExportButton } from '@/components/platform/dashboard-export-button';
-import {
-  DashboardHeader,
-  DashboardTrustScore,
-} from '@/components/platform/dashboard-header';
+import { DashboardTrustScore } from '@/components/platform/dashboard-header';
 import { DashboardSuggestions } from '@/components/platform/dashboard-suggestions';
 import {
   DashboardComplianceComingSoon,
   DashboardEscrowComingSoon,
   DashboardRecommendationsComingSoon,
 } from '@/components/platform/dashboard-coming-soon';
+import { DashboardGreetingBar } from '@/components/platform/dashboard/dashboard-greeting-bar';
+import { DashboardKpiGrid, type DashboardKpiItem } from '@/components/platform/dashboard/dashboard-kpi-grid';
+import { DashboardOnboardingBanner } from '@/components/platform/dashboard/dashboard-onboarding-banner';
+import { DashboardMarketPulse } from '@/components/platform/dashboard/dashboard-market-pulse';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Container } from '@/components/ui/container';
 import { formatCurrency, formatNumber } from '@/lib/utils/format';
 import { formatRelativeTime } from '@/lib/utils/dates';
 
@@ -91,13 +92,30 @@ const ZERO_BUYER_STATS: BuyerDashboardStats = {
   recentlyViewedListings: 0,
 };
 
-const STAT_ICONS: Record<DashboardStatKey, typeof Package> = {
+const ZERO_COOPERATIVE_STATS = {
+  lots: 0,
+  offers: 0,
+  openPurchaseRequests: 0,
+  ordersInProgress: 0,
+};
+
+const STAT_ICONS = {
   activeListings: Package,
   pendingOffersReceived: Inbox,
   ordersInProgress: Truck,
   monthlyRevenue: Wallet,
   pendingOffersSent: Send,
   recentlyViewedListings: Eye,
+  lots: Package,
+  offers: Tag,
+  openPurchaseRequests: ClipboardList,
+} as const satisfies Record<DashboardStatKey, typeof Package>;
+
+const COOPERATIVE_KPI_HREFS: Record<CooperativeStatKey, '/lots' | '/offers' | '/rfps' | '/orders'> = {
+  lots: '/lots',
+  offers: '/offers',
+  openPurchaseRequests: '/rfps',
+  ordersInProgress: '/orders',
 };
 
 export default async function DashboardPage({
@@ -110,7 +128,7 @@ export default async function DashboardPage({
 
   const profile = requireAuth(await getProfile());
   const user = await getUser();
-  const persona = getDashboardPersona(profile.role);
+  const isCooperative = isCooperativeRole(profile.role);
   const isSeller = isSellerRole(profile.role);
 
   const t = await getTranslations({ locale, namespace: 'platform.dashboard' });
@@ -119,7 +137,11 @@ export default async function DashboardPage({
   const tOrders = await getTranslations({ locale, namespace: 'platform.orders' });
   const tListingStatus = await getTranslations({ locale, namespace: 'admin.listingStatus' });
 
-  const userDisplayName = displayName(profile.company_name, user?.email ?? tCommon('unknownUser'));
+  const greetingName = getDashboardGreetingName(
+    profile.company_name,
+    user?.email ?? null,
+    tCommon('unknownUser'),
+  );
 
   const trustScoreFallback = computeTrustScore({
     kycApproved: isKycApprovedForTrust(profile.kyc_status),
@@ -134,6 +156,7 @@ export default async function DashboardPage({
     kycDocuments,
     sellerStats,
     buyerStats,
+    cooperativeStats,
     salesVolume,
     recentOrders,
     actionCenterItems,
@@ -147,11 +170,18 @@ export default async function DashboardPage({
     shouldShowKycBanner(profile.kyc_status)
       ? safeQuery('dashboard/kyc-documents', () => getUserKycDocuments(profile.id), [])
       : Promise.resolve([]),
-    isSeller
+    isSeller && !isCooperative
       ? safeQuery('dashboard/seller-stats', () => getSellerDashboardStats(profile.id), ZERO_SELLER_STATS)
       : Promise.resolve(null),
     !isSeller
       ? safeQuery('dashboard/buyer-stats', () => getBuyerDashboardStats(profile.id), ZERO_BUYER_STATS)
+      : Promise.resolve(null),
+    isCooperative
+      ? safeQuery(
+          'dashboard/cooperative-stats',
+          () => getCooperativeDashboardStats(profile.id),
+          ZERO_COOPERATIVE_STATS,
+        )
       : Promise.resolve(null),
     isSeller
       ? safeQuery('dashboard/sales-volume', () => getSellerSalesVolumeByDay(profile.id), [])
@@ -168,7 +198,7 @@ export default async function DashboardPage({
     safeQuery('dashboard/suggestions', () => getSuggestedListingsForUser(profile.id), []),
   ]);
 
-  const isNewAccount = isNewDashboardAccount(activityCounts);
+  const showOnboardingBanner = isNewDashboardAccount(activityCounts);
   const rejectedDocumentTypes = kycDocuments
     .filter((doc) => doc.status === 'rejected')
     .map((doc) => doc.type);
@@ -179,21 +209,47 @@ export default async function DashboardPage({
   const statValues: Record<DashboardStatKey, string | number> = {
     activeListings: sellerStats?.activeListings ?? 0,
     pendingOffersReceived: sellerStats?.pendingOffersReceived ?? 0,
-    ordersInProgress: isSeller
-      ? (sellerStats?.ordersInProgress ?? 0)
-      : (buyerStats?.ordersInProgress ?? 0),
+    ordersInProgress: isCooperative
+      ? (cooperativeStats?.ordersInProgress ?? 0)
+      : isSeller
+        ? (sellerStats?.ordersInProgress ?? 0)
+        : (buyerStats?.ordersInProgress ?? 0),
     monthlyRevenue: sellerStats
       ? formatCurrency(sellerStats.monthlyRevenue, 'USD', locale)
       : formatCurrency(0, 'USD', locale),
     pendingOffersSent: buyerStats?.pendingOffersSent ?? 0,
     recentlyViewedListings: buyerStats?.recentlyViewedListings ?? 0,
+    lots: cooperativeStats?.lots ?? 0,
+    offers: cooperativeStats?.offers ?? 0,
+    openPurchaseRequests: cooperativeStats?.openPurchaseRequests ?? 0,
   };
+
+  const kpiItems: DashboardKpiItem[] = statKeys.map((key) => {
+    const rawValue = statValues[key];
+    const value =
+      key === 'monthlyRevenue' ? rawValue : formatNumber(rawValue as number, locale);
+
+    return {
+      key,
+      label: t(`stats.${key}`),
+      value,
+      icon: STAT_ICONS[key as keyof typeof STAT_ICONS],
+      zeroSubLabel: t(`stats.zero.${key}`),
+      href: isCooperative ? COOPERATIVE_KPI_HREFS[key as CooperativeStatKey] : undefined,
+    };
+  });
 
   const quickLinks = [
     { href: '/marketplace' as const, title: t('quickLinks.marketplace'), icon: Store },
     { href: '/offers' as const, title: t('quickLinks.offers'), icon: Tag },
     ...(isSeller
-      ? [{ href: '/settings' as const, title: t('quickLinks.listings'), icon: ShoppingBag }]
+      ? [
+          {
+            href: (isCooperative ? '/lots' : '/settings') as '/lots' | '/settings',
+            title: isCooperative ? t('quickLinks.lots') : t('quickLinks.listings'),
+            icon: isCooperative ? Package : ShoppingBag,
+          },
+        ]
       : []),
     { href: '/settings' as const, title: t('quickLinks.settings'), icon: Settings },
   ];
@@ -212,144 +268,121 @@ export default async function DashboardPage({
   }
 
   return (
-    <Container>
-      <div className="space-y-6">
-        <DashboardHeader
-          displayName={userDisplayName}
-          role={profile.role}
+    <div className="w-full space-y-6">
+      <DashboardGreetingBar
+        displayName={greetingName}
+        role={profile.role}
+        kycStatus={profile.kyc_status}
+      />
+
+      {shouldShowKycBanner(profile.kyc_status) ? (
+        <KycStatusBanner
+          locale={locale}
           kycStatus={profile.kyc_status}
+          rejectedDocumentTypes={rejectedDocumentTypes}
         />
+      ) : null}
 
-        {shouldShowKycBanner(profile.kyc_status) ? (
-          <KycStatusBanner
-            locale={locale}
-            kycStatus={profile.kyc_status}
-            rejectedDocumentTypes={rejectedDocumentTypes}
-          />
-        ) : null}
+      <DashboardActionCenter items={actionCenterItems} locale={locale} />
 
-        <DashboardActionCenter items={actionCenterItems} locale={locale} />
+      <DashboardKpiGrid items={kpiItems} />
 
-        {isNewAccount ? (
-          <DashboardWelcomePanel
-            locale={locale}
-            persona={persona}
-            kycApproved={profile.kyc_status === 'approved'}
-          />
-        ) : (
-          <div
-            className={
-              statKeys.length === 3
-                ? 'grid gap-4 sm:grid-cols-2 xl:grid-cols-3'
-                : 'grid gap-4 sm:grid-cols-2 xl:grid-cols-4'
-            }
-          >
-            {statKeys.map((key) => (
-              <DashboardStatCard
-                key={key}
-                label={t(`stats.${key}`)}
-                value={
-                  key === 'monthlyRevenue'
-                    ? statValues[key]
-                    : formatNumber(statValues[key] as number, locale)
-                }
-                icon={STAT_ICONS[key]}
-              />
-            ))}
-          </div>
-        )}
+      {showOnboardingBanner ? (
+        <DashboardOnboardingBanner
+          locale={locale}
+          role={profile.role}
+          kycApproved={profile.kyc_status === 'approved'}
+        />
+      ) : null}
 
-        {!isNewAccount ? (
-          <>
-            <div className="grid gap-4 lg:grid-cols-2">
-              <DashboardTrustScore trustScore={trustScore} />
-              <DashboardMarketInsight insight={marketInsight} />
-            </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <DashboardMarketPulse />
+        <DashboardTrustScore trustScore={trustScore} />
+      </div>
 
-            <div className="grid gap-4 lg:grid-cols-2">
-              <DashboardTradingMix segments={tradingMix} />
-              <div className="grid gap-4">
-                <DashboardEscrowComingSoon />
-                <DashboardRecommendationsComingSoon />
-              </div>
-            </div>
-
-            <DashboardComplianceComingSoon />
-
-            {suggestions.length > 0 ? (
-              <DashboardSuggestions groups={suggestions} locale={locale} />
-            ) : null}
-
-            {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
-
-            <div className="space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <h2 className="text-[18px] font-semibold text-ink">
-                  {hasOrders ? t('recentOrders') : t('recentOffersFallback')}
-                </h2>
-                <DashboardExportButton />
-              </div>
-              <DashboardRecentOrdersTable
-                rows={recentOrders}
-                locale={locale}
-                hasOrders={hasOrders}
-                hideHeader
-              />
-            </div>
-          </>
-        ) : null}
-
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Card>
-            <CardHeader className="pb-4">
-              <CardTitle className="text-[18px]">{t('recentActivity')}</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              {recentActivity.length === 0 ? (
-                <p className="text-[15px] text-body">{t('noActivity')}</p>
-              ) : (
-                <ul className="space-y-3">
-                  {recentActivity.map((event) => (
-                    <li
-                      key={event.id}
-                      className="border-b border-border pb-3 last:border-b-0 last:pb-0"
-                    >
-                      <p className="text-[15px] text-ink">
-                        {t(`activity.${event.kind}`, {
-                          title: event.listingTitle || t('activity.untitled'),
-                          status: formatActivityStatus(event.kind, event.status),
-                        })}
-                      </p>
-                      <p className="mt-1 text-[13px] text-muted">
-                        {formatRelativeTime(event.timestamp, locale)}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </CardContent>
-          </Card>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {quickLinks.map((link) => (
-              <Link key={`${link.href}-${link.title}`} href={link.href} className="block">
-                <Card hoverable className="h-full">
-                  <CardContent className="flex items-center gap-4 p-5">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-bg-tint">
-                      <link.icon
-                        className="h-5 w-5 text-brand-blue"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <span className="text-[18px] font-semibold text-ink">{link.title}</span>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <DashboardTradingMix segments={tradingMix} />
+        <div className="grid gap-4">
+          <DashboardEscrowComingSoon />
+          <DashboardRecommendationsComingSoon />
         </div>
       </div>
-    </Container>
+
+      <DashboardMarketInsight insight={marketInsight} />
+
+      <DashboardComplianceComingSoon />
+
+      {suggestions.length > 0 ? (
+        <DashboardSuggestions groups={suggestions} locale={locale} />
+      ) : null}
+
+      {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
+
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h2 className="text-[18px] font-semibold text-ink">
+            {hasOrders ? t('recentOrders') : t('recentOffersFallback')}
+          </h2>
+          <DashboardExportButton />
+        </div>
+        <DashboardRecentOrdersTable
+          rows={recentOrders}
+          locale={locale}
+          hasOrders={hasOrders}
+          hideHeader
+        />
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card>
+          <CardHeader className="pb-4">
+            <CardTitle className="text-[18px]">{t('recentActivity')}</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            {recentActivity.length === 0 ? (
+              <p className="text-[15px] text-body">{t('noActivity')}</p>
+            ) : (
+              <ul className="space-y-3">
+                {recentActivity.map((event) => (
+                  <li
+                    key={event.id}
+                    className="border-b border-border pb-3 last:border-b-0 last:pb-0"
+                  >
+                    <p className="text-[15px] text-ink">
+                      {t(`activity.${event.kind}`, {
+                        title: event.listingTitle || t('activity.untitled'),
+                        status: formatActivityStatus(event.kind, event.status),
+                      })}
+                    </p>
+                    <p className="mt-1 text-[13px] text-muted">
+                      {formatRelativeTime(event.timestamp, locale)}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </CardContent>
+        </Card>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {quickLinks.map((link) => (
+            <Link key={`${link.href}-${link.title}`} href={link.href} className="block">
+              <Card hoverable className="h-full">
+                <CardContent className="flex items-center gap-4 p-5">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-button bg-bg-tint">
+                    <link.icon
+                      className="h-5 w-5 text-brand-blue"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <span className="text-[18px] font-semibold text-ink">{link.title}</span>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

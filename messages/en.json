@@ -708,23 +708,41 @@
       "stats": {
         "activeListings": "My active listings",
         "pendingOffersReceived": "Pending offers received",
-        "ordersInProgress": "Orders in progress",
+        "ordersInProgress": "My orders",
         "monthlyRevenue": "Revenue this month",
         "pendingOffersSent": "Pending offers sent",
-        "recentlyViewedListings": "Recently viewed listings"
+        "recentlyViewedListings": "Recently viewed listings",
+        "lots": "My lots",
+        "offers": "My offers",
+        "openPurchaseRequests": "Purchase requests",
+        "zero": {
+          "activeListings": "0 · No active listings",
+          "pendingOffersReceived": "0 · No offers received",
+          "ordersInProgress": "0 · No orders",
+          "monthlyRevenue": "0 · No revenue",
+          "pendingOffersSent": "0 · No offers sent",
+          "recentlyViewedListings": "0 · No listings viewed",
+          "lots": "0 · No lots",
+          "offers": "0 · No offers",
+          "openPurchaseRequests": "0 · No requests"
+        }
       },
       "quickLinks": {
         "marketplace": "Marketplace",
         "offers": "My offers",
         "listings": "My listings",
+        "lots": "My lots",
         "settings": "Settings"
       },
-      "welcomePanel": {
-        "title": "Welcome to Biashara",
-        "sellerApproved": "Your account is ready. Post your first listing to join the marketplace.",
-        "sellerKyc": "Complete your KYC verification, then post your first listing to join the marketplace.",
-        "buyerApproved": "Explore the marketplace to discover verified minerals and submit your first offers.",
-        "buyerKyc": "Explore the marketplace while your KYC verification is in progress. You can make offers once approved.",
+      "onboardingBanner": {
+        "title": "Your account is ready",
+        "cooperativeApproved": "Publish your first lot to start tracing your production.",
+        "cooperativeKyc": "Complete your KYC verification, then publish your first lot.",
+        "sellerApproved": "Post your first listing to join the marketplace.",
+        "sellerKyc": "Complete your KYC verification, then post your first listing.",
+        "buyerApproved": "Explore the marketplace to discover verified minerals.",
+        "buyerKyc": "Explore the marketplace while your KYC verification is in progress.",
+        "ctaPublishLot": "Publish a lot",
         "ctaPostListing": "Post a listing",
         "ctaExplore": "Explore marketplace"
       },
@@ -765,6 +783,11 @@
         "emptyTitle": "No market data yet",
         "emptyDescription": "Your price trends will appear here once you have trading activity and sufficient price history.",
         "sparklineLabel": "{mineral} price trend over 7 days"
+      },
+      "marketPulse": {
+        "title": "Live market",
+        "viewAll": "View all quotes →",
+        "unavailable": "— Data unavailable"
       },
       "tradingMix": {
         "title": "Trading mix",
