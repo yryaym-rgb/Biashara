@@ -10,6 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "validate:i18n": "tsx scripts/validate-i18n-keys.ts",
+    "pretest": "npm run validate:i18n",
     "test:e2e": "playwright test",
     "test:e2e:smoke": "playwright test --project=guest --project=setup",
     "test:e2e:prod": "npm run build && PLAYWRIGHT_SERVER_MODE=production playwright test",

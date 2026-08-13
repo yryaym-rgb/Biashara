@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import fr from '@/messages/fr.json';
 import en from '@/messages/en.json';
+import { validateReferencedI18nKeys } from '@/lib/i18n/validate-referenced-keys';
 
 type JsonValue = string | number | boolean | null | JsonObject | JsonValue[];
 interface JsonObject {
@@ -31,5 +32,15 @@ describe('i18n message key parity', () => {
     expect(onlyInFr, `Keys only in fr.json: ${onlyInFr.join(', ')}`).toEqual([]);
     expect(onlyInEn, `Keys only in en.json: ${onlyInEn.join(', ')}`).toEqual([]);
     expect(frKeys).toEqual(enKeys);
+  });
+
+  it('every referenced translation key exists in both locale files', () => {
+    const result = validateReferencedI18nKeys(fr as JsonObject, en as JsonObject);
+    const missing = [...result.missingInFr, ...result.missingInEn];
+
+    expect(
+      missing,
+      missing.map((entry) => `${entry.fullKey} (${entry.file}:${entry.line})`).join('\n'),
+    ).toEqual([]);
   });
 });

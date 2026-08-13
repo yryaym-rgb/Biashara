@@ -16,7 +16,7 @@ export async function DashboardWelcomePanel({
   persona,
   kycApproved,
 }: DashboardWelcomePanelProps) {
-  const t = await getTranslations({ locale, namespace: 'platform.dashboard.welcomePanel' });
+  const t = await getTranslations({ locale, namespace: 'platform.dashboard.onboardingBanner' });
 
   const description =
     persona === 'seller' && kycApproved
