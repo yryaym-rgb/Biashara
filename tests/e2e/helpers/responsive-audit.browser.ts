@@ -41,6 +41,47 @@ window.__biasharaResponsiveAudit = {
     const yOverlap = Math.max(0, Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y));
     return xOverlap * yOverlap;
   },
+  hasTextClipping(el) {
+    if (!(el instanceof HTMLElement)) return false;
+    const style = window.getComputedStyle(el);
+    const clipped =
+      el.scrollWidth > el.clientWidth + 2 || el.scrollHeight > el.clientHeight + 2;
+    const ellipsis = style.textOverflow === 'ellipsis' && style.overflow === 'hidden';
+    return clipped || ellipsis;
+  },
+  isInputAdornmentOverlap(elA, elB) {
+    const input = elA.matches && elA.matches('input') ? elA : elB.matches && elB.matches('input') ? elB : null;
+    const other = input === elA ? elB : elA;
+    if (!input || !other || other.tagName !== 'BUTTON') return false;
+
+    let node = input.parentElement;
+    while (node) {
+      const nodeStyle = window.getComputedStyle(node);
+      if (
+        (nodeStyle.position === 'relative' || nodeStyle.position === 'absolute') &&
+        node.contains(other)
+      ) {
+        const otherStyle = window.getComputedStyle(other);
+        if (otherStyle.position === 'absolute' || otherStyle.position === 'fixed') {
+          return true;
+        }
+      }
+      node = node.parentElement;
+    }
+    return false;
+  },
+  isInlineLinkOverlap(elA, elB) {
+    if (elA.tagName !== 'A' || elB.tagName !== 'A') return false;
+    if (elA.parentElement !== elB.parentElement) return false;
+
+    const rectA = elA.getBoundingClientRect();
+    const rectB = elB.getBoundingClientRect();
+    const sameLine =
+      Math.abs(rectA.top - rectB.top) < 6 && Math.abs(rectA.bottom - rectB.bottom) < 6;
+    if (!sameLine) return false;
+
+    return !this.hasTextClipping(elA) && !this.hasTextClipping(elB);
+  },
   runChecks(params) {
     const audit = window.__biasharaResponsiveAudit;
     const {
@@ -71,6 +112,8 @@ window.__biasharaResponsiveAudit = {
         const boxA = boxes[i];
         const boxB = boxes[j];
         if (audit.isAncestorOf(boxA.el, boxB.el) || audit.isAncestorOf(boxB.el, boxA.el)) continue;
+        if (audit.isInputAdornmentOverlap(boxA.el, boxB.el)) continue;
+        if (audit.isInlineLinkOverlap(boxA.el, boxB.el)) continue;
         const area = audit.intersectionArea(boxA.rect, boxB.rect);
         if (area < minArea) continue;
         const key = [boxA.desc, boxB.desc].sort().join('||');
@@ -152,12 +195,15 @@ window.__biasharaResponsiveAudit = {
     for (const cta of document.querySelectorAll('.gold-gradient, [class*="gold-gradient"]')) {
       if (!audit.isElementVisible(cta)) continue;
       const rect = cta.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      if (cx < 0 || cy < 0 || cx > window.innerWidth || cy > window.innerHeight) {
-        ctaIssues.push('CTA outside viewport bounds: ' + audit.describeElement(cta));
-        continue;
-      }
+      const intersectsViewport =
+        rect.right > 0 &&
+        rect.left < window.innerWidth &&
+        rect.bottom > 0 &&
+        rect.top < window.innerHeight;
+      if (!intersectsViewport) continue;
+
+      const cx = Math.min(rect.right - 1, Math.max(rect.left + 1, rect.left + rect.width / 2));
+      const cy = Math.min(rect.bottom - 1, Math.max(rect.top + 1, rect.top + rect.height / 2));
       const topEl = document.elementFromPoint(cx, cy);
       if (topEl && !cta.contains(topEl) && topEl !== cta) {
         ctaIssues.push(

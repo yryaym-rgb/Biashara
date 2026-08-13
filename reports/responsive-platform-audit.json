@@ -26,7 +26,7 @@
           "page": "/prices",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Cotations des matières premières\""
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
         },
         {
           "severity": "low",
@@ -34,7 +34,7 @@
           "page": "/prices",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"RDC\""
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
         }
       ]
     },
@@ -49,7 +49,7 @@
           "page": "/solutions",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Une plateforme. Quatre façons de commercer.\""
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
         }
       ]
     },
@@ -64,7 +64,7 @@
           "page": "/resources",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Comprendre le commerce minier en RDC\""
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
     },
@@ -79,7 +79,7 @@
           "page": "/about",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Notre mission\""
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
         }
       ]
     },
@@ -94,7 +94,7 @@
           "page": "/calendar",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Calendrier minier\""
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
         },
         {
           "severity": "low",
@@ -102,7 +102,7 @@
           "page": "/calendar",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Tous\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
         }
       ]
     },
@@ -112,20 +112,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/login",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R2skvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/login",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Connexion\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
         }
       ]
     },
@@ -133,94 +125,19 @@
       "path": "/register",
       "viewport": "1440px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "1440px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=2",
       "viewport": "1440px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "1440px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=3",
       "viewport": "1440px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "1440px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "1440px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/forgot-password",
@@ -239,7 +156,7 @@
           "page": "/marketplace",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
         }
       ]
     },
@@ -276,7 +193,7 @@
           "page": "/prices",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Cotations des matières premières\""
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
         },
         {
           "severity": "low",
@@ -284,7 +201,7 @@
           "page": "/prices",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"RDC\""
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
         }
       ]
     },
@@ -299,7 +216,7 @@
           "page": "/solutions",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Une plateforme. Quatre façons de commercer.\""
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
         }
       ]
     },
@@ -314,7 +231,7 @@
           "page": "/resources",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Comprendre le commerce minier en RDC\""
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
     },
@@ -329,7 +246,7 @@
           "page": "/about",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Notre mission\""
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
         }
       ]
     },
@@ -344,7 +261,7 @@
           "page": "/calendar",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Calendrier minier\""
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
         },
         {
           "severity": "low",
@@ -352,7 +269,7 @@
           "page": "/calendar",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Tous\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
         }
       ]
     },
@@ -362,20 +279,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/login",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R2skvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/login",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Connexion\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
         }
       ]
     },
@@ -383,94 +292,19 @@
       "path": "/register",
       "viewport": "1024px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "1024px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=2",
       "viewport": "1024px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "1024px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=3",
       "viewport": "1024px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "1024px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "1024px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/forgot-password",
@@ -489,7 +323,7 @@
           "page": "/marketplace",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
         }
       ]
     },
@@ -606,7 +440,7 @@
           "page": "/prices",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Cotations des matières premières\""
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
         },
         {
           "severity": "low",
@@ -614,7 +448,7 @@
           "page": "/prices",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"RDC\""
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
         }
       ]
     },
@@ -669,7 +503,7 @@
           "page": "/solutions",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Une plateforme. Quatre façons de commercer.\""
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
         }
       ]
     },
@@ -724,7 +558,7 @@
           "page": "/resources",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Comprendre le commerce minier en RDC\""
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
     },
@@ -779,7 +613,7 @@
           "page": "/about",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Notre mission\""
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
         }
       ]
     },
@@ -834,7 +668,7 @@
           "page": "/calendar",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Calendrier minier\""
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
         },
         {
           "severity": "low",
@@ -842,7 +676,7 @@
           "page": "/calendar",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Tous\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
         }
       ]
     },
@@ -852,20 +686,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/login",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R2skvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/login",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Connexion\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
         }
       ]
     },
@@ -873,94 +699,19 @@
       "path": "/register",
       "viewport": "768px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "768px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=2",
       "viewport": "768px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "768px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=3",
       "viewport": "768px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "768px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "768px",
-          "description": "Elements overlap (2416px² intersection)",
-          "elements": "a .font-semibold.text-brand-blue \"Conditions d'utilisation\" ↔ a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/forgot-password",
@@ -1019,7 +770,7 @@
           "page": "/marketplace",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
         }
       ]
     },
@@ -1046,56 +797,7 @@
           "category": "tap-target",
           "page": "/prices",
           "viewport": "390px",
-          "description": "undersized tap target (33×37px): button [role=tab] .relative.pb-3 \"RDC\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (57×37px): button [role=tab] .relative.pb-3 \"Zambie\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (68×37px): button [role=tab] .relative.pb-3 \"Tanzanie\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (48×37px): button [role=tab] .relative.pb-3 \"Ghana\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (113×37px): button [role=tab] .relative.pb-3 \"Afrique du Sud\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (54×37px): button [role=tab] .relative.pb-3 \"Nigeria\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (80×37px): button [role=tab] .relative.pb-3 \"Zimbabwe\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (61×37px): button [role=tab] .relative.pb-3 \"Rwanda\""
+          "description": "undersized tap target (33×40px): button [role=tab] .relative.min-h-10 \"RDC\""
         },
         {
           "severity": "low",
@@ -1103,7 +805,7 @@
           "page": "/prices",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Cotations des matières premières\""
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
         },
         {
           "severity": "low",
@@ -1111,7 +813,7 @@
           "page": "/prices",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"RDC\""
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
         }
       ]
     },
@@ -1126,7 +828,7 @@
           "page": "/solutions",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Une plateforme. Quatre façons de commercer.\""
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
         }
       ]
     },
@@ -1141,7 +843,7 @@
           "page": "/resources",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Comprendre le commerce minier en RDC\""
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
     },
@@ -1156,7 +858,7 @@
           "page": "/about",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Notre mission\""
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
         }
       ]
     },
@@ -1170,35 +872,7 @@
           "category": "tap-target",
           "page": "/calendar",
           "viewport": "390px",
-          "description": "undersized tap target (36×37px): button [role=tab] .relative.pb-3 \"Tous\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "390px",
-          "description": "undersized tap target (62×37px): button [role=tab] .relative.pb-3 \"Enchère\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "390px",
-          "description": "undersized tap target (114×37px): button [role=tab] .relative.pb-3 \"Gouvernement\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "390px",
-          "description": "undersized tap target (92×37px): button [role=tab] .relative.pb-3 \"Conférence\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "390px",
-          "description": "undersized tap target (42×37px): button [role=tab] .relative.pb-3 \"Autre\""
+          "description": "undersized tap target (36×40px): button [role=tab] .relative.min-h-10 \"Tous\""
         },
         {
           "severity": "low",
@@ -1206,7 +880,7 @@
           "page": "/calendar",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Calendrier minier\""
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
         },
         {
           "severity": "low",
@@ -1214,7 +888,7 @@
           "page": "/calendar",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Tous\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
         }
       ]
     },
@@ -1224,48 +898,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/login",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R2skvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "390px",
-          "description": "undersized tap target (81×37px): button [role=tab] .relative.pb-3 \"Connexion\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "390px",
-          "description": "undersized tap target (157×37px): button [role=tab] .relative.pb-3 \"Connexion avec OTP\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "390px",
-          "description": "undersized tap target (142×21px): a .text-[13px].font-semibold \"Mot de passe oublié ?\""
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/login",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Connexion\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
         }
       ]
     },
@@ -1273,175 +911,19 @@
       "path": "/register",
       "viewport": "390px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "undersized tap target (13×16px): input .mt-1.h-4"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "undersized tap target (151×16px): a .font-semibold.text-brand-blue \"Conditions d'utilisation\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "390px",
-          "description": "undersized tap target (178×16px): a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=2",
       "viewport": "390px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "undersized tap target (13×16px): input .mt-1.h-4"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "undersized tap target (151×16px): a .font-semibold.text-brand-blue \"Conditions d'utilisation\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "390px",
-          "description": "undersized tap target (178×16px): a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=3",
       "viewport": "390px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "undersized tap target (13×16px): input .mt-1.h-4"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "undersized tap target (151×16px): a .font-semibold.text-brand-blue \"Conditions d'utilisation\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "390px",
-          "description": "undersized tap target (178×16px): a .font-semibold.text-brand-blue \"Politique de confidentialité\""
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/forgot-password",
@@ -1475,49 +957,7 @@
           "category": "tap-target",
           "page": "/marketplace",
           "viewport": "390px",
-          "description": "undersized tap target (154×37px): button [role=tab] .relative.pb-3 \"Toutes les annonces\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (52×37px): button [role=tab] .relative.pb-3 \"Cobalt\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (49×37px): button [role=tab] .relative.pb-3 \"Cuivre\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (20×37px): button [role=tab] .relative.pb-3 \"Or\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (51×37px): button [role=tab] .relative.pb-3 \"Coltan\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (55×37px): button [role=tab] .relative.pb-3 \"Lithium\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (63×37px): button [role=tab] .relative.pb-3 \"Diamant\""
+          "description": "undersized tap target (20×40px): button [role=tab] .relative.min-h-10 \"Or\""
         },
         {
           "severity": "low",
@@ -1525,7 +965,7 @@
           "page": "/marketplace",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
         }
       ]
     },
@@ -1552,56 +992,7 @@
           "category": "tap-target",
           "page": "/prices",
           "viewport": "360px",
-          "description": "undersized tap target (33×37px): button [role=tab] .relative.pb-3 \"RDC\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (57×37px): button [role=tab] .relative.pb-3 \"Zambie\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (68×37px): button [role=tab] .relative.pb-3 \"Tanzanie\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (48×37px): button [role=tab] .relative.pb-3 \"Ghana\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (113×37px): button [role=tab] .relative.pb-3 \"Afrique du Sud\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (54×37px): button [role=tab] .relative.pb-3 \"Nigeria\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (80×37px): button [role=tab] .relative.pb-3 \"Zimbabwe\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (61×37px): button [role=tab] .relative.pb-3 \"Rwanda\""
+          "description": "undersized tap target (33×40px): button [role=tab] .relative.min-h-10 \"RDC\""
         },
         {
           "severity": "low",
@@ -1609,7 +1000,7 @@
           "page": "/prices",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Cotations des matières premières\""
+          "elements": "h1 .min-w-0.break-words \"Cotations des matières premières\""
         },
         {
           "severity": "low",
@@ -1617,7 +1008,7 @@
           "page": "/prices",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"RDC\""
+          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
         }
       ]
     },
@@ -1632,7 +1023,7 @@
           "page": "/solutions",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Une plateforme. Quatre façons de commercer.\""
+          "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
         }
       ]
     },
@@ -1642,19 +1033,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "high",
-          "category": "overflow",
-          "page": "/resources",
-          "viewport": "360px",
-          "description": "Horizontal overflow: scrollWidth 363px exceeds viewport 360px"
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/resources",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Comprendre le commerce minier en RDC\""
+          "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
     },
@@ -1669,7 +1053,7 @@
           "page": "/about",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Notre mission\""
+          "elements": "h1 .min-w-0.break-words \"Notre mission\""
         }
       ]
     },
@@ -1683,35 +1067,7 @@
           "category": "tap-target",
           "page": "/calendar",
           "viewport": "360px",
-          "description": "undersized tap target (36×37px): button [role=tab] .relative.pb-3 \"Tous\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "360px",
-          "description": "undersized tap target (62×37px): button [role=tab] .relative.pb-3 \"Enchère\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "360px",
-          "description": "undersized tap target (114×37px): button [role=tab] .relative.pb-3 \"Gouvernement\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "360px",
-          "description": "undersized tap target (92×37px): button [role=tab] .relative.pb-3 \"Conférence\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "360px",
-          "description": "undersized tap target (42×37px): button [role=tab] .relative.pb-3 \"Autre\""
+          "description": "undersized tap target (36×40px): button [role=tab] .relative.min-h-10 \"Tous\""
         },
         {
           "severity": "low",
@@ -1719,7 +1075,7 @@
           "page": "/calendar",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 \"Calendrier minier\""
+          "elements": "h1 .min-w-0.break-words \"Calendrier minier\""
         },
         {
           "severity": "low",
@@ -1727,7 +1083,7 @@
           "page": "/calendar",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Tous\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
         }
       ]
     },
@@ -1737,48 +1093,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/login",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R2skvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "360px",
-          "description": "undersized tap target (81×37px): button [role=tab] .relative.pb-3 \"Connexion\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "360px",
-          "description": "undersized tap target (157×37px): button [role=tab] .relative.pb-3 \"Connexion avec OTP\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/login",
-          "viewport": "360px",
-          "description": "undersized tap target (142×21px): a .text-[13px].font-semibold \"Mot de passe oublié ?\""
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/login",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Connexion\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
         }
       ]
     },
@@ -1786,112 +1106,19 @@
       "path": "/register",
       "viewport": "360px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=2",
       "viewport": "360px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=2",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=2",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/register?step=3",
       "viewport": "360px",
       "reached": true,
-      "issues": [
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:R8svf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/register?step=3",
-          "viewport": "360px",
-          "description": "Elements overlap (1024px² intersection)",
-          "elements": "input #:Rasvf6fjsq: .w-full.rounded-button ↔ button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/register?step=3",
-          "viewport": "360px",
-          "description": "undersized tap target (32×32px): button .absolute.right-3"
-        }
-      ]
+      "issues": []
     },
     {
       "path": "/forgot-password",
@@ -1925,49 +1152,7 @@
           "category": "tap-target",
           "page": "/marketplace",
           "viewport": "360px",
-          "description": "undersized tap target (154×37px): button [role=tab] .relative.pb-3 \"Toutes les annonces\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (52×37px): button [role=tab] .relative.pb-3 \"Cobalt\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (49×37px): button [role=tab] .relative.pb-3 \"Cuivre\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (20×37px): button [role=tab] .relative.pb-3 \"Or\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (51×37px): button [role=tab] .relative.pb-3 \"Coltan\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (55×37px): button [role=tab] .relative.pb-3 \"Lithium\""
-        },
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (63×37px): button [role=tab] .relative.pb-3 \"Diamant\""
+          "description": "undersized tap target (20×40px): button [role=tab] .relative.min-h-10 \"Or\""
         },
         {
           "severity": "low",
@@ -1975,7 +1160,7 @@
           "page": "/marketplace",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.pb-3 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
         }
       ]
     },

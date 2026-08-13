@@ -28,10 +28,10 @@ export default async function ResourcesPage({
           className="mb-12"
         />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid min-w-0 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {RESOURCE_ARTICLES.map(({ slug, readTimeMinutes }) => (
-            <ScrollReveal key={slug}>
-              <Link href={`/resources/${slug}`} className="group block h-full">
+            <ScrollReveal key={slug} className="min-w-0">
+              <Link href={`/resources/${slug}`} className="group block h-full min-w-0">
                 <Card hoverable className="flex h-full flex-col p-6">
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-button bg-bg-tint text-brand-blue">
                     <BookOpen className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
