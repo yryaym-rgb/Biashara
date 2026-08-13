@@ -281,8 +281,8 @@ export default async function DashboardPage({
 
       {isSeller ? <DashboardSalesChart data={salesVolume} /> : null}
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+      <div className="grid gap-6 xl:grid-cols-3">
+        <div className="xl:col-span-2">
           <DashboardRecentActivitySection
             rows={recentOrders}
             hasOrders={hasOrders}

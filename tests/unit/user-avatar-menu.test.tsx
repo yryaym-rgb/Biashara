@@ -43,6 +43,19 @@ describe('UserAvatarMenu', () => {
     expect(screen.getByLabelText('Menu utilisateur')).toHaveTextContent('AM');
   });
 
+  it('shows email in dropdown header when provided', () => {
+    render(
+      <UserAvatarMenu
+        companyName="ABC Mining"
+        email="user@example.com"
+        onLogoutRequest={onLogoutRequestMock}
+      />,
+    );
+
+    fireEvent.click(screen.getByLabelText('Menu utilisateur'));
+    expect(screen.getByText('user@example.com')).toBeInTheDocument();
+  });
+
   it('opens menu with three French items and routes profile and dashboard', () => {
     render(
       <UserAvatarMenu

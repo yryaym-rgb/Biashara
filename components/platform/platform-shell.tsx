@@ -17,7 +17,6 @@ import { cn } from '@/lib/utils/cn';
 export interface PlatformShellProps {
   children: React.ReactNode;
   pageTitle: string;
-  displayName: string;
   companyName: string | null;
   email: string | null;
   role: Database['public']['Enums']['user_role'];
@@ -31,7 +30,6 @@ export interface PlatformShellProps {
 export function PlatformShell({
   children,
   pageTitle,
-  displayName,
   companyName,
   email,
   role,
@@ -93,7 +91,6 @@ export function PlatformShell({
         <div className="flex min-w-0 flex-1 flex-col">
           <PlatformTopBar
             pageTitle={pageTitle}
-            displayName={displayName}
             companyName={companyName}
             email={email}
             role={role}

@@ -13,6 +13,8 @@ export interface PlatformNavProps {
   onNavigate?: () => void;
 }
 
+const NAV_ITEMS_WITH_SUBTITLE = new Set(['listings', 'lots']);
+
 export function PlatformNav({ sections, unreadMessagesCount = 0, onNavigate }: PlatformNavProps) {
   const t = useTranslations('platform.nav');
   const pathname = usePathname();
@@ -51,11 +53,19 @@ export function PlatformNav({ sections, unreadMessagesCount = 0, onNavigate }: P
                     'hover:bg-bg hover:text-ink motion-safe:transition-colors motion-safe:duration-150',
                     'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
                     isActive &&
-                      'border-l-[3px] border-brand-gold bg-bg pl-[13px] text-brand-blue',
+                      'border-l-[3px] border-brand-gold bg-[color-mix(in_srgb,var(--brand-blue)_10%,transparent)] pl-[13px] text-brand-blue',
                   )}
                   aria-current={isActive ? 'page' : undefined}
+                  title={NAV_ITEMS_WITH_SUBTITLE.has(item.key) ? t(`${item.key}Subtitle`) : undefined}
                 >
-                  <span>{t(item.key)}</span>
+                  <span className="min-w-0">
+                    <span className="block">{t(item.key)}</span>
+                    {NAV_ITEMS_WITH_SUBTITLE.has(item.key) ? (
+                      <span className="mt-0.5 block text-[12px] font-normal leading-snug text-muted">
+                        {t(`${item.key}Subtitle`)}
+                      </span>
+                    ) : null}
+                  </span>
                   {showUnreadBadge ? (
                     <Badge
                       variant="info"

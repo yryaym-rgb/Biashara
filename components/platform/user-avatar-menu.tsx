@@ -147,6 +147,11 @@ export function UserAvatarMenu({ companyName, email, onLogoutRequest }: UserAvat
           aria-label={t('userMenu')}
           onKeyDown={handleMenuKeyDown}
         >
+          {email ? (
+            <div className="border-b border-border px-4 py-3">
+              <p className="truncate text-[13px] text-muted">{email}</p>
+            </div>
+          ) : null}
           <ul className="py-1">
             {menuItems.map((item, index) => (
               <li key={item.id}>
