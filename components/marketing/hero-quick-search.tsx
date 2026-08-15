@@ -301,7 +301,7 @@ export function HeroQuickSearch() {
               key={mineralId}
               href={`/marketplace?mineral=${mineralId}`}
               className={cn(
-                'inline-flex h-9 items-center rounded-button border border-border bg-bg px-3',
+                'inline-flex min-h-10 min-w-10 items-center justify-center rounded-button border border-border bg-bg px-3',
                 'text-[13px] font-semibold text-ink',
                 'hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
                 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
