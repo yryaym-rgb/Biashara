@@ -1,0 +1,2183 @@
+{
+  "common": {
+    "appName": "BIASHARA",
+    "loading": "加载中…",
+    "error": "发生意外错误。请重试，若问题持续存在请联系支持团队。",
+    "retry": "重试",
+    "save": "保存",
+    "cancel": "取消",
+    "logout": "退出登录",
+    "logoutConfirm": "确定要退出登录吗？",
+    "comingSoon": "即将推出",
+    "back": "返回",
+    "next": "下一步",
+    "empty": "暂无数据"
+  },
+  "metadata": {
+    "title": "BIASHARA — 值得信赖的矿产贸易",
+    "description": "面向刚果民主共和国矿产市场的 B2B 交易平台，提供贸易撮合、溯源追踪与安全交易服务。",
+    "ogTitle": "BIASHARA — B2B 矿业平台",
+    "ogDescription": "在刚果民主共和国领先的市场上，放心交易钴、铜、金、钶钽铁矿、锂和钻石。"
+  },
+  "nav": {
+    "appName": "BIASHARA",
+    "mainNavigation": "主导航",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "language": "语言",
+    "home": "首页",
+    "marketplace": "交易市场",
+    "marketplaceNav": "市场",
+    "prices": "行情",
+    "calendar": "日历",
+    "solutions": "解决方案",
+    "resources": "资源",
+    "about": "关于我们",
+    "dashboard": "控制台",
+    "offers": "报价",
+    "orders": "订单",
+    "contracts": "合同",
+    "payments": "付款",
+    "logistics": "物流",
+    "reports": "报告",
+    "settings": "设置",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录",
+    "getStarted": "立即开始",
+    "accessMarket": "进入市场 →",
+    "drcMarketActive": "刚果（金）· 市场活跃"
+  },
+  "auth": {
+    "shell": {
+      "miningImageAlt": "刚果民主共和国矿区",
+      "miningPlaceholder": "待添加认证页图片",
+      "homeLabel": "BIASHARA — 首页"
+    },
+    "errors": {
+      "invalidCredentials": "电子邮箱或密码不正确。",
+      "emailNotConfirmed": "您的电子邮箱尚未确认。请查收收件箱。",
+      "userAlreadyExists": "该电子邮箱已注册账户。",
+      "weakPassword": "密码不符合安全要求。",
+      "rateLimited": "尝试次数过多 — 请稍候再试。",
+      "unknown": "发生错误。请重试或联系支持团队。",
+      "invalidFileType": "文件格式不支持。请使用 PDF、JPEG 或 PNG。",
+      "fileTooLarge": "文件超过 10 MB 大小限制。",
+      "uploadFailed": "上传失败。请重试。"
+    },
+    "login": {
+      "heading": "欢迎回来！",
+      "title": "登录",
+      "tabPassword": "登录",
+      "tabOtp": "OTP 登录",
+      "email": "电子邮箱",
+      "password": "密码",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "submit": "登录",
+      "forgotPassword": "忘记密码？",
+      "orContinueWith": "或通过以下方式继续",
+      "oauthGoogle": "Google",
+      "oauthMicrosoft": "Microsoft",
+      "oauthApple": "Apple",
+      "comingSoon": "即将推出",
+      "otpDescription": "通过电子邮件接收登录验证码。此功能即将上线。",
+      "otpSubmit": "发送验证码",
+      "noAccount": "还没有账户？",
+      "createAccount": "注册账户"
+    },
+    "register": {
+      "heading": "注册账户",
+      "title": "注册账户",
+      "stepperLabel": "注册步骤",
+      "steps": {
+        "1": "账户信息",
+        "2": "身份验证",
+        "3": "完成"
+      },
+      "fullName": "姓名",
+      "email": "电子邮箱",
+      "password": "密码",
+      "passwordConfirm": "确认密码",
+      "role": "账户类型",
+      "roles": {
+        "seller": "卖方",
+        "buyer": "买方",
+        "cooperative": "合作社"
+      },
+      "terms": "我同意<termsLink>服务条款</termsLink>和<privacyLink>隐私政策</privacyLink>",
+      "termsRequired": "您必须同意条款方可继续",
+      "passwordMismatch": "两次输入的密码不一致",
+      "showPassword": "显示密码",
+      "hidePassword": "隐藏密码",
+      "continue": "继续",
+      "back": "返回",
+      "submit": "创建账户",
+      "hasAccount": "已有账户？",
+      "login": "登录",
+      "kyc": {
+        "description": "请上传与您账户类型相应的所需文件。我们的团队将在审核通过后启用您的发布权限。",
+        "sessionExpired": "您的注册会话已过期。请从第 1 步重新开始。",
+        "incomplete": "请上传所有必需文件后再继续。",
+        "upload": "上传",
+        "uploading": "上传中…",
+        "uploadSuccess": "文件上传成功",
+        "acceptedFormats": "PDF、JPEG 或 PNG — 最大 10 MB。"
+      },
+      "complete": {
+        "title": "账户已创建",
+        "emailLead": "请查收电子邮件 — 我们已向 {email} 发送确认链接。您须先确认电子邮箱后方可登录。",
+        "emailLeadNoEmail": "请查收电子邮件 — 我们已发送确认链接。您须先确认电子邮箱后方可登录。",
+        "reviewNote": "KYC 文件审核通常需要数个工作日。账户获批后，您即可发布挂牌或提交报价。",
+        "goToDashboard": "前往控制台"
+      }
+    },
+    "forgotPassword": {
+      "title": "忘记密码",
+      "description": "请输入您的电子邮箱。若该地址已注册账户，我们将发送密码重置邮件。",
+      "email": "电子邮箱",
+      "submit": "发送重置链接",
+      "backToLogin": "返回登录",
+      "success": "若该地址已注册账户，密码重置邮件已发送。"
+    },
+    "verify": {
+      "title": "账户验证",
+      "verifying": "正在验证您的电子邮箱…",
+      "successTitle": "邮箱已验证",
+      "successDescription": "您的电子邮箱已确认 — 您现在可以登录。",
+      "goToLogin": "登录",
+      "errorTitle": "链接无效或已过期",
+      "errorDescription": "此验证链接已失效。请在下方申请重新发送确认邮件。",
+      "resendEmailLabel": "电子邮箱",
+      "resend": "重新发送邮件",
+      "resendSuccess": "若该地址已注册账户，新的确认邮件已发送。",
+      "resendError": "无法发送邮件。请稍后再试。",
+      "description": "确认邮件已发送。请点击邮件中的链接以激活您的账户。",
+      "checkSpam": "若未收到邮件，请同时检查垃圾邮件文件夹。"
+    }
+  },
+  "footer": {
+    "tagline": "非洲矿产贸易的可信基础设施。",
+    "closingLine": "从刚果（金）走向世界。",
+    "platform": {
+      "title": "平台",
+      "marketplace": "市场",
+      "prices": "行情",
+      "traceability": "溯源",
+      "calendar": "日历"
+    },
+    "company": {
+      "title": "公司",
+      "about": "关于我们",
+      "resources": "资源"
+    },
+    "copyright": "© {year} BIASHARA。保留所有权利。"
+  },
+  "marketing": {
+    "landing": {
+      "title": "BIASHARA — 值得信赖的矿产贸易",
+      "eyebrow": "矿产贸易的未来",
+      "heroLine1": "大胆交易。",
+      "heroLine2": "放心交换。",
+      "heroLine3": "共同成长。",
+      "subtitle": "BIASHARA 是面向刚果（金）至全球的一站式矿产贸易、溯源追踪与安全交易平台。",
+      "ctaMarketplace": "探索交易市场 →",
+      "ctaVideo": "观看视频",
+      "heroImageAlt": "原矿样品 — 钴、铜和金",
+      "heroImagePlaceholder": "待添加主视觉图片",
+      "heroGalleryDotLabel": "前往第 {index} 张图片，共 {total} 张",
+      "heroSearch": {
+        "heading": "搜索市场",
+        "placeholder": "搜索矿种、地区…",
+        "submit": "搜索 →",
+        "popularSearches": "热门搜索",
+        "suggestionsLabel": "矿种建议",
+        "suggestionCounts": "{mineral} — {activeCount, plural, one {# 条活跃挂牌} other {# 条活跃挂牌}} · {supplierCount, plural, one {# 家认证供应商} other {# 家认证供应商}}",
+        "suggestionActiveOnly": "{mineral} — {activeCount, plural, one {# 条活跃挂牌} other {# 条活跃挂牌}}",
+        "loading": "搜索中…"
+      },
+      "ticker": {
+        "ariaLabel": "矿产实时行情",
+        "liveLabel": "实时市场",
+        "lastUpdated": "最后更新 · {time}",
+        "indicativeShort": "参考价",
+        "indicativeLegend": "参考价 — 议价成交",
+        "indicative": "参考价 — 议价成交",
+        "viewQuote": "查看行情 →"
+      },
+      "infrastructure": {
+        "eyebrow": "基础设施",
+        "title": "一套基础设施。五大支柱。",
+        "pillars": {
+          "prices": {
+            "number": "01",
+            "tag": "价格",
+            "title": "透明行情。",
+            "description": "在 /prices 页面查看定期更新的公开行情与历史数据 — 真实数据，而非营销估算。"
+          },
+          "traceability": {
+            "number": "02",
+            "tag": "溯源",
+            "title": "每一批次都有迹可循。",
+            "description": "合作社创建批次编码并手动记录每一环节 — 可在关联挂牌中查看。",
+            "selfReportedLabel": "由合作社自行申报 — 未经 GPS 或第三方核实。",
+            "chain": {
+              "ariaLabel": "批次溯源路径",
+              "mine": "矿山",
+              "cooperative": "合作社",
+              "control": "检验",
+              "transport": "运输",
+              "buyer": "买方"
+            }
+          },
+          "trust": {
+            "number": "03",
+            "tag": "信任",
+            "title": "买卖双方均已认证。",
+            "description": "每个账户在发布或交易前均须完成身份验证。",
+            "checks": {
+              "kyc": "KYC ✓",
+              "identity": "身份已验证 ✓"
+            }
+          },
+          "logistics": {
+            "number": "04",
+            "tag": "物流",
+            "title": "追踪矿产流转。",
+            "description": "卖方申报物流状态，并在每笔订单上手动添加检查点。",
+            "caption": "卖方申报的物流跟踪示意图 — 非自动化走廊优化。",
+            "statusAriaLabel": "卖方申报的物流跟踪阶段",
+            "statuses": {
+              "pending": "待处理",
+              "picked_up": "已揽收",
+              "in_transit": "运输中",
+              "customs": "海关",
+              "delivered": "已送达"
+            }
+          },
+          "marketData": {
+            "number": "05",
+            "tag": "市场数据",
+            "title": "市场数据，而非猜测。",
+            "description": "实时行情、历史趋势与数据来源透明度 — 与 /prices 同一套基础设施。",
+            "liveSnapshotLabel": "实时行情",
+            "loadingPrices": "加载行情中…",
+            "indicative": "参考价",
+            "viewPricesCta": "查看全部行情 →",
+            "highlights": {
+              "livePricing": {
+                "title": "实时行情",
+                "description": "定期从公开市场数据源更新的公开现货价格。"
+              },
+              "historicalTrends": {
+                "title": "历史趋势",
+                "description": "每种挂牌矿种均可查看历史价格图表。"
+              },
+              "transparentSourcing": {
+                "title": "透明数据来源",
+                "description": "每条行情均显示数据来源与更新时效。"
+              }
+            },
+            "aiSoon": {
+              "badge": "即将推出",
+              "title": "预测分析",
+              "description": "高级分析工具正在筹备中 — 不含精度承诺或虚构百分比。"
+            }
+          }
+        }
+      },
+      "howItWorks": {
+        "eyebrow": "运作方式",
+        "title": "从矿产到交易，全程透明",
+        "chainAriaLabel": "平台六步流程",
+        "steps": {
+          "ore": {
+            "title": "矿产"
+          },
+          "publish": {
+            "title": "发布",
+            "description": "浏览活跃挂牌，或在交易市场发布您的矿产。"
+          },
+          "kyc": {
+            "title": "KYC",
+            "description": "提交身份文件，通过认证后方可发布或交易。"
+          },
+          "negotiate": {
+            "title": "议价",
+            "description": "对挂牌发起报价或还价 — 数量、价格与留言将发送给对方。"
+          },
+          "traceability": {
+            "title": "溯源",
+            "description": "合作社创建唯一批次编码并记录每一环节 — 可在关联挂牌中查看，为自行申报信息。"
+          },
+          "globalMarket": {
+            "title": "全球市场"
+          }
+        }
+      },
+      "map": {
+        "eyebrow": "从刚果（金）走向世界。",
+        "title": "从刚果（金）走向世界。",
+        "subtitle": "刚果（金）矿业省份、已记录矿种及 BIASHARA 上的活跃挂牌 — 真实地图，而非示意图。",
+        "mapAria": "刚果（金）省份地图",
+        "provinceLinkAria": "查看 {province} 的挂牌",
+        "activeListings": "{count, plural, one {# 条来自该地区的活跃挂牌} other {# 条来自该地区的活跃挂牌}}",
+        "noListings": "暂无挂牌",
+        "attribution": "地图数据：geoBoundaries（CC BY 4.0）",
+        "cobaltFact": "刚果（金）是全球主要钴生产国之一 — 这一公开数据在行业来源中已有广泛记录。",
+        "corridorStep1": "走廊",
+        "corridorStep2": "非洲",
+        "corridorStep3": "全球",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
+      },
+      "africanNetwork": {
+        "brand": "BIASHARA AFRICA",
+        "title": "非洲贸易网络",
+        "today": "今日：刚果（金）🇨🇩",
+        "tomorrow": "明日：🇿🇲 🇹🇿 …",
+        "description": "构建非洲矿产贸易网络。",
+        "emailLabel": "电子邮箱",
+        "emailPlaceholder": "you@company.com",
+        "countryLabel": "感兴趣的国家（可选）",
+        "countryHint": "请注明您希望加入网络的国家。",
+        "countryPlaceholder": "选择国家",
+        "submit": "加入等候名单",
+        "successNew": "感谢 — 您已加入等候名单。网络扩展时我们将与您联系。",
+        "successExisting": "该地址已在等候名单中。网络扩展时我们将与您联系。",
+        "countries": {
+          "ZM": "赞比亚",
+          "TZ": "坦桑尼亚",
+          "KE": "肯尼亚",
+          "UG": "乌干达",
+          "OTHER": "其他非洲国家"
+        },
+        "errors": {
+          "invalidEmail": "请输入有效的电子邮箱地址。",
+          "rateLimited": "尝试次数过多 — 请稍后再试。",
+          "unknown": "发生错误。请稍后重试。"
+        }
+      },
+      "prices": {
+        "eyebrow": "实时行情",
+        "title": "为矿产贸易的未来而设计",
+        "description": "每 15 分钟从公开市场数据源更新 — 对数据来源与时效性完全透明。",
+        "ctaPrices": "查看全部行情",
+        "miniCardsTitle": "市场行情",
+        "trendSectionTitle": "市场走势",
+        "chartTitle": "历史 — {mineral}",
+        "indicative": "参考价 — 议价成交",
+        "error": "行情暂时无法获取。请稍后再试。",
+        "retry": "重试",
+        "viewAll": "查看全部行情 →",
+        "historyEmptyTitle": "历史数据建设中",
+        "historyEmptyDescription": "行情历史数据正在积累 — 请明日再来查看。",
+        "indicativeHistory": "该矿种无公开现货行情 — 价格由双方议价确定。",
+        "timeframeSoon": "即将推出",
+        "chartAria": "{mineral} 价格趋势图",
+        "timeframes": {
+          "1W": "1周",
+          "1M": "1月",
+          "3M": "3月",
+          "1Y": "1年",
+          "ALL": "全部"
+        }
+      },
+      "credibility": {
+        "eyebrow": "为何选择 BIASHARA",
+        "title": "问题真实存在。解决方案亦须切实可行。",
+        "subtitle": "非正式交易、价格不透明、手工采矿生产者难以进入市场 — BIASHARA 直面刚果矿产贸易的实际挑战。",
+        "problems": {
+          "opaquePrices": {
+            "number": "01",
+            "tag": "价格不透明",
+            "statement": "生产者往往缺乏清晰的市场参考。"
+          },
+          "limitedTrust": {
+            "number": "02",
+            "tag": "信任有限",
+            "statement": "买卖双方需要可验证的交易伙伴。"
+          },
+          "complexChains": {
+            "number": "03",
+            "tag": "链条复杂",
+            "statement": "矿产在抵达市场前需经多个环节。"
+          }
+        },
+        "pivot": "BIASHARA 串联这些环节。",
+        "items": {
+          "kyc": {
+            "title": "KYC 验证",
+            "description": "账户在发布挂牌或交易前，须由管理员审核身份文件。"
+          },
+          "traceability": {
+            "title": "每批次可追溯",
+            "description": "合作社登记唯一编码与保管环节 — 手动申报，除 KYC 外未经独立核实。"
+          },
+          "bilingual": {
+            "title": "双语设计，面向刚果（金）",
+            "description": "平台全面支持法语，并为国际买方提供英语。"
+          }
+        }
+      },
+      "cta": {
+        "title": "准备好放心交易了吗？",
+        "subtitle": "加入连接刚果矿山与全球买方的交易市场。",
+        "primaryCta": "注册账户",
+        "secondaryCta": "探索交易市场"
+      }
+    },
+    "prices": {
+      "title": "大宗商品行情",
+      "eyebrow": "实时市场",
+      "subtitle": "每 15 分钟从公开市场数据源更新 — 对数据来源与时效性完全透明。",
+      "indicative": "参考价 — 议价成交",
+      "unavailable": "该矿种暂无行情",
+      "lastUpdated": "最后更新",
+      "source": "来源",
+      "disclaimer": "所示行情仅供参考，可能与交易市场议价结果存在差异。",
+      "error": "行情暂时无法获取。请稍后再试。",
+      "retry": "重试",
+      "chartTitle": "历史 — {mineral}",
+      "historyEmptyTitle": "历史数据建设中",
+      "historyEmptyDescription": "历史数据正在积累 — 请明日再来查看。",
+      "indicativeHistory": "该矿种无公开现货行情 — 价格由双方议价确定。",
+      "timeframeSoon": "即将推出",
+      "chartAria": "{mineral} 价格趋势图",
+      "timeframes": {
+        "1W": "1周",
+        "1M": "1月",
+        "3M": "3月",
+        "1Y": "1年",
+        "ALL": "全部"
+      },
+      "table": {
+        "mineral": "矿种",
+        "price": "行情",
+        "change": "涨跌",
+        "updated": "更新时间"
+      },
+      "currency": {
+        "usd": "USD",
+        "cdf": "CDF",
+        "zmw": "ZMW",
+        "tzs": "TZS",
+        "rwf": "RWF",
+        "kes": "KES",
+        "ghs": "GHS",
+        "ngn": "NGN",
+        "zar": "ZAR"
+      },
+      "markets": {
+        "drc": "刚果（金）",
+        "zambia": "赞比亚",
+        "tanzania": "坦桑尼亚",
+        "ghana": "加纳",
+        "southAfrica": "南非",
+        "nigeria": "尼日利亚",
+        "zimbabwe": "津巴布韦",
+        "rwanda": "卢旺达"
+      },
+      "guide": {
+        "title": "如何阅读我们的行情",
+        "paragraph1": "现货行情（钴、铜、金、锂）来自公开市场数据源 metals.dev。每条数据每 15 分钟自动更新并记入历史，以追踪价格走势。",
+        "paragraph2": "所示涨跌幅将当前行情与最近可用历史数据点对比。若历史数据不足，则不显示涨跌幅 — 我们从不编造数据。",
+        "paragraph3": "钶钽铁矿和钻石在公开市场上无标准化现货行情。BIASHARA 显示「参考价 — 议价成交」：最终价格在交易市场由买卖双方商定。"
+      }
+    },
+    "solutions": {
+      "title": "一个平台。四种交易方式。",
+      "eyebrow": "解决方案",
+      "subtitle": "无论您是合作社、贸易商、出口商还是国际买方 — BIASHARA 提供平台现有工具。",
+      "comingSoon": "即将推出",
+      "panels": {
+        "cooperatives": {
+          "imageAlt": "刚果（金）矿产收集点",
+          "cta": "注册合作社账户"
+        },
+        "traders": {
+          "imageAlt": "矿产运往市场",
+          "cta": "探索市场"
+        },
+        "exporters": {
+          "imageAlt": "出口前矿产质量检验",
+          "cta": "进入交易市场"
+        },
+        "buyers": {
+          "imageAlt": "铜与孔雀石样品",
+          "cta": "浏览挂牌"
+        }
+      },
+      "audiences": {
+        "cooperatives": {
+          "title": "矿业合作社",
+          "forWhom": "面向希望进入市场的手工采矿生产者与合作社。",
+          "capability1": {
+            "label": "在交易市场发布挂牌"
+          },
+          "capability2": {
+            "label": "KYC 验证满足监管合规"
+          },
+          "capability3": {
+            "label": "批次溯源编码"
+          }
+        },
+        "traders": {
+          "title": "贸易商",
+          "forWhom": "面向在刚果（金）买卖矿产的中间商。",
+          "capability1": {
+            "label": "浏览认证卖方的报价"
+          },
+          "capability2": {
+            "label": "通过内置报价流程议价"
+          },
+          "capability3": {
+            "label": "实时参考行情"
+          }
+        },
+        "exporters": {
+          "title": "出口商",
+          "forWhom": "面向将刚果矿产出口至海外的企业。",
+          "capability1": {
+            "label": "安全交易市场访问"
+          },
+          "capability2": {
+            "label": "商业伙伴 KYC 验证"
+          },
+          "capability3": {
+            "label": "物流运输跟踪"
+          }
+        },
+        "buyers": {
+          "title": "国际买方",
+          "forWhom": "面向寻求可追溯刚果矿产的外国买方。",
+          "capability1": {
+            "label": "经 KYC 认证的卖方挂牌"
+          },
+          "capability2": {
+            "label": "在线报价与议价"
+          },
+          "capability3": {
+            "label": "国际参考行情"
+          }
+        }
+      },
+      "cta": {
+        "title": "准备好开始了吗？",
+        "subtitle": "注册账户以访问交易市场与实时行情。",
+        "primaryCta": "注册账户"
+      },
+      "traceability": "溯源",
+      "marketplace": "安全交易市场",
+      "compliance": "KYC 验证与合规"
+    },
+    "resources": {
+      "title": "了解刚果（金）矿产贸易",
+      "eyebrow": "资源",
+      "subtitle": "实用指南，助您了解刚果矿业监管、溯源与行情。",
+      "readTime": "阅读约 {minutes} 分钟",
+      "readMore": "阅读文章",
+      "backToResources": "返回资源",
+      "documentation": "文档",
+      "guides": "实用指南",
+      "articles": {
+        "kyc-minier-rdc": {
+          "title": "了解刚果（金）矿业 KYC",
+          "excerpt": "为何身份验证是强制要求，以及 BIASHARA 如何对行业参与者执行 KYC。",
+          "p1": "了解你的客户（KYC）与反洗钱（AML）是刚果民主共和国矿业监管的核心。任何购买、销售或出口矿产的主体均须证明身份、法律地位及业务合法来源。",
+          "p2": "在刚果（金），法律框架主要包括矿业法、ITIE（采掘业透明度倡议）实施细则，以及受欧盟尽职调查义务与美国法规（Dodd-Frank 第 1502 条冲突矿产）约束的国际买方要求。",
+          "p3": "在 BIASHARA 上，发布挂牌或提交购买报价前须完成 KYC 验证。每位用户须提供身份证件、地址证明；法人实体还须提交公司章程与注册文件。",
+          "p4": "文件由合规团队人工审核，可能需要数个工作日。KYC 未获批前，用户可浏览交易市场与行情，但无法发布或议价。",
+          "p5": "KYC 被拒均附说明：用户将收到通知，指明需更正或补充的文件，修正后可重新提交。",
+          "p6": "KYC 合规保护整个生态：合作社免受未识别买方风险，出口商降低声誉风险，国际买方避免非法来源矿产。"
+        },
+        "tracabilite-minerais": {
+          "title": "矿产溯源，逐步解析",
+          "excerpt": "一批矿产如何从矿山追踪至买方，以及 BIASHARA 的未来规划。",
+          "p1": "矿产溯源指追踪特定批次从开采点至最终目的地的能力。在刚果（金），这一要求既来自国内法规，也来自国际标准（OCDE、CTC）及关注原材料来源的买方期望。",
+          "p2": "有效的溯源体系依赖三大支柱：批次唯一标识、每一保管权转移的记录，以及配套文件（原产地证书、称重单、发票）。",
+          "p3": "在现场，溯源始于矿山或手工采集点。每批矿产获得标识 — 通常是与矿种、省份及生产日期关联的字母数字编码。该编码伴随矿产经贸易商、仓库、出口商、港口各环节。",
+          "p4": "BIASHARA 现已提供与交易市场挂牌集成的批次溯源编码系统。经认证合作社（KYC 已批准）可创建唯一编码批次、手动记录每一保管环节，并将批次关联至挂牌。买方可只读查看时间线 — 为合作社自行申报，除 KYC 外未经独立核实。",
+          "p5": "与此同时，BIASHARA 认证卖方可于挂牌描述中记录矿产来源：开采省份、品位、纯度及可用认证。买方可通过内置消息在报价前提问。",
+          "p6": "溯源不限于技术：亦涉及现场实践 — 矿山纸质台账、认证称重、边境检查站检验。BIASHARA 不替代这些物理管控，但旨在建立可验证的数字记录。",
+          "p7": "对国际买方而言，签约前索取溯源文件仍是良好实践，与所用平台无关。"
+        },
+        "lire-cotations-internationales": {
+          "title": "阅读国际行情",
+          "excerpt": "如何解读 BIASHARA 上的现货价格及其对议价的意义。",
+          "p1": "国际金属行情在交易所与批发市场确定（LME 铜与钴、COMEX 金、锂有专门市场）。现货价格反映特定时刻全球供需，以美元计价。",
+          "p2": "BIASHARA 上钴、铜、金、锂的现货行情来自公开市场数据源 metals.dev，每 15 分钟更新，作为参考 — 非保证买入价。",
+          "p3": "刚果（金）实际成交价包含国际现货未涵盖的本地因素：矿产品质与纯度、自原产省份的运输成本、矿业税费、付款条件与汇率风险。",
+          "p4": "钶钽铁矿（钽铁矿）与钻石在公开市场无标准化现货行情。价格依品位、数量与交货条件双边议价。BIASHARA 对这两种矿种显示「参考价 — 议价成交」。",
+          "p5": "BIASHARA 日涨跌幅将当前行情与最近历史数据点对比。历史不足（少于两个数据点）时不显示涨跌幅。历史数据逐日积累。",
+          "p6": "议价前请查阅参考行情，再依批次特性调整报价：品位、纯度、可用数量与原产省份。BIASHARA 交易市场旨在促进知情议价。"
+        }
+      }
+    },
+    "calendar": {
+      "title": "矿业日历",
+      "eyebrow": "行业动态",
+      "subtitle": "刚果（金）矿业拍卖、会议与官方公告 — 由 BIASHARA 团队发布的事件。",
+      "tabAll": "全部",
+      "upcoming": "即将举行",
+      "past": "已结束",
+      "sourceLink": "官方来源",
+      "categories": {
+        "auction": "拍卖",
+        "government": "政府",
+        "conference": "会议",
+        "other": "其他"
+      },
+      "empty": {
+        "title": "暂无事件",
+        "description": "暂无事件 — 请稍后再来查看。"
+      },
+      "emptyFiltered": {
+        "title": "该类别暂无事件",
+        "description": "当前筛选无匹配事件。请尝试其他类别或稍后再来。"
+      }
+    },
+    "about": {
+      "title": "关于 BIASHARA",
+      "eyebrow": "关于我们",
+      "mission": "我们的使命",
+      "missionText": "在透明、可追溯、合规的框架下，连接刚果矿业参与者与国际买方。",
+      "team": "我们的团队",
+      "story": {
+        "title": "我们的故事 — 内容即将发布",
+        "description": "我们正在准备 BIASHARA 的故事与团队介绍。请稍后回来了解更多。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "description": "暂未配置专用联系邮箱。请注册平台账户，通过内置消息与我们的团队沟通。",
+        "cta": "注册账户"
+      }
+    }
+  },
+  "routes": {
+    "dashboard": {
+      "title": "控制台"
+    },
+    "marketplace": {
+      "title": "交易市场"
+    },
+    "marketplaceDetail": {
+      "title": "挂牌详情"
+    },
+    "offers": {
+      "title": "报价"
+    },
+    "orders": {
+      "title": "订单"
+    },
+    "messages": {
+      "title": "消息"
+    },
+    "contracts": {
+      "title": "合同"
+    },
+    "payments": {
+      "title": "付款"
+    },
+    "logistics": {
+      "title": "物流"
+    },
+    "reports": {
+      "title": "报告"
+    },
+    "settings": {
+      "title": "设置"
+    }
+  },
+  "platform": {
+    "nav": {
+      "dashboard": "控制台",
+      "marketplace": "交易市场",
+      "rfps": "采购需求",
+      "offers": "我的报价",
+      "listings": "我的挂牌",
+      "listingsSubtitle": "您在市场上的发布",
+      "lots": "我的批次",
+      "lotsSubtitle": "您的可追溯库存",
+      "orders": "我的订单",
+      "messages": "消息",
+      "documents": "文件",
+      "messagesUnread": "{count, plural, one {# 条未读对话} other {# 条未读对话}}",
+      "settings": "设置",
+      "sections": {
+        "main": "主要",
+        "supplyChain": "供应链",
+        "company": "企业"
+      }
+    },
+    "shell": {
+      "sidebarLabel": "平台导航",
+      "openDrawer": "打开菜单",
+      "closeDrawer": "关闭菜单",
+      "logout": "退出登录",
+      "profile": "个人资料",
+      "dashboard": "控制台",
+      "userMenu": "用户菜单",
+      "notifications": "通知"
+    },
+    "commandPalette": {
+      "title": "搜索",
+      "open": "打开搜索",
+      "close": "关闭搜索",
+      "placeholder": "搜索挂牌、报价、订单、对话…",
+      "hint": "输入以搜索您的数据",
+      "searching": "搜索中…",
+      "noResults": "未找到与此搜索匹配的结果。",
+      "groups": {
+        "listings": "挂牌",
+        "offers": "报价",
+        "orders": "订单",
+        "conversations": "对话"
+      },
+      "keyboard": {
+        "navigate": "导航",
+        "select": "选择",
+        "close": "关闭"
+      }
+    },
+    "dashboard": {
+      "eyebrow": "用户空间",
+      "title": "控制台",
+      "recentActivity": "最近活动",
+      "noActivity": "暂无活动。",
+      "kycBanner": {
+        "pending": "您的 KYC 验证正在审核中。",
+        "rejected": "您的 KYC 验证需要处理。",
+        "none": "完成 KYC 验证以发布挂牌和提交报价。",
+        "cta": "查看文件状态"
+      },
+      "stats": {
+        "activeListings": "我的活跃挂牌",
+        "pendingOffersReceived": "待回复的收到报价",
+        "ordersInProgress": "进行中的订单",
+        "monthlyRevenue": "本月营业额",
+        "pendingOffersSent": "待回复的发出报价",
+        "activePurchaseRequests": "活跃采购需求",
+        "lots": "我的批次",
+        "offers": "我的报价",
+        "openPurchaseRequests": "采购需求",
+        "zero": {
+          "activeListings": "0 · 无活跃挂牌",
+          "pendingOffersReceived": "0 · 无收到报价",
+          "ordersInProgress": "0 · 无进行中订单",
+          "monthlyRevenue": "0 · 无营业额",
+          "pendingOffersSent": "0 · 无发出报价",
+          "activePurchaseRequests": "0 · 无活跃需求",
+          "lots": "0 · 无批次",
+          "offers": "0 · 无报价",
+          "openPurchaseRequests": "0 · 无需求"
+        }
+      },
+      "quickLinks": {
+        "marketplace": "交易市场",
+        "offers": "我的报价",
+        "listings": "我的挂牌",
+        "lots": "我的批次",
+        "settings": "设置"
+      },
+      "onboardingBanner": {
+        "title": "您的账户已就绪",
+        "cooperativeApproved": "发布您的第一个批次以开始生产溯源。",
+        "cooperativeKyc": "完成 KYC 验证，然后发布您的第一个批次。",
+        "sellerApproved": "发布您的第一条挂牌以加入交易市场。",
+        "sellerKyc": "完成 KYC 验证，然后发布您的第一条挂牌。",
+        "buyerApproved": "浏览认证挂牌以寻找您的首个供应商。",
+        "buyerKyc": "KYC 审核期间，您可先浏览认证挂牌。",
+        "ctaPublishLot": "发布批次",
+        "ctaPostListing": "发布挂牌",
+        "ctaPublishRfp": "发布采购需求",
+        "ctaExplore": "探索市场"
+      },
+      "activity": {
+        "offer": "「{title}」的报价 — {status}",
+        "order": "「{title}」的订单 — {status}",
+        "listing": "挂牌「{title}」 — {status}",
+        "untitled": "无标题"
+      },
+      "salesOverview": "销售概览",
+      "salesChartEmpty": "首次成交后，统计数据将显示于此。",
+      "recentOrders": "最近订单",
+      "recentOrdersEmpty": "暂无最近订单。",
+      "recentOffersFallback": "最近报价",
+      "table": {
+        "mineral": "矿种",
+        "counterpart": "交易对手",
+        "amount": "金额",
+        "status": "状态",
+        "date": "日期"
+      },
+      "actionCenter": {
+        "title": "需要您关注",
+        "allClear": "一切已处理完毕。",
+        "action": "查看",
+        "summary": {
+          "pendingOffers": "{count, plural, one {⚠ # 条竞价/报价待您回复} other {⚠ # 条竞价/报价待您回复}}",
+          "disputedOrders": "{count, plural, one {⚠ # 笔争议订单} other {⚠ # 笔争议订单}}",
+          "rejectedKyc": "{count, plural, one {⚠ # 份 KYC 文件被拒} other {⚠ # 份 KYC 文件被拒}}",
+          "rejectedListings": "{count, plural, one {⚠ # 条挂牌被拒} other {⚠ # 条挂牌被拒}}",
+          "kycVerified": "✓ KYC 已验证"
+        },
+        "items": {
+          "pending_offer": "待处理报价 — {title}",
+          "disputed_order": "争议订单 — {title}",
+          "rejected_kyc": "KYC 文件被拒 — {type}",
+          "rejected_listing": "挂牌被拒 — {title}"
+        }
+      },
+      "recentActivitySection": {
+        "title": "最近活动",
+        "viewAll": "查看全部 →",
+        "empty": "您的活动将显示于此。",
+        "exploreCta": "探索市场"
+      },
+      "quickActions": {
+        "publishLot": {
+          "title": "发布批次",
+          "description": "开始您的生产溯源。"
+        },
+        "publishListing": {
+          "title": "发布挂牌",
+          "description": "在交易市场发布您的矿产。"
+        },
+        "exploreMarket": {
+          "title": "探索市场",
+          "description": "发现来自刚果（金）的认证矿产。"
+        },
+        "publishRfp": {
+          "title": "发布采购需求",
+          "description": "接收合格供应商的报价。"
+        },
+        "postOffer": {
+          "title": "提交报价",
+          "description": "对活跃挂牌提交报价。"
+        },
+        "myOffers": "我的报价",
+        "myOrders": "我的订单"
+      },
+      "marketInsight": {
+        "title": "市场趋势",
+        "insight": "本周 {mineral} 价格{direction} {change}%",
+        "up": "上涨",
+        "down": "下跌",
+        "emptyTitle": "暂无市场数据",
+        "emptyDescription": "积累足够交易活动与价格历史后，价格趋势将显示于此。",
+        "sparklineLabel": "{mineral} 7 日价格走势"
+      },
+      "marketPulse": {
+        "title": "实时市场",
+        "viewAll": "查看全部行情 →",
+        "unavailable": "— 数据不可用"
+      },
+      "tradingMix": {
+        "title": "交易构成",
+        "orders": "订单",
+        "chartLabel": "按矿种的订单分布",
+        "emptyTitle": "暂无订单",
+        "emptyDescription": "首次交易后，按矿种的分布将显示于此。"
+      },
+      "export": {
+        "button": "导出我的交易",
+        "columns": {
+          "date": "日期",
+          "mineral": "矿种",
+          "quantity": "数量",
+          "price": "单价",
+          "total": "总金额",
+          "counterpart": "交易对手",
+          "status": "状态",
+          "reference": "参考号"
+        }
+      },
+      "header": {
+        "greeting": {
+          "morning": "早上好",
+          "afternoon": "下午好",
+          "evening": "晚上好"
+        },
+        "kycVerified": "KYC 已验证"
+      },
+      "trustScore": {
+        "title": "信任评分",
+        "scoreValue": "{score}/100",
+        "signalsLabel": "信任信号",
+        "signals": {
+          "kycApproved": {
+            "label": "KYC 验证已批准",
+            "yes": "是",
+            "no": "否"
+          },
+          "completedOrders": {
+            "label": "已完成订单",
+            "value": "{count, plural, one {# 笔订单} other {# 笔订单}}"
+          },
+          "disputedOrders": {
+            "label": "争议订单",
+            "value": "{count, plural, one {# 笔订单} other {# 笔订单}}"
+          },
+          "accountAge": {
+            "label": "账户时长",
+            "value": "{days, plural, one {# 天} other {# 天}}"
+          }
+        }
+      },
+      "suggestions": {
+        "title": "为您推荐",
+        "reason": "根据您通常交易 {mineral} 为您推荐。"
+      },
+      "comingSoon": {
+        "escrow": {
+          "title": "托管安全付款",
+          "description": "资金将托管至交货确认，保护买卖双方。"
+        },
+        "compliance": {
+          "prose": "合规中心 — 即将推出。我们正在开发制裁筛查、AML/KYB 合规与 ESG 文档工具，以增强平台信任。"
+        },
+        "recommendations": {
+          "title": "智能推荐 — 即将推出",
+          "description": "基于您的交易历史的个性化建议将显示于此。"
+        }
+      }
+    },
+    "marketplace": {
+      "title": "交易市场",
+      "subtitle": "与刚果（金）各地的认证供应商和买方建立联系。",
+      "search": "搜索矿种或挂牌…",
+      "filters": "筛选",
+      "postOffer": "提交报价",
+      "viewDetails": "查看详情",
+      "emptyEyebrow": "交易市场",
+      "empty": "市场正在建设中",
+      "emptyDescription": "BIASHARA 是新兴平台，正积极吸纳认证卖方。加入我们，放心供应或发现矿产。",
+      "emptyImageAlt": "原钴样品",
+      "emptyCategoriesTitle": "矿种分类",
+      "emptyCategoryTag": "分类",
+      "emptyCategoryImageAlt": "图示 — {mineral}",
+      "emptyBrowseAll": "查看全部挂牌",
+      "emptyFiltered": "无符合条件的挂牌",
+      "emptyFilteredDescription": "没有与您的搜索或筛选匹配的活跃挂牌。请调整条件或浏览全部挂牌。",
+      "emptyCtaPost": "提交报价",
+      "emptyCtaRegister": "注册账户",
+      "emptyCtaKyc": "完成 KYC 验证",
+      "quantityAvailable": "可供 {quantity} {unit}",
+      "location": "刚果民主共和国",
+      "tabAll": "全部挂牌",
+      "sellerUnknown": "认证卖方",
+      "kycRequiredTooltip": "需要 KYC 验证",
+      "filtersTitle": "筛选",
+      "filtersClose": "关闭筛选",
+      "filterMineral": "矿种",
+      "filterProvince": "原产省份",
+      "filterMinPrice": "最低价格（USD）",
+      "filterMaxPrice": "最高价格（USD）",
+      "filterAllMinerals": "全部矿种",
+      "filterAllProvinces": "全部省份",
+      "filtersApply": "应用筛选",
+      "filtersClear": "清除筛选",
+      "paginationLabel": "挂牌分页",
+      "paginationSummary": "第 {page} 页，共 {totalPages} 页",
+      "paginationPrevious": "上一页",
+      "paginationNext": "下一页",
+      "traceability": {
+        "badge": "可追溯批次 — {code}"
+      },
+      "detail": {
+        "back": "返回交易市场",
+        "description": "描述",
+        "quantity": "可供数量",
+        "origin": "原产省份",
+        "certifications": "认证",
+        "seller": "卖方",
+        "memberSince": "注册于 {date}",
+        "kycVerified": "KYC 已验证",
+        "makeOffer": "提交报价",
+        "contactSeller": "联系卖方",
+        "offerQuantity": "报价数量",
+        "offerPrice": "报价价格（USD）",
+        "offerMessage": "留言（可选）",
+        "offerSubmit": "发送报价",
+        "offerSuccess": "您的报价已发送给卖方。",
+        "contactSuccess": "对话已开启 — 您可在下方发送消息。",
+        "contactMessage": "您的消息",
+        "contactSend": "发送消息",
+        "loginToOffer": "登录后提交报价",
+        "loginToContact": "登录后联系卖方",
+        "noPhotos": "该挂牌暂无图片"
+      },
+      "new": {
+        "title": "发布挂牌",
+        "subtitle": "您的挂牌将在发布前经审核。",
+        "kycBlockedTitle": "需要 KYC 验证",
+        "kycBlockedDescription": "发布挂牌须先完成账户验证。请在设置中提交 KYC 文件 — 审核通过后将启用发布权限。",
+        "kycBlockedCta": "完成 KYC 验证",
+        "sellerOnlyTitle": "需要卖方账户",
+        "sellerOnlyDescription": "仅卖方或合作社账户可发布挂牌。请注册卖方账户，或联系支持团队。",
+        "mineral": "矿种",
+        "listingTitle": "挂牌标题",
+        "description": "描述",
+        "grade": "品位",
+        "purity": "纯度（%）",
+        "quantity": "数量",
+        "unit": "单位",
+        "priceType": "价格类型",
+        "priceTypeFixed": "固定价格",
+        "priceTypeNegotiable": "可议价",
+        "priceTypeIndicative": "参考价",
+        "priceAmount": "金额（USD）",
+        "originProvince": "原产省份",
+        "certifications": "认证",
+        "certificationsHint": "输入认证名称后按 Enter",
+        "photos": "图片",
+        "photosHint": "JPEG、PNG 或 WebP — 每文件最大 5 MB",
+        "addPhoto": "添加图片",
+        "removePhoto": "删除",
+        "submit": "提交审核",
+        "submitSuccess": "您的挂牌已提交，将在发布前经审核。",
+        "pendingReviewNote": "挂牌将在发布前经审核 — 激活后您将收到通知。",
+        "linkedLot": "关联可追溯批次（可选）",
+        "linkedLotHint": "关联已在「我的批次」中创建的批次。发布后可在挂牌中查看。",
+        "linkedLotPlaceholder": "选择批次",
+        "linkedLotNone": "未关联批次"
+      }
+    },
+    "directory": {
+      "eyebrow": "名录",
+      "title": "企业名录",
+      "subtitle": "发现刚果（金）及本地区矿产供应链中的认证参与者。",
+      "searchPlaceholder": "按企业名称搜索",
+      "searchButton": "搜索",
+      "filtersButton": "筛选",
+      "filtersTitle": "筛选名录",
+      "filtersClose": "关闭筛选",
+      "filtersApply": "应用筛选",
+      "filtersClear": "清除筛选",
+      "filterRole": "账户类型",
+      "filterAllRoles": "全部角色",
+      "filterMineral": "矿种",
+      "filterAllMinerals": "全部矿种",
+      "filterCountry": "国家",
+      "filterAllCountries": "全部国家",
+      "kycVerified": "KYC 已验证",
+      "memberSince": "注册于 {date}",
+      "companyUnknown": "企业",
+      "noMinerals": "暂无登记矿种",
+      "trustScoreLabel": "信任评分",
+      "trustScoreValue": "{score}/100",
+      "viewProfile": "查看资料",
+      "empty": "名录中暂无认证账户",
+      "emptyDescription": "企业 KYC 验证通过后将显示于此。",
+      "emptyFiltered": "无符合筛选的账户",
+      "emptyFilteredDescription": "请尝试其他条件或清除筛选。",
+      "paginationLabel": "名录分页",
+      "paginationSummary": "第 {page} 页，共 {totalPages} 页",
+      "paginationPrevious": "上一页",
+      "paginationNext": "下一页",
+      "detail": {
+        "back": "返回名录",
+        "memberSince": "注册于 {date}",
+        "companyDetails": "企业信息",
+        "country": "国家",
+        "province": "省份",
+        "completedOrders": "已完成订单",
+        "mineralsTraded": "交易矿种",
+        "activeListings": "活跃挂牌",
+        "noActiveListings": "暂无活跃挂牌",
+        "contactTitle": "联系",
+        "contactDescription": "在平台上开启安全对话。联系方式从不公开显示。",
+        "contact": "联系",
+        "contactSuccess": "对话已开启 — 您可在下方发送消息。",
+        "contactMessage": "您的消息",
+        "contactSend": "发送消息",
+        "loginToContact": "登录后联系",
+        "contactUnavailable": "暂无可用联系渠道"
+      }
+    },
+    "rfps": {
+      "title": "采购需求",
+      "subtitle": "浏览认证买方发布的采购需求并提交您的报价。",
+      "publishRequest": "发布需求",
+      "kycRequiredTooltip": "发布采购需求需要 KYC 验证",
+      "tabAll": "全部",
+      "negotiable": "可议价",
+      "buyerUnknown": "买方",
+      "quantityRequested": "需求 {quantity} {unit}",
+      "deadlineLabel": "截止日期：{date}",
+      "viewDetails": "查看需求",
+      "empty": "暂无已发布采购需求",
+      "emptyDescription": "认证买方可发布采购需求以征集卖方报价。",
+      "emptyFiltered": "无符合此筛选的需求",
+      "emptyFilteredDescription": "请尝试其他矿种或稍后再来。",
+      "emptyCtaPublish": "发布需求",
+      "emptyCtaKyc": "完成 KYC 验证",
+      "emptyCtaRegister": "注册账户",
+      "new": {
+        "title": "发布采购需求",
+        "subtitle": "描述您的需求 — 认证卖方可向您提交保密报价。",
+        "kycBlockedTitle": "需要 KYC 验证",
+        "kycBlockedDescription": "发布采购需求须先完成账户验证。",
+        "kycBlockedCta": "完成 KYC 验证",
+        "buyerOnlyTitle": "需要买方账户",
+        "buyerOnlyDescription": "仅买方或机构账户可发布采购需求。",
+        "backToList": "返回需求列表",
+        "mineral": "矿种",
+        "mineralPlaceholder": "选择矿种",
+        "quantity": "需求数量",
+        "unit": "单位",
+        "unitPlaceholder": "选择单位",
+        "targetPriceMin": "目标最低价（USD，可选）",
+        "targetPriceMax": "目标最高价（USD，可选）",
+        "deliveryTerms": "交货条件（可选）",
+        "deadline": "回复截止日期",
+        "description": "详细描述",
+        "submit": "发布需求",
+        "submitError": "无法发布需求。请检查字段后重试。"
+      },
+      "detail": {
+        "back": "返回采购需求",
+        "title": "采购需求 — {mineral}",
+        "quantity": "需求数量",
+        "targetPrice": "目标价格区间",
+        "deadline": "截止日期",
+        "deliveryTerms": "交货条件",
+        "description": "描述",
+        "submitBid": "提交报价",
+        "bidQuantity": "报价数量",
+        "bidPrice": "报价价格（USD）",
+        "bidDeliveryTerms": "交货条件（可选）",
+        "bidMessage": "留言（可选）",
+        "bidSubmit": "发送报价",
+        "bidSuccess": "您的报价已发送给买方。",
+        "bidError": "无法发送报价。请检查字段后重试。",
+        "yourBid": "您的报价",
+        "bidQuantityLine": "{quantity} {unit}",
+        "bidStatus": {
+          "pending": "待处理",
+          "selected": "已选中",
+          "rejected": "未入选"
+        },
+        "status": {
+          "open": "开放",
+          "awarded": "已授予",
+          "cancelled": "已取消"
+        },
+        "bidsTitle": "收到的报价",
+        "bidsEmpty": "暂无收到报价。",
+        "selectBid": "选择",
+        "selectError": "无法选择此报价。",
+        "bidSelected": "报价已入选",
+        "bidRejected": "未入选",
+        "bidPending": "待处理",
+        "sellerUnknown": "卖方",
+        "kycVerified": "KYC 已验证",
+        "openConversation": "打开对话",
+        "loginToBid": "登录后提交报价。",
+        "loginCta": "登录",
+        "kycRequired": "提交报价需要 KYC 验证。",
+        "kycCta": "完成 KYC 验证"
+      }
+    },
+    "lots": {
+      "title": "我的批次",
+      "subtitle": "合作社登记的批次 — 手动申报，除 KYC 外未经独立核实。",
+      "createCta": "创建批次",
+      "viewDetail": "查看批次",
+      "cooperativeOnly": "仅认证合作社可管理批次。",
+      "kycRequiredTitle": "需要 KYC 验证",
+      "kycRequiredDescription": "合作社账户须先获批方可创建或管理批次。",
+      "kycRequiredCta": "完成 KYC 验证",
+      "emptyTitle": "暂无批次",
+      "emptyDescription": "创建您的第一个批次以开始生产溯源。",
+      "loadErrorTitle": "无法加载批次",
+      "loadErrorDescription": "暂时无法加载您的批次。请稍后再试。",
+      "loadErrorCta": "返回批次列表",
+      "table": {
+        "code": "批次编码",
+        "mineral": "矿种",
+        "stage": "当前阶段",
+        "checkpoints": "保管节点",
+        "actions": "操作"
+      },
+      "new": {
+        "title": "创建批次",
+        "subtitle": "登记由平台生成唯一编码的新批次。",
+        "mineral": "矿种",
+        "initialWeight": "初始重量（kg）",
+        "initialWeightHint": "合作社申报的开采重量。",
+        "site": "站点 / ZEA",
+        "extractionDate": "开采日期",
+        "notes": "备注",
+        "notesHint": "合作社申报的补充信息。",
+        "submit": "创建批次",
+        "selfReportedNotice": "合作社手动申报 — 除 KYC 外未经独立核实。",
+        "noSites": "创建批次前，请先在设置中添加至少一个矿区站点。",
+        "noSitesCta": "设置",
+        "forbidden": "仅认证合作社可创建批次。",
+        "siteNotFound": "站点未找到。请在设置中检查您的站点。",
+        "error": "批次创建失败。请重试。",
+        "kycRequiredTitle": "需要 KYC 验证",
+        "kycRequiredDescription": "合作社账户须先获批方可创建批次。",
+        "kycRequiredCta": "完成 KYC 验证"
+      },
+      "detail": {
+        "title": "批次详情",
+        "back": "返回",
+        "selfReportedNotice": "合作社申报的时间线 — 除 KYC 外未经独立核实。",
+        "mineral": "矿种",
+        "initialWeight": "初始重量",
+        "weightValue": "{weight} kg",
+        "extractionDate": "开采日期",
+        "site": "站点 / ZEA",
+        "siteValue": "{name} — ZEA {zea}（{province}）",
+        "createdAt": "创建时间",
+        "linkedListing": "关联挂牌",
+        "viewListing": "查看挂牌",
+        "notes": "备注",
+        "notProvided": "未填写"
+      },
+      "custody": {
+        "title": "保管时间线",
+        "selfReportedNotice": "合作社手动录入的保管节点 — 未经 GPS 或第三方核实。",
+        "empty": "暂无保管节点。",
+        "addTitle": "添加保管节点",
+        "stageLabel": "阶段",
+        "noteLabel": "备注",
+        "timestampLabel": "时间戳",
+        "timestampHint": "留空则使用当前时间。",
+        "addCta": "添加保管节点",
+        "forbidden": "仅所属合作社可添加保管节点。",
+        "saveError": "添加保管节点失败。请重试。",
+        "stages": {
+          "extraction": "开采",
+          "weighing": "称重",
+          "sampling": "取样",
+          "analysis": "分析",
+          "collection_point": "收集点"
+        }
+      }
+    },
+    "offers": {
+      "title": "我的报价",
+      "tabs": {
+        "sent": "已发出",
+        "received": "已收到"
+      },
+      "emptySent": "您尚未发出报价。",
+      "emptyReceived": "您尚未收到报价。",
+      "emptyCta": "浏览交易市场",
+      "empty": "暂无进行中的报价。浏览交易市场以提交报价。",
+      "pending": "待处理",
+      "countered": "还价",
+      "accepted": "已接受",
+      "declined": "已拒绝",
+      "expired": "已过期",
+      "waitingSeller": "等待卖方回复",
+      "waitingBuyer": "等待买方回复",
+      "accept": "接受",
+      "decline": "拒绝",
+      "counter": "还价",
+      "viewOrder": "查看订单",
+      "counterpartyUnknown": "认证用户",
+      "submittedOn": "提交于 {date}",
+      "chainLabel": "议价历史",
+      "counterForm": {
+        "quantity": "数量",
+        "price": "报价价格（USD）",
+        "message": "留言（可选）",
+        "submit": "发送还价"
+      }
+    },
+    "orders": {
+      "title": "我的订单",
+      "empty": "您尚无订单。",
+      "emptyDescription": "浏览交易市场以发现认证矿产并完成首笔订单。",
+      "emptyCta": "探索交易市场",
+      "confirmed": "已确认",
+      "processing": "处理中",
+      "inTransit": "运输中",
+      "delivered": "已送达",
+      "cancelled": "已取消",
+      "disputed": "争议中",
+      "roleBuyer": "买方",
+      "roleSeller": "卖方",
+      "counterpartyUnknown": "交易对手",
+      "untitled": "无标题订单",
+      "backToList": "返回订单列表",
+      "reference": "订单 {reference}",
+      "orderedOn": "下单于 {date}",
+      "timelineTitle": "订单跟踪",
+      "timelineLabel": "订单阶段",
+      "timelineCurrent": "当前阶段",
+      "timelineCompleted": "已完成",
+      "timelineUpcoming": "待进行",
+      "terminalBranchHint": "此订单在标准流程之外出现了特殊结果。",
+      "summaryTitle": "摘要",
+      "snapshotLabel": "报价接受时锁定的价格与数量",
+      "quantityLine": "{quantity} {unit}",
+      "totalLine": "合计：{total}",
+      "counterpartyTitle": "交易对手",
+      "viewConversation": "查看对话",
+      "progressTitle": "推进订单",
+      "progressDescription": "请按顺序一次更新一个阶段。",
+      "progressCta": "更新为「{status}」",
+      "progressForbidden": "仅卖方可推进此订单。",
+      "progressInvalid": "不允许此状态变更。",
+      "progressError": "状态更新失败。请重试。",
+      "currentStatus": "当前状态：{status}",
+      "disputeCta": "报告问题",
+      "disputeTitle": "报告问题",
+      "disputeReasonLabel": "描述问题",
+      "disputeSubmit": "提交报告",
+      "disputeCancel": "取消",
+      "disputeSubmitted": "此订单已标记为争议。",
+      "disputeContactHint": "您可通过与此挂牌关联的现有对话联系交易对手。",
+      "disputeForbidden": "仅买方可对此订单报告问题。",
+      "disputeError": "报告提交失败。请重试。",
+      "disputeReasonTitle": "报告原因",
+      "disputedOn": "报告于 {date}",
+      "accord": {
+        "title": "协议",
+        "description": "查看订单摘要并通过数字条款确认完成确认。",
+        "documentLabel": "PDF 摘要",
+        "viewPdf": "查看或下载摘要",
+        "pdfUnavailable": "PDF 摘要暂不可用。",
+        "confirmationTitle": "数字条款确认",
+        "confirmLabel": "我确认此订单的条款。",
+        "buyerRole": "买方",
+        "sellerRole": "卖方",
+        "confirmedOn": "确认于 {date}",
+        "statusPending": "待确认",
+        "statusConfirmed": "双方已确认",
+        "confirmForbidden": "仅相关方可确认这些条款。",
+        "confirmAlreadyDone": "此确认已记录。",
+        "confirmError": "确认失败。请重试。",
+        "legalDisclaimer": "此为登录会话中的勾选确认，非合格电子签名。"
+      },
+      "shipment": {
+        "title": "物流",
+        "trackingComingSoon": "承运商自动跟踪即将推出。",
+        "createDescription": "填写此订单的物流信息。",
+        "createCta": "创建物流记录",
+        "emptyBuyer": "卖方尚未填写物流信息。",
+        "carrierLabel": "承运商",
+        "trackingLabel": "跟踪参考号",
+        "trackingHint": "承运商提供的参考号（如有）。",
+        "saveDetails": "保存信息",
+        "notProvided": "未填写",
+        "statusTitle": "物流状态",
+        "pending": "待处理",
+        "pickedUp": "已揽收",
+        "inTransit": "运输中",
+        "customs": "海关",
+        "delivered": "已送达",
+        "exception": "异常",
+        "progressCta": "更新为「{status}」",
+        "statusInvalid": "不允许此状态变更。",
+        "sellerOnly": "仅卖方可修改物流信息。",
+        "saveError": "更新失败。请重试。",
+        "checkpointsTitle": "手动跟踪节点",
+        "checkpointsEmpty": "暂无手动跟踪节点。",
+        "checkpointNoteLabel": "备注",
+        "checkpointLocationLabel": "地点（自由文本）",
+        "checkpointLocationHint": "卖方申报的地点 — 未经 GPS 核实。",
+        "checkpointLocation": "申报地点：{location}",
+        "addCheckpoint": "添加跟踪节点"
+      },
+      "table": {
+        "mineral": "矿种",
+        "price": "锁定价格",
+        "counterparty": "交易对手",
+        "role": "角色",
+        "status": "状态",
+        "date": "日期"
+      }
+    },
+    "messages": {
+      "title": "消息",
+      "empty": "您尚无对话。",
+      "emptyDescription": "探索交易市场以联系卖方。",
+      "emptyCta": "探索交易市场",
+      "counterpartyUnknown": "交易对手",
+      "conversationListLabel": "对话列表",
+      "threadLabel": "对话线程",
+      "selectConversation": "选择对话以查看消息。",
+      "backToList": "返回对话列表",
+      "composeLabel": "您的消息",
+      "send": "发送",
+      "unreadIndicator": "未读消息"
+    },
+    "contracts": {
+      "title": "合同",
+      "empty": "暂无合同。合同在报价接受后生成。",
+      "sign": "签署合同",
+      "signed": "已签署",
+      "pending": "待签署"
+    },
+    "payments": {
+      "title": "付款",
+      "empty": "付款模块 — 第二阶段",
+      "comingSoon": "安全付款即将推出"
+    },
+    "logistics": {
+      "title": "物流",
+      "empty": "暂无物流记录",
+      "tracking": "跟踪",
+      "carrier": "承运商",
+      "addShipment": "创建物流记录"
+    },
+    "reports": {
+      "title": "报告",
+      "empty": "所选时段暂无报告"
+    },
+    "documents": {
+      "title": "文件",
+      "eyebrow": "供应链",
+      "subtitle": "您的 KYC 文件与订单合同集中管理。",
+      "emptyTitle": "暂无文件",
+      "emptyDescription": "提交或生成后，KYC 文件与订单合同将显示于此。",
+      "kycSection": "KYC 文件",
+      "contractsSection": "合同",
+      "download": "下载",
+      "unavailable": "链接不可用",
+      "contractTitle": "合同 — {title}（{mineral}）",
+      "contractFallback": "订单合同"
+    },
+    "settings": {
+      "title": "设置",
+      "profile": "个人资料",
+      "kyc": "KYC 验证",
+      "language": "语言",
+      "kycPending": "验证进行中 — 我们的团队正在审核您的文件",
+      "kycApproved": "账户已验证",
+      "kycRejected": "验证被拒 — 请查看原因并重新提交文件",
+      "myListings": "我的挂牌",
+      "tabs": {
+        "profile": "个人资料",
+        "security": "安全",
+        "kyc": "KYC 验证",
+        "exportReadiness": "出口准备",
+        "listings": "我的挂牌"
+      },
+      "profileForm": {
+        "title": "个人资料信息",
+        "companyName": "企业名称",
+        "country": "国家",
+        "phone": "电话",
+        "phoneHint": "建议使用国际格式（如 +243…）",
+        "email": "电子邮箱",
+        "role": "账户类型",
+        "memberSince": "注册时间",
+        "emailReadOnlyHint": "此处无法修改电子邮箱。",
+        "submit": "保存更改",
+        "success": "个人资料更新成功。",
+        "error": "个人资料更新失败。请重试。"
+      },
+      "security": {
+        "title": "密码",
+        "description": "密码至少 12 个字符。",
+        "newPassword": "新密码",
+        "confirmPassword": "确认密码",
+        "submit": "更新密码",
+        "success": "密码更新成功。",
+        "error": "密码更新失败。请重试。",
+        "passwordMismatch": "两次输入的密码不一致"
+      },
+      "countries": {
+        "CD": "刚果民主共和国",
+        "CG": "刚果共和国",
+        "AO": "安哥拉",
+        "RW": "卢旺达",
+        "BI": "布隆迪",
+        "UG": "乌干达",
+        "TZ": "坦桑尼亚",
+        "ZM": "赞比亚",
+        "CF": "中非共和国",
+        "GA": "加蓬",
+        "CM": "喀麦隆",
+        "KE": "肯尼亚",
+        "ZA": "南非",
+        "BE": "比利时",
+        "FR": "法国",
+        "US": "美国",
+        "CN": "中国"
+      },
+      "cooperativeSites": {
+        "title": "矿区站点",
+        "description": "填写合作社的站点与 ZEA 参考号。创建可追溯批次所必需。",
+        "siteLabel": "站点 {index}",
+        "siteName": "站点名称",
+        "zeaReference": "ZEA 参考号",
+        "zeaHint": "手工采矿区（ZEA）— 合作社申报的参考号。",
+        "province": "省份",
+        "addSite": "添加站点",
+        "removeSite": "删除站点",
+        "submit": "保存站点",
+        "success": "站点保存成功。",
+        "error": "站点保存失败。请重试。",
+        "forbidden": "仅认证合作社可管理站点。"
+      },
+      "exportReadiness": {
+        "title": "出口准备",
+        "description": "跟踪您认为出口前必要的行政步骤。每项勾选反映您的自行申报。",
+        "disclaimer": "此工具帮助您跟踪自身准备情况，不构成 Biashara 认证。",
+        "progress": "已完成 {completed} / {total}",
+        "progressAria": "已完成 {completed} 项，共 {total} 项",
+        "learnMore": "了解更多",
+        "notesLabel": "个人备注",
+        "notesPlaceholder": "内部使用的参考号、日期或提醒…",
+        "documentLabel": "关联文件",
+        "documentHint": "选择已在文件中心上传的文件。",
+        "documentNone": "无文件",
+        "documentOption": "{type} — {date}",
+        "completedOn": "标记完成于 {date}",
+        "saveError": "保存失败。请重试。",
+        "documentsLink": "管理我的文件",
+        "items": {
+          "ceec_certification": {
+            "title": "CEEC 认证",
+            "description": "专家评估与认证中心（CEEC）为部分从刚果（金）出口的矿产颁发证书。请核实您的产品是否适用，并保留内部跟踪凭证。"
+          },
+          "export_permit": {
+            "title": "出口许可或授权",
+            "description": "矿产出口须获主管部门授权。获得许可或授权后，请在此记录参考号。"
+          },
+          "taxes_paid": {
+            "title": "税费已缴纳",
+            "description": "出口前可能须缴纳矿业税费或其他费用。请用此项跟踪已付款项及保留的凭证。"
+          },
+          "customs_forms": {
+            "title": "海关表格",
+            "description": "刚果海关要求货物出境申报及文件。请记录您为内部管理已准备或提交的表格。"
+          },
+          "quality_certificates": {
+            "title": "质量或分析证书",
+            "description": "买方或主管部门可能要求分析或质量证书。请记录您从实验室或合格机构获得的证书。"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "nav": {
+      "groups": {
+        "pilotage": "运营",
+        "utilisateurs": "用户",
+        "marche": "市场",
+        "intelligence": "情报",
+        "securite": "安全"
+      },
+      "dashboard": "控制台",
+      "users": "用户",
+      "kycReview": "KYC 审核",
+      "listings": "挂牌",
+      "listingsModeration": "审核",
+      "miningEvents": "日历",
+      "reports": "报告",
+      "auditLog": "审计日志"
+    },
+    "shell": {
+      "sidebarLabel": "管理导航",
+      "openDrawer": "打开菜单",
+      "closeDrawer": "关闭菜单",
+      "logout": "退出登录",
+      "notifications": "通知"
+    },
+    "gate": {
+      "title": "管理访问",
+      "description": "输入通行短语以进入管理空间。",
+      "passphraseLabel": "通行短语",
+      "submit": "进入",
+      "accessDenied": "访问被拒绝。"
+    },
+    "login": {
+      "title": "管理登录",
+      "description": "使用管理员凭据登录。",
+      "emailLabel": "账号",
+      "passwordLabel": "密码",
+      "submit": "登录",
+      "invalidCredentials": "凭据无效"
+    },
+    "common": {
+      "unknownActor": "系统",
+      "unknownUser": "无名用户",
+      "notAvailable": "未填写",
+      "applyFilters": "应用",
+      "cancel": "取消",
+      "confirmReject": "确认拒绝",
+      "rejectionReasonLabel": "拒绝原因",
+      "rejectionReasonRequired": "拒绝原因为必填项。",
+      "actionFailed": "操作失败。请重试。",
+      "paginationLabel": "分页",
+      "paginationSummary": "第 {page} 页，共 {totalPages} 页",
+      "paginationPrevious": "上一页",
+      "paginationNext": "下一页"
+    },
+    "roles": {
+      "buyer": "买方",
+      "seller": "卖方",
+      "cooperative": "合作社",
+      "institution": "机构",
+      "admin": "管理员"
+    },
+    "kycStatus": {
+      "none": "未提交",
+      "pending": "待处理",
+      "approved": "已批准",
+      "rejected": "已拒绝"
+    },
+    "listingStatus": {
+      "draft": "草稿",
+      "pending_review": "待审核",
+      "active": "活跃",
+      "paused": "已暂停",
+      "sold": "已售出",
+      "rejected": "已拒绝"
+    },
+    "dashboard": {
+      "title": "控制台",
+      "eyebrow": "管理",
+      "dataUnavailable": "数据不可用",
+      "stats": {
+        "users": "用户",
+        "activeListings": "活跃挂牌",
+        "pendingKyc": "待审 KYC",
+        "purchaseRequests": "采购需求"
+      },
+      "trendAria": "{label} 变化：{value}",
+      "sparklineAria": "{label} 历史",
+      "marketPulse": {
+        "eyebrow": "全国市场",
+        "lastUpdated": "最后更新：{time}（金沙萨）",
+        "viewPrices": "查看行情 →",
+        "viewReports": "查看报告 →",
+        "unavailable": "数据不可用"
+      },
+      "recentActivity": "最近活动",
+      "noActivity": "暂无记录活动。",
+      "liveActivity": {
+        "title": "实时活动",
+        "viewFullLog": "查看完整日志 →",
+        "empty": "暂无重要近期活动。",
+        "events": {
+          "account_verified": "{actor} — 账户已验证（{role}）",
+          "kyc_submitted": "{actor} — KYC 文件已提交",
+          "listing_submitted": "{actor} — 挂牌已提交（{mineral}，{province}）",
+          "listing_published": "{actor} — 挂牌已发布（{mineral}，{province}）",
+          "rfp_created": "{actor} — 采购需求已创建（{mineral}）",
+          "offer_accepted": "{actor} — 报价已接受（{mineral}）",
+          "order_disputed": "争议已开启 — {actor}"
+        }
+      },
+      "kycIntelligence": {
+        "title": "KYC 情报",
+        "openQueue": "打开 KYC 队列 →",
+        "funnel": {
+          "pending": "待处理",
+          "needsReview": "待复审",
+          "verified": "已验证",
+          "rejected": "已拒绝"
+        },
+        "verifiedBarLabel": "验证率",
+        "verifiedPercent": "{value} %",
+        "verifiedBarAria": "验证率：{value} %",
+        "noDocuments": "暂无 KYC 文件记录。",
+        "oldestPendingTitle": "最早待审文件",
+        "oldestPendingEmpty": "暂无待审文件。"
+      },
+      "moderationPreview": {
+        "title": "挂牌审核",
+        "openQueue": "查看完整队列 →",
+        "empty": "暂无待审核挂牌。",
+        "reviewAction": "审核 →"
+      },
+      "quickLinks": {
+        "users": "用户",
+        "kycReview": "KYC 审核",
+        "listingsModeration": "挂牌审核",
+        "auditLog": "审计日志"
+      },
+      "drcMap": {
+        "eyebrow": "区域活动",
+        "title": "刚果（金）活动地图",
+        "subtitle": "各省份活跃挂牌与合作社站点 — 实时数据。",
+        "mapAria": "刚果民主共和国交互地图",
+        "provinceStatsAria": "{province} 统计数据",
+        "provinceLinkAria": "查看 {province} 的挂牌",
+        "activeListings": "{count, plural, one {# 条活跃挂牌} other {# 条活跃挂牌}}",
+        "cooperatives": "{count, plural, one {# 个合作社站点} other {# 个合作社站点}}",
+        "noListings": "无活跃挂牌",
+        "attribution": "边界数据：geoBoundaries（WGS84）",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
+      },
+      "ecosystem": {
+        "eyebrow": "生态",
+        "title": "Biashara 生态",
+        "roles": {
+          "cooperative": "合作社",
+          "seller": "卖方",
+          "buyer": "买方",
+          "institution": "机构"
+        }
+      },
+      "platformHealth": {
+        "eyebrow": "基础设施",
+        "title": "平台健康状态",
+        "systems": {
+          "api": "API",
+          "database": "数据库",
+          "auth": "认证",
+          "storage": "Storage"
+        },
+        "status": {
+          "operational": "运行正常",
+          "unavailable": "不可用"
+        },
+        "monitoringNote": "监控未配置",
+        "checkedAt": "检查于 {time}（金沙萨）"
+      }
+    },
+    "users": {
+      "title": "用户",
+      "searchPlaceholder": "按姓名或企业搜索…",
+      "filterRole": "按角色筛选",
+      "filterKycStatus": "按 KYC 状态筛选",
+      "emptyTitle": "未找到用户",
+      "emptyDescription": "没有符合搜索条件的资料。",
+      "backToList": "返回列表",
+      "columns": {
+        "name": "姓名 / 企业",
+        "role": "角色",
+        "kycStatus": "KYC 状态",
+        "memberSince": "注册时间",
+        "listings": "挂牌",
+        "orders": "订单"
+      },
+      "detail": {
+        "profile": "资料",
+        "email": "电子邮箱",
+        "role": "角色",
+        "kycStatus": "KYC 状态",
+        "memberSince": "注册时间",
+        "country": "国家",
+        "phone": "电话",
+        "kycDocuments": "KYC 文件",
+        "noKycDocuments": "未提交 KYC 文件。",
+        "viewDocument": "查看文件",
+        "listings": "挂牌",
+        "noListings": "未发布挂牌。",
+        "orders": "订单",
+        "noOrders": "无订单。"
+      }
+    },
+    "kycReview": {
+      "title": "KYC 审核",
+      "approve": "批准",
+      "reject": "拒绝",
+      "rejectDialogTitle": "拒绝 KYC 文件",
+      "viewDocument": "查看文件",
+      "tabs": {
+        "pending": "待处理",
+        "approved": "已批准",
+        "rejected": "已拒绝"
+      },
+      "columns": {
+        "applicant": "申请人",
+        "documentType": "文件类型",
+        "submitted": "提交日期",
+        "document": "文件",
+        "actions": "操作"
+      },
+      "empty": {
+        "pending": {
+          "title": "暂无待审文件",
+          "description": "所有 KYC 文件已处理 — 一切已更新。"
+        },
+        "approved": {
+          "title": "暂无已批准文件",
+          "description": "批准后的文件将显示于此。"
+        },
+        "rejected": {
+          "title": "暂无已拒绝文件",
+          "description": "被拒绝的文件及原因将显示于此。"
+        }
+      }
+    },
+    "listingsModeration": {
+      "title": "挂牌审核",
+      "approve": "批准",
+      "reject": "拒绝",
+      "rejectDialogTitle": "拒绝挂牌",
+      "tabs": {
+        "pending_review": "待审核",
+        "active": "活跃",
+        "rejected": "已拒绝"
+      },
+      "columns": {
+        "listing": "挂牌",
+        "seller": "卖方",
+        "quantityPrice": "数量 / 价格",
+        "submitted": "提交日期"
+      },
+      "empty": {
+        "pending_review": {
+          "title": "暂无待审核挂牌",
+          "description": "无待审挂牌 — 一切已更新。"
+        },
+        "active": {
+          "title": "暂无活跃挂牌",
+          "description": "已批准并发布的挂牌将显示于此。"
+        },
+        "rejected": {
+          "title": "暂无已拒绝挂牌",
+          "description": "被拒绝的挂牌及原因将显示于此。"
+        }
+      }
+    },
+    "miningEvents": {
+      "title": "矿业日历",
+      "create": "新建事件",
+      "createTitle": "创建事件",
+      "editTitle": "编辑事件",
+      "edit": "编辑",
+      "delete": "删除",
+      "deleteConfirm": "确定永久删除此事件？",
+      "deleteError": "删除失败。请重试。",
+      "backToList": "返回日历",
+      "columns": {
+        "title": "标题",
+        "date": "日期",
+        "category": "类别",
+        "actions": "操作"
+      },
+      "empty": {
+        "title": "暂无已发布事件",
+        "description": "创建首个矿业日历事件 — 拍卖、会议或官方公告。"
+      },
+      "form": {
+        "title": "标题",
+        "description": "描述",
+        "eventDate": "事件日期",
+        "category": "类别",
+        "categoryPlaceholder": "选择类别",
+        "sourceUrl": "来源链接",
+        "sourceUrlHint": "可选 — 公告或官方来源 URL。",
+        "create": "发布事件",
+        "save": "保存",
+        "cancel": "取消",
+        "submitError": "保存失败。请检查字段后重试。"
+      }
+    },
+    "reports": {
+      "title": "平台报告",
+      "eyebrow": "管理",
+      "description": "实时指标、运营警报与按需导出。",
+      "alerts": {
+        "title": "运营警报",
+        "allClear": "无待处理警报 — 一切已更新。",
+        "action": "查看",
+        "items": {
+          "aging_listing": "挂牌待审超过 48 小时：{title}",
+          "aging_kyc": "KYC 文件待审超过 48 小时 — {company}（{type}）",
+          "unresolved_dispute": "未解决争议订单：{title}",
+          "high_dispute_rate_user": "争议率偏高（{rate}%）— {company}"
+        }
+      },
+      "charts": {
+        "transactionVolume": {
+          "title": "交易量",
+          "empty": "数据不足，无法显示图表。",
+          "granularity": {
+            "daily": "按日",
+            "weekly": "按周"
+          }
+        },
+        "mineralDistribution": {
+          "title": "按矿种分布",
+          "emptyTitle": "暂无订单",
+          "emptyDescription": "无订单记录，无法计算分布。",
+          "chartLabel": "按矿种的订单分布",
+          "orders": "订单"
+        },
+        "userGrowth": {
+          "title": "用户增长",
+          "empty": "数据不足，无法显示图表。",
+          "granularity": {
+            "daily": "按日",
+            "weekly": "按周"
+          },
+          "tooltipNew": "新增：{count}",
+          "tooltipCumulative": "累计：{count}"
+        },
+        "kycFunnel": {
+          "title": "KYC 漏斗",
+          "empty": "暂无注册资料。"
+        },
+        "listingFunnel": {
+          "title": "挂牌漏斗",
+          "empty": "暂无挂牌记录。"
+        },
+        "disputeRate": {
+          "title": "争议率",
+          "empty": "数据不足，无法显示趋势。",
+          "granularity": {
+            "daily": "按日",
+            "weekly": "按周"
+          },
+          "tooltipRate": "{rate} %",
+          "tooltipCounts": "{disputed} 笔争议 / {total} 笔订单"
+        }
+      },
+      "exports": {
+        "title": "导出中心",
+        "csvSection": "CSV 导出",
+        "pdfSection": "PDF 报告",
+        "csv": {
+          "users": "用户 / 资料",
+          "listings": "挂牌",
+          "orders": "订单",
+          "audit-log": "审计日志"
+        },
+        "pdf": {
+          "report": "平台报告（PDF）",
+          "hint": "按当前指标按需生成。",
+          "documentTitle": "BIASHARA 平台报告",
+          "generatedAt": "生成于",
+          "totalUsers": "注册用户",
+          "totalListings": "已发布挂牌",
+          "totalOrders": "订单",
+          "totalVolume": "总交易额",
+          "disputeRate": "整体争议率",
+          "kycFunnel": "KYC 漏斗",
+          "listingFunnel": "挂牌漏斗",
+          "mineralDistribution": "按矿种分布",
+          "footer": "根据平台数据自动生成的文档。"
+        },
+        "columns": {
+          "id": "ID",
+          "companyName": "企业",
+          "role": "角色",
+          "country": "国家",
+          "phone": "电话",
+          "locale": "语言",
+          "kycStatus": "KYC 状态",
+          "createdAt": "创建时间",
+          "updatedAt": "更新时间",
+          "sellerId": "卖方 ID",
+          "mineral": "矿种",
+          "title": "标题",
+          "grade": "品位",
+          "purity": "纯度",
+          "quantity": "数量",
+          "unit": "单位",
+          "priceAmount": "价格",
+          "priceCurrency": "货币",
+          "priceType": "价格类型",
+          "originProvince": "省份",
+          "status": "状态",
+          "offerId": "报价 ID",
+          "listingId": "挂牌 ID",
+          "buyerId": "买方 ID",
+          "listingTitle": "挂牌标题",
+          "currency": "货币",
+          "disputeReason": "争议原因",
+          "disputedAt": "争议日期",
+          "actorId": "操作者 ID",
+          "action": "操作",
+          "entity": "实体",
+          "entityId": "实体 ID",
+          "diff": "差异"
+        }
+      }
+    },
+    "search": {
+      "title": "管理搜索",
+      "open": "打开搜索",
+      "close": "关闭",
+      "placeholder": "搜索用户、挂牌、订单…",
+      "hint": "输入以在全平台搜索。",
+      "searching": "搜索中…",
+      "noResults": "未找到结果。",
+      "groups": {
+        "users": "用户",
+        "listings": "挂牌",
+        "orders": "订单"
+      },
+      "keyboard": {
+        "navigate": "导航",
+        "select": "选择",
+        "close": "关闭"
+      }
+    },
+    "auditLog": {
+      "title": "审计日志",
+      "filterEntity": "实体类型",
+      "filterAction": "操作",
+      "filterDateFrom": "开始日期",
+      "filterDateTo": "结束日期",
+      "emptyTitle": "无记录",
+      "emptyDescription": "没有符合筛选条件的审计记录。",
+      "showDiff": "显示详情",
+      "hideDiff": "隐藏详情",
+      "columns": {
+        "actor": "操作者",
+        "action": "操作",
+        "entity": "实体",
+        "timestamp": "时间戳"
+      },
+      "actions": {
+        "insert": "创建了",
+        "update": "修改了",
+        "delete": "删除了"
+      },
+      "entities": {
+        "kyc_documents": "KYC 文件",
+        "listings": "挂牌",
+        "offers": "报价",
+        "orders": "订单",
+        "profiles": "资料"
+      }
+    }
+  },
+  "minerals": {
+    "cobalt": "钴",
+    "copper": "铜",
+    "gold": "金",
+    "coltan": "钶钽铁矿",
+    "lithium": "锂",
+    "diamond": "钻石"
+  },
+  "units": {
+    "MT": "公吨",
+    "oz": "oz",
+    "kg": "kg",
+    "carat": "克拉"
+  },
+  "errors": {
+    "unauthorized": "您须登录方可访问此页面。请登录或注册账户。",
+    "forbidden": "您无权执行此操作。若认为有误，请联系管理员。",
+    "kycRequired": "此操作需要 KYC 验证。请在设置中完成文件提交。",
+    "notFound": "页面未找到 — 请检查地址或返回首页。",
+    "validation": "部分字段无效。请更正下方标出的错误。",
+    "rateLimit": "请求过多 — 请稍候再试。",
+    "parentOfferNotFound": "父报价未找到。请刷新页面后重试。",
+    "shipmentNotFound": "物流记录未找到。请检查标识或联系支持团队。",
+    "documentNotFound": "文件未找到。请从设置中重新上传。",
+    "listingNotFound": "挂牌未找到。可能已下架或售出。",
+    "orderNotFound": "订单未找到。请检查您的订单历史。",
+    "serverError": "服务器无法处理您的请求。请稍后再试。"
+  },
+  "validation": {
+    "required": "此字段为必填项",
+    "email": "请输入有效的电子邮箱地址",
+    "passwordMin": "密码至少 12 个字符",
+    "passwordMax": "密码不能超过 128 个字符",
+    "phoneInvalid": "请输入有效的电话号码（允许数字、空格、连字符和括号）",
+    "uuid": "标识无效",
+    "positiveNumber": "数值须大于零",
+    "titleMin": "标题至少 3 个字符",
+    "titleMax": "标题不能超过 200 个字符",
+    "descriptionMin": "描述至少 10 个字符",
+    "descriptionMax": "描述不能超过 5,000 个字符",
+    "invalidUrl": "请输入有效的 URL",
+    "mineralInvalid": "请选择平台支持的矿种"
+  },
+  "kyc": {
+    "id_card": "身份证件",
+    "business_registration": "商业登记",
+    "mining_permit": "采矿许可",
+    "export_license": "出口许可证",
+    "upload": "上传文件",
+    "required": "您账户类型所需的文件"
+  },
+  "notifications": {
+    "title": "通知",
+    "panel": {
+      "viewAll": "查看全部 →",
+      "empty": "暂无通知。",
+      "markAllRead": "全部标为已读"
+    },
+    "kycApproved": "您的 {documentType} 文件已批准。",
+    "kycRejected": "您的 {documentType} 文件已被拒绝。",
+    "listingApproved": "您的挂牌「{title}」已批准。",
+    "listingRejected": "您的挂牌「{title}」已被拒绝。",
+    "newOffer": "「{title}」收到新报价。",
+    "offerAccepted": "您在「{title}」的报价已被接受。",
+    "offerDeclined": "您在「{title}」的报价已被拒绝。",
+    "offerCountered": "「{title}」收到还价。",
+    "orderStatusChanged": "您的订单状态已更新为 {status}。",
+    "orderDisputed": "您的订单已开启争议。",
+    "rfpBidReceived": "您的采购需求（{mineral}）收到新报价。",
+    "rfpBidSelected": "您的报价已入选采购需求（{mineral}）。",
+    "rfpBidRejected": "您的报价未入选采购需求（{mineral}）。",
+    "adminPendingKyc": "新 KYC 文件待审 — {applicantName}（{documentType}）。",
+    "adminPendingListing": "新挂牌待审核 — 「{title}」。",
+    "orderStatus": {
+      "confirmed": "已确认",
+      "processing": "处理中",
+      "in_transit": "运输中",
+      "delivered": "已送达",
+      "cancelled": "已取消",
+      "disputed": "争议中"
+    },
+    "documentTypes": {
+      "id_card": "身份证件",
+      "business_registration": "商业登记",
+      "mining_permit": "采矿许可",
+      "export_license": "出口许可证"
+    }
+  },
+  "activityFeed": {
+    "ariaLabel": "平台最近活动",
+    "liveHeading": "实时活动",
+    "empty": "平台活动将显示于此。",
+    "error": "暂时无法加载活动。",
+    "listing_published": "新挂牌：{mineral}，{province}",
+    "rfp_posted": "新采购需求：{mineral}",
+    "order_completed": "交易完成：{mineral}",
+    "account_verified": "新认证参与者：{role} — {province}",
+    "landing": {
+      "eyebrow": "实时",
+      "title": "平台活动",
+      "subtitle": "BIASHARA 上最新的匿名挂牌、需求与交易。"
+    },
+    "sidebar": {
+      "title": "活动"
+    }
+  },
+  "email": {
+    "signupConfirmation": {
+      "subject": "确认您的 BIASHARA 账户",
+      "greeting": "您好，",
+      "body": "感谢注册 BIASHARA。请点击您收到的确认邮件中的链接以激活账户。",
+      "footer": "若您未注册账户，请忽略此邮件。"
+    },
+    "passwordReset": {
+      "subject": "重置您的 BIASHARA 密码",
+      "greeting": "您好，",
+      "body": "您已申请重置密码。请点击收到的链接设置新密码。链接 24 小时内有效。",
+      "footer": "若非您本人操作，请忽略此邮件 — 您的密码保持不变。"
+    },
+    "kycApproved": {
+      "subject": "KYC 验证已批准 — BIASHARA",
+      "greeting": "您好，",
+      "body": "您的 KYC 验证已批准。您现已可使用平台的全部功能。",
+      "cta": "前往控制台"
+    },
+    "kycRejected": {
+      "subject": "KYC 验证被拒绝 — BIASHARA",
+      "greeting": "您好，",
+      "body": "您的 KYC 验证被拒绝。请在设置中查看原因，更正相关文件后重新提交。",
+      "cta": "查看我的文件"
+    }
+  }
+}
