@@ -32,8 +32,22 @@ import { E2E_ACCOUNT_FIXTURES, E2E_ADMIN_FIXTURE } from '../tests/e2e/fixtures/a
 import { loginAdminThroughUi, loginThroughUi } from '../tests/e2e/helpers/auth';
 
 const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? 'http://localhost:3000';
+const AUDIT_LOCALE = process.env.AUDIT_LOCALE?.trim() || 'fr';
 const REPORT_DIR = path.join(process.cwd(), 'reports');
 const AUTH_DIR = path.join(process.cwd(), 'tests/e2e/.auth');
+const REPORT_BASENAME =
+  AUDIT_LOCALE === 'fr'
+    ? 'responsive-platform-audit'
+    : `responsive-platform-audit-${AUDIT_LOCALE}`;
+
+function withLocalePrefix(routePath: string): string {
+  if (AUDIT_LOCALE === 'fr') return routePath;
+  const queryIndex = routePath.indexOf('?');
+  const pathname = queryIndex === -1 ? routePath : routePath.slice(0, queryIndex);
+  const search = queryIndex === -1 ? '' : routePath.slice(queryIndex);
+  const localizedPath = pathname === '/' ? `/${AUDIT_LOCALE}` : `/${AUDIT_LOCALE}${pathname}`;
+  return `${localizedPath}${search}`;
+}
 
 function envPresent(name: string): boolean {
   return Boolean(process.env[name]);
@@ -129,14 +143,14 @@ async function auditGuestRoutes(page: Page, results: PageAuditResult[]): Promise
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
 
     for (const route of guestStaticRoutes) {
-      await auditRouteAtViewport(page, route.path, viewport.label, 'guest', results);
+      await auditRouteAtViewport(page, withLocalePrefix(route.path), viewport.label, 'guest', results);
     }
 
     for (const route of PLATFORM_DYNAMIC_ROUTES.filter((r) => r.guest)) {
-      const listNav = await tryGotoPage(page, route.listPath);
+      const listNav = await tryGotoPage(page, withLocalePrefix(route.listPath));
       if (!listNav.ok) {
         results.push({
-          path: `${route.listPath} → ${route.label}`,
+          path: `${withLocalePrefix(route.listPath)} → ${route.label}`,
           viewport: viewport.label,
           reached: false,
           skipReason: `list page: ${listNav.reason}`,
@@ -147,7 +161,7 @@ async function auditGuestRoutes(page: Page, results: PageAuditResult[]): Promise
       const detailPath = await discoverFirstLink(page, route.linkPattern);
       if (!detailPath) {
         results.push({
-          path: `${route.listPath} → ${route.label}`,
+          path: `${withLocalePrefix(route.listPath)} → ${route.label}`,
           viewport: viewport.label,
           reached: false,
           skipReason: 'no matching link on list page (empty state)',
@@ -228,14 +242,14 @@ async function auditAuthenticatedRoutes(
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
 
     for (const route of staticRoutes) {
-      await auditRouteAtViewport(page, route.path, viewport.label, role, results);
+      await auditRouteAtViewport(page, withLocalePrefix(route.path), viewport.label, role, results);
     }
 
     for (const route of dynamicRoutes) {
-      const listNav = await tryGotoPage(page, route.listPath);
+      const listNav = await tryGotoPage(page, withLocalePrefix(route.listPath));
       if (!listNav.ok) {
         results.push({
-          path: `${route.listPath} → ${route.label}`,
+          path: `${withLocalePrefix(route.listPath)} → ${route.label}`,
           viewport: viewport.label,
           role,
           reached: false,
@@ -247,7 +261,7 @@ async function auditAuthenticatedRoutes(
       const detailPath = await discoverFirstLink(page, route.linkPattern);
       if (!detailPath) {
         results.push({
-          path: `${route.listPath} → ${route.label}`,
+          path: `${withLocalePrefix(route.listPath)} → ${route.label}`,
           viewport: viewport.label,
           role,
           reached: false,
@@ -275,7 +289,8 @@ async function auditAdminRoutes(
   if (!context) return false;
 
   const page = await context.newPage();
-  const adminBase = `/${gateSecret}`;
+  const adminBase =
+    AUDIT_LOCALE === 'fr' ? `/${gateSecret}` : `/${AUDIT_LOCALE}/${gateSecret}`;
 
   for (const viewport of AUDIT_VIEWPORTS) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
@@ -310,6 +325,9 @@ async function main() {
   coverageNotes.push(
     'Institution role not audited: no E2E fixture account exists (institution treated like buyer in code; add fixture to extend coverage).',
   );
+  if (AUDIT_LOCALE !== 'fr') {
+    coverageNotes.push(`Locale: ${AUDIT_LOCALE} (routes prefixed with /${AUDIT_LOCALE}).`);
+  }
 
   const browser = await chromium.launch();
   const results: PageAuditResult[] = [];
@@ -341,8 +359,8 @@ async function main() {
   await browser.close();
 
   fs.mkdirSync(REPORT_DIR, { recursive: true });
-  const jsonPath = path.join(REPORT_DIR, 'responsive-platform-audit.json');
-  const mdPath = path.join(REPORT_DIR, 'responsive-platform-audit.md');
+  const jsonPath = path.join(REPORT_DIR, `${REPORT_BASENAME}.json`);
+  const mdPath = path.join(REPORT_DIR, `${REPORT_BASENAME}.md`);
 
   fs.writeFileSync(jsonPath, JSON.stringify({ results, coverageNotes }, null, 2));
   fs.writeFileSync(mdPath, formatAuditReportMarkdown(results, coverageNotes));

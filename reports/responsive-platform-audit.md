@@ -1,12 +1,12 @@
 # Platform Responsive + Interaction Audit Report
 
-Generated: 2026-08-13T08:17:29.662Z
+Generated: 2026-08-15T06:18:07.925Z
 
 ## Coverage Summary
 
-- Pages tested: 60
+- Pages tested: 74
 - Pages skipped/unreachable: 5
-- Total issues: 93
+- Total issues: 85
 
 ### Coverage gaps
 
@@ -24,40 +24,6 @@ Generated: 2026-08-13T08:17:29.662Z
 | /marketplace → marketplace-detail | 768px | guest | no matching link on list page (empty state) |
 | /marketplace → marketplace-detail | 390px | guest | no matching link on list page (empty state) |
 | /marketplace → marketplace-detail | 360px | guest | no matching link on list page (empty state) |
-
-## High (8)
-
-### /prices @ 390px
-- **Category:** tap-target
-- **Issue:** undersized tap target (33×40px): button [role=tab] .relative.min-h-10 "RDC"
-
-### /calendar @ 390px
-- **Category:** tap-target
-- **Issue:** undersized tap target (36×40px): button [role=tab] .relative.min-h-10 "Tous"
-
-### /forgot-password @ 390px
-- **Category:** tap-target
-- **Issue:** undersized tap target (161×19px): a .font-semibold.text-brand-blue "Retour à la connexion"
-
-### /marketplace @ 390px
-- **Category:** tap-target
-- **Issue:** undersized tap target (20×40px): button [role=tab] .relative.min-h-10 "Or"
-
-### /prices @ 360px
-- **Category:** tap-target
-- **Issue:** undersized tap target (33×40px): button [role=tab] .relative.min-h-10 "RDC"
-
-### /calendar @ 360px
-- **Category:** tap-target
-- **Issue:** undersized tap target (36×40px): button [role=tab] .relative.min-h-10 "Tous"
-
-### /forgot-password @ 360px
-- **Category:** tap-target
-- **Issue:** undersized tap target (161×19px): a .font-semibold.text-brand-blue "Retour à la connexion"
-
-### /marketplace @ 360px
-- **Category:** tap-target
-- **Issue:** undersized tap target (20×40px): button [role=tab] .relative.min-h-10 "Or"
 
 ## Medium (35)
 
@@ -251,7 +217,7 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /prices @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
 ### /solutions @ 1440px
 - **Category:** text-truncation
@@ -276,17 +242,17 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /calendar @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "Tous"
 
 ### /login @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
 
 ### /marketplace @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
 
 ### / @ 1024px
 - **Category:** text-truncation
@@ -301,7 +267,7 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
 ### /solutions @ 1024px
 - **Category:** text-truncation
@@ -326,17 +292,17 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "Tous"
 
 ### /login @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
 
 ### /marketplace @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
 
 ### / @ 768px
 - **Category:** text-truncation
@@ -351,7 +317,7 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
 ### /solutions @ 768px
 - **Category:** text-truncation
@@ -376,17 +342,17 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "Tous"
 
 ### /login @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
 
 ### /marketplace @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
 
 ### /prices @ 390px
 - **Category:** text-truncation
@@ -396,7 +362,7 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /prices @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
 ### /solutions @ 390px
 - **Category:** text-truncation
@@ -421,12 +387,12 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /calendar @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "Tous"
 
 ### /login @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
 
 ### /forgot-password @ 390px
 - **Category:** text-truncation
@@ -436,7 +402,7 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /marketplace @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
 
 ### /prices @ 360px
 - **Category:** text-truncation
@@ -446,7 +412,7 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /prices @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
 ### /solutions @ 360px
 - **Category:** text-truncation
@@ -471,12 +437,12 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /calendar @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "Tous"
 
 ### /login @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
 
 ### /forgot-password @ 360px
 - **Category:** text-truncation
@@ -486,5 +452,5 @@ Generated: 2026-08-13T08:17:29.662Z
 ### /marketplace @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.min-h-10 "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
 

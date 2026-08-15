@@ -34,7 +34,7 @@
           "page": "/prices",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
@@ -102,7 +102,7 @@
           "page": "/calendar",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+          "elements": "button [role=tab] .relative.inline-flex \"Tous\""
         }
       ]
     },
@@ -117,7 +117,7 @@
           "page": "/login",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+          "elements": "button [role=tab] .relative.inline-flex \"Connexion\""
         }
       ]
     },
@@ -156,7 +156,7 @@
           "page": "/marketplace",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.inline-flex \"Toutes les annonces\""
         }
       ]
     },
@@ -201,7 +201,7 @@
           "page": "/prices",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
@@ -269,7 +269,7 @@
           "page": "/calendar",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+          "elements": "button [role=tab] .relative.inline-flex \"Tous\""
         }
       ]
     },
@@ -284,7 +284,7 @@
           "page": "/login",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+          "elements": "button [role=tab] .relative.inline-flex \"Connexion\""
         }
       ]
     },
@@ -323,7 +323,7 @@
           "page": "/marketplace",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.inline-flex \"Toutes les annonces\""
         }
       ]
     },
@@ -448,7 +448,7 @@
           "page": "/prices",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
@@ -676,7 +676,7 @@
           "page": "/calendar",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+          "elements": "button [role=tab] .relative.inline-flex \"Tous\""
         }
       ]
     },
@@ -691,7 +691,7 @@
           "page": "/login",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+          "elements": "button [role=tab] .relative.inline-flex \"Connexion\""
         }
       ]
     },
@@ -770,7 +770,7 @@
           "page": "/marketplace",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.inline-flex \"Toutes les annonces\""
         }
       ]
     },
@@ -788,17 +788,16 @@
       "issues": []
     },
     {
+      "path": "/ (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
       "path": "/prices",
       "viewport": "390px",
       "reached": true,
       "issues": [
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "390px",
-          "description": "undersized tap target (33×40px): button [role=tab] .relative.min-h-10 \"RDC\""
-        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -813,9 +812,15 @@
           "page": "/prices",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
+    },
+    {
+      "path": "/prices (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/solutions",
@@ -833,6 +838,12 @@
       ]
     },
     {
+      "path": "/solutions (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
       "path": "/resources",
       "viewport": "390px",
       "reached": true,
@@ -846,6 +857,12 @@
           "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
+    },
+    {
+      "path": "/resources (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/about",
@@ -863,17 +880,16 @@
       ]
     },
     {
+      "path": "/about (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
       "path": "/calendar",
       "viewport": "390px",
       "reached": true,
       "issues": [
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "390px",
-          "description": "undersized tap target (36×40px): button [role=tab] .relative.min-h-10 \"Tous\""
-        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -888,9 +904,15 @@
           "page": "/calendar",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+          "elements": "button [role=tab] .relative.inline-flex \"Tous\""
         }
       ]
+    },
+    {
+      "path": "/calendar (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/login",
@@ -903,7 +925,7 @@
           "page": "/login",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+          "elements": "button [role=tab] .relative.inline-flex \"Connexion\""
         }
       ]
     },
@@ -931,13 +953,6 @@
       "reached": true,
       "issues": [
         {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/forgot-password",
-          "viewport": "390px",
-          "description": "undersized tap target (161×19px): a .font-semibold.text-brand-blue \"Retour à la connexion\""
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/forgot-password",
@@ -953,21 +968,20 @@
       "reached": true,
       "issues": [
         {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "390px",
-          "description": "undersized tap target (20×40px): button [role=tab] .relative.min-h-10 \"Or\""
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/marketplace",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.inline-flex \"Toutes les annonces\""
         }
       ]
+    },
+    {
+      "path": "/marketplace (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/marketplace → marketplace-detail",
@@ -983,17 +997,16 @@
       "issues": []
     },
     {
+      "path": "/ (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
       "path": "/prices",
       "viewport": "360px",
       "reached": true,
       "issues": [
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/prices",
-          "viewport": "360px",
-          "description": "undersized tap target (33×40px): button [role=tab] .relative.min-h-10 \"RDC\""
-        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -1008,9 +1021,15 @@
           "page": "/prices",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"RDC\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
+    },
+    {
+      "path": "/prices (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/solutions",
@@ -1028,6 +1047,12 @@
       ]
     },
     {
+      "path": "/solutions (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
       "path": "/resources",
       "viewport": "360px",
       "reached": true,
@@ -1041,6 +1066,12 @@
           "elements": "h1 .min-w-0.break-words \"Comprendre le commerce minier en RDC\""
         }
       ]
+    },
+    {
+      "path": "/resources (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/about",
@@ -1058,17 +1089,16 @@
       ]
     },
     {
+      "path": "/about (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
       "path": "/calendar",
       "viewport": "360px",
       "reached": true,
       "issues": [
-        {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/calendar",
-          "viewport": "360px",
-          "description": "undersized tap target (36×40px): button [role=tab] .relative.min-h-10 \"Tous\""
-        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -1083,9 +1113,15 @@
           "page": "/calendar",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Tous\""
+          "elements": "button [role=tab] .relative.inline-flex \"Tous\""
         }
       ]
+    },
+    {
+      "path": "/calendar (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/login",
@@ -1098,7 +1134,7 @@
           "page": "/login",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Connexion\""
+          "elements": "button [role=tab] .relative.inline-flex \"Connexion\""
         }
       ]
     },
@@ -1126,13 +1162,6 @@
       "reached": true,
       "issues": [
         {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/forgot-password",
-          "viewport": "360px",
-          "description": "undersized tap target (161×19px): a .font-semibold.text-brand-blue \"Retour à la connexion\""
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/forgot-password",
@@ -1148,21 +1177,20 @@
       "reached": true,
       "issues": [
         {
-          "severity": "high",
-          "category": "tap-target",
-          "page": "/marketplace",
-          "viewport": "360px",
-          "description": "undersized tap target (20×40px): button [role=tab] .relative.min-h-10 \"Or\""
-        },
-        {
           "severity": "low",
           "category": "text-truncation",
           "page": "/marketplace",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.min-h-10 \"Toutes les annonces\""
+          "elements": "button [role=tab] .relative.inline-flex \"Toutes les annonces\""
         }
       ]
+    },
+    {
+      "path": "/marketplace (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
     },
     {
       "path": "/marketplace → marketplace-detail",
