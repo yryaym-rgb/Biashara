@@ -73,7 +73,10 @@ export function ForgotPasswordForm() {
       )}
 
       <p className="text-center text-[15px] text-body">
-        <Link href="/login" className="font-semibold text-brand-blue hover:text-brand-blue-dark">
+        <Link
+          href="/login"
+          className="inline-flex min-h-10 items-center px-3 py-0 font-semibold text-brand-blue hover:text-brand-blue-dark"
+        >
           {t('backToLogin')}
         </Link>
       </p>

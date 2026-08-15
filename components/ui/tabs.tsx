@@ -69,7 +69,7 @@ export function TabsTrigger({
       aria-disabled={disabled || undefined}
       title={disabled && disabledTooltip ? disabledTooltip : undefined}
       className={cn(
-        'relative min-h-10 pb-3 text-[15px] font-semibold text-body',
+        'relative inline-flex min-h-10 min-w-10 items-center justify-center pb-3 text-[15px] font-semibold text-body',
         'hover:text-ink motion-safe:transition-colors motion-safe:duration-150',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
         isActive && 'tab-active',

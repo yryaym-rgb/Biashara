@@ -147,7 +147,10 @@ export function LoginForm() {
 
       <p className="text-center text-[15px] text-body">
         {t('noAccount')}{' '}
-        <Link href="/register" className="font-semibold text-brand-blue hover:text-brand-blue-dark">
+        <Link
+          href="/register"
+          className="inline-flex min-h-10 items-center px-3 py-0 font-semibold text-brand-blue hover:text-brand-blue-dark"
+        >
           {t('createAccount')}
         </Link>
       </p>

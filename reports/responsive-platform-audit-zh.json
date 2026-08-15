@@ -1,0 +1,960 @@
+{
+  "results": [
+    {
+      "path": "/zh",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .text-[36px].font-bold \"大胆交易。放心交换。共同成长。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/prices",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"铜\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"USD\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/solutions",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/solutions",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/resources",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/resources",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/about",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/about",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/calendar",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/login",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/login",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/register",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=2",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=3",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/forgot-password",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/marketplace",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/marketplace → marketplace-detail",
+      "viewport": "1440px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/zh",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .text-[36px].font-bold \"大胆交易。放心交换。共同成长。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/prices",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"铜\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"USD\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/solutions",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/solutions",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/resources",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/resources",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/about",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/about",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/calendar",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/login",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/login",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/register",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=2",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=3",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/forgot-password",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace",
+      "viewport": "1024px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/marketplace",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/marketplace → marketplace-detail",
+      "viewport": "1024px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/zh",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .text-[36px].font-bold \"大胆交易。放心交换。共同成长。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/prices",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"铜\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"USD\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/solutions",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/solutions",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/resources",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/resources",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/about",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/about",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/calendar",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/login",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/login",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/register",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=2",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=3",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/forgot-password",
+      "viewport": "768px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace",
+      "viewport": "768px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/marketplace",
+          "viewport": "768px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/marketplace → marketplace-detail",
+      "viewport": "768px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/zh",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/prices",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/prices (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/solutions",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/solutions",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/solutions (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/resources",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/resources",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/resources (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/about",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/about",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/about (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/calendar",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/calendar (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/login",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/login",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/register",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=2",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=3",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/forgot-password",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/marketplace",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/marketplace (drawer open)",
+      "viewport": "390px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace → marketplace-detail",
+      "viewport": "390px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    },
+    {
+      "path": "/zh",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/prices",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/prices",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/prices (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/solutions",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/solutions",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/solutions (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/resources",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/resources",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/resources (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/about",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/about",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/about (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/calendar",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/calendar",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/calendar (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/login",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/login",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/register",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=2",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/register?step=3",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/forgot-password",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/zh/marketplace",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+        }
+      ]
+    },
+    {
+      "path": "/zh/marketplace (drawer open)",
+      "viewport": "360px",
+      "reached": true,
+      "issues": []
+    },
+    {
+      "path": "/zh/marketplace → marketplace-detail",
+      "viewport": "360px",
+      "reached": false,
+      "skipReason": "no matching link on list page (empty state)",
+      "issues": []
+    }
+  ],
+  "coverageNotes": [
+    "Platform authenticated routes skipped: E2E credentials not configured (missing env vars). Guest-accessible routes still audited.",
+    "Missing vars sample: E2E_BUYER_EMAIL, E2E_BUYER_PASSWORD, E2E_SELLER_EMAIL, E2E_SELLER_PASSWORD, E2E_COOP_APPROVED_EMAIL, E2E_COOP_APPROVED_PASSWORD…",
+    "Admin routes skipped: ADMIN_GATE_SECRET, ADMIN_PASSPHRASE, or E2E admin credentials not configured.",
+    "Institution role not audited: no E2E fixture account exists (institution treated like buyer in code; add fixture to extend coverage).",
+    "Locale: zh (routes prefixed with /zh)."
+  ]
+}
