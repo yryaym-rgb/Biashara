@@ -1,0 +1,2183 @@
+{
+  "common": {
+    "appName": "BIASHARA",
+    "loading": "A carregar…",
+    "error": "Ocorreu um erro inesperado. Tente novamente ou contacte o suporte se o problema persistir.",
+    "retry": "Tentar novamente",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "logout": "Terminar sessão",
+    "logoutConfirm": "Tem a certeza de que pretende terminar sessão?",
+    "comingSoon": "Em breve",
+    "back": "Voltar",
+    "next": "Seguinte",
+    "empty": "Sem dados disponíveis de momento"
+  },
+  "metadata": {
+    "title": "BIASHARA — Comércio mineral de confiança",
+    "description": "Plataforma B2B para comércio, rastreabilidade e transações seguras nos mercados minerais da República Democrática do Congo.",
+    "ogTitle": "BIASHARA — Plataforma mineira B2B",
+    "ogDescription": "Negocie cobalto, cobre, ouro, coltan, lítio e diamante com confiança no principal marketplace da RDC."
+  },
+  "nav": {
+    "appName": "BIASHARA",
+    "mainNavigation": "Navegação principal",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "language": "Idioma",
+    "home": "Início",
+    "marketplace": "Marketplace",
+    "marketplaceNav": "Mercado",
+    "prices": "Cotações",
+    "calendar": "Calendário",
+    "solutions": "Soluções",
+    "resources": "Recursos",
+    "about": "Sobre nós",
+    "dashboard": "Painel",
+    "offers": "Ofertas",
+    "orders": "Encomendas",
+    "contracts": "Contratos",
+    "payments": "Pagamentos",
+    "logistics": "Expedições",
+    "reports": "Relatórios",
+    "settings": "Definições",
+    "login": "Iniciar sessão",
+    "register": "Criar conta",
+    "logout": "Terminar sessão",
+    "getStarted": "Começar",
+    "accessMarket": "Aceder ao marketplace →",
+    "drcMarketActive": "RDC · Mercado ativo"
+  },
+  "auth": {
+    "shell": {
+      "miningImageAlt": "Local mineiro na República Democrática do Congo",
+      "miningPlaceholder": "Imagem de autenticação a adicionar",
+      "homeLabel": "BIASHARA — Início"
+    },
+    "errors": {
+      "invalidCredentials": "Endereço de e-mail ou palavra-passe incorretos.",
+      "emailNotConfirmed": "O seu endereço de e-mail ainda não foi confirmado. Verifique a sua caixa de entrada.",
+      "userAlreadyExists": "Já existe uma conta para este endereço de e-mail.",
+      "weakPassword": "A palavra-passe não cumpre os requisitos de segurança.",
+      "rateLimited": "Demasiadas tentativas — aguarde um momento antes de tentar novamente.",
+      "unknown": "Ocorreu um erro. Tente novamente ou contacte o suporte.",
+      "invalidFileType": "Formato de ficheiro não aceite. Utilize PDF, JPEG ou PNG.",
+      "fileTooLarge": "O ficheiro excede o tamanho máximo de 10 MB.",
+      "uploadFailed": "O carregamento falhou. Tente novamente."
+    },
+    "login": {
+      "heading": "Bem-vindo de volta!",
+      "title": "Iniciar sessão",
+      "tabPassword": "Iniciar sessão",
+      "tabOtp": "Iniciar sessão com OTP",
+      "email": "Endereço de e-mail",
+      "password": "Palavra-passe",
+      "showPassword": "Mostrar palavra-passe",
+      "hidePassword": "Ocultar palavra-passe",
+      "submit": "Iniciar sessão",
+      "forgotPassword": "Esqueceu-se da palavra-passe?",
+      "orContinueWith": "Ou continuar com",
+      "oauthGoogle": "Google",
+      "oauthMicrosoft": "Microsoft",
+      "oauthApple": "Apple",
+      "comingSoon": "Em breve",
+      "otpDescription": "Receba um código de início de sessão por e-mail. Esta funcionalidade estará disponível em breve.",
+      "otpSubmit": "Enviar código",
+      "noAccount": "Ainda não tem conta?",
+      "createAccount": "Criar conta"
+    },
+    "register": {
+      "heading": "Criar conta",
+      "title": "Criar conta",
+      "stepperLabel": "Passos de registo",
+      "steps": {
+        "1": "Informação da conta",
+        "2": "Verificação",
+        "3": "Concluído"
+      },
+      "fullName": "Nome completo",
+      "email": "Endereço de e-mail",
+      "password": "Palavra-passe",
+      "passwordConfirm": "Confirmar palavra-passe",
+      "role": "Tipo de conta",
+      "roles": {
+        "seller": "Vendedor",
+        "buyer": "Comprador",
+        "cooperative": "Cooperativa"
+      },
+      "terms": "Aceito os <termsLink>Termos de Serviço</termsLink> e a <privacyLink>Política de Privacidade</privacyLink>",
+      "termsRequired": "Tem de aceitar os termos para continuar",
+      "passwordMismatch": "As palavras-passe não coincidem",
+      "showPassword": "Mostrar palavra-passe",
+      "hidePassword": "Ocultar palavra-passe",
+      "continue": "Continuar",
+      "back": "Voltar",
+      "submit": "Criar conta",
+      "hasAccount": "Já tem conta?",
+      "login": "Iniciar sessão",
+      "kyc": {
+        "description": "Carregue os documentos necessários para o seu tipo de conta. A nossa equipa irá revê-los antes de ativar os seus direitos de publicação.",
+        "sessionExpired": "A sua sessão de registo expirou. Comece novamente no passo 1.",
+        "incomplete": "Carregue todos os documentos necessários antes de continuar.",
+        "upload": "Carregar",
+        "uploading": "A carregar…",
+        "uploadSuccess": "Documento carregado com sucesso",
+        "acceptedFormats": "PDF, JPEG ou PNG — 10 MB máx."
+      },
+      "complete": {
+        "title": "Conta criada",
+        "emailLead": "Verifique a sua caixa de entrada — Enviámos uma ligação de confirmação para {email}. Tem de confirmar o seu e-mail antes de poder iniciar sessão.",
+        "emailLeadNoEmail": "Verifique a sua caixa de entrada — Enviámos uma ligação de confirmação. Tem de confirmar o seu e-mail antes de poder iniciar sessão.",
+        "reviewNote": "A revisão dos documentos KYC demora normalmente alguns dias úteis. Poderá publicar anúncios ou submeter ofertas assim que a sua conta for aprovada.",
+        "goToDashboard": "Ir para o painel"
+      }
+    },
+    "forgotPassword": {
+      "title": "Palavra-passe esquecida",
+      "description": "Introduza o seu endereço de e-mail. Se existir uma conta para este endereço, será enviado um e-mail de redefinição.",
+      "email": "Endereço de e-mail",
+      "submit": "Enviar ligação de redefinição",
+      "backToLogin": "Voltar ao início de sessão",
+      "success": "Se existir uma conta para este endereço, foi enviado um e-mail de redefinição."
+    },
+    "verify": {
+      "title": "Verificar a sua conta",
+      "verifying": "A verificar o seu endereço de e-mail…",
+      "successTitle": "E-mail verificado",
+      "successDescription": "O seu endereço de e-mail foi confirmado — pode iniciar sessão.",
+      "goToLogin": "Iniciar sessão",
+      "errorTitle": "Ligação inválida ou expirada",
+      "errorDescription": "Esta ligação de verificação já não é válida. Solicite um novo e-mail de confirmação abaixo.",
+      "resendEmailLabel": "Endereço de e-mail",
+      "resend": "Reenviar e-mail",
+      "resendSuccess": "Se existir uma conta para este endereço, foi enviado um novo e-mail de confirmação.",
+      "resendError": "Não foi possível enviar o e-mail. Tente novamente dentro de momentos.",
+      "description": "Foi enviado um e-mail de confirmação. Clique na ligação incluída para ativar a sua conta.",
+      "checkSpam": "Verifique também a pasta de spam se não encontrar a mensagem."
+    }
+  },
+  "footer": {
+    "tagline": "A infraestrutura de confiança para o comércio mineral africano.",
+    "closingLine": "Da RDC para o mundo.",
+    "platform": {
+      "title": "Plataforma",
+      "marketplace": "Marketplace",
+      "prices": "Cotações",
+      "traceability": "Rastreabilidade",
+      "calendar": "Calendário"
+    },
+    "company": {
+      "title": "Empresa",
+      "about": "Sobre nós",
+      "resources": "Recursos"
+    },
+    "copyright": "© {year} BIASHARA. Todos os direitos reservados."
+  },
+  "marketing": {
+    "landing": {
+      "title": "BIASHARA — Comércio mineral de confiança",
+      "eyebrow": "O FUTURO DO COMÉRCIO MINERAL",
+      "heroLine1": "Negocie com ousadia.",
+      "heroLine2": "Troque com confiança.",
+      "heroLine3": "Cresça em conjunto.",
+      "subtitle": "A BIASHARA é a plataforma tudo-em-um para comércio mineral, rastreabilidade e transações seguras da RDC para o mundo.",
+      "ctaMarketplace": "Explorar o marketplace →",
+      "ctaVideo": "Ver o vídeo",
+      "heroImageAlt": "Amostras de minerais brutos — cobalto, cobre e ouro",
+      "heroImagePlaceholder": "Imagem principal a adicionar",
+      "heroGalleryDotLabel": "Ir para a imagem {index} de {total}",
+      "heroSearch": {
+        "heading": "PESQUISAR NO MERCADO",
+        "placeholder": "Pesquisar um mineral, região…",
+        "submit": "Pesquisar →",
+        "popularSearches": "Pesquisas populares",
+        "suggestionsLabel": "Sugestões de minerais",
+        "suggestionCounts": "{mineral} — {activeCount, plural, one {# anúncio ativo} other {# anúncios ativos}} · {supplierCount, plural, one {# fornecedor verificado} other {# fornecedores verificados}}",
+        "suggestionActiveOnly": "{mineral} — {activeCount, plural, one {# anúncio ativo} other {# anúncios ativos}}",
+        "loading": "A pesquisar…"
+      },
+      "ticker": {
+        "ariaLabel": "Cotações minerais em direto",
+        "liveLabel": "MERCADO EM DIRETO",
+        "lastUpdated": "Última atualização · {time}",
+        "indicativeShort": "Indicativa",
+        "indicativeLegend": "Preço indicativo — negociado",
+        "indicative": "Preço indicativo — negociável",
+        "viewQuote": "Ver cotação →"
+      },
+      "infrastructure": {
+        "eyebrow": "INFRAESTRUTURA",
+        "title": "Uma infraestrutura. Cinco pilares.",
+        "pillars": {
+          "prices": {
+            "number": "01",
+            "tag": "COTAÇÕES",
+            "title": "Cotações transparentes.",
+            "description": "Cotações públicas atualizadas regularmente e histórico consultável em /prices — dados reais, não estimativas de marketing."
+          },
+          "traceability": {
+            "number": "02",
+            "tag": "RASTREABILIDADE",
+            "title": "Cada lote conta a sua história.",
+            "description": "As cooperativas criam um código de lote e registam manualmente cada etapa — visível no anúncio associado.",
+            "selfReportedLabel": "Declarações auto-reportadas pela cooperativa — não verificadas por GPS nem auditadas de forma independente.",
+            "chain": {
+              "ariaLabel": "Percurso de rastreabilidade do lote",
+              "mine": "Mina",
+              "cooperative": "Cooperativa",
+              "control": "Controlo",
+              "transport": "Transporte",
+              "buyer": "Comprador"
+            }
+          },
+          "trust": {
+            "number": "03",
+            "tag": "CONFIANÇA",
+            "title": "Compradores e vendedores verificados.",
+            "description": "Cada conta passa por verificação de identidade antes de publicar ou negociar na plataforma.",
+            "checks": {
+              "kyc": "KYC ✓",
+              "identity": "Identidade verificada ✓"
+            }
+          },
+          "logistics": {
+            "number": "04",
+            "tag": "LOGÍSTICA",
+            "title": "Acompanhe o movimento do minério.",
+            "description": "O vendedor declara o estado da expedição e adiciona pontos de controlo manuais em cada encomenda.",
+            "caption": "Ilustração de acompanhamento de expedição reportado pelo vendedor — não otimização automática de corredor.",
+            "statusAriaLabel": "Etapas de acompanhamento de expedição reportadas pelo vendedor",
+            "statuses": {
+              "pending": "Pendente",
+              "picked_up": "Recolhido",
+              "in_transit": "Em trânsito",
+              "customs": "Alfândega",
+              "delivered": "Entregue"
+            }
+          },
+          "marketData": {
+            "number": "05",
+            "tag": "DADOS DE MERCADO",
+            "title": "Dados de mercado, não suposições.",
+            "description": "Cotações em direto, tendências históricas e origem transparente dos dados — a mesma infraestrutura /prices.",
+            "liveSnapshotLabel": "Cotações em direto",
+            "loadingPrices": "A carregar cotações…",
+            "indicative": "Indicativa",
+            "viewPricesCta": "Ver todas as cotações →",
+            "highlights": {
+              "livePricing": {
+                "title": "Preços em direto",
+                "description": "Preços spot públicos atualizados regularmente a partir de fontes de mercado."
+              },
+              "historicalTrends": {
+                "title": "Tendências históricas",
+                "description": "Gráficos de histórico consultáveis para cada mineral cotado."
+              },
+              "transparentSourcing": {
+                "title": "Origem transparente",
+                "description": "Fonte e atualidade apresentadas em cada cotação."
+              }
+            },
+            "aiSoon": {
+              "badge": "Em breve",
+              "title": "Análise preditiva",
+              "description": "Ferramentas de análise avançada em desenvolvimento — sem pontuações ou percentagens fabricadas."
+            }
+          }
+        }
+      },
+      "howItWorks": {
+        "eyebrow": "COMO FUNCIONA",
+        "title": "Do minério à transação, com total transparência",
+        "chainAriaLabel": "Percurso da plataforma em seis etapas",
+        "steps": {
+          "ore": {
+            "title": "Minério"
+          },
+          "publish": {
+            "title": "Publicar",
+            "description": "Consulte anúncios ativos ou publique o seu mineral no marketplace."
+          },
+          "kyc": {
+            "title": "KYC",
+            "description": "Submeta documentos de identidade para verificação antes de publicar ou negociar."
+          },
+          "negotiate": {
+            "title": "Negociar",
+            "description": "Faça uma oferta ou contraoferta num anúncio — quantidade, preço e mensagem enviados à contraparte."
+          },
+          "traceability": {
+            "title": "Rastreabilidade",
+            "description": "As cooperativas criam um código de lote único e registam cada etapa de custódia — visível no anúncio associado, declarações auto-reportadas."
+          },
+          "globalMarket": {
+            "title": "Mercado global"
+          }
+        }
+      },
+      "map": {
+        "eyebrow": "DA RDC PARA O MUNDO.",
+        "title": "DA RDC PARA O MUNDO.",
+        "subtitle": "As províncias mineiras da RDC, os seus minerais documentados e os anúncios ativos da BIASHARA — um mapa real, não uma ilustração.",
+        "mapAria": "Mapa das províncias da RDC",
+        "provinceLinkAria": "Ver anúncios de {province}",
+        "activeListings": "{count, plural, one {# anúncio ativo desta região} other {# anúncios ativos desta região}}",
+        "noListings": "Sem anúncios de momento",
+        "attribution": "Dados do mapa: geoBoundaries (CC BY 4.0)",
+        "cobaltFact": "A RDC é um dos principais produtores mundiais de cobalto — facto público amplamente documentado por fontes do setor.",
+        "corridorStep1": "Corredores",
+        "corridorStep2": "África",
+        "corridorStep3": "Mundo",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
+      },
+      "africanNetwork": {
+        "brand": "BIASHARA AFRICA",
+        "title": "Rede de comércio africana",
+        "today": "Hoje: RDC 🇨🇩",
+        "tomorrow": "Amanhã: 🇿🇲 🇹🇿 …",
+        "description": "A construir a rede de comércio mineral africana.",
+        "emailLabel": "Endereço de e-mail",
+        "emailPlaceholder": "voce@empresa.com",
+        "countryLabel": "País de interesse (opcional)",
+        "countryHint": "Indique-nos que país gostaria de ver integrar a rede.",
+        "countryPlaceholder": "Selecionar um país",
+        "submit": "Juntar-se à lista de espera",
+        "successNew": "Obrigado — está na lista de espera. Entraremos em contacto à medida que a rede se expandir.",
+        "successExisting": "Este endereço já está na lista de espera. Entraremos em contacto à medida que a rede se expandir.",
+        "countries": {
+          "ZM": "Zâmbia",
+          "TZ": "Tanzânia",
+          "KE": "Quénia",
+          "UG": "Uganda",
+          "OTHER": "Outro país africano"
+        },
+        "errors": {
+          "invalidEmail": "Introduza um endereço de e-mail válido.",
+          "rateLimited": "Demasiadas tentativas — tente novamente dentro de momentos.",
+          "unknown": "Ocorreu um erro. Tente novamente mais tarde."
+        }
+      },
+      "prices": {
+        "eyebrow": "COTAÇÕES DE MERCADO ATUALIZADAS",
+        "title": "Construída para o futuro do comércio mineral",
+        "description": "Cotações atualizadas a cada 15 minutos a partir de fontes públicas de mercado — total transparência sobre a origem e atualidade dos dados.",
+        "ctaPrices": "Ver todas as cotações",
+        "miniCardsTitle": "Cotações de mercado",
+        "trendSectionTitle": "EVOLUÇÃO DO MERCADO",
+        "chartTitle": "Histórico — {mineral}",
+        "indicative": "Preço indicativo — negociável",
+        "error": "Cotações temporariamente indisponíveis. Tente novamente dentro de momentos.",
+        "retry": "Tentar novamente",
+        "viewAll": "Ver todas as cotações →",
+        "historyEmptyTitle": "Histórico em construção",
+        "historyEmptyDescription": "O histórico de preços está a ser construído — volte amanhã.",
+        "indicativeHistory": "Este mineral não tem cotação spot pública — o preço é negociado entre as partes.",
+        "timeframeSoon": "Em breve",
+        "chartAria": "Gráfico de tendência de preço de {mineral}",
+        "timeframes": {
+          "1W": "1S",
+          "1M": "1M",
+          "3M": "3M",
+          "1Y": "1A",
+          "ALL": "TUDO"
+        }
+      },
+      "credibility": {
+        "eyebrow": "PORQUÊ A BIASHARA",
+        "title": "O problema é real. A solução também tem de o ser.",
+        "subtitle": "Transações informais, preços opacos, acesso difícil ao mercado para produtores artesanais — a BIASHARA responde aos desafios reais do comércio mineral congolês.",
+        "problems": {
+          "opaquePrices": {
+            "number": "01",
+            "tag": "PREÇOS OPACOS",
+            "statement": "Os produtores nem sempre têm uma referência de mercado clara."
+          },
+          "limitedTrust": {
+            "number": "02",
+            "tag": "CONFIANÇA LIMITADA",
+            "statement": "Compradores e vendedores precisam de parceiros verificados."
+          },
+          "complexChains": {
+            "number": "03",
+            "tag": "CADEIAS COMPLEXAS",
+            "statement": "O minério passa por várias etapas antes de chegar ao mercado."
+          }
+        },
+        "pivot": "A BIASHARA liga estas etapas.",
+        "items": {
+          "kyc": {
+            "title": "Verificação KYC",
+            "description": "Documentos de identidade revistos por um administrador antes de uma conta poder publicar ou negociar."
+          },
+          "traceability": {
+            "title": "Rastreabilidade ao nível do lote",
+            "description": "As cooperativas registam um código único e etapas de custódia — entradas manuais auto-reportadas, não verificadas de forma independente para além do KYC."
+          },
+          "bilingual": {
+            "title": "Bilingue, concebida para a RDC",
+            "description": "Plataforma integralmente em francês com inglês para compradores internacionais."
+          }
+        }
+      },
+      "cta": {
+        "title": "Pronto para negociar com confiança?",
+        "subtitle": "Junte-se ao marketplace que liga as minas congolesas aos compradores de todo o mundo.",
+        "primaryCta": "Criar conta",
+        "secondaryCta": "Explorar o marketplace"
+      }
+    },
+    "prices": {
+      "title": "Preços das matérias-primas",
+      "eyebrow": "MERCADO EM TEMPO REAL",
+      "subtitle": "Cotações atualizadas a cada 15 minutos a partir de fontes públicas de mercado — total transparência sobre a origem e atualidade dos dados.",
+      "indicative": "Preço indicativo — negociável",
+      "unavailable": "Preço indisponível para este mineral",
+      "lastUpdated": "Última atualização",
+      "source": "Fonte",
+      "disclaimer": "Os preços apresentados são indicativos e podem diferir dos preços negociados no marketplace.",
+      "error": "Cotações temporariamente indisponíveis. Tente novamente dentro de momentos.",
+      "retry": "Tentar novamente",
+      "chartTitle": "Histórico — {mineral}",
+      "historyEmptyTitle": "Histórico em construção",
+      "historyEmptyDescription": "O histórico está a ser construído — volte amanhã.",
+      "indicativeHistory": "Este mineral não tem cotação spot pública — o preço é negociado entre as partes.",
+      "timeframeSoon": "Em breve",
+      "chartAria": "Gráfico de tendência de preço de {mineral}",
+      "timeframes": {
+        "1W": "1S",
+        "1M": "1M",
+        "3M": "3M",
+        "1Y": "1A",
+        "ALL": "TUDO"
+      },
+      "table": {
+        "mineral": "Mineral",
+        "price": "Cotação",
+        "change": "Variação",
+        "updated": "Atualizado"
+      },
+      "currency": {
+        "usd": "USD",
+        "cdf": "CDF",
+        "zmw": "ZMW",
+        "tzs": "TZS",
+        "rwf": "RWF",
+        "kes": "KES",
+        "ghs": "GHS",
+        "ngn": "NGN",
+        "zar": "ZAR"
+      },
+      "markets": {
+        "drc": "RDC",
+        "zambia": "Zâmbia",
+        "tanzania": "Tanzânia",
+        "ghana": "Gana",
+        "southAfrica": "África do Sul",
+        "nigeria": "Nigéria",
+        "zimbabwe": "Zimbabué",
+        "rwanda": "Ruanda"
+      },
+      "guide": {
+        "title": "Como ler as nossas cotações",
+        "paragraph1": "As cotações spot (cobalto, cobre, ouro, lítio) provêm da metals.dev, uma fonte pública de dados de mercado. Cada valor é atualizado automaticamente a cada 15 minutos e armazenado no nosso histórico para acompanhar as tendências de preço.",
+        "paragraph2": "A variação apresentada compara a cotação atual com o último ponto de histórico disponível. Se o histórico for insuficiente, não é apresentada qualquer variação — nunca fabricamos dados.",
+        "paragraph3": "Para coltan e diamante, não existe cotação spot padronizada nos mercados públicos. A BIASHARA apresenta \"Preço indicativo — negociável\": o preço final é acordado entre comprador e vendedor no marketplace."
+      }
+    },
+    "solutions": {
+      "title": "Uma plataforma. Quatro formas de negociar.",
+      "eyebrow": "SOLUÇÕES",
+      "subtitle": "Seja cooperativa, negociante, exportador ou comprador internacional — a BIASHARA disponibiliza as ferramentas existentes na plataforma hoje.",
+      "comingSoon": "Em breve",
+      "panels": {
+        "cooperatives": {
+          "imageAlt": "Ponto de recolha mineral na RDC",
+          "cta": "Criar conta de cooperativa"
+        },
+        "traders": {
+          "imageAlt": "Transporte mineral para o mercado",
+          "cta": "Explorar o marketplace"
+        },
+        "exporters": {
+          "imageAlt": "Controlo de qualidade mineral antes da exportação",
+          "cta": "Aceder ao marketplace"
+        },
+        "buyers": {
+          "imageAlt": "Amostras de cobre e malaquita",
+          "cta": "Consultar anúncios"
+        }
+      },
+      "audiences": {
+        "cooperatives": {
+          "title": "Cooperativas mineiras",
+          "forWhom": "Para produtores artesanais e cooperativas que procuram acesso ao mercado.",
+          "capability1": {
+            "label": "Publicar anúncios no marketplace"
+          },
+          "capability2": {
+            "label": "Verificação KYC para conformidade regulatória"
+          },
+          "capability3": {
+            "label": "Códigos de rastreabilidade ao nível do lote"
+          }
+        },
+        "traders": {
+          "title": "Negociantes",
+          "forWhom": "Para intermediários que compram e revendem minerais na RDC.",
+          "capability1": {
+            "label": "Consultar ofertas de vendedores verificados"
+          },
+          "capability2": {
+            "label": "Negociar através do fluxo integrado de ofertas"
+          },
+          "capability3": {
+            "label": "Cotações de referência em tempo real"
+          }
+        },
+        "exporters": {
+          "title": "Exportadores",
+          "forWhom": "Para empresas que exportam minerais congoleses internacionalmente.",
+          "capability1": {
+            "label": "Acesso ao marketplace seguro"
+          },
+          "capability2": {
+            "label": "Verificação KYC dos parceiros comerciais"
+          },
+          "capability3": {
+            "label": "Acompanhamento logístico de expedições"
+          }
+        },
+        "buyers": {
+          "title": "Compradores internacionais",
+          "forWhom": "Para compradores estrangeiros que procuram minerais congoleses rastreáveis.",
+          "capability1": {
+            "label": "Anúncios de vendedores verificados por KYC"
+          },
+          "capability2": {
+            "label": "Fazer ofertas e negociar online"
+          },
+          "capability3": {
+            "label": "Cotações de referência internacionais"
+          }
+        }
+      },
+      "cta": {
+        "title": "Pronto para começar?",
+        "subtitle": "Crie a sua conta para aceder ao marketplace e às cotações em tempo real.",
+        "primaryCta": "Criar conta"
+      },
+      "traceability": "Rastreabilidade",
+      "marketplace": "Marketplace seguro",
+      "compliance": "Verificação KYC e conformidade"
+    },
+    "resources": {
+      "title": "Compreender o comércio mineiro na RDC",
+      "eyebrow": "RECURSOS",
+      "subtitle": "Guias práticos para navegar a regulamentação, rastreabilidade e cotações no setor mineiro congolês.",
+      "readTime": "{minutes} min de leitura",
+      "readMore": "Ler artigo",
+      "backToResources": "Voltar aos recursos",
+      "documentation": "Documentação",
+      "guides": "Guias práticos",
+      "articles": {
+        "kyc-minier-rdc": {
+          "title": "Compreender o KYC mineiro na RDC",
+          "excerpt": "Porque a verificação de identidade é obrigatória e como a BIASHARA a aplica aos intervenientes do setor.",
+          "p1": "Know Your Customer (KYC) e a luta contra o branqueamento de capitais (AML) estão no centro da regulamentação mineira na República Democrática do Congo. Qualquer interveniente que compre, venda ou exporte minerais deve poder provar a sua identidade, estatuto legal e a origem lícita das suas atividades.",
+          "p2": "Na RDC, o enquadramento legal assenta nomeadamente no Código Mineiro, nos decretos de aplicação da EITI (Iniciativa para a Transparência nas Indústrias Extractivas) e nos requisitos dos compradores internacionais sujeitos à diligência devida da UE e à regulamentação dos EUA (Dodd-Frank Secção 1502 sobre minerais de conflito).",
+          "p3": "Na BIASHARA, a verificação KYC é obrigatória antes de publicar qualquer anúncio ou fazer qualquer oferta de compra. Cada utilizador deve fornecer prova de identidade, prova de morada e, para entidades legais, estatutos e documentos de registo da empresa.",
+          "p4": "Os documentos são revistos manualmente pela nossa equipa de conformidade. Este processo pode demorar vários dias úteis. Até à aprovação do KYC, os utilizadores podem consultar o marketplace e as cotações, mas não podem publicar nem negociar.",
+          "p5": "Um processo KYC rejeitado é sempre explicado: o utilizador recebe uma notificação indicando quais documentos corrigir ou completar. Pode submeter um novo processo após correção.",
+          "p6": "A conformidade KYC protege todo o ecossistema: cooperativas contra compradores não identificados, exportadores contra risco reputacional e compradores internacionais contra o fornecimento de minerais ilícitos."
+        },
+        "tracabilite-minerais": {
+          "title": "Rastreabilidade mineral, passo a passo",
+          "excerpt": "Como um lote mineral é acompanhado da mina ao comprador, e o que a BIASHARA está a preparar para o futuro.",
+          "p1": "A rastreabilidade mineral é a capacidade de seguir um lote específico desde o ponto de extração até ao destino final. Na RDC, este requisito responde à regulamentação nacional, às normas internacionais (OCDE, CTC) e às expectativas dos compradores quanto à origem das suas matérias-primas.",
+          "p2": "Um sistema de rastreabilidade eficaz assenta em três pilares: identificação única do lote, registo de cada transferência de custódia e documentação associada (certificados de origem, notas de pesagem, faturas).",
+          "p3": "No terreno, a rastreabilidade começa na mina ou no ponto de recolha artesanal. Cada lote recebe um identificador — frequentemente um código alfanumérico ligado ao mineral, província e data de produção. Este código acompanha o mineral em cada etapa: negociante, armazém, exportador, porto.",
+          "p4": "A BIASHARA oferece agora um sistema de código de rastreabilidade ao nível do lote integrado com os anúncios do marketplace. Cooperativas aprovadas por KYC criam lotes com códigos únicos, registam manualmente cada etapa de custódia e podem associar um lote a um anúncio. Os compradores consultam a linha temporal só de leitura no anúncio — são declarações auto-reportadas pela cooperativa, não verificadas de forma independente para além do KYC.",
+          "p5": "Entretanto, vendedores verificados na BIASHARA podem documentar a origem dos seus minerais na descrição do anúncio: província de extração, grau, pureza e certificações disponíveis. Os compradores podem fazer perguntas através do fluxo de mensagens integrado antes de fazer uma oferta.",
+          "p6": "A rastreabilidade não é apenas tecnologia: envolve também práticas de terreno — registos em papel nas minas, pesagens certificadas, controlos nos postos fronteiriços. A BIASHARA não substitui estes controlos físicos, mas pretende criar um registo digital verificável.",
+          "p7": "Para compradores internacionais, solicitar documentação de rastreabilidade antes de qualquer compromisso contratual continua a ser uma boa prática, independentemente da plataforma utilizada."
+        },
+        "lire-cotations-internationales": {
+          "title": "Ler cotações internacionais",
+          "excerpt": "Como interpretar os preços spot apresentados na BIASHARA e o que significam para as suas negociações.",
+          "p1": "As cotações internacionais de metais são fixadas nas bolsas e mercados grossistas (LME para cobre e cobalto, COMEX para ouro, mercados especializados para lítio). Estes preços spot refletem a oferta e procura globais num determinado momento, em dólares americanos.",
+          "p2": "Na BIASHARA, as cotações spot de cobalto, cobre, ouro e lítio provêm da metals.dev, uma fonte pública de dados de mercado. São atualizadas a cada 15 minutos e servem de referência — não de preço de compra garantido.",
+          "p3": "O preço real de uma transação na RDC incorpora fatores locais que o spot internacional não capta: qualidade e pureza do mineral, custos de transporte da província de origem, impostos e royalties mineiros, condições de pagamento e risco cambial.",
+          "p4": "Para coltan (tantalite) e diamante, não existe cotação spot padronizada nos mercados públicos. Os preços são negociados bilateralmente com base no grau, quantidade e condições de entrega. A BIASHARA apresenta \"Preço indicativo — negociável\" para estes minerais.",
+          "p5": "A variação diária apresentada na BIASHARA compara a cotação atual com o último ponto de histórico registado. Se o histórico for insuficiente (menos de dois pontos de dados), não é apresentada qualquer variação. O histórico constrói-se progressivamente, dia a dia.",
+          "p6": "Antes de negociar, consulte a cotação de referência e ajuste a sua oferta com base nas especificidades do lote: grau, pureza, volume disponível e província de origem. O marketplace BIASHARA foi concebido para facilitar esta negociação informada."
+        }
+      }
+    },
+    "calendar": {
+      "title": "Calendário mineiro",
+      "eyebrow": "NOTÍCIAS DO SETOR",
+      "subtitle": "Leilões, conferências e anúncios oficiais no setor mineiro da RDC — eventos publicados pela equipa BIASHARA.",
+      "tabAll": "Todos",
+      "upcoming": "Próximos",
+      "past": "Passados",
+      "sourceLink": "Fonte oficial",
+      "categories": {
+        "auction": "Leilão",
+        "government": "Governo",
+        "conference": "Conferência",
+        "other": "Outro"
+      },
+      "empty": {
+        "title": "Ainda sem eventos",
+        "description": "Sem eventos de momento — volte em breve."
+      },
+      "emptyFiltered": {
+        "title": "Sem eventos nesta categoria",
+        "description": "Nenhum evento corresponde a este filtro de momento. Tente outra categoria ou volte em breve."
+      }
+    },
+    "about": {
+      "title": "Sobre a BIASHARA",
+      "eyebrow": "SOBRE",
+      "mission": "A nossa missão",
+      "missionText": "Ligar os intervenientes mineiros congoleses aos compradores internacionais num quadro transparente, rastreável e conforme.",
+      "team": "A nossa equipa",
+      "story": {
+        "title": "A nossa história — conteúdo em breve",
+        "description": "Estamos a preparar a história da BIASHARA e a apresentação da equipa. Volte em breve para saber mais sobre quem somos."
+      },
+      "contact": {
+        "title": "Contacte-nos",
+        "description": "Ainda não está configurado um e-mail de contacto dedicado. Crie uma conta na plataforma para aceder à mensagens integradas e contactar a nossa equipa após o registo.",
+        "cta": "Criar conta"
+      }
+    }
+  },
+  "routes": {
+    "dashboard": {
+      "title": "Painel"
+    },
+    "marketplace": {
+      "title": "Marketplace"
+    },
+    "marketplaceDetail": {
+      "title": "Detalhes do anúncio"
+    },
+    "offers": {
+      "title": "Ofertas"
+    },
+    "orders": {
+      "title": "Encomendas"
+    },
+    "messages": {
+      "title": "Mensagens"
+    },
+    "contracts": {
+      "title": "Contratos"
+    },
+    "payments": {
+      "title": "Pagamentos"
+    },
+    "logistics": {
+      "title": "Expedições"
+    },
+    "reports": {
+      "title": "Relatórios"
+    },
+    "settings": {
+      "title": "Definições"
+    }
+  },
+  "platform": {
+    "nav": {
+      "dashboard": "Painel",
+      "marketplace": "Marketplace",
+      "rfps": "Pedidos de compra",
+      "offers": "As minhas ofertas",
+      "listings": "Os meus anúncios",
+      "listingsSubtitle": "As suas publicações no marketplace",
+      "lots": "Os meus lotes",
+      "lotsSubtitle": "O seu inventário rastreável",
+      "orders": "As minhas encomendas",
+      "messages": "Mensagens",
+      "documents": "Documentos",
+      "messagesUnread": "{count, plural, one {# conversa por ler} other {# conversas por ler}}",
+      "settings": "Definições",
+      "sections": {
+        "main": "Principal",
+        "supplyChain": "Cadeia de abastecimento",
+        "company": "Empresa"
+      }
+    },
+    "shell": {
+      "sidebarLabel": "Navegação da plataforma",
+      "openDrawer": "Abrir menu",
+      "closeDrawer": "Fechar menu",
+      "logout": "Terminar sessão",
+      "profile": "Perfil",
+      "dashboard": "Painel",
+      "userMenu": "Menu do utilizador",
+      "notifications": "Notificações"
+    },
+    "commandPalette": {
+      "title": "Pesquisar",
+      "open": "Abrir pesquisa",
+      "close": "Fechar pesquisa",
+      "placeholder": "Pesquisar anúncios, ofertas, encomendas, conversas…",
+      "hint": "Escreva para pesquisar os seus dados",
+      "searching": "A pesquisar…",
+      "noResults": "Sem resultados para esta pesquisa.",
+      "groups": {
+        "listings": "Anúncios",
+        "offers": "Ofertas",
+        "orders": "Encomendas",
+        "conversations": "Conversas"
+      },
+      "keyboard": {
+        "navigate": "navegar",
+        "select": "selecionar",
+        "close": "fechar"
+      }
+    },
+    "dashboard": {
+      "eyebrow": "Espaço do utilizador",
+      "title": "Painel",
+      "recentActivity": "Atividade recente",
+      "noActivity": "Ainda sem atividade.",
+      "kycBanner": {
+        "pending": "A sua verificação KYC está em análise.",
+        "rejected": "A sua verificação KYC requer a sua atenção.",
+        "none": "Complete a sua verificação KYC para publicar anúncios e fazer ofertas.",
+        "cta": "Verificar estado dos documentos"
+      },
+      "stats": {
+        "activeListings": "Os meus anúncios ativos",
+        "pendingOffersReceived": "Ofertas pendentes recebidas",
+        "ordersInProgress": "Encomendas em curso",
+        "monthlyRevenue": "Receita deste mês",
+        "pendingOffersSent": "Ofertas pendentes enviadas",
+        "activePurchaseRequests": "Pedidos de compra ativos",
+        "lots": "Os meus lotes",
+        "offers": "As minhas ofertas",
+        "openPurchaseRequests": "Pedidos de compra",
+        "zero": {
+          "activeListings": "0 · Sem anúncios ativos",
+          "pendingOffersReceived": "0 · Sem ofertas recebidas",
+          "ordersInProgress": "0 · Sem encomendas em curso",
+          "monthlyRevenue": "0 · Sem receita",
+          "pendingOffersSent": "0 · Sem ofertas enviadas",
+          "activePurchaseRequests": "0 · Sem pedidos ativos",
+          "lots": "0 · Sem lotes",
+          "offers": "0 · Sem ofertas",
+          "openPurchaseRequests": "0 · Sem pedidos"
+        }
+      },
+      "quickLinks": {
+        "marketplace": "Marketplace",
+        "offers": "As minhas ofertas",
+        "listings": "Os meus anúncios",
+        "lots": "Os meus lotes",
+        "settings": "Definições"
+      },
+      "onboardingBanner": {
+        "title": "A sua conta está pronta",
+        "cooperativeApproved": "Publique o seu primeiro lote para começar a rastrear a sua produção.",
+        "cooperativeKyc": "Complete a sua verificação KYC e publique o seu primeiro lote.",
+        "sellerApproved": "Publique o seu primeiro anúncio para entrar no marketplace.",
+        "sellerKyc": "Complete a sua verificação KYC e publique o seu primeiro anúncio.",
+        "buyerApproved": "Consulte anúncios verificados para encontrar o seu primeiro fornecedor.",
+        "buyerKyc": "Consulte anúncios verificados enquanto a sua verificação KYC está em curso.",
+        "ctaPublishLot": "Publicar um lote",
+        "ctaPostListing": "Publicar um anúncio",
+        "ctaPublishRfp": "Publicar um pedido de compra",
+        "ctaExplore": "Explorar o marketplace"
+      },
+      "activity": {
+        "offer": "Oferta em \"{title}\" — {status}",
+        "order": "Encomenda de \"{title}\" — {status}",
+        "listing": "Anúncio \"{title}\" — {status}",
+        "untitled": "Sem título"
+      },
+      "salesOverview": "Visão geral de vendas",
+      "salesChartEmpty": "As suas estatísticas aparecerão aqui após as suas primeiras vendas.",
+      "recentOrders": "Encomendas recentes",
+      "recentOrdersEmpty": "Ainda sem encomendas recentes.",
+      "recentOffersFallback": "Ofertas recentes",
+      "table": {
+        "mineral": "Mineral",
+        "counterpart": "Contraparte",
+        "amount": "Montante",
+        "status": "Estado",
+        "date": "Data"
+      },
+      "actionCenter": {
+        "title": "Requer a sua atenção",
+        "allClear": "Está tudo em dia.",
+        "action": "Ver",
+        "summary": {
+          "pendingOffers": "{count, plural, one {⚠ # licitação/oferta a aguardar a sua resposta} other {⚠ # licitações/ofertas a aguardar a sua resposta}}",
+          "disputedOrders": "{count, plural, one {⚠ # encomenda em disputa} other {⚠ # encomendas em disputa}}",
+          "rejectedKyc": "{count, plural, one {⚠ # documento KYC rejeitado} other {⚠ # documentos KYC rejeitados}}",
+          "rejectedListings": "{count, plural, one {⚠ # anúncio rejeitado} other {⚠ # anúncios rejeitados}}",
+          "kycVerified": "✓ KYC verificado"
+        },
+        "items": {
+          "pending_offer": "Oferta pendente — {title}",
+          "disputed_order": "Encomenda em disputa — {title}",
+          "rejected_kyc": "Documento KYC rejeitado — {type}",
+          "rejected_listing": "Anúncio rejeitado — {title}"
+        }
+      },
+      "recentActivitySection": {
+        "title": "Atividade recente",
+        "viewAll": "Ver tudo →",
+        "empty": "A sua atividade aparecerá aqui.",
+        "exploreCta": "Explorar o marketplace"
+      },
+      "quickActions": {
+        "publishLot": {
+          "title": "Publicar um lote",
+          "description": "Inicie a rastreabilidade da sua produção."
+        },
+        "publishListing": {
+          "title": "Publicar um anúncio",
+          "description": "Entre no marketplace com o seu mineral."
+        },
+        "exploreMarket": {
+          "title": "Explorar o marketplace",
+          "description": "Descubra minerais verificados da RDC."
+        },
+        "publishRfp": {
+          "title": "Publicar um pedido de compra",
+          "description": "Receba licitações de fornecedores qualificados."
+        },
+        "postOffer": {
+          "title": "Submeter uma oferta",
+          "description": "Faça uma oferta num anúncio ativo."
+        },
+        "myOffers": "As minhas ofertas",
+        "myOrders": "As minhas encomendas"
+      },
+      "marketInsight": {
+        "title": "Tendência de mercado",
+        "insight": "O preço de {mineral} {direction} {change}% esta semana",
+        "up": "aumentou",
+        "down": "diminuiu",
+        "emptyTitle": "Ainda sem dados de mercado",
+        "emptyDescription": "As suas tendências de preço aparecerão aqui quando tiver atividade comercial e histórico de preços suficiente.",
+        "sparklineLabel": "Tendência de preço de {mineral} nos últimos 7 dias"
+      },
+      "marketPulse": {
+        "title": "Mercado em direto",
+        "viewAll": "Ver todas as cotações →",
+        "unavailable": "— Dados indisponíveis"
+      },
+      "tradingMix": {
+        "title": "Mix de negociação",
+        "orders": "encomendas",
+        "chartLabel": "Distribuição das suas encomendas por mineral",
+        "emptyTitle": "Ainda sem encomendas",
+        "emptyDescription": "A sua distribuição por mineral aparecerá aqui após as suas primeiras transações."
+      },
+      "export": {
+        "button": "Exportar as minhas transações",
+        "columns": {
+          "date": "Data",
+          "mineral": "Mineral",
+          "quantity": "Quantidade",
+          "price": "Preço unitário",
+          "total": "Montante total",
+          "counterpart": "Contraparte",
+          "status": "Estado",
+          "reference": "Referência"
+        }
+      },
+      "header": {
+        "greeting": {
+          "morning": "Bom dia",
+          "afternoon": "Boa tarde",
+          "evening": "Boa noite"
+        },
+        "kycVerified": "KYC verificado"
+      },
+      "trustScore": {
+        "title": "Pontuação de confiança",
+        "scoreValue": "{score}/100",
+        "signalsLabel": "Sinais de confiança",
+        "signals": {
+          "kycApproved": {
+            "label": "Verificação KYC aprovada",
+            "yes": "Sim",
+            "no": "Não"
+          },
+          "completedOrders": {
+            "label": "Encomendas concluídas",
+            "value": "{count, plural, one {# encomenda} other {# encomendas}}"
+          },
+          "disputedOrders": {
+            "label": "Encomendas em disputa",
+            "value": "{count, plural, one {# encomenda} other {# encomendas}}"
+          },
+          "accountAge": {
+            "label": "Antiguidade da conta",
+            "value": "{days, plural, one {# dia} other {# dias}}"
+          }
+        }
+      },
+      "suggestions": {
+        "title": "Sugerido para si",
+        "reason": "Sugerido porque normalmente negocia {mineral}."
+      },
+      "comingSoon": {
+        "escrow": {
+          "title": "Pagamentos seguros em escrow",
+          "description": "Os fundos serão retidos em escrow até a entrega ser confirmada, protegendo compradores e vendedores."
+        },
+        "compliance": {
+          "prose": "Centro de conformidade — Em breve. Estamos a desenvolver ferramentas de triagem de sanções, conformidade AML/KYB e documentação ESG para reforçar a confiança na plataforma."
+        },
+        "recommendations": {
+          "title": "Recomendações inteligentes — Em breve",
+          "description": "Sugestões personalizadas com base no seu histórico de negociação aparecerão aqui."
+        }
+      }
+    },
+    "marketplace": {
+      "title": "Marketplace",
+      "subtitle": "Ligue-se a fornecedores e compradores verificados em toda a RDC.",
+      "search": "Pesquisar minerais ou anúncios…",
+      "filters": "Filtros",
+      "postOffer": "Publicar uma oferta",
+      "viewDetails": "Ver detalhes",
+      "emptyEyebrow": "MARKETPLACE",
+      "empty": "O MERCADO ESTÁ A SER CONSTRUÍDO AGORA",
+      "emptyDescription": "A BIASHARA é uma nova plataforma que está a integrar ativamente vendedores verificados. Junte-se a nós para oferecer ou descobrir minerais com confiança.",
+      "emptyImageAlt": "Amostra de cobalto bruto",
+      "emptyCategoriesTitle": "Categorias de minerais",
+      "emptyCategoryTag": "Categoria",
+      "emptyCategoryImageAlt": "Ilustração — {mineral}",
+      "emptyBrowseAll": "Consultar todos os anúncios",
+      "emptyFiltered": "Nenhum anúncio corresponde a estes critérios",
+      "emptyFilteredDescription": "Nenhum anúncio ativo corresponde à sua pesquisa ou filtros selecionados. Ajuste os critérios ou consulte todos os anúncios.",
+      "emptyCtaPost": "Publicar uma oferta",
+      "emptyCtaRegister": "Criar conta",
+      "emptyCtaKyc": "Completar verificação KYC",
+      "quantityAvailable": "{quantity} {unit} disponíveis",
+      "location": "República Democrática do Congo",
+      "tabAll": "Todos os anúncios",
+      "sellerUnknown": "Vendedor verificado",
+      "kycRequiredTooltip": "Verificação KYC necessária",
+      "filtersTitle": "Filtros",
+      "filtersClose": "Fechar filtros",
+      "filterMineral": "Mineral",
+      "filterProvince": "Província de origem",
+      "filterMinPrice": "Preço mínimo (USD)",
+      "filterMaxPrice": "Preço máximo (USD)",
+      "filterAllMinerals": "Todos os minerais",
+      "filterAllProvinces": "Todas as províncias",
+      "filtersApply": "Aplicar filtros",
+      "filtersClear": "Limpar filtros",
+      "paginationLabel": "Paginação de anúncios",
+      "paginationSummary": "Página {page} de {totalPages}",
+      "paginationPrevious": "Anterior",
+      "paginationNext": "Seguinte",
+      "traceability": {
+        "badge": "Lote rastreável — {code}"
+      },
+      "detail": {
+        "back": "Voltar ao marketplace",
+        "description": "Descrição",
+        "quantity": "Quantidade disponível",
+        "origin": "Província de origem",
+        "certifications": "Certificações",
+        "seller": "Vendedor",
+        "memberSince": "Membro desde {date}",
+        "kycVerified": "KYC verificado",
+        "makeOffer": "Fazer uma oferta",
+        "contactSeller": "Contactar vendedor",
+        "offerQuantity": "Quantidade oferecida",
+        "offerPrice": "Preço oferecido (USD)",
+        "offerMessage": "Mensagem (opcional)",
+        "offerSubmit": "Submeter oferta",
+        "offerSuccess": "A sua oferta foi enviada ao vendedor.",
+        "contactSuccess": "Conversa aberta — pode enviar uma mensagem abaixo.",
+        "contactMessage": "A sua mensagem",
+        "contactSend": "Enviar mensagem",
+        "loginToOffer": "Inicie sessão para fazer uma oferta",
+        "loginToContact": "Inicie sessão para contactar o vendedor",
+        "noPhotos": "Sem fotografias para este anúncio"
+      },
+      "new": {
+        "title": "Publicar um anúncio",
+        "subtitle": "O seu anúncio será revisto antes da publicação.",
+        "kycBlockedTitle": "Verificação KYC necessária",
+        "kycBlockedDescription": "Para publicar um anúncio, a sua conta tem de estar verificada. Complete os seus documentos KYC nas definições — a nossa equipa irá revê-los antes de ativar os seus direitos de publicação.",
+        "kycBlockedCta": "Completar verificação KYC",
+        "sellerOnlyTitle": "Conta de vendedor necessária",
+        "sellerOnlyDescription": "Apenas contas de vendedor ou cooperativa podem publicar anúncios. Crie uma conta de vendedor ou contacte o suporte se considerar que se trata de um erro.",
+        "mineral": "Mineral",
+        "listingTitle": "Título do anúncio",
+        "description": "Descrição",
+        "grade": "Grau",
+        "purity": "Pureza (%)",
+        "quantity": "Quantidade",
+        "unit": "Unidade",
+        "priceType": "Tipo de preço",
+        "priceTypeFixed": "Preço fixo",
+        "priceTypeNegotiable": "Negociável",
+        "priceTypeIndicative": "Preço indicativo",
+        "priceAmount": "Montante (USD)",
+        "originProvince": "Província de origem",
+        "certifications": "Certificações",
+        "certificationsHint": "Introduza uma certificação e prima Enter",
+        "photos": "Fotografias",
+        "photosHint": "JPEG, PNG ou WebP — 5 MB máx. por ficheiro",
+        "addPhoto": "Adicionar fotografia",
+        "removePhoto": "Remover",
+        "submit": "Submeter para revisão",
+        "submitSuccess": "O seu anúncio foi submetido. Será revisto antes da publicação.",
+        "pendingReviewNote": "O seu anúncio será revisto antes da publicação — será notificado quando estiver ativo.",
+        "linkedLot": "Lote rastreável (opcional)",
+        "linkedLotHint": "Associe um lote já criado em Os meus lotes. Visível no anúncio após publicação.",
+        "linkedLotPlaceholder": "Selecionar um lote",
+        "linkedLotNone": "Sem lote associado"
+      }
+    },
+    "directory": {
+      "eyebrow": "Diretório",
+      "title": "Diretório",
+      "subtitle": "Descubra intervenientes verificados na RDC e na cadeia de abastecimento mineira regional.",
+      "searchPlaceholder": "Pesquisar por nome da empresa",
+      "searchButton": "Pesquisar",
+      "filtersButton": "Filtros",
+      "filtersTitle": "Filtrar diretório",
+      "filtersClose": "Fechar filtros",
+      "filtersApply": "Aplicar filtros",
+      "filtersClear": "Limpar filtros",
+      "filterRole": "Tipo de conta",
+      "filterAllRoles": "Todos os papéis",
+      "filterMineral": "Mineral",
+      "filterAllMinerals": "Todos os minerais",
+      "filterCountry": "País",
+      "filterAllCountries": "Todos os países",
+      "kycVerified": "KYC verificado",
+      "memberSince": "Membro desde {date}",
+      "companyUnknown": "Empresa",
+      "noMinerals": "Ainda sem minerais registados",
+      "trustScoreLabel": "Pontuação de confiança",
+      "trustScoreValue": "{score}/100",
+      "viewProfile": "Ver perfil",
+      "empty": "Ainda sem contas verificadas no diretório",
+      "emptyDescription": "As empresas aparecem aqui quando a sua verificação KYC é aprovada.",
+      "emptyFiltered": "Nenhuma conta corresponde a estes filtros",
+      "emptyFilteredDescription": "Tente critérios diferentes ou limpe os filtros.",
+      "paginationLabel": "Paginação do diretório",
+      "paginationSummary": "Página {page} de {totalPages}",
+      "paginationPrevious": "Anterior",
+      "paginationNext": "Seguinte",
+      "detail": {
+        "back": "Voltar ao diretório",
+        "memberSince": "Membro desde {date}",
+        "companyDetails": "Detalhes da empresa",
+        "country": "País",
+        "province": "Província",
+        "completedOrders": "Encomendas concluídas",
+        "mineralsTraded": "Minerais negociados",
+        "activeListings": "Anúncios ativos",
+        "noActiveListings": "Sem anúncios ativos de momento",
+        "contactTitle": "Contacto",
+        "contactDescription": "Abra uma conversa segura na plataforma. Os dados de contacto diretos nunca são apresentados publicamente.",
+        "contact": "Contactar",
+        "contactSuccess": "Conversa aberta — pode enviar uma mensagem abaixo.",
+        "contactMessage": "A sua mensagem",
+        "contactSend": "Enviar mensagem",
+        "loginToContact": "Inicie sessão para contactar",
+        "contactUnavailable": "Sem canal de contacto disponível de momento"
+      }
+    },
+    "rfps": {
+      "title": "Pedidos de compra",
+      "subtitle": "Consulte pedidos de compra publicados por compradores verificados e submeta a sua oferta.",
+      "publishRequest": "Publicar um pedido",
+      "kycRequiredTooltip": "Aprovação KYC necessária para publicar um pedido de compra",
+      "tabAll": "Todos",
+      "negotiable": "A negociar",
+      "buyerUnknown": "Comprador",
+      "quantityRequested": "{quantity} {unit} solicitados",
+      "deadlineLabel": "Prazo: {date}",
+      "viewDetails": "Ver pedido",
+      "empty": "Ainda sem pedidos de compra publicados",
+      "emptyDescription": "Compradores verificados podem publicar um pedido de compra para solicitar ofertas de vendedores.",
+      "emptyFiltered": "Nenhum pedido corresponde a este filtro",
+      "emptyFilteredDescription": "Tente outro mineral ou volte mais tarde.",
+      "emptyCtaPublish": "Publicar um pedido",
+      "emptyCtaKyc": "Completar verificação KYC",
+      "emptyCtaRegister": "Criar uma conta",
+      "new": {
+        "title": "Publicar um pedido de compra",
+        "subtitle": "Descreva a sua necessidade — vendedores verificados podem submeter uma oferta confidencial.",
+        "kycBlockedTitle": "Verificação KYC necessária",
+        "kycBlockedDescription": "A sua conta tem de estar verificada antes de publicar um pedido de compra.",
+        "kycBlockedCta": "Completar verificação KYC",
+        "buyerOnlyTitle": "Conta de comprador necessária",
+        "buyerOnlyDescription": "Apenas contas de comprador ou instituição podem publicar pedidos de compra.",
+        "backToList": "Voltar aos pedidos",
+        "mineral": "Mineral",
+        "mineralPlaceholder": "Selecionar um mineral",
+        "quantity": "Quantidade procurada",
+        "unit": "Unidade",
+        "unitPlaceholder": "Selecionar uma unidade",
+        "targetPriceMin": "Preço-alvo mínimo (USD, opcional)",
+        "targetPriceMax": "Preço-alvo máximo (USD, opcional)",
+        "deliveryTerms": "Condições de entrega (opcional)",
+        "deadline": "Prazo de resposta",
+        "description": "Descrição detalhada",
+        "submit": "Publicar pedido",
+        "submitError": "Não foi possível publicar o pedido. Verifique os campos e tente novamente."
+      },
+      "detail": {
+        "back": "Voltar aos pedidos de compra",
+        "title": "Pedido de compra — {mineral}",
+        "quantity": "Quantidade procurada",
+        "targetPrice": "Intervalo de preço-alvo",
+        "deadline": "Prazo",
+        "deliveryTerms": "Condições de entrega",
+        "description": "Descrição",
+        "submitBid": "Submeter uma oferta",
+        "bidQuantity": "Quantidade oferecida",
+        "bidPrice": "Preço oferecido (USD)",
+        "bidDeliveryTerms": "Condições de entrega (opcional)",
+        "bidMessage": "Mensagem (opcional)",
+        "bidSubmit": "Enviar oferta",
+        "bidSuccess": "A sua oferta foi enviada ao comprador.",
+        "bidError": "Não foi possível enviar a oferta. Verifique os campos e tente novamente.",
+        "yourBid": "A sua oferta",
+        "bidQuantityLine": "{quantity} {unit}",
+        "bidStatus": {
+          "pending": "Pendente",
+          "selected": "Selecionada",
+          "rejected": "Não selecionada"
+        },
+        "status": {
+          "open": "Aberto",
+          "awarded": "Adjudicado",
+          "cancelled": "Cancelado"
+        },
+        "bidsTitle": "Ofertas recebidas",
+        "bidsEmpty": "Ainda sem ofertas recebidas.",
+        "selectBid": "Selecionar",
+        "selectError": "Não foi possível selecionar esta oferta.",
+        "bidSelected": "Oferta selecionada",
+        "bidRejected": "Não selecionada",
+        "bidPending": "Pendente",
+        "sellerUnknown": "Vendedor",
+        "kycVerified": "KYC verificado",
+        "openConversation": "Abrir conversa",
+        "loginToBid": "Inicie sessão para submeter uma oferta.",
+        "loginCta": "Iniciar sessão",
+        "kycRequired": "Aprovação KYC necessária para submeter uma oferta.",
+        "kycCta": "Completar verificação KYC"
+      }
+    },
+    "lots": {
+      "title": "Os meus lotes",
+      "subtitle": "Lotes registados pela sua cooperativa — entradas manuais auto-reportadas, não verificadas de forma independente para além do KYC.",
+      "createCta": "Criar um lote",
+      "viewDetail": "Ver lote",
+      "cooperativeOnly": "Apenas cooperativas verificadas podem gerir lotes.",
+      "kycRequiredTitle": "Verificação KYC necessária",
+      "kycRequiredDescription": "A sua conta de cooperativa tem de estar aprovada antes de criar ou gerir lotes.",
+      "kycRequiredCta": "Completar verificação KYC",
+      "emptyTitle": "Ainda sem lotes",
+      "emptyDescription": "Crie o seu primeiro lote para iniciar a rastreabilidade da sua produção.",
+      "loadErrorTitle": "Não foi possível carregar os lotes",
+      "loadErrorDescription": "Não foi possível carregar os seus lotes de momento. Tente novamente dentro de momentos.",
+      "loadErrorCta": "Voltar aos lotes",
+      "table": {
+        "code": "Código do lote",
+        "mineral": "Mineral",
+        "stage": "Etapa atual",
+        "checkpoints": "Pontos de custódia",
+        "actions": "Ações"
+      },
+      "new": {
+        "title": "Criar um lote",
+        "subtitle": "Registe um novo lote com um código único gerado pela plataforma.",
+        "mineral": "Mineral",
+        "initialWeight": "Peso inicial (kg)",
+        "initialWeightHint": "Peso declarado pela cooperativa na extração.",
+        "site": "Local / ZEA",
+        "extractionDate": "Data de extração",
+        "notes": "Notas",
+        "notesHint": "Informação adicional declarada pela cooperativa.",
+        "submit": "Criar lote",
+        "selfReportedNotice": "Declaração manual da cooperativa — não verificada de forma independente para além do KYC.",
+        "noSites": "Adicione pelo menos um local mineiro nas suas definições antes de criar um lote.",
+        "noSitesCta": "Definições",
+        "forbidden": "Apenas cooperativas verificadas podem criar lotes.",
+        "siteNotFound": "Local não encontrado. Verifique os seus locais nas definições.",
+        "error": "A criação do lote falhou. Tente novamente.",
+        "kycRequiredTitle": "Verificação KYC necessária",
+        "kycRequiredDescription": "A sua conta de cooperativa tem de estar aprovada antes de criar um lote.",
+        "kycRequiredCta": "Completar verificação KYC"
+      },
+      "detail": {
+        "title": "Detalhe do lote",
+        "back": "Voltar",
+        "selfReportedNotice": "Linha temporal declarada pela cooperativa — não verificada de forma independente para além do KYC.",
+        "mineral": "Mineral",
+        "initialWeight": "Peso inicial",
+        "weightValue": "{weight} kg",
+        "extractionDate": "Data de extração",
+        "site": "Local / ZEA",
+        "siteValue": "{name} — ZEA {zea} ({province})",
+        "createdAt": "Criado em",
+        "linkedListing": "Anúncio associado",
+        "viewListing": "Ver anúncio",
+        "notes": "Notas",
+        "notProvided": "Não fornecido"
+      },
+      "custody": {
+        "title": "Linha temporal de custódia",
+        "selfReportedNotice": "Pontos de custódia introduzidos manualmente pela cooperativa — não verificados por GPS nem auditados por terceiros.",
+        "empty": "Ainda sem pontos de custódia.",
+        "addTitle": "Adicionar ponto de custódia",
+        "stageLabel": "Etapa",
+        "noteLabel": "Nota",
+        "timestampLabel": "Data e hora",
+        "timestampHint": "Deixe em branco para usar a hora atual.",
+        "addCta": "Adicionar ponto de custódia",
+        "forbidden": "Apenas a cooperativa proprietária pode adicionar pontos de custódia.",
+        "saveError": "Falha ao adicionar ponto de custódia. Tente novamente.",
+        "stages": {
+          "extraction": "Extração",
+          "weighing": "Pesagem",
+          "sampling": "Amostragem",
+          "analysis": "Análise",
+          "collection_point": "Ponto de recolha"
+        }
+      }
+    },
+    "offers": {
+      "title": "As minhas ofertas",
+      "tabs": {
+        "sent": "Enviadas",
+        "received": "Recebidas"
+      },
+      "emptySent": "Ainda não enviou nenhuma oferta.",
+      "emptyReceived": "Ainda não recebeu nenhuma oferta.",
+      "emptyCta": "Consultar o marketplace",
+      "empty": "Sem ofertas ativas. Consulte o marketplace para submeter uma proposta.",
+      "pending": "Pendente",
+      "countered": "Contraoferta",
+      "accepted": "Aceite",
+      "declined": "Recusada",
+      "expired": "Expirada",
+      "waitingSeller": "A aguardar resposta do vendedor",
+      "waitingBuyer": "A aguardar resposta do comprador",
+      "accept": "Aceitar",
+      "decline": "Recusar",
+      "counter": "Contraoferta",
+      "viewOrder": "Ver encomenda",
+      "counterpartyUnknown": "Utilizador verificado",
+      "submittedOn": "Submetida em {date}",
+      "chainLabel": "Histórico de negociação",
+      "counterForm": {
+        "quantity": "Quantidade",
+        "price": "Preço oferecido (USD)",
+        "message": "Mensagem (opcional)",
+        "submit": "Enviar contraoferta"
+      }
+    },
+    "orders": {
+      "title": "As minhas encomendas",
+      "empty": "Ainda não tem encomendas.",
+      "emptyDescription": "Consulte o marketplace para descobrir minerais verificados e fazer a sua primeira encomenda.",
+      "emptyCta": "Explorar o marketplace",
+      "confirmed": "Confirmada",
+      "processing": "Em processamento",
+      "inTransit": "Em trânsito",
+      "delivered": "Entregue",
+      "cancelled": "Cancelada",
+      "disputed": "Em disputa",
+      "roleBuyer": "Comprador",
+      "roleSeller": "Vendedor",
+      "counterpartyUnknown": "Contraparte",
+      "untitled": "Encomenda sem título",
+      "backToList": "Voltar às encomendas",
+      "reference": "Encomenda {reference}",
+      "orderedOn": "Efetuada em {date}",
+      "timelineTitle": "Progresso da encomenda",
+      "timelineLabel": "Etapas da encomenda",
+      "timelineCurrent": "Etapa atual",
+      "timelineCompleted": "Concluída",
+      "timelineUpcoming": "Próxima",
+      "terminalBranchHint": "Esta encomenda teve um desfecho excecional fora do percurso padrão.",
+      "summaryTitle": "Resumo",
+      "snapshotLabel": "Preço e quantidade bloqueados na aceitação da oferta",
+      "quantityLine": "{quantity} {unit}",
+      "totalLine": "Total: {total}",
+      "counterpartyTitle": "Contraparte",
+      "viewConversation": "Ver conversa",
+      "progressTitle": "Avançar encomenda",
+      "progressDescription": "Atualize o estado uma etapa de cada vez, por ordem.",
+      "progressCta": "Avançar para \"{status}\"",
+      "progressForbidden": "Apenas o vendedor pode avançar esta encomenda.",
+      "progressInvalid": "Esta progressão de estado não é permitida.",
+      "progressError": "A atualização do estado falhou. Tente novamente.",
+      "currentStatus": "Estado atual: {status}",
+      "disputeCta": "Reportar um problema",
+      "disputeTitle": "Reportar um problema",
+      "disputeReasonLabel": "Descreva o problema",
+      "disputeSubmit": "Submeter relatório",
+      "disputeCancel": "Cancelar",
+      "disputeSubmitted": "Esta encomenda está agora marcada como em disputa.",
+      "disputeContactHint": "Pode contactar a sua contraparte através da conversa existente associada a este anúncio.",
+      "disputeForbidden": "Apenas o comprador pode reportar um problema nesta encomenda.",
+      "disputeError": "O relatório falhou. Tente novamente.",
+      "disputeReasonTitle": "Motivo do relatório",
+      "disputedOn": "Reportado em {date}",
+      "accord": {
+        "title": "Acordo",
+        "description": "Reveja o resumo da encomenda e confirme os termos através da confirmação digital dos termos.",
+        "documentLabel": "Resumo PDF",
+        "viewPdf": "Ver ou descarregar resumo",
+        "pdfUnavailable": "O resumo PDF ainda não está disponível.",
+        "confirmationTitle": "Confirmação digital dos termos",
+        "confirmLabel": "Confirmo os termos desta encomenda.",
+        "buyerRole": "Comprador",
+        "sellerRole": "Vendedor",
+        "confirmedOn": "Confirmado em {date}",
+        "statusPending": "A aguardar confirmação",
+        "statusConfirmed": "Confirmado por ambas as partes",
+        "confirmForbidden": "Apenas a parte relevante pode confirmar estes termos.",
+        "confirmAlreadyDone": "Esta confirmação já foi registada.",
+        "confirmError": "A confirmação falhou. Tente novamente.",
+        "legalDisclaimer": "Trata-se de uma confirmação por caixa de seleção na sua sessão autenticada, não de uma assinatura eletrónica qualificada."
+      },
+      "shipment": {
+        "title": "Expedição",
+        "trackingComingSoon": "O acompanhamento automático da transportadora estará disponível em breve.",
+        "createDescription": "Introduza os detalhes da expedição para esta encomenda.",
+        "createCta": "Criar expedição",
+        "emptyBuyer": "O vendedor ainda não introduziu os detalhes da expedição.",
+        "carrierLabel": "Transportadora",
+        "trackingLabel": "Referência de acompanhamento",
+        "trackingHint": "Referência fornecida pela transportadora, se disponível.",
+        "saveDetails": "Guardar detalhes",
+        "notProvided": "Não fornecido",
+        "statusTitle": "Estado da expedição",
+        "pending": "Pendente",
+        "pickedUp": "Recolhido",
+        "inTransit": "Em trânsito",
+        "customs": "Alfândega",
+        "delivered": "Entregue",
+        "exception": "Exceção",
+        "progressCta": "Avançar para \"{status}\"",
+        "statusInvalid": "Esta progressão de estado não é permitida.",
+        "sellerOnly": "Apenas o vendedor pode atualizar a expedição.",
+        "saveError": "A atualização falhou. Tente novamente.",
+        "checkpointsTitle": "Pontos de acompanhamento manuais",
+        "checkpointsEmpty": "Ainda sem pontos de acompanhamento manuais.",
+        "checkpointNoteLabel": "Nota",
+        "checkpointLocationLabel": "Localização (texto livre)",
+        "checkpointLocationHint": "Localização reportada pelo vendedor — não verificada por GPS.",
+        "checkpointLocation": "Localização reportada: {location}",
+        "addCheckpoint": "Adicionar ponto de controlo"
+      },
+      "table": {
+        "mineral": "Mineral",
+        "price": "Preço bloqueado",
+        "counterparty": "Contraparte",
+        "role": "Papel",
+        "status": "Estado",
+        "date": "Data"
+      }
+    },
+    "messages": {
+      "title": "Mensagens",
+      "empty": "Ainda não tem conversas.",
+      "emptyDescription": "Explore o marketplace para contactar um vendedor.",
+      "emptyCta": "Explorar o marketplace",
+      "counterpartyUnknown": "Contraparte",
+      "conversationListLabel": "Lista de conversas",
+      "threadLabel": "Fio da conversa",
+      "selectConversation": "Selecione uma conversa para ver as mensagens.",
+      "backToList": "Voltar às conversas",
+      "composeLabel": "A sua mensagem",
+      "send": "Enviar",
+      "unreadIndicator": "Mensagens por ler"
+    },
+    "contracts": {
+      "title": "Contratos",
+      "empty": "Ainda sem contratos. Os contratos são gerados após uma oferta ser aceite.",
+      "sign": "Assinar contrato",
+      "signed": "Assinado",
+      "pending": "A aguardar assinatura"
+    },
+    "payments": {
+      "title": "Pagamentos",
+      "empty": "Módulo de pagamentos — Fase 2",
+      "comingSoon": "Pagamentos seguros estarão disponíveis em breve"
+    },
+    "logistics": {
+      "title": "Expedições",
+      "empty": "Ainda sem expedições",
+      "tracking": "Acompanhamento",
+      "carrier": "Transportadora",
+      "addShipment": "Criar expedição"
+    },
+    "reports": {
+      "title": "Relatórios",
+      "empty": "Sem relatórios disponíveis para o período selecionado"
+    },
+    "documents": {
+      "title": "Documentos",
+      "eyebrow": "Cadeia de abastecimento",
+      "subtitle": "Os seus documentos KYC e contratos de encomenda num só lugar.",
+      "emptyTitle": "Sem documentos",
+      "emptyDescription": "Os seus documentos KYC e contratos de encomenda aparecerão aqui após serem submetidos ou gerados.",
+      "kycSection": "Documentos KYC",
+      "contractsSection": "Contratos",
+      "download": "Descarregar",
+      "unavailable": "Ligação indisponível",
+      "contractTitle": "Contrato — {title} ({mineral})",
+      "contractFallback": "Contrato de encomenda"
+    },
+    "settings": {
+      "title": "Definições",
+      "profile": "Perfil",
+      "kyc": "Verificação KYC",
+      "language": "Idioma",
+      "kycPending": "Verificação em curso — a nossa equipa está a rever os seus documentos",
+      "kycApproved": "Conta verificada",
+      "kycRejected": "Verificação rejeitada — reveja os motivos e volte a submeter os seus documentos",
+      "myListings": "Os meus anúncios",
+      "tabs": {
+        "profile": "Perfil",
+        "security": "Segurança",
+        "kyc": "Verificação KYC",
+        "exportReadiness": "Preparação para exportação",
+        "listings": "Os meus anúncios"
+      },
+      "profileForm": {
+        "title": "Informação do perfil",
+        "companyName": "Nome da empresa",
+        "country": "País",
+        "phone": "Telefone",
+        "phoneHint": "Formato internacional recomendado (ex.: +243…)",
+        "email": "Endereço de e-mail",
+        "role": "Tipo de conta",
+        "memberSince": "Membro desde",
+        "emailReadOnlyHint": "Alterações de e-mail não estão disponíveis aqui.",
+        "submit": "Guardar alterações",
+        "success": "Perfil atualizado com sucesso.",
+        "error": "A atualização do perfil falhou. Tente novamente."
+      },
+      "security": {
+        "title": "Palavra-passe",
+        "description": "Escolha uma palavra-passe com pelo menos 12 caracteres.",
+        "newPassword": "Nova palavra-passe",
+        "confirmPassword": "Confirmar palavra-passe",
+        "submit": "Atualizar palavra-passe",
+        "success": "Palavra-passe atualizada com sucesso.",
+        "error": "A atualização da palavra-passe falhou. Tente novamente.",
+        "passwordMismatch": "As palavras-passe não coincidem"
+      },
+      "countries": {
+        "CD": "República Democrática do Congo",
+        "CG": "República do Congo",
+        "AO": "Angola",
+        "RW": "Ruanda",
+        "BI": "Burúndi",
+        "UG": "Uganda",
+        "TZ": "Tanzânia",
+        "ZM": "Zâmbia",
+        "CF": "República Centro-Africana",
+        "GA": "Gabão",
+        "CM": "Camarões",
+        "KE": "Quénia",
+        "ZA": "África do Sul",
+        "BE": "Bélgica",
+        "FR": "França",
+        "US": "Estados Unidos",
+        "CN": "China"
+      },
+      "cooperativeSites": {
+        "title": "Locais mineiros",
+        "description": "Introduza os locais da sua cooperativa e referências ZEA. Necessário para criar lotes rastreáveis.",
+        "siteLabel": "Local {index}",
+        "siteName": "Nome do local",
+        "zeaReference": "Referência ZEA",
+        "zeaHint": "Zona de Exploração Artesanal — referência declarada pela cooperativa.",
+        "province": "Província",
+        "addSite": "Adicionar local",
+        "removeSite": "Remover local",
+        "submit": "Guardar locais",
+        "success": "Locais guardados com sucesso.",
+        "error": "Falha ao guardar locais. Tente novamente.",
+        "forbidden": "Apenas cooperativas verificadas podem gerir locais."
+      },
+      "exportReadiness": {
+        "title": "Preparação para exportação",
+        "description": "Acompanhe os passos administrativos que considera necessários antes de exportar. Cada caixa de seleção reflete o seu próprio estado auto-reportado.",
+        "disclaimer": "Esta ferramenta ajuda-o a acompanhar a sua própria preparação. Não é uma certificação Biashara.",
+        "progress": "{completed} de {total} concluídos",
+        "progressAria": "{completed} itens concluídos de {total}",
+        "learnMore": "Saber mais",
+        "notesLabel": "Notas pessoais",
+        "notesPlaceholder": "Referências, datas ou lembretes para uso interno…",
+        "documentLabel": "Documento associado",
+        "documentHint": "Selecione um documento já carregado no seu centro de documentos.",
+        "documentNone": "Sem documento",
+        "documentOption": "{type} — {date}",
+        "completedOn": "Marcado como concluído em {date}",
+        "saveError": "Falha ao guardar. Tente novamente.",
+        "documentsLink": "Gerir os meus documentos",
+        "items": {
+          "ceec_certification": {
+            "title": "Certificação CEEC",
+            "description": "O Centre d'Expertise, d'Évaluation et de Certification (CEEC) emite certificados para certos minerais exportados da RDC. Verifique se o seu produto está abrangido e mantenha registos de apoio para o seu acompanhamento interno."
+          },
+          "export_permit": {
+            "title": "Licença ou autorização de exportação",
+            "description": "As exportações de minerais são reguladas por autorizações emitidas pelas autoridades competentes. Registe aqui a referência da sua licença ou autorização quando a obtiver."
+          },
+          "taxes_paid": {
+            "title": "Impostos e royalties pagos",
+            "description": "Impostos, royalties mineiros ou taxas podem ser exigidos antes da exportação. Utilize este item para acompanhar os pagamentos efetuados e as provas que mantém em arquivo."
+          },
+          "customs_forms": {
+            "title": "Formulários alfandegários",
+            "description": "A alfândega congolesa exige declarações e documentação para expedições de saída. Registe aqui os formulários que preparou ou submeteu para a sua organização."
+          },
+          "quality_certificates": {
+            "title": "Certificados de qualidade ou análise",
+            "description": "Certificados de análise ou qualidade podem ser solicitados por compradores ou autoridades. Registe aqui os certificados obtidos de um laboratório ou organismo competente."
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "nav": {
+      "groups": {
+        "pilotage": "Operações",
+        "utilisateurs": "Utilizadores",
+        "marche": "Mercado",
+        "intelligence": "Inteligência",
+        "securite": "Segurança"
+      },
+      "dashboard": "Painel",
+      "users": "Utilizadores",
+      "kycReview": "Verificação KYC",
+      "listings": "Anúncios",
+      "listingsModeration": "Moderação",
+      "miningEvents": "Calendário",
+      "reports": "Relatórios",
+      "auditLog": "Registo de auditoria"
+    },
+    "shell": {
+      "sidebarLabel": "Navegação de administração",
+      "openDrawer": "Abrir menu",
+      "closeDrawer": "Fechar menu",
+      "logout": "Terminar sessão",
+      "notifications": "Notificações"
+    },
+    "gate": {
+      "title": "Acesso de administração",
+      "description": "Introduza a frase-passe para aceder à área de administração.",
+      "passphraseLabel": "Frase-passe",
+      "submit": "Entrar",
+      "accessDenied": "Acesso negado."
+    },
+    "login": {
+      "title": "Início de sessão de administrador",
+      "description": "Inicie sessão com as suas credenciais de administrador.",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Palavra-passe",
+      "submit": "Iniciar sessão",
+      "invalidCredentials": "Credenciais inválidas"
+    },
+    "common": {
+      "unknownActor": "Sistema",
+      "unknownUser": "Utilizador sem nome",
+      "notAvailable": "Não fornecido",
+      "applyFilters": "Aplicar",
+      "cancel": "Cancelar",
+      "confirmReject": "Confirmar rejeição",
+      "rejectionReasonLabel": "Motivo da rejeição",
+      "rejectionReasonRequired": "É necessário um motivo de rejeição.",
+      "actionFailed": "A ação falhou. Tente novamente.",
+      "paginationLabel": "Paginação",
+      "paginationSummary": "Página {page} de {totalPages}",
+      "paginationPrevious": "Anterior",
+      "paginationNext": "Seguinte"
+    },
+    "roles": {
+      "buyer": "Comprador",
+      "seller": "Vendedor",
+      "cooperative": "Cooperativa",
+      "institution": "Instituição",
+      "admin": "Administrador"
+    },
+    "kycStatus": {
+      "none": "Não submetido",
+      "pending": "Pendente",
+      "approved": "Aprovado",
+      "rejected": "Rejeitado"
+    },
+    "listingStatus": {
+      "draft": "Rascunho",
+      "pending_review": "Pendente",
+      "active": "Ativo",
+      "paused": "Em pausa",
+      "sold": "Vendido",
+      "rejected": "Rejeitado"
+    },
+    "dashboard": {
+      "title": "Painel",
+      "eyebrow": "Administração",
+      "dataUnavailable": "Dados indisponíveis",
+      "stats": {
+        "users": "Utilizadores",
+        "activeListings": "Anúncios ativos",
+        "pendingKyc": "KYC pendente",
+        "purchaseRequests": "Pedidos de compra"
+      },
+      "trendAria": "Variação de {label}: {value}",
+      "sparklineAria": "Histórico de {label}",
+      "marketPulse": {
+        "eyebrow": "MERCADO NACIONAL",
+        "lastUpdated": "Última atualização: {time} (Kinshasa)",
+        "viewPrices": "Ver preços →",
+        "viewReports": "Ver relatórios →",
+        "unavailable": "Dados indisponíveis"
+      },
+      "recentActivity": "Atividade recente",
+      "noActivity": "Ainda sem atividade registada.",
+      "liveActivity": {
+        "title": "Atividade em direto",
+        "viewFullLog": "Ver registo de auditoria completo →",
+        "empty": "Sem atividade recente relevante.",
+        "events": {
+          "account_verified": "{actor} — conta verificada ({role})",
+          "kyc_submitted": "{actor} — processo KYC submetido",
+          "listing_submitted": "{actor} — anúncio submetido ({mineral}, {province})",
+          "listing_published": "{actor} — anúncio publicado ({mineral}, {province})",
+          "rfp_created": "{actor} — pedido de compra criado ({mineral})",
+          "offer_accepted": "{actor} — oferta aceite ({mineral})",
+          "order_disputed": "Disputa aberta — {actor}"
+        }
+      },
+      "kycIntelligence": {
+        "title": "Inteligência KYC",
+        "openQueue": "Abrir fila KYC →",
+        "funnel": {
+          "pending": "Pendente",
+          "needsReview": "Requer revisão",
+          "verified": "Verificado",
+          "rejected": "Rejeitado"
+        },
+        "verifiedBarLabel": "Taxa de verificação",
+        "verifiedPercent": "{value}%",
+        "verifiedBarAria": "Taxa de verificação: {value}%",
+        "noDocuments": "Sem documentos KYC registados.",
+        "oldestPendingTitle": "Processos pendentes mais antigos",
+        "oldestPendingEmpty": "Sem processos pendentes."
+      },
+      "moderationPreview": {
+        "title": "Moderação de anúncios",
+        "openQueue": "Ver fila completa →",
+        "empty": "Sem anúncios a aguardar moderação.",
+        "reviewAction": "Rever →"
+      },
+      "quickLinks": {
+        "users": "Utilizadores",
+        "kycReview": "Verificação KYC",
+        "listingsModeration": "Moderação de anúncios",
+        "auditLog": "Registo de auditoria"
+      },
+      "drcMap": {
+        "eyebrow": "Atividade territorial",
+        "title": "Mapa de atividade da RDC",
+        "subtitle": "Anúncios ativos e locais de cooperativas por província — dados em direto.",
+        "mapAria": "Mapa interativo da República Democrática do Congo",
+        "provinceStatsAria": "Estatísticas de {province}",
+        "provinceLinkAria": "Ver anúncios de {province}",
+        "activeListings": "{count, plural, one {# anúncio ativo} other {# anúncios ativos}}",
+        "cooperatives": "{count, plural, one {# local de cooperativa} other {# locais de cooperativas}}",
+        "noListings": "Sem anúncios ativos",
+        "attribution": "Dados de fronteiras: geoBoundaries (WGS84)",
+        "hubs": {
+          "lualaba": "Lualaba",
+          "kolwezi": "Kolwezi",
+          "lubumbashi": "Lubumbashi"
+        }
+      },
+      "ecosystem": {
+        "eyebrow": "Ecossistema",
+        "title": "Ecossistema Biashara",
+        "roles": {
+          "cooperative": "Cooperativas",
+          "seller": "Vendedores",
+          "buyer": "Compradores",
+          "institution": "Instituições"
+        }
+      },
+      "platformHealth": {
+        "eyebrow": "Infraestrutura",
+        "title": "Estado da plataforma",
+        "systems": {
+          "api": "API",
+          "database": "Base de dados",
+          "auth": "Autenticação",
+          "storage": "Armazenamento"
+        },
+        "status": {
+          "operational": "Operacional",
+          "unavailable": "Indisponível"
+        },
+        "monitoringNote": "Monitorização não configurada",
+        "checkedAt": "Verificado às {time} (Kinshasa)"
+      }
+    },
+    "users": {
+      "title": "Utilizadores",
+      "searchPlaceholder": "Pesquisar por nome ou empresa…",
+      "filterRole": "Filtrar por papel",
+      "filterKycStatus": "Filtrar por estado KYC",
+      "emptyTitle": "Nenhum utilizador encontrado",
+      "emptyDescription": "Nenhum perfil corresponde aos seus critérios de pesquisa.",
+      "backToList": "Voltar à lista",
+      "columns": {
+        "name": "Nome / empresa",
+        "role": "Papel",
+        "kycStatus": "Estado KYC",
+        "memberSince": "Membro desde",
+        "listings": "Anúncios",
+        "orders": "Encomendas"
+      },
+      "detail": {
+        "profile": "Perfil",
+        "email": "E-mail",
+        "role": "Papel",
+        "kycStatus": "Estado KYC",
+        "memberSince": "Membro desde",
+        "country": "País",
+        "phone": "Telefone",
+        "kycDocuments": "Documentos KYC",
+        "noKycDocuments": "Sem documentos KYC submetidos.",
+        "viewDocument": "Ver documento",
+        "listings": "Anúncios",
+        "noListings": "Sem anúncios publicados.",
+        "orders": "Encomendas",
+        "noOrders": "Sem encomendas."
+      }
+    },
+    "kycReview": {
+      "title": "Verificação KYC",
+      "approve": "Aprovar",
+      "reject": "Rejeitar",
+      "rejectDialogTitle": "Rejeitar documento KYC",
+      "viewDocument": "Ver documento",
+      "tabs": {
+        "pending": "Pendente",
+        "approved": "Aprovado",
+        "rejected": "Rejeitado"
+      },
+      "columns": {
+        "applicant": "Requerente",
+        "documentType": "Tipo de documento",
+        "submitted": "Submetido",
+        "document": "Documento",
+        "actions": "Ações"
+      },
+      "empty": {
+        "pending": {
+          "title": "Sem documentos pendentes",
+          "description": "Todos os documentos KYC foram processados — está tudo em dia."
+        },
+        "approved": {
+          "title": "Sem documentos aprovados",
+          "description": "Os documentos aprovados aparecerão aqui após validação."
+        },
+        "rejected": {
+          "title": "Sem documentos rejeitados",
+          "description": "Os documentos rejeitados aparecerão aqui com o respetivo motivo."
+        }
+      }
+    },
+    "listingsModeration": {
+      "title": "Moderação de anúncios",
+      "approve": "Aprovar",
+      "reject": "Rejeitar",
+      "rejectDialogTitle": "Rejeitar anúncio",
+      "tabs": {
+        "pending_review": "Pendente",
+        "active": "Ativo",
+        "rejected": "Rejeitado"
+      },
+      "columns": {
+        "listing": "Anúncio",
+        "seller": "Vendedor",
+        "quantityPrice": "Quantidade / preço",
+        "submitted": "Submetido"
+      },
+      "empty": {
+        "pending_review": {
+          "title": "Sem anúncios pendentes",
+          "description": "Sem anúncios a aguardar revisão — está tudo em dia."
+        },
+        "active": {
+          "title": "Sem anúncios ativos",
+          "description": "Os anúncios aprovados e publicados aparecerão aqui."
+        },
+        "rejected": {
+          "title": "Sem anúncios rejeitados",
+          "description": "Os anúncios rejeitados aparecerão aqui com o respetivo motivo."
+        }
+      }
+    },
+    "miningEvents": {
+      "title": "Calendário mineiro",
+      "create": "Novo evento",
+      "createTitle": "Criar evento",
+      "editTitle": "Editar evento",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "deleteConfirm": "Eliminar permanentemente este evento?",
+      "deleteError": "A eliminação falhou. Tente novamente.",
+      "backToList": "Voltar ao calendário",
+      "columns": {
+        "title": "Título",
+        "date": "Data",
+        "category": "Categoria",
+        "actions": "Ações"
+      },
+      "empty": {
+        "title": "Sem eventos publicados",
+        "description": "Crie o primeiro evento do calendário mineiro — leilões, conferências ou anúncios oficiais."
+      },
+      "form": {
+        "title": "Título",
+        "description": "Descrição",
+        "eventDate": "Data do evento",
+        "category": "Categoria",
+        "categoryPlaceholder": "Selecionar uma categoria",
+        "sourceUrl": "Ligação da fonte",
+        "sourceUrlHint": "Opcional — URL do anúncio ou fonte oficial.",
+        "create": "Publicar evento",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "submitError": "Falha ao guardar. Verifique os campos e tente novamente."
+      }
+    },
+    "reports": {
+      "title": "Relatórios da plataforma",
+      "eyebrow": "Administração",
+      "description": "Métricas em tempo real, alertas operacionais e exportações sob pedido.",
+      "alerts": {
+        "title": "Alertas operacionais",
+        "allClear": "Sem alertas pendentes — está tudo em dia.",
+        "action": "Ver",
+        "items": {
+          "aging_listing": "Anúncio pendente há mais de 48 h: {title}",
+          "aging_kyc": "Documento KYC pendente há mais de 48 h — {company} ({type})",
+          "unresolved_dispute": "Encomenda em disputa não resolvida: {title}",
+          "high_dispute_rate_user": "Taxa de disputa elevada ({rate}%) — {company}"
+        }
+      },
+      "charts": {
+        "transactionVolume": {
+          "title": "Volume de transações",
+          "empty": "Dados insuficientes para apresentar o gráfico.",
+          "granularity": {
+            "daily": "Diário",
+            "weekly": "Semanal"
+          }
+        },
+        "mineralDistribution": {
+          "title": "Distribuição por mineral",
+          "emptyTitle": "Sem encomendas",
+          "emptyDescription": "Sem encomendas registadas para calcular a distribuição.",
+          "chartLabel": "Distribuição de encomendas por mineral",
+          "orders": "encomendas"
+        },
+        "userGrowth": {
+          "title": "Crescimento de utilizadores",
+          "empty": "Dados insuficientes para apresentar o gráfico.",
+          "granularity": {
+            "daily": "Diário",
+            "weekly": "Semanal"
+          },
+          "tooltipNew": "Novos: {count}",
+          "tooltipCumulative": "Acumulado: {count}"
+        },
+        "kycFunnel": {
+          "title": "Funil KYC",
+          "empty": "Sem perfis registados."
+        },
+        "listingFunnel": {
+          "title": "Funil de anúncios",
+          "empty": "Sem anúncios registados."
+        },
+        "disputeRate": {
+          "title": "Taxa de disputa",
+          "empty": "Dados insuficientes para apresentar a tendência.",
+          "granularity": {
+            "daily": "Diário",
+            "weekly": "Semanal"
+          },
+          "tooltipRate": "{rate}%",
+          "tooltipCounts": "{disputed} disputas em {total} encomendas"
+        }
+      },
+      "exports": {
+        "title": "Centro de exportação",
+        "csvSection": "Exportações CSV",
+        "pdfSection": "Relatório PDF",
+        "csv": {
+          "users": "Utilizadores / perfis",
+          "listings": "Anúncios",
+          "orders": "Encomendas",
+          "audit-log": "Registo de auditoria"
+        },
+        "pdf": {
+          "report": "Relatório da plataforma (PDF)",
+          "hint": "Gerado sob pedido com métricas atuais.",
+          "documentTitle": "Relatório da Plataforma BIASHARA",
+          "generatedAt": "Gerado em",
+          "totalUsers": "Utilizadores registados",
+          "totalListings": "Anúncios publicados",
+          "totalOrders": "Encomendas",
+          "totalVolume": "Volume total de transações",
+          "disputeRate": "Taxa global de disputa",
+          "kycFunnel": "Funil KYC",
+          "listingFunnel": "Funil de anúncios",
+          "mineralDistribution": "Distribuição por mineral",
+          "footer": "Documento gerado automaticamente a partir dos dados da plataforma."
+        },
+        "columns": {
+          "id": "ID",
+          "companyName": "Empresa",
+          "role": "Papel",
+          "country": "País",
+          "phone": "Telefone",
+          "locale": "Idioma",
+          "kycStatus": "Estado KYC",
+          "createdAt": "Criado em",
+          "updatedAt": "Atualizado em",
+          "sellerId": "ID do vendedor",
+          "mineral": "Mineral",
+          "title": "Título",
+          "grade": "Grau",
+          "purity": "Pureza",
+          "quantity": "Quantidade",
+          "unit": "Unidade",
+          "priceAmount": "Preço",
+          "priceCurrency": "Moeda",
+          "priceType": "Tipo de preço",
+          "originProvince": "Província",
+          "status": "Estado",
+          "offerId": "ID da oferta",
+          "listingId": "ID do anúncio",
+          "buyerId": "ID do comprador",
+          "listingTitle": "Título do anúncio",
+          "currency": "Moeda",
+          "disputeReason": "Motivo da disputa",
+          "disputedAt": "Disputado em",
+          "actorId": "ID do ator",
+          "action": "Ação",
+          "entity": "Entidade",
+          "entityId": "ID da entidade",
+          "diff": "Diff"
+        }
+      }
+    },
+    "search": {
+      "title": "Pesquisa de administração",
+      "open": "Abrir pesquisa",
+      "close": "Fechar",
+      "placeholder": "Pesquisar utilizadores, anúncios, encomendas…",
+      "hint": "Escreva para pesquisar em toda a plataforma.",
+      "searching": "A pesquisar…",
+      "noResults": "Nenhum resultado encontrado.",
+      "groups": {
+        "users": "Utilizadores",
+        "listings": "Anúncios",
+        "orders": "Encomendas"
+      },
+      "keyboard": {
+        "navigate": "navegar",
+        "select": "selecionar",
+        "close": "fechar"
+      }
+    },
+    "auditLog": {
+      "title": "Registo de auditoria",
+      "filterEntity": "Tipo de entidade",
+      "filterAction": "Ação",
+      "filterDateFrom": "Data de início",
+      "filterDateTo": "Data de fim",
+      "emptyTitle": "Sem entradas",
+      "emptyDescription": "Nenhuma entrada de auditoria corresponde aos seus filtros.",
+      "showDiff": "Mostrar detalhes",
+      "hideDiff": "Ocultar detalhes",
+      "columns": {
+        "actor": "Ator",
+        "action": "Ação",
+        "entity": "Entidade",
+        "timestamp": "Data e hora"
+      },
+      "actions": {
+        "insert": "criado",
+        "update": "atualizado",
+        "delete": "eliminado"
+      },
+      "entities": {
+        "kyc_documents": "documento KYC",
+        "listings": "anúncio",
+        "offers": "oferta",
+        "orders": "encomenda",
+        "profiles": "perfil"
+      }
+    }
+  },
+  "minerals": {
+    "cobalt": "Cobalto",
+    "copper": "Cobre",
+    "gold": "Ouro",
+    "coltan": "Coltan",
+    "lithium": "Lítio",
+    "diamond": "Diamante"
+  },
+  "units": {
+    "MT": "MT",
+    "oz": "oz",
+    "kg": "kg",
+    "carat": "quilate"
+  },
+  "errors": {
+    "unauthorized": "Tem de iniciar sessão para aceder a esta página. Inicie sessão ou crie uma conta.",
+    "forbidden": "Não tem permissão para realizar esta ação. Contacte o seu administrador se considerar que se trata de um erro.",
+    "kycRequired": "A verificação KYC é necessária para esta ação. Complete os seus documentos nas definições.",
+    "notFound": "Página não encontrada — verifique o endereço ou regresse à página inicial.",
+    "validation": "Alguns campos são inválidos. Corrija os erros indicados abaixo.",
+    "rateLimit": "Demasiados pedidos — aguarde um momento antes de tentar novamente.",
+    "parentOfferNotFound": "Oferta principal não encontrada. Atualize a página e tente novamente.",
+    "shipmentNotFound": "Expedição não encontrada. Verifique o identificador ou contacte o suporte.",
+    "documentNotFound": "Documento não encontrado. Carregue-o novamente nas definições.",
+    "listingNotFound": "Anúncio não encontrado. Pode ter sido removido ou vendido.",
+    "orderNotFound": "Encomenda não encontrada. Verifique o seu histórico de encomendas.",
+    "serverError": "O servidor não conseguiu processar o seu pedido. Tente novamente dentro de momentos."
+  },
+  "validation": {
+    "required": "Este campo é obrigatório",
+    "email": "Introduza um endereço de e-mail válido",
+    "passwordMin": "A palavra-passe deve ter pelo menos 12 caracteres",
+    "passwordMax": "A palavra-passe não pode exceder 128 caracteres",
+    "phoneInvalid": "Introduza um número de telefone válido (dígitos, espaços, hífens e parênteses permitidos)",
+    "uuid": "Identificador inválido",
+    "positiveNumber": "O valor deve ser superior a zero",
+    "titleMin": "O título deve ter pelo menos 3 caracteres",
+    "titleMax": "O título não pode exceder 200 caracteres",
+    "descriptionMin": "A descrição deve ter pelo menos 10 caracteres",
+    "descriptionMax": "A descrição não pode exceder 5.000 caracteres",
+    "invalidUrl": "Introduza um URL válido",
+    "mineralInvalid": "Selecione um mineral suportado pela plataforma"
+  },
+  "kyc": {
+    "id_card": "Cartão de identidade",
+    "business_registration": "Registo comercial",
+    "mining_permit": "Licença mineira",
+    "export_license": "Licença de exportação",
+    "upload": "Carregar documento",
+    "required": "Documentos necessários para o seu tipo de conta"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "panel": {
+      "viewAll": "Ver tudo →",
+      "empty": "Ainda sem notificações.",
+      "markAllRead": "Marcar tudo como lido"
+    },
+    "kycApproved": "O seu documento {documentType} foi aprovado.",
+    "kycRejected": "O seu documento {documentType} foi rejeitado.",
+    "listingApproved": "O seu anúncio \"{title}\" foi aprovado.",
+    "listingRejected": "O seu anúncio \"{title}\" foi rejeitado.",
+    "newOffer": "Nova oferta recebida em \"{title}\".",
+    "offerAccepted": "A sua oferta em \"{title}\" foi aceite.",
+    "offerDeclined": "A sua oferta em \"{title}\" foi recusada.",
+    "offerCountered": "Contraoferta recebida em \"{title}\".",
+    "orderStatusChanged": "O estado da sua encomenda mudou para {status}.",
+    "orderDisputed": "Foi aberta uma disputa na sua encomenda.",
+    "rfpBidReceived": "Nova oferta recebida no seu pedido de compra ({mineral}).",
+    "rfpBidSelected": "A sua oferta foi selecionada para o pedido de compra ({mineral}).",
+    "rfpBidRejected": "A sua oferta não foi selecionada para o pedido de compra ({mineral}).",
+    "adminPendingKyc": "Nova submissão KYC pendente — {applicantName} ({documentType}).",
+    "adminPendingListing": "Novo anúncio a aguardar moderação — \"{title}\".",
+    "orderStatus": {
+      "confirmed": "Confirmada",
+      "processing": "Em processamento",
+      "in_transit": "Em trânsito",
+      "delivered": "Entregue",
+      "cancelled": "Cancelada",
+      "disputed": "Em disputa"
+    },
+    "documentTypes": {
+      "id_card": "Cartão de identidade",
+      "business_registration": "Registo comercial",
+      "mining_permit": "Licença mineira",
+      "export_license": "Licença de exportação"
+    }
+  },
+  "activityFeed": {
+    "ariaLabel": "Atividade recente da plataforma",
+    "liveHeading": "ATIVIDADE EM DIRETO",
+    "empty": "A atividade da plataforma aparecerá aqui.",
+    "error": "Não foi possível carregar a atividade de momento.",
+    "listing_published": "Novo anúncio: {mineral}, {province}",
+    "rfp_posted": "Novo pedido de compra: {mineral}",
+    "order_completed": "Transação concluída: {mineral}",
+    "account_verified": "Novo participante verificado: {role} — {province}",
+    "landing": {
+      "eyebrow": "EM DIRETO",
+      "title": "Atividade da plataforma",
+      "subtitle": "Os últimos anúncios, pedidos e transações anonimizados na BIASHARA."
+    },
+    "sidebar": {
+      "title": "Atividade"
+    }
+  },
+  "email": {
+    "signupConfirmation": {
+      "subject": "Confirme a sua conta BIASHARA",
+      "greeting": "Olá,",
+      "body": "Obrigado por se registar na BIASHARA. Clique na ligação de confirmação no e-mail que recebeu para ativar a sua conta.",
+      "footer": "Se não criou uma conta, ignore esta mensagem."
+    },
+    "passwordReset": {
+      "subject": "Redefinir a sua palavra-passe BIASHARA",
+      "greeting": "Olá,",
+      "body": "Solicitou a redefinição da palavra-passe. Clique na ligação que recebeu para definir uma nova palavra-passe. Esta ligação expira em 24 horas.",
+      "footer": "Se não solicitou isto, ignore esta mensagem — a sua palavra-passe permanece inalterada."
+    },
+    "kycApproved": {
+      "subject": "Verificação KYC aprovada — BIASHARA",
+      "greeting": "Olá,",
+      "body": "A sua verificação KYC foi aprovada. Tem agora acesso a todas as funcionalidades da plataforma.",
+      "cta": "Ir para o painel"
+    },
+    "kycRejected": {
+      "subject": "Verificação KYC rejeitada — BIASHARA",
+      "greeting": "Olá,",
+      "body": "A sua verificação KYC foi rejeitada. Reveja os motivos nas definições, corrija os documentos relevantes e volte a submetê-los.",
+      "cta": "Ver os meus documentos"
+    }
+  }
+}
