@@ -49,6 +49,12 @@ describe('locale middleware defaults', () => {
     expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('es');
   });
 
+  it('serves Portuguese when /pt prefix is present', () => {
+    const response = intlMiddleware(createRequest('/pt'));
+    expect(response.status).toBe(200);
+    expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('pt');
+  });
+
   it('serves French at root when Accept-Language prefers Chinese', () => {
     const response = intlMiddleware(createRequest('/', 'zh-CN,zh;q=0.9'));
     expect(response.status).toBe(200);
@@ -57,6 +63,12 @@ describe('locale middleware defaults', () => {
 
   it('serves French at root when Accept-Language prefers Spanish', () => {
     const response = intlMiddleware(createRequest('/', 'es-ES,es;q=0.9'));
+    expect(response.status).toBe(200);
+    expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('fr');
+  });
+
+  it('serves French at root when Accept-Language prefers Portuguese', () => {
+    const response = intlMiddleware(createRequest('/', 'pt-PT,pt;q=0.9'));
     expect(response.status).toBe(200);
     expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('fr');
   });

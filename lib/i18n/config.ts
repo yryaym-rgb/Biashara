@@ -1,4 +1,4 @@
-export const locales = ['fr', 'en', 'zh', 'es'] as const;
+export const locales = ['fr', 'en', 'zh', 'es', 'pt'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'fr';
 
@@ -7,6 +7,7 @@ export const localeNames: Record<Locale, string> = {
   en: 'English',
   zh: '中文',
   es: 'Español',
+  pt: 'Português',
 };
 
 /** Short labels for the language switcher (native language names, not translated). */
@@ -15,6 +16,7 @@ export const localeLabels: Record<Locale, string> = {
   en: 'EN',
   zh: '中文',
   es: 'Español',
+  pt: 'Português',
 };
 
 const openGraphLocales: Record<Locale, string> = {
@@ -22,6 +24,7 @@ const openGraphLocales: Record<Locale, string> = {
   en: 'en_US',
   zh: 'zh_CN',
   es: 'es_ES',
+  pt: 'pt_PT',
 };
 
 export function getOpenGraphLocale(locale: Locale): string {

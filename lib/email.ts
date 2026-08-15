@@ -4,6 +4,7 @@ import fr from '@/messages/fr.json';
 import en from '@/messages/en.json';
 import zh from '@/messages/zh.json';
 import es from '@/messages/es.json';
+import pt from '@/messages/pt.json';
 
 export type EmailTemplate = 'signup_confirmation' | 'password_reset' | 'kyc_approved' | 'kyc_rejected';
 
@@ -26,6 +27,7 @@ const messagesByLocale: Record<Locale, EmailMessages> = {
   en: en.email,
   zh: zh.email,
   es: es.email,
+  pt: pt.email,
 };
 
 function buildText(parts: string[]): string {
