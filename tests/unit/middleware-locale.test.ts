@@ -37,6 +37,18 @@ describe('locale middleware defaults', () => {
     expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('en');
   });
 
+  it('serves Chinese when /zh prefix is present', () => {
+    const response = intlMiddleware(createRequest('/zh'));
+    expect(response.status).toBe(200);
+    expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('zh');
+  });
+
+  it('serves French at root when Accept-Language prefers Chinese', () => {
+    const response = intlMiddleware(createRequest('/', 'zh-CN,zh;q=0.9'));
+    expect(response.status).toBe(200);
+    expect(response.headers.get('x-middleware-request-x-next-intl-locale')).toBe('fr');
+  });
+
   const marketingRoutes = ['/prices', '/calendar', '/solutions', '/resources', '/about'] as const;
 
   it.each(marketingRoutes)(

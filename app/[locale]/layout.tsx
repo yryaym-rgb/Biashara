@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { getOpenGraphLocale, type Locale } from '@/lib/i18n/config';
 import { routing } from '@/lib/i18n/routing';
 import { QueryProvider } from '@/lib/query/client';
 import '../globals.css';
@@ -33,7 +34,7 @@ export async function generateMetadata({
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
+      locale: getOpenGraphLocale(locale as Locale),
     },
   };
 }
@@ -47,7 +48,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as 'fr' | 'en')) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
 

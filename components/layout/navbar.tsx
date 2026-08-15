@@ -12,7 +12,7 @@ import { Link, usePathname } from '@/lib/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { cn } from '@/lib/utils/cn';
-import { locales, type Locale } from '@/lib/i18n/config';
+import { localeLabels, locales, type Locale } from '@/lib/i18n/config';
 import logo from '@/design/reference-logo.jpeg';
 
 interface NavItem {
@@ -240,7 +240,7 @@ export function Navbar({
                 aria-haspopup="listbox"
                 onClick={() => setLangOpen((open) => !open)}
               >
-                {locale.toUpperCase()}
+                {localeLabels[locale]}
                 <ChevronDown className="h-4 w-4 text-muted" aria-hidden="true" />
               </button>
               {langOpen ? (
@@ -259,7 +259,7 @@ export function Navbar({
                         )}
                         onClick={() => setLangOpen(false)}
                       >
-                        {item.toUpperCase()}
+                        {localeLabels[item]}
                       </Link>
                     </li>
                   ))}
@@ -377,7 +377,7 @@ export function Navbar({
                       : 'text-body hover:bg-bg-tint',
                   )}
                 >
-                  {item.toUpperCase()}
+                  {localeLabels[item]}
                 </Link>
               ))}
             </div>

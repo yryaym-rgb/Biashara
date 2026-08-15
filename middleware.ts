@@ -1,5 +1,6 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
+import { getLocaleFromPathname } from '@/lib/i18n/pathname';
 import { routing } from '@/lib/i18n/routing';
 import { createMiddlewareClient } from '@/lib/supabase/middleware';
 import { canAccessRoute } from '@/lib/rbac';
@@ -39,8 +40,7 @@ export async function middleware(request: NextRequest) {
     profile = data;
   }
 
-  const locale =
-    pathname.startsWith('/en') ? 'en' : routing.defaultLocale;
+  const locale = getLocaleFromPathname(pathname);
 
   const access = canAccessRoute(pathname, profile, locale);
   if (!access.allowed && access.redirectTo) {

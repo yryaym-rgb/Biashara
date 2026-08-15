@@ -2,6 +2,7 @@ import 'server-only';
 import type { Locale } from '@/lib/i18n/config';
 import fr from '@/messages/fr.json';
 import en from '@/messages/en.json';
+import zh from '@/messages/zh.json';
 
 export type EmailTemplate = 'signup_confirmation' | 'password_reset' | 'kyc_approved' | 'kyc_rejected';
 
@@ -22,6 +23,7 @@ type EmailMessages = typeof fr.email;
 const messagesByLocale: Record<Locale, EmailMessages> = {
   fr: fr.email,
   en: en.email,
+  zh: zh.email,
 };
 
 function buildText(parts: string[]): string {

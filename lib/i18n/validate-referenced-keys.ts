@@ -17,6 +17,7 @@ export interface ReferencedKey {
 export interface ValidationResult {
   missingInFr: ReferencedKey[];
   missingInEn: ReferencedKey[];
+  missingInZh: ReferencedKey[];
   referencedKeys: ReferencedKey[];
 }
 
@@ -261,6 +262,7 @@ function dedupeReferencedKeys(keys: ReferencedKey[]): ReferencedKey[] {
 export function validateReferencedI18nKeys(
   frMessages: JsonObject,
   enMessages: JsonObject,
+  zhMessages: JsonObject,
   rootDir = process.cwd(),
 ): ValidationResult {
   const referencedKeys = dedupeReferencedKeys(
@@ -272,10 +274,12 @@ export function validateReferencedI18nKeys(
 
   const missingInFr = referencedKeys.filter((entry) => !hasMessageKey(frMessages, entry.fullKey));
   const missingInEn = referencedKeys.filter((entry) => !hasMessageKey(enMessages, entry.fullKey));
+  const missingInZh = referencedKeys.filter((entry) => !hasMessageKey(zhMessages, entry.fullKey));
 
   return {
     missingInFr,
     missingInEn,
+    missingInZh,
     referencedKeys,
   };
 }
@@ -296,6 +300,16 @@ export function formatMissingKeysReport(result: ValidationResult): string {
     }
     lines.push('Missing in en.json:');
     for (const entry of result.missingInEn) {
+      lines.push(`  - ${entry.fullKey} (${entry.file}:${entry.line})`);
+    }
+  }
+
+  if (result.missingInZh.length > 0) {
+    if (lines.length > 0) {
+      lines.push('');
+    }
+    lines.push('Missing in zh.json:');
+    for (const entry of result.missingInZh) {
       lines.push(`  - ${entry.fullKey} (${entry.file}:${entry.line})`);
     }
   }
