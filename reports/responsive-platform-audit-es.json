@@ -1,1061 +1,1031 @@
 {
   "results": [
     {
-      "path": "/zh",
+      "path": "/es",
       "viewport": "1440px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh",
+          "page": "/es",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .text-[36px].font-bold \"大胆交易。放心交换。共同成长。\""
+          "elements": "h1 .text-[36px].font-bold \"Comercie con audacia.Intercambie con confianza.C\""
         }
       ]
     },
     {
-      "path": "/zh/prices",
+      "path": "/es/prices",
       "viewport": "1440px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+          "elements": "h1 .min-w-0.break-words \"Cotizaciones de materias primas\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/es/solutions",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/es/solutions",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Una plataforma. Cuatro formas de comerciar.\""
+        }
+      ]
+    },
+    {
+      "path": "/es/resources",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/es/resources",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Comprender el comercio minero en RDC\""
+        }
+      ]
+    },
+    {
+      "path": "/es/about",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/es/about",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Nuestra misión\""
+        }
+      ]
+    },
+    {
+      "path": "/es/calendar",
+      "viewport": "1440px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/es/calendar",
+          "viewport": "1440px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "h1 .min-w-0.break-words \"Calendario Minero\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/calendar",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"铜\""
-        },
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/prices",
-          "viewport": "1440px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"USD\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todo\""
         }
       ]
     },
     {
-      "path": "/zh/solutions",
+      "path": "/es/login",
       "viewport": "1440px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/login",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+          "elements": "button [role=tab] .relative.inline-flex \"Iniciar sesión\""
         }
       ]
     },
     {
-      "path": "/zh/resources",
-      "viewport": "1440px",
-      "reached": true,
-      "issues": [
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/resources",
-          "viewport": "1440px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
-        }
-      ]
-    },
-    {
-      "path": "/zh/about",
-      "viewport": "1440px",
-      "reached": true,
-      "issues": [
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/about",
-          "viewport": "1440px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"我们的使命\""
-        }
-      ]
-    },
-    {
-      "path": "/zh/calendar",
-      "viewport": "1440px",
-      "reached": true,
-      "issues": [
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/calendar",
-          "viewport": "1440px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"矿业日历\""
-        },
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/calendar",
-          "viewport": "1440px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部\""
-        }
-      ]
-    },
-    {
-      "path": "/zh/login",
-      "viewport": "1440px",
-      "reached": true,
-      "issues": [
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/login",
-          "viewport": "1440px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"登录\""
-        }
-      ]
-    },
-    {
-      "path": "/zh/register",
+      "path": "/es/register",
       "viewport": "1440px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=2",
+      "path": "/es/register?step=2",
       "viewport": "1440px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=3",
+      "path": "/es/register?step=3",
       "viewport": "1440px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/forgot-password",
+      "path": "/es/forgot-password",
       "viewport": "1440px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/marketplace",
+      "path": "/es/marketplace",
       "viewport": "1440px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/marketplace",
           "viewport": "1440px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todos los anuncios\""
         }
       ]
     },
     {
-      "path": "/zh/marketplace → marketplace-detail",
+      "path": "/es/marketplace → marketplace-detail",
       "viewport": "1440px",
       "reached": false,
       "skipReason": "no matching link on list page (empty state)",
       "issues": []
     },
     {
-      "path": "/zh",
+      "path": "/es",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh",
+          "page": "/es",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh",
+          "page": "/es",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .text-[36px].font-bold \"大胆交易。放心交换。共同成长。\""
+          "elements": "h1 .text-[36px].font-bold \"Comercie con audacia.Intercambie con confianza.C\""
         }
       ]
     },
     {
-      "path": "/zh/prices",
+      "path": "/es/prices",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+          "elements": "h1 .min-w-0.break-words \"Cotizaciones de materias primas\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
-        },
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/prices",
-          "viewport": "1024px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"铜\""
-        },
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/prices",
-          "viewport": "1024px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"USD\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
     {
-      "path": "/zh/solutions",
+      "path": "/es/solutions",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/solutions",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/solutions",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+          "elements": "h1 .min-w-0.break-words \"Una plataforma. Cuatro formas de comerciar.\""
         }
       ]
     },
     {
-      "path": "/zh/resources",
+      "path": "/es/resources",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/resources",
+          "page": "/es/resources",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/resources",
+          "page": "/es/resources",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+          "elements": "h1 .min-w-0.break-words \"Comprender el comercio minero en RDC\""
         }
       ]
     },
     {
-      "path": "/zh/about",
+      "path": "/es/about",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/about",
+          "page": "/es/about",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/about",
+          "page": "/es/about",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+          "elements": "h1 .min-w-0.break-words \"Nuestra misión\""
         }
       ]
     },
     {
-      "path": "/zh/calendar",
+      "path": "/es/calendar",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+          "elements": "h1 .min-w-0.break-words \"Calendario Minero\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todo\""
         }
       ]
     },
     {
-      "path": "/zh/login",
+      "path": "/es/login",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/login",
+          "page": "/es/login",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+          "elements": "button [role=tab] .relative.inline-flex \"Iniciar sesión\""
         }
       ]
     },
     {
-      "path": "/zh/register",
+      "path": "/es/register",
       "viewport": "1024px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=2",
+      "path": "/es/register?step=2",
       "viewport": "1024px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=3",
+      "path": "/es/register?step=3",
       "viewport": "1024px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/forgot-password",
+      "path": "/es/forgot-password",
       "viewport": "1024px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/marketplace",
+      "path": "/es/marketplace",
       "viewport": "1024px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/marketplace",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "a .hidden.min-w-0 \"登录\""
+          "elements": "a .hidden.min-w-0 \"Iniciar sesión\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/marketplace",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todos los anuncios\""
         }
       ]
     },
     {
-      "path": "/zh/marketplace → marketplace-detail",
+      "path": "/es/marketplace → marketplace-detail",
       "viewport": "1024px",
       "reached": false,
       "skipReason": "no matching link on list page (empty state)",
       "issues": []
     },
     {
-      "path": "/zh",
+      "path": "/es",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh",
+          "page": "/es",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh",
+          "page": "/es",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .text-[36px].font-bold \"大胆交易。放心交换。共同成长。\""
+          "elements": "h1 .text-[36px].font-bold \"Comercie con audacia.Intercambie con confianza.C\""
         }
       ]
     },
     {
-      "path": "/zh/prices",
+      "path": "/es/prices",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+          "elements": "h1 .min-w-0.break-words \"Cotizaciones de materias primas\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
-        },
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/prices",
-          "viewport": "768px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"铜\""
-        },
-        {
-          "severity": "low",
-          "category": "text-truncation",
-          "page": "/zh/prices",
-          "viewport": "768px",
-          "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"USD\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
     {
-      "path": "/zh/solutions",
+      "path": "/es/solutions",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/solutions",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/solutions",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+          "elements": "h1 .min-w-0.break-words \"Una plataforma. Cuatro formas de comerciar.\""
         }
       ]
     },
     {
-      "path": "/zh/resources",
+      "path": "/es/resources",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/resources",
+          "page": "/es/resources",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/resources",
+          "page": "/es/resources",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+          "elements": "h1 .min-w-0.break-words \"Comprender el comercio minero en RDC\""
         }
       ]
     },
     {
-      "path": "/zh/about",
+      "path": "/es/about",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/about",
+          "page": "/es/about",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/about",
+          "page": "/es/about",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+          "elements": "h1 .min-w-0.break-words \"Nuestra misión\""
         }
       ]
     },
     {
-      "path": "/zh/calendar",
+      "path": "/es/calendar",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+          "elements": "h1 .min-w-0.break-words \"Calendario Minero\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todo\""
         }
       ]
     },
     {
-      "path": "/zh/login",
+      "path": "/es/login",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/login",
+          "page": "/es/login",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+          "elements": "button [role=tab] .relative.inline-flex \"Iniciar sesión\""
         }
       ]
     },
     {
-      "path": "/zh/register",
+      "path": "/es/register",
       "viewport": "768px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=2",
+      "path": "/es/register?step=2",
       "viewport": "768px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=3",
+      "path": "/es/register?step=3",
       "viewport": "768px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/forgot-password",
+      "path": "/es/forgot-password",
       "viewport": "768px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/marketplace",
+      "path": "/es/marketplace",
       "viewport": "768px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/marketplace",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button .inline-flex.h-10 \"中文\""
+          "elements": "button .inline-flex.h-10 \"Español\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/marketplace",
           "viewport": "768px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todos los anuncios\""
         }
       ]
     },
     {
-      "path": "/zh/marketplace → marketplace-detail",
+      "path": "/es/marketplace → marketplace-detail",
       "viewport": "768px",
       "reached": false,
       "skipReason": "no matching link on list page (empty state)",
       "issues": []
     },
     {
-      "path": "/zh",
+      "path": "/es",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh (drawer open)",
+      "path": "/es (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/prices",
+      "path": "/es/prices",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+          "elements": "h1 .min-w-0.break-words \"Cotizaciones de materias primas\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
     {
-      "path": "/zh/prices (drawer open)",
+      "path": "/es/prices (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/solutions",
+      "path": "/es/solutions",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/solutions",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+          "elements": "h1 .min-w-0.break-words \"Una plataforma. Cuatro formas de comerciar.\""
         }
       ]
     },
     {
-      "path": "/zh/solutions (drawer open)",
+      "path": "/es/solutions (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/resources",
+      "path": "/es/resources",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/resources",
+          "page": "/es/resources",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+          "elements": "h1 .min-w-0.break-words \"Comprender el comercio minero en RDC\""
         }
       ]
     },
     {
-      "path": "/zh/resources (drawer open)",
+      "path": "/es/resources (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/about",
+      "path": "/es/about",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/about",
+          "page": "/es/about",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+          "elements": "h1 .min-w-0.break-words \"Nuestra misión\""
         }
       ]
     },
     {
-      "path": "/zh/about (drawer open)",
+      "path": "/es/about (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/calendar",
+      "path": "/es/calendar",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+          "elements": "h1 .min-w-0.break-words \"Calendario Minero\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todo\""
         }
       ]
     },
     {
-      "path": "/zh/calendar (drawer open)",
+      "path": "/es/calendar (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/login",
+      "path": "/es/login",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/login",
+          "page": "/es/login",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+          "elements": "button [role=tab] .relative.inline-flex \"Iniciar sesión\""
         }
       ]
     },
     {
-      "path": "/zh/register",
+      "path": "/es/register",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=2",
+      "path": "/es/register?step=2",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=3",
+      "path": "/es/register?step=3",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/forgot-password",
-      "viewport": "390px",
-      "reached": true,
-      "issues": []
-    },
-    {
-      "path": "/zh/marketplace",
+      "path": "/es/forgot-password",
       "viewport": "390px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/forgot-password",
           "viewport": "390px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+          "elements": "button .inline-flex.items-center \"Enviar enlace de restablecimiento\""
         }
       ]
     },
     {
-      "path": "/zh/marketplace (drawer open)",
+      "path": "/es/marketplace",
+      "viewport": "390px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/es/marketplace",
+          "viewport": "390px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"Todos los anuncios\""
+        }
+      ]
+    },
+    {
+      "path": "/es/marketplace (drawer open)",
       "viewport": "390px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/marketplace → marketplace-detail",
+      "path": "/es/marketplace → marketplace-detail",
       "viewport": "390px",
       "reached": false,
       "skipReason": "no matching link on list page (empty state)",
       "issues": []
     },
     {
-      "path": "/zh",
+      "path": "/es",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh (drawer open)",
+      "path": "/es (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/prices",
+      "path": "/es/prices",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"大宗商品行情\""
+          "elements": "h1 .min-w-0.break-words \"Cotizaciones de materias primas\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/prices",
+          "page": "/es/prices",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"刚果（金）\""
+          "elements": "button [role=tab] .relative.inline-flex \"RDC\""
         }
       ]
     },
     {
-      "path": "/zh/prices (drawer open)",
+      "path": "/es/prices (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/solutions",
+      "path": "/es/solutions",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/solutions",
+          "page": "/es/solutions",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"一个平台。四种交易方式。\""
+          "elements": "h1 .min-w-0.break-words \"Una plataforma. Cuatro formas de comerciar.\""
         }
       ]
     },
     {
-      "path": "/zh/solutions (drawer open)",
+      "path": "/es/solutions (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/resources",
+      "path": "/es/resources",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/resources",
+          "page": "/es/resources",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"了解刚果（金）矿产贸易\""
+          "elements": "h1 .min-w-0.break-words \"Comprender el comercio minero en RDC\""
         }
       ]
     },
     {
-      "path": "/zh/resources (drawer open)",
+      "path": "/es/resources (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/about",
+      "path": "/es/about",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/about",
+          "page": "/es/about",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"我们的使命\""
+          "elements": "h1 .min-w-0.break-words \"Nuestra misión\""
         }
       ]
     },
     {
-      "path": "/zh/about (drawer open)",
+      "path": "/es/about (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/calendar",
+      "path": "/es/calendar",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "h1 .min-w-0.break-words \"矿业日历\""
+          "elements": "h1 .min-w-0.break-words \"Calendario Minero\""
         },
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/calendar",
+          "page": "/es/calendar",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部\""
+          "elements": "button [role=tab] .relative.inline-flex \"Todo\""
         }
       ]
     },
     {
-      "path": "/zh/calendar (drawer open)",
+      "path": "/es/calendar (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/login",
+      "path": "/es/login",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/login",
+          "page": "/es/login",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"登录\""
+          "elements": "button [role=tab] .relative.inline-flex \"Iniciar sesión\""
         }
       ]
     },
     {
-      "path": "/zh/register",
+      "path": "/es/register",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=2",
+      "path": "/es/register?step=2",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/register?step=3",
+      "path": "/es/register?step=3",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/forgot-password",
-      "viewport": "360px",
-      "reached": true,
-      "issues": []
-    },
-    {
-      "path": "/zh/marketplace",
+      "path": "/es/forgot-password",
       "viewport": "360px",
       "reached": true,
       "issues": [
         {
           "severity": "low",
           "category": "text-truncation",
-          "page": "/zh/marketplace",
+          "page": "/es/forgot-password",
           "viewport": "360px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
-          "elements": "button [role=tab] .relative.inline-flex \"全部挂牌\""
+          "elements": "button .inline-flex.items-center \"Enviar enlace de restablecimiento\""
         }
       ]
     },
     {
-      "path": "/zh/marketplace (drawer open)",
+      "path": "/es/marketplace",
+      "viewport": "360px",
+      "reached": true,
+      "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/es/marketplace",
+          "viewport": "360px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button [role=tab] .relative.inline-flex \"Todos los anuncios\""
+        }
+      ]
+    },
+    {
+      "path": "/es/marketplace (drawer open)",
       "viewport": "360px",
       "reached": true,
       "issues": []
     },
     {
-      "path": "/zh/marketplace → marketplace-detail",
+      "path": "/es/marketplace → marketplace-detail",
       "viewport": "360px",
       "reached": false,
       "skipReason": "no matching link on list page (empty state)",
@@ -1067,6 +1037,6 @@
     "Missing vars sample: E2E_BUYER_EMAIL, E2E_BUYER_PASSWORD, E2E_SELLER_EMAIL, E2E_SELLER_PASSWORD, E2E_COOP_APPROVED_EMAIL, E2E_COOP_APPROVED_PASSWORD…",
     "Admin routes skipped: ADMIN_GATE_SECRET, ADMIN_PASSPHRASE, or E2E admin credentials not configured.",
     "Institution role not audited: no E2E fixture account exists (institution treated like buyer in code; add fixture to extend coverage).",
-    "Locale: zh (routes prefixed with /zh)."
+    "Locale: es (routes prefixed with /es)."
   ]
 }

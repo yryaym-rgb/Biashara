@@ -1,12 +1,12 @@
 # Platform Responsive + Interaction Audit Report
 
-Generated: 2026-08-15T10:40:38.259Z
+Generated: 2026-08-15T10:44:25.207Z
 
 ## Coverage Summary
 
 - Pages tested: 74
 - Pages skipped/unreachable: 5
-- Total issues: 64
+- Total issues: 66
 
 ### Coverage gaps
 
@@ -14,336 +14,347 @@ Generated: 2026-08-15T10:40:38.259Z
 - Missing vars sample: E2E_BUYER_EMAIL, E2E_BUYER_PASSWORD, E2E_SELLER_EMAIL, E2E_SELLER_PASSWORD, E2E_COOP_APPROVED_EMAIL, E2E_COOP_APPROVED_PASSWORD…
 - Admin routes skipped: ADMIN_GATE_SECRET, ADMIN_PASSPHRASE, or E2E admin credentials not configured.
 - Institution role not audited: no E2E fixture account exists (institution treated like buyer in code; add fixture to extend coverage).
+- Locale: en (routes prefixed with /en).
 
 ### Skipped routes
 
 | Page | Viewport | Role | Reason |
 |------|----------|------|--------|
-| /marketplace → marketplace-detail | 1440px | guest | no matching link on list page (empty state) |
-| /marketplace → marketplace-detail | 1024px | guest | no matching link on list page (empty state) |
-| /marketplace → marketplace-detail | 768px | guest | no matching link on list page (empty state) |
-| /marketplace → marketplace-detail | 390px | guest | no matching link on list page (empty state) |
-| /marketplace → marketplace-detail | 360px | guest | no matching link on list page (empty state) |
+| /en/marketplace → marketplace-detail | 1440px | guest | no matching link on list page (empty state) |
+| /en/marketplace → marketplace-detail | 1024px | guest | no matching link on list page (empty state) |
+| /en/marketplace → marketplace-detail | 768px | guest | no matching link on list page (empty state) |
+| /en/marketplace → marketplace-detail | 390px | guest | no matching link on list page (empty state) |
+| /en/marketplace → marketplace-detail | 360px | guest | no matching link on list page (empty state) |
 
-## Low (64)
+## Low (66)
 
-### / @ 1440px
+### /en @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .text-[36px].font-bold "Commercez avec audace.Échangez en confiance.Gran"
+- **Elements:** h1 .text-[36px].font-bold "Trade boldly.Exchange with confidence.Grow toget"
 
-### /prices @ 1440px
+### /en/prices @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Cotations des matières premières"
+- **Elements:** h1 .min-w-0.break-words "Commodity prices"
 
-### /prices @ 1440px
+### /en/prices @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "DRC"
 
-### /solutions @ 1440px
+### /en/solutions @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Une plateforme. Quatre façons de commercer."
+- **Elements:** h1 .min-w-0.break-words "One platform. Four ways to trade."
 
-### /resources @ 1440px
+### /en/resources @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Comprendre le commerce minier en RDC"
+- **Elements:** h1 .min-w-0.break-words "Understanding mining trade in the DRC"
 
-### /about @ 1440px
+### /en/about @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Notre mission"
+- **Elements:** h1 .min-w-0.break-words "Our mission"
 
-### /calendar @ 1440px
+### /en/calendar @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Calendrier minier"
+- **Elements:** h1 .min-w-0.break-words "Mining calendar"
 
-### /calendar @ 1440px
+### /en/calendar @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "All"
 
-### /login @ 1440px
+### /en/login @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Sign in"
 
-### /marketplace @ 1440px
+### /en/marketplace @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "All listings"
 
-### / @ 1024px
+### /en @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### / @ 1024px
+### /en @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .text-[36px].font-bold "Commercez avec audace.Échangez en confiance.Gran"
+- **Elements:** h1 .text-[36px].font-bold "Trade boldly.Exchange with confidence.Grow toget"
 
-### /prices @ 1024px
+### /en/prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### /prices @ 1024px
+### /en/prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Cotations des matières premières"
+- **Elements:** h1 .min-w-0.break-words "Commodity prices"
 
-### /prices @ 1024px
+### /en/prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "DRC"
 
-### /solutions @ 1024px
+### /en/solutions @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### /solutions @ 1024px
+### /en/solutions @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Une plateforme. Quatre façons de commercer."
+- **Elements:** h1 .min-w-0.break-words "One platform. Four ways to trade."
 
-### /resources @ 1024px
+### /en/resources @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### /resources @ 1024px
+### /en/resources @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Comprendre le commerce minier en RDC"
+- **Elements:** h1 .min-w-0.break-words "Understanding mining trade in the DRC"
 
-### /about @ 1024px
+### /en/about @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### /about @ 1024px
+### /en/about @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Notre mission"
+- **Elements:** h1 .min-w-0.break-words "Our mission"
 
-### /calendar @ 1024px
+### /en/calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### /calendar @ 1024px
+### /en/calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Calendrier minier"
+- **Elements:** h1 .min-w-0.break-words "Mining calendar"
 
-### /calendar @ 1024px
+### /en/calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Tous"
+- **Elements:** button [role=tab] .relative.inline-flex "All"
 
-### /login @ 1024px
+### /en/login @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
+- **Elements:** button [role=tab] .relative.inline-flex "Sign in"
 
-### /marketplace @ 1024px
+### /en/marketplace @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "Se connecter"
+- **Elements:** a .hidden.min-w-0 "Sign in"
 
-### /marketplace @ 1024px
+### /en/marketplace @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "All listings"
 
-### / @ 768px
+### /en @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### / @ 768px
+### /en @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .text-[36px].font-bold "Commercez avec audace.Échangez en confiance.Gran"
+- **Elements:** h1 .text-[36px].font-bold "Trade boldly.Exchange with confidence.Grow toget"
 
-### /prices @ 768px
+### /en/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### /prices @ 768px
+### /en/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Cotations des matières premières"
+- **Elements:** h1 .min-w-0.break-words "Commodity prices"
 
-### /prices @ 768px
+### /en/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "DRC"
 
-### /solutions @ 768px
+### /en/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button [role=tab] .relative.inline-flex "Copper"
 
-### /solutions @ 768px
+### /en/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Une plateforme. Quatre façons de commercer."
+- **Elements:** button [role=tab] .relative.inline-flex "USD"
 
-### /resources @ 768px
+### /en/solutions @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### /resources @ 768px
+### /en/solutions @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Comprendre le commerce minier en RDC"
+- **Elements:** h1 .min-w-0.break-words "One platform. Four ways to trade."
 
-### /about @ 768px
+### /en/resources @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### /about @ 768px
+### /en/resources @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Notre mission"
+- **Elements:** h1 .min-w-0.break-words "Understanding mining trade in the DRC"
 
-### /calendar @ 768px
+### /en/about @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### /calendar @ 768px
+### /en/about @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Calendrier minier"
+- **Elements:** h1 .min-w-0.break-words "Our mission"
 
-### /calendar @ 768px
+### /en/calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Tous"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### /login @ 768px
+### /en/calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
+- **Elements:** h1 .min-w-0.break-words "Mining calendar"
 
-### /marketplace @ 768px
+### /en/calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "FR"
+- **Elements:** button [role=tab] .relative.inline-flex "All"
 
-### /marketplace @ 768px
+### /en/login @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "Sign in"
 
-### /prices @ 390px
+### /en/marketplace @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Cotations des matières premières"
+- **Elements:** button .inline-flex.h-10 "EN"
 
-### /prices @ 390px
+### /en/marketplace @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "All listings"
 
-### /solutions @ 390px
+### /en @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Une plateforme. Quatre façons de commercer."
+- **Elements:** h1 .text-[36px].font-bold "Trade boldly.Exchange with confidence.Grow toget"
 
-### /resources @ 390px
+### /en/prices @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Comprendre le commerce minier en RDC"
+- **Elements:** h1 .min-w-0.break-words "Commodity prices"
 
-### /about @ 390px
+### /en/prices @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Notre mission"
+- **Elements:** button [role=tab] .relative.inline-flex "DRC"
 
-### /calendar @ 390px
+### /en/solutions @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Calendrier minier"
+- **Elements:** h1 .min-w-0.break-words "One platform. Four ways to trade."
 
-### /calendar @ 390px
+### /en/resources @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Tous"
+- **Elements:** h1 .min-w-0.break-words "Understanding mining trade in the DRC"
 
-### /login @ 390px
+### /en/about @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
+- **Elements:** h1 .min-w-0.break-words "Our mission"
 
-### /forgot-password @ 390px
+### /en/calendar @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.items-center "Envoyer le lien de réinitialisation"
+- **Elements:** h1 .min-w-0.break-words "Mining calendar"
 
-### /marketplace @ 390px
+### /en/calendar @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "All"
 
-### /prices @ 360px
+### /en/login @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Cotations des matières premières"
+- **Elements:** button [role=tab] .relative.inline-flex "Sign in"
 
-### /prices @ 360px
+### /en/marketplace @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "RDC"
+- **Elements:** button [role=tab] .relative.inline-flex "All listings"
 
-### /solutions @ 360px
+### /en @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Une plateforme. Quatre façons de commercer."
+- **Elements:** h1 .text-[36px].font-bold "Trade boldly.Exchange with confidence.Grow toget"
 
-### /resources @ 360px
+### /en/prices @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Comprendre le commerce minier en RDC"
+- **Elements:** h1 .min-w-0.break-words "Commodity prices"
 
-### /about @ 360px
+### /en/prices @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Notre mission"
+- **Elements:** button [role=tab] .relative.inline-flex "DRC"
 
-### /calendar @ 360px
+### /en/solutions @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "Calendrier minier"
+- **Elements:** h1 .min-w-0.break-words "One platform. Four ways to trade."
 
-### /calendar @ 360px
+### /en/resources @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Tous"
+- **Elements:** h1 .min-w-0.break-words "Understanding mining trade in the DRC"
 
-### /login @ 360px
+### /en/about @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Connexion"
+- **Elements:** h1 .min-w-0.break-words "Our mission"
 
-### /forgot-password @ 360px
+### /en/calendar @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.items-center "Envoyer le lien de réinitialisation"
+- **Elements:** h1 .min-w-0.break-words "Mining calendar"
 
-### /marketplace @ 360px
+### /en/calendar @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "Toutes les annonces"
+- **Elements:** button [role=tab] .relative.inline-flex "All"
+
+### /en/login @ 360px
+- **Category:** text-truncation
+- **Issue:** Text may be truncated, clipped, or awkwardly wrapped
+- **Elements:** button [role=tab] .relative.inline-flex "Sign in"
+
+### /en/marketplace @ 360px
+- **Category:** text-truncation
+- **Issue:** Text may be truncated, clipped, or awkwardly wrapped
+- **Elements:** button [role=tab] .relative.inline-flex "All listings"
 
