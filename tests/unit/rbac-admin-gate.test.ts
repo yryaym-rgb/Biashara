@@ -70,8 +70,9 @@ describe('rbac admin gate paths', () => {
     expect(result.allowed).toBe(true);
   });
 
-  it('stripLocale removes en prefix', () => {
+  it('stripLocale removes non-default locale prefixes', () => {
     expect(stripLocale('/en/secret-gate-xyz')).toBe('/secret-gate-xyz');
+    expect(stripLocale('/zh/secret-gate-xyz')).toBe('/secret-gate-xyz');
     expect(stripLocale('/secret-gate-xyz')).toBe('/secret-gate-xyz');
   });
 });

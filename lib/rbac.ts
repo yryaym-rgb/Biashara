@@ -1,3 +1,4 @@
+import { stripLocalePrefix } from '@/lib/i18n/pathname';
 import type { Profile } from '@/lib/auth/session';
 import type { UserRole } from '@/lib/validators/profile';
 import type { Database } from '@/types/database.types';
@@ -90,13 +91,7 @@ function secureCompareStrings(a: string, b: string): boolean {
 }
 
 export function stripLocale(pathname: string): string {
-  if (pathname.startsWith('/en/')) {
-    return pathname.slice(3) || '/';
-  }
-  if (pathname === '/en') {
-    return '/';
-  }
-  return pathname;
+  return stripLocalePrefix(pathname);
 }
 
 /** True when the first path segment matches ADMIN_GATE_SECRET (timing-safe). */

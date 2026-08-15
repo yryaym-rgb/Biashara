@@ -1,11 +1,12 @@
 import fr from '../messages/fr.json';
 import en from '../messages/en.json';
+import zh from '../messages/zh.json';
 import {
   formatMissingKeysReport,
   validateReferencedI18nKeys,
 } from '../lib/i18n/validate-referenced-keys';
 
-const result = validateReferencedI18nKeys(fr, en);
+const result = validateReferencedI18nKeys(fr, en, zh);
 const report = formatMissingKeysReport(result);
 
 if (report) {
