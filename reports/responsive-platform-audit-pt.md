@@ -1,12 +1,12 @@
 # Platform Responsive + Interaction Audit Report
 
-Generated: 2026-08-15T10:48:12.122Z
+Generated: 2026-08-15T10:36:40.916Z
 
 ## Coverage Summary
 
 - Pages tested: 74
 - Pages skipped/unreachable: 5
-- Total issues: 68
+- Total issues: 70
 
 ### Coverage gaps
 
@@ -14,357 +14,367 @@ Generated: 2026-08-15T10:48:12.122Z
 - Missing vars sample: E2E_BUYER_EMAIL, E2E_BUYER_PASSWORD, E2E_SELLER_EMAIL, E2E_SELLER_PASSWORD, E2E_COOP_APPROVED_EMAIL, E2E_COOP_APPROVED_PASSWORD…
 - Admin routes skipped: ADMIN_GATE_SECRET, ADMIN_PASSPHRASE, or E2E admin credentials not configured.
 - Institution role not audited: no E2E fixture account exists (institution treated like buyer in code; add fixture to extend coverage).
-- Locale: zh (routes prefixed with /zh).
+- Locale: pt (routes prefixed with /pt).
 
 ### Skipped routes
 
 | Page | Viewport | Role | Reason |
 |------|----------|------|--------|
-| /zh/marketplace → marketplace-detail | 1440px | guest | no matching link on list page (empty state) |
-| /zh/marketplace → marketplace-detail | 1024px | guest | no matching link on list page (empty state) |
-| /zh/marketplace → marketplace-detail | 768px | guest | no matching link on list page (empty state) |
-| /zh/marketplace → marketplace-detail | 390px | guest | no matching link on list page (empty state) |
-| /zh/marketplace → marketplace-detail | 360px | guest | no matching link on list page (empty state) |
+| /pt/marketplace → marketplace-detail | 1440px | guest | no matching link on list page (empty state) |
+| /pt/marketplace → marketplace-detail | 1024px | guest | no matching link on list page (empty state) |
+| /pt/marketplace → marketplace-detail | 768px | guest | no matching link on list page (empty state) |
+| /pt/marketplace → marketplace-detail | 390px | guest | no matching link on list page (empty state) |
+| /pt/marketplace → marketplace-detail | 360px | guest | no matching link on list page (empty state) |
 
-## Low (68)
+## Low (70)
 
-### /zh @ 1440px
+### /pt @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .text-[36px].font-bold "大胆交易。放心交换。共同成长。"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh/prices @ 1440px
+### /pt @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "大宗商品行情"
+- **Elements:** h1 .text-[36px].font-bold "Negocie com ousadia.Troque com confiança.Cresça "
 
-### /zh/prices @ 1440px
+### /pt/prices @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "刚果（金）"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh/prices @ 1440px
+### /pt/prices @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "铜"
+- **Elements:** h1 .min-w-0.break-words "Preços das matérias-primas"
 
-### /zh/prices @ 1440px
+### /pt/prices @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "USD"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
-### /zh/solutions @ 1440px
+### /pt/solutions @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "一个平台。四种交易方式。"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh/resources @ 1440px
+### /pt/solutions @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "了解刚果（金）矿产贸易"
+- **Elements:** h1 .min-w-0.break-words "Uma plataforma. Quatro formas de negociar."
 
-### /zh/about @ 1440px
+### /pt/resources @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "我们的使命"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh/calendar @ 1440px
+### /pt/resources @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "矿业日历"
+- **Elements:** h1 .min-w-0.break-words "Compreender o comércio mineiro na RDC"
 
-### /zh/calendar @ 1440px
+### /pt/about @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh/login @ 1440px
+### /pt/about @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "登录"
+- **Elements:** h1 .min-w-0.break-words "A nossa missão"
 
-### /zh/marketplace @ 1440px
+### /pt/calendar @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部挂牌"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh @ 1024px
+### /pt/calendar @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** h1 .min-w-0.break-words "Calendário mineiro"
 
-### /zh @ 1024px
+### /pt/calendar @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .text-[36px].font-bold "大胆交易。放心交换。共同成长。"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos"
 
-### /zh/prices @ 1024px
+### /pt/login @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** button [role=tab] .relative.inline-flex "Iniciar sessão"
 
-### /zh/prices @ 1024px
+### /pt/marketplace @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "大宗商品行情"
+- **Elements:** a .group.relative "Soluções"
 
-### /zh/prices @ 1024px
+### /pt/marketplace @ 1440px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "刚果（金）"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos os anúncios"
 
-### /zh/prices @ 1024px
+### /pt @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "铜"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/prices @ 1024px
+### /pt @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "USD"
+- **Elements:** h1 .text-[36px].font-bold "Negocie com ousadia.Troque com confiança.Cresça "
 
-### /zh/solutions @ 1024px
+### /pt/prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/solutions @ 1024px
+### /pt/prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "一个平台。四种交易方式。"
+- **Elements:** h1 .min-w-0.break-words "Preços das matérias-primas"
 
-### /zh/resources @ 1024px
+### /pt/prices @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
-### /zh/resources @ 1024px
+### /pt/solutions @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "了解刚果（金）矿产贸易"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/about @ 1024px
+### /pt/solutions @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** h1 .min-w-0.break-words "Uma plataforma. Quatro formas de negociar."
 
-### /zh/about @ 1024px
+### /pt/resources @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "我们的使命"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/calendar @ 1024px
+### /pt/resources @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** h1 .min-w-0.break-words "Compreender o comércio mineiro na RDC"
 
-### /zh/calendar @ 1024px
+### /pt/about @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "矿业日历"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/calendar @ 1024px
+### /pt/about @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部"
+- **Elements:** h1 .min-w-0.break-words "A nossa missão"
 
-### /zh/login @ 1024px
+### /pt/calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "登录"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/marketplace @ 1024px
+### /pt/calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** a .hidden.min-w-0 "登录"
+- **Elements:** h1 .min-w-0.break-words "Calendário mineiro"
 
-### /zh/marketplace @ 1024px
+### /pt/calendar @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部挂牌"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos"
 
-### /zh @ 768px
+### /pt/login @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** button [role=tab] .relative.inline-flex "Iniciar sessão"
 
-### /zh @ 768px
+### /pt/marketplace @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .text-[36px].font-bold "大胆交易。放心交换。共同成长。"
+- **Elements:** a .hidden.min-w-0 "Iniciar sessão"
 
-### /zh/prices @ 768px
+### /pt/marketplace @ 1024px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos os anúncios"
 
-### /zh/prices @ 768px
+### /pt @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "大宗商品行情"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/prices @ 768px
+### /pt @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "刚果（金）"
+- **Elements:** h1 .text-[36px].font-bold "Negocie com ousadia.Troque com confiança.Cresça "
 
-### /zh/prices @ 768px
+### /pt/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "铜"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/prices @ 768px
+### /pt/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "USD"
+- **Elements:** h1 .min-w-0.break-words "Preços das matérias-primas"
 
-### /zh/solutions @ 768px
+### /pt/prices @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
-### /zh/solutions @ 768px
+### /pt/solutions @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "一个平台。四种交易方式。"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/resources @ 768px
+### /pt/solutions @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** h1 .min-w-0.break-words "Uma plataforma. Quatro formas de negociar."
 
-### /zh/resources @ 768px
+### /pt/resources @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "了解刚果（金）矿产贸易"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/about @ 768px
+### /pt/resources @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** h1 .min-w-0.break-words "Compreender o comércio mineiro na RDC"
 
-### /zh/about @ 768px
+### /pt/about @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "我们的使命"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/calendar @ 768px
+### /pt/about @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** h1 .min-w-0.break-words "A nossa missão"
 
-### /zh/calendar @ 768px
+### /pt/calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "矿业日历"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/calendar @ 768px
+### /pt/calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部"
+- **Elements:** h1 .min-w-0.break-words "Calendário mineiro"
 
-### /zh/login @ 768px
+### /pt/calendar @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "登录"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos"
 
-### /zh/marketplace @ 768px
+### /pt/login @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button .inline-flex.h-10 "中文"
+- **Elements:** button [role=tab] .relative.inline-flex "Iniciar sessão"
 
-### /zh/marketplace @ 768px
+### /pt/marketplace @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部挂牌"
+- **Elements:** button .inline-flex.h-10 "Português"
 
-### /zh/prices @ 390px
+### /pt/marketplace @ 768px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "大宗商品行情"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos os anúncios"
 
-### /zh/prices @ 390px
+### /pt/prices @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "刚果（金）"
+- **Elements:** h1 .min-w-0.break-words "Preços das matérias-primas"
 
-### /zh/solutions @ 390px
+### /pt/prices @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "一个平台。四种交易方式。"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
-### /zh/resources @ 390px
+### /pt/solutions @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "了解刚果（金）矿产贸易"
+- **Elements:** h1 .min-w-0.break-words "Uma plataforma. Quatro formas de negociar."
 
-### /zh/about @ 390px
+### /pt/resources @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "我们的使命"
+- **Elements:** h1 .min-w-0.break-words "Compreender o comércio mineiro na RDC"
 
-### /zh/calendar @ 390px
+### /pt/about @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "矿业日历"
+- **Elements:** h1 .min-w-0.break-words "A nossa missão"
 
-### /zh/calendar @ 390px
+### /pt/calendar @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部"
+- **Elements:** h1 .min-w-0.break-words "Calendário mineiro"
 
-### /zh/login @ 390px
+### /pt/calendar @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "登录"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos"
 
-### /zh/marketplace @ 390px
+### /pt/login @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部挂牌"
+- **Elements:** button [role=tab] .relative.inline-flex "Iniciar sessão"
 
-### /zh/prices @ 360px
+### /pt/marketplace @ 390px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "大宗商品行情"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos os anúncios"
 
-### /zh/prices @ 360px
+### /pt/prices @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "刚果（金）"
+- **Elements:** h1 .min-w-0.break-words "Preços das matérias-primas"
 
-### /zh/solutions @ 360px
+### /pt/prices @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "一个平台。四种交易方式。"
+- **Elements:** button [role=tab] .relative.inline-flex "RDC"
 
-### /zh/resources @ 360px
+### /pt/solutions @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "了解刚果（金）矿产贸易"
+- **Elements:** h1 .min-w-0.break-words "Uma plataforma. Quatro formas de negociar."
 
-### /zh/about @ 360px
+### /pt/resources @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "我们的使命"
+- **Elements:** h1 .min-w-0.break-words "Compreender o comércio mineiro na RDC"
 
-### /zh/calendar @ 360px
+### /pt/about @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** h1 .min-w-0.break-words "矿业日历"
+- **Elements:** h1 .min-w-0.break-words "A nossa missão"
 
-### /zh/calendar @ 360px
+### /pt/calendar @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部"
+- **Elements:** h1 .min-w-0.break-words "Calendário mineiro"
 
-### /zh/login @ 360px
+### /pt/calendar @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "登录"
+- **Elements:** button [role=tab] .relative.inline-flex "Todos"
 
-### /zh/marketplace @ 360px
+### /pt/login @ 360px
 - **Category:** text-truncation
 - **Issue:** Text may be truncated, clipped, or awkwardly wrapped
-- **Elements:** button [role=tab] .relative.inline-flex "全部挂牌"
+- **Elements:** button [role=tab] .relative.inline-flex "Iniciar sessão"
+
+### /pt/forgot-password @ 360px
+- **Category:** text-truncation
+- **Issue:** Text may be truncated, clipped, or awkwardly wrapped
+- **Elements:** button .inline-flex.items-center "Enviar ligação de redefinição"
+
+### /pt/marketplace @ 360px
+- **Category:** text-truncation
+- **Issue:** Text may be truncated, clipped, or awkwardly wrapped
+- **Elements:** button [role=tab] .relative.inline-flex "Todos os anúncios"
 

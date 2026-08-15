@@ -178,6 +178,14 @@
           "page": "/",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
           "elements": "h1 .text-[36px].font-bold \"Commercez avec audace.Échangez en confiance.Gran\""
         }
       ]
@@ -187,6 +195,14 @@
       "viewport": "1024px",
       "reached": true,
       "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/prices",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -216,6 +232,14 @@
           "page": "/solutions",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/solutions",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
           "elements": "h1 .min-w-0.break-words \"Une plateforme. Quatre façons de commercer.\""
         }
       ]
@@ -225,6 +249,14 @@
       "viewport": "1024px",
       "reached": true,
       "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/resources",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -246,6 +278,14 @@
           "page": "/about",
           "viewport": "1024px",
           "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/about",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
           "elements": "h1 .min-w-0.break-words \"Notre mission\""
         }
       ]
@@ -255,6 +295,14 @@
       "viewport": "1024px",
       "reached": true,
       "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/calendar",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -317,6 +365,14 @@
       "viewport": "1024px",
       "reached": true,
       "issues": [
+        {
+          "severity": "low",
+          "category": "text-truncation",
+          "page": "/marketplace",
+          "viewport": "1024px",
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "a .hidden.min-w-0 \"Se connecter\""
+        },
         {
           "severity": "low",
           "category": "text-truncation",
@@ -340,44 +396,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",
@@ -395,44 +419,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/prices",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/prices",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/prices",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/prices",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/prices",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",
@@ -458,44 +450,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/solutions",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/solutions",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/solutions",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/solutions",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/solutions",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",
@@ -513,44 +473,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/resources",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/resources",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/resources",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/resources",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/resources",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",
@@ -568,44 +496,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/about",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/about",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/about",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/about",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/about",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",
@@ -623,44 +519,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/calendar",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/calendar",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/calendar",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/calendar",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/calendar",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",
@@ -725,44 +589,12 @@
       "reached": true,
       "issues": [
         {
-          "severity": "medium",
-          "category": "overlap",
+          "severity": "low",
+          "category": "text-truncation",
           "page": "/marketplace",
           "viewport": "768px",
-          "description": "Elements overlap (2893px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Accueil\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/marketplace",
-          "viewport": "768px",
-          "description": "Elements overlap (20px² intersection)",
-          "elements": "a .relative.z-[2] \"BIASHARA\" ↔ a .group.relative \"Marché\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/marketplace",
-          "viewport": "768px",
-          "description": "Elements overlap (1640px² intersection)",
-          "elements": "a .group.relative \"Accueil\" ↔ span .text-[14px].font-bold \"BIASHARA\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/marketplace",
-          "viewport": "768px",
-          "description": "Elements overlap (2360px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ button .inline-flex.h-10 \"FR\""
-        },
-        {
-          "severity": "medium",
-          "category": "overlap",
-          "page": "/marketplace",
-          "viewport": "768px",
-          "description": "Elements overlap (210px² intersection)",
-          "elements": "a .group.relative \"Solutions\" ↔ a .hidden.text-[15px] \"Se connecter\""
+          "description": "Text may be truncated, clipped, or awkwardly wrapped",
+          "elements": "button .inline-flex.h-10 \"FR\""
         },
         {
           "severity": "low",

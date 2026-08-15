@@ -2,7 +2,9 @@ import type { Locale } from '@/lib/i18n/config';
 
 /** Maps app locale to BCP 47 tag for Intl APIs. */
 export function resolveIntlLocale(locale: string): string {
-  return locale === 'en' ? 'en-US' : 'fr-FR';
+  if (locale === 'en') return 'en-US';
+  if (locale === 'pt') return 'pt-PT';
+  return 'fr-FR';
 }
 
 export function formatCurrency(
