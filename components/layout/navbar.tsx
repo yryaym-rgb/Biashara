@@ -56,6 +56,10 @@ function getDesktopNavItemClass(item: NavItem, isAuthenticated: boolean): string
     return 'hidden 2xl:inline-flex';
   }
 
+  if (!isAuthenticated && item.labelKey === 'solutions') {
+    return 'hidden lg:inline-flex';
+  }
+
   return '';
 }
 
@@ -178,8 +182,8 @@ export function Navbar({
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'group relative inline-flex items-center gap-1 whitespace-nowrap px-2 py-2 lg:px-1.5 xl:px-2',
-                  'text-[15px] font-semibold motion-safe:transition-colors motion-safe:duration-150',
+                  'group relative inline-flex min-w-0 items-center gap-1 whitespace-nowrap px-1.5 py-2 md:text-[14px] lg:px-2 lg:text-[15px]',
+                  'font-semibold motion-safe:transition-colors motion-safe:duration-150',
                   active ? 'text-ink' : 'text-body hover:text-ink',
                   getDesktopNavItemClass(item, isAuthenticated),
                 )}
@@ -232,8 +236,9 @@ export function Navbar({
               <button
                 type="button"
                 className={cn(
-                  'inline-flex h-10 items-center gap-1 rounded-button px-2.5',
-                  'text-[15px] font-semibold text-ink',
+                  'inline-flex h-10 min-w-0 items-center gap-0.5 rounded-button px-1.5',
+                  'text-[13px] font-semibold text-ink md:max-w-[5.5rem] md:truncate',
+                  'lg:max-w-none lg:gap-1 lg:overflow-visible lg:px-2.5 lg:text-[15px]',
                   'hover:bg-bg-tint motion-safe:transition-colors motion-safe:duration-150',
                 )}
                 aria-expanded={langOpen}
@@ -286,7 +291,8 @@ export function Navbar({
                 <Link
                   href="/login"
                   className={cn(
-                    'hidden text-[15px] font-semibold text-brand-blue md:inline-flex',
+                    'hidden min-w-0 font-semibold text-brand-blue lg:inline-flex lg:max-w-[8rem] lg:truncate lg:text-[14px]',
+                    'xl:max-w-none xl:overflow-visible xl:text-[15px]',
                     'hover:text-brand-blue-dark motion-safe:transition-colors motion-safe:duration-150',
                   )}
                 >
@@ -296,7 +302,8 @@ export function Navbar({
                   asChild
                   size="md"
                   className={cn(
-                    'hidden md:inline-flex lg:h-9 lg:px-4 xl:h-11 xl:px-[22px]',
+                    'hidden min-w-0 md:inline-flex lg:h-9 lg:px-4 xl:h-11 xl:px-[22px]',
+                    '[&_a]:truncate',
                   )}
                 >
                   <Link href="/marketplace">{t('accessMarket')}</Link>
